@@ -9,8 +9,13 @@ public class PlayerController : MonoBehaviour
     Player_BLACKBOARD m_Blackboard;
     CharacterController m_CharacterController;
 
+    private bool m_CanInteract;
+
+    public BaseItem m_Item;
+
     private void Start()
     {
+        m_CanInteract = true;
         m_InputController = GetComponent<InputController>();
         m_Blackboard = GetComponent<Player_BLACKBOARD>();
         m_CharacterController = GetComponent<CharacterController>();
@@ -18,7 +23,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(m_CanInteract == false) return;
+
         MovementInput();
+
+        UseItem();
     }
 
     void MovementInput()
@@ -45,5 +54,42 @@ public class PlayerController : MonoBehaviour
         l_Direction.Normalize();
 
         m_CharacterController.Move(l_Direction * m_Blackboard.m_MovementSpeed * Time.deltaTime);
+    }
+
+    void UseItem()
+    {
+        if (Input.GetKeyDown(m_InputController.m_UseItemKey))
+        {
+            m_Item.ApplyEffectItem();
+        }
+    }
+
+    private void InvertInteract(bool isDead)
+    {
+        m_CanInteract = !isDead;
+    }
+
+    private void OnEnable()
+    {
+        try
+        {
+            gameObject.GetComponent<Module_Health>().m_PlayerIsDead += InvertInteract;
+        }
+        catch
+        {
+            Debug.LogWarning("Custom Warning - No Module_Health found on " +  gameObject.name);
+        }
+    }
+
+    private void OnDisable()
+    {
+        try
+        {
+            gameObject.GetComponent<Module_Health>().m_PlayerIsDead -= InvertInteract;
+        }
+        catch
+        {
+            Debug.LogWarning("Custom Warning - No Module_Health found on " + gameObject.name);
+        }
     }
 }
