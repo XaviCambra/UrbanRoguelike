@@ -5,4 +5,5 @@ using UnityEngine;
 public class Player_BLACKBOARD : MonoBehaviour
 {
     public float m_MovementSpeed;
+    public float m_CrouchingSpeed;
 }
