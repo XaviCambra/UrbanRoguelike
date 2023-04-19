@@ -6,7 +6,7 @@ public class Module_Health : MonoBehaviour
 {
     [Header("Statistics")]
     public float m_MaxHealth;
-    private float m_Health;
+    [SerializeField] private float m_CurrentHealth;
 
     [Header("Object Model")]
     public GameObject ObjectMesh;
@@ -16,21 +16,31 @@ public class Module_Health : MonoBehaviour
 
     private void Start()
     {
-        m_Health = m_MaxHealth;
+        m_CurrentHealth = m_MaxHealth;
     }
 
     public void TakeDamage(float l_Damage)
     {
-        Debug.Log(gameObject.name + " received damage: " + l_Damage);
-        Debug.Log(gameObject.name +  " has health: " + m_Health);
-        m_Health -= l_Damage;
+        m_CurrentHealth -= l_Damage;
+
+        Debug.Log(gameObject.name + " recieved damage: " + l_Damage);
+        Debug.Log(gameObject.name +  " has health: " + m_CurrentHealth);
 
         Death();
     }
 
+    public void GetHeal(float l_Heal)
+    {
+        m_CurrentHealth += l_Heal;
+
+        Debug.Log(gameObject.name + " recieved heal: " + l_Heal);
+        Debug.Log(gameObject.name + " has health: " + m_CurrentHealth);
+
+    }
+
     public void Death()
     {
-        if (m_Health > 0) return;
+        if (m_CurrentHealth > 0) return;
 
         if(ObjectMesh == null)
         {
@@ -47,6 +57,6 @@ public class Module_Health : MonoBehaviour
     {
         ObjectMesh.SetActive(true);
         m_PlayerIsDead?.Invoke(false);
-        m_Health = m_MaxHealth;
+        m_CurrentHealth = m_MaxHealth;
     }
 }
