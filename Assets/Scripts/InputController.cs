@@ -9,10 +9,10 @@ public class InputController : MonoBehaviour
     public KeyCode m_BackKey = KeyCode.S;
     public KeyCode m_LeftKey = KeyCode.A;
     public KeyCode m_RightKey = KeyCode.D;
-    public KeyCode m_LeftShiftKey = KeyCode.LeftShift;  //Crouch
-    public KeyCode m_SpaceKey = KeyCode.Space;     //Item
-
-
+    //Crouch
+    public KeyCode m_LeftShiftKey = KeyCode.LeftShift;
+    //Item
+    public KeyCode m_UseItemKey = KeyCode.Q;
 }
 
 public enum MouseButton
