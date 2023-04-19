@@ -37,16 +37,13 @@ public class Module_Health : MonoBehaviour
             return;
         }
         
-        else
-        {
-            m_CurrentHealth += l_Heal;
+        m_CurrentHealth += l_Heal;
 
-            if (m_CurrentHealth > m_MaxHealth) m_CurrentHealth = m_MaxHealth;
+        if (m_CurrentHealth > m_MaxHealth) m_CurrentHealth = m_MaxHealth;
 
-            Debug.Log(gameObject.name + " recieved heal: " + l_Heal);
-            Debug.Log(gameObject.name + " has health: " + m_CurrentHealth);
-        }
-
+        Debug.Log(gameObject.name + " recieved heal: " + l_Heal);
+        Debug.Log(gameObject.name + " has health: " + m_CurrentHealth);
+        
     }
     public void Death()
     {
