@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
     private bool m_CanInteract;
     private bool m_Crouching;
 
-    private float m_MovementSpeed;
-
     public BaseItem m_Item;
 
     private void Start()
@@ -25,8 +23,6 @@ public class PlayerController : MonoBehaviour
         m_Blackboard = GetComponent<Player_BLACKBOARD>();
         m_CharacterController = GetComponent<CharacterController>();
         m_Animation = GetComponent<Module_Animation>();
-
-        m_MovementSpeed = m_Blackboard.m_MovementSpeed;
     }
 
     private void Update()
@@ -62,16 +58,14 @@ public class PlayerController : MonoBehaviour
 
         l_Direction.Normalize();
 
-        /*if (m_Crouching)
+        if (m_Crouching)
         {
             l_Direction = l_Direction * m_Blackboard.m_CrouchingSpeed * Time.deltaTime;
         }
         else
         {
             l_Direction = l_Direction * m_Blackboard.m_MovementSpeed * Time.deltaTime;
-        }*/
-
-        l_Direction = l_Direction * m_MovementSpeed * Time.deltaTime;
+        }
 
         m_CharacterController.Move(l_Direction);
     }
@@ -97,7 +91,6 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(m_InputController.m_CrouchingKey))
         {
             m_Animation.PlayAnimation("Crouching", m_Crouching);
-            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
             StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0, 0), 2));
         }
     }
@@ -107,7 +100,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
         {
             float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
-            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
             StartCoroutine(ModifyCharacterCollider(duration, new Vector3(0, -0.5f, 0), 1));
         }
     }
