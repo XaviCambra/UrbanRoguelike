@@ -9,7 +9,10 @@ public class PlayerController : MonoBehaviour
     Player_BLACKBOARD m_Blackboard;
     CharacterController m_CharacterController;
 
+    Module_Animation m_Animation;
+
     private bool m_CanInteract;
+    private bool m_Crouching;
 
     public BaseItem m_Item;
 
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
         m_InputController = GetComponent<InputController>();
         m_Blackboard = GetComponent<Player_BLACKBOARD>();
         m_CharacterController = GetComponent<CharacterController>();
+        m_Animation = GetComponent<Module_Animation>();
     }
 
     private void Update()
@@ -26,8 +30,9 @@ public class PlayerController : MonoBehaviour
         if(m_CanInteract == false) return;
 
         MovementInput();
+        Crouching();
 
-        UseItem();
+        //UseItem();
     }
 
     void MovementInput()
@@ -53,7 +58,16 @@ public class PlayerController : MonoBehaviour
 
         l_Direction.Normalize();
 
-        m_CharacterController.Move(l_Direction * m_Blackboard.m_MovementSpeed * Time.deltaTime);
+        if (m_Crouching)
+        {
+            l_Direction = l_Direction * m_Blackboard.m_CrouchingSpeed * Time.deltaTime;
+        }
+        else
+        {
+            l_Direction = l_Direction * m_Blackboard.m_MovementSpeed * Time.deltaTime;
+        }
+
+        m_CharacterController.Move(l_Direction);
     }
 
     void UseItem()
@@ -64,6 +78,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Crouching()
+    {
+        if (m_Crouching) Crouching_Out();
+        else Crouching_In();
+
+        m_Crouching = !m_Crouching;
+    }
+
+    void Crouching_In()
+    {
+        if(Input.GetKeyDown(m_InputController.m_CrouchingKey))
+        {
+            m_Animation.PlayAnimation("Crouching", m_Crouching);
+            StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0, 0), 2));
+        }
+    }
+
+    void Crouching_Out()
+    {
+        if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
+        {
+            float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
+            StartCoroutine(ModifyCharacterCollider(duration, new Vector3(0, -0.5f, 0), 1));
+        }
+    }
+
+    IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
+    {
+        yield return new WaitForSeconds(transitionDuration);
+        m_CharacterController.center = l_Position;
+        m_CharacterController.height = l_Height;
+    }
+
     private void InvertInteract(bool isDead)
     {
         m_CanInteract = !isDead;
@@ -71,25 +118,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        try
-        {
-            gameObject.GetComponent<Module_Health>().m_PlayerIsDead += InvertInteract;
-        }
-        catch
-        {
-            Debug.LogWarning("Custom Warning - No Module_Health found on " +  gameObject.name);
-        }
+        gameObject.GetComponent<Module_Health>().m_PlayerIsDead += InvertInteract;
     }
 
     private void OnDisable()
     {
-        try
-        {
-            gameObject.GetComponent<Module_Health>().m_PlayerIsDead -= InvertInteract;
-        }
-        catch
-        {
-            Debug.LogWarning("Custom Warning - No Module_Health found on " + gameObject.name);
-        }
+        gameObject.GetComponent<Module_Health>().m_PlayerIsDead -= InvertInteract;
     }
 }

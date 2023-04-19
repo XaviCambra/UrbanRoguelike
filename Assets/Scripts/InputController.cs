@@ -10,7 +10,7 @@ public class InputController : MonoBehaviour
     public KeyCode m_LeftKey = KeyCode.A;
     public KeyCode m_RightKey = KeyCode.D;
     //Crouch
-    public KeyCode m_LeftShiftKey = KeyCode.LeftShift;
+    public KeyCode m_CrouchingKey = KeyCode.LeftShift;
     //Item
     public KeyCode m_UseItemKey = KeyCode.Q;
 }
