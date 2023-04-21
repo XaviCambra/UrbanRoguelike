@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(m_InputController.m_CrouchingKey))
         {
             m_Animation.PlayAnimation("Crouching", m_Crouching);
-            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
+            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
             StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0, 0), 2));
         }
     }
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
         {
             float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
-            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
             StartCoroutine(ModifyCharacterCollider(duration, new Vector3(0, -0.5f, 0), 1));
         }
     }
