@@ -6,25 +6,17 @@ public class DoorTriggerController : MonoBehaviour
 {
     [SerializeField] private Animator MyAnim = null;
 
-    [SerializeField] private bool openTrigger = false;
-    [SerializeField] private bool closeTrigger = false;
-
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            if (openTrigger)
-            {
-                MyAnim.Play("DoorOpening", 0, 0.0f);
-                gameObject.SetActive(false);
-            }
+        PlayerController playerController = other.GetComponent<PlayerController>();
 
-            else if (closeTrigger)
-            {
-                MyAnim.Play("DoorClosing", 0, 0.0f);
-                gameObject.SetActive(false);
-            }
+        if (playerController == null) return;
+
+        if(playerController.m_Item == null /*ItemDeLlave*/)
+        {
+            MyAnim.Play("DoorOpening", 0, 0.0f);
+            gameObject.SetActive(false);
         }
     }
 }
