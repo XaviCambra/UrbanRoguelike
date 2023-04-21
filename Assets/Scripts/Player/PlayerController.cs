@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         MovementInput();
         Crouching();
 
-        //UseItem();
+        UseItem();
     }
 
     void MovementInput()
@@ -74,6 +74,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_UseItemKey))
         {
+            if (m_Item == null) return;
+
             m_Item.ApplyEffectItem();
         }
     }
