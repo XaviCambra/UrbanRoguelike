@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Module_AttackRanged : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void ShootOnDirection(Vector3 l_ShootPosition, Vector3 l_ShootDirection, float l_ShootSpeed, float l_Damage)
     {
-        
-    }
+        /*
+         * Crear Object Bullet
+         * Settear Speed y Damage en el bullet
+         */
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Quaternion l_Direction = Quaternion.LookRotation(l_ShootDirection);
+        Instantiate(null /*Gameobject bala*/, l_ShootPosition, l_Direction);
     }
 }

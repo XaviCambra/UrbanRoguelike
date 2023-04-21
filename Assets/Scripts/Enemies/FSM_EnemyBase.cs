@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class FSM_EnemyBase : MonoBehaviour
 {
-    EnemyBase_BLACKBOARD m_Blackboard;
-
-    private void Start()
-    {
-        m_Blackboard = GetComponent<EnemyBase_BLACKBOARD>();
-    }
+    protected EnemyBase_BLACKBOARD m_Blackboard;
 
     protected virtual void Update()
     {
@@ -24,6 +19,6 @@ public class FSM_EnemyBase : MonoBehaviour
 
     public virtual void EnemyAttack()
     {
-
+        //if (m_Blackboard.m_CanAttack == false) return;
     }
 }

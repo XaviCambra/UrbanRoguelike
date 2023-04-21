@@ -62,16 +62,11 @@ public class PlayerController : MonoBehaviour
 
         l_Direction.Normalize();
 
-        /*if (m_Crouching)
-        {
-            l_Direction = l_Direction * m_Blackboard.m_CrouchingSpeed * Time.deltaTime;
-        }
-        else
-        {
-            l_Direction = l_Direction * m_Blackboard.m_MovementSpeed * Time.deltaTime;
-        }*/
+        l_Direction = Module_LinearGravity.SetGravityToVector(l_Direction);
 
-        l_Direction = l_Direction * m_MovementSpeed * Time.deltaTime;
+        l_Direction = l_Direction * m_MovementSpeed;
+
+        l_Direction *= Time.deltaTime;
 
         m_CharacterController.Move(l_Direction);
     }
@@ -88,30 +83,30 @@ public class PlayerController : MonoBehaviour
 
     void Crouching()
     {
-        if (m_Crouching) Crouching_Out();
-        else Crouching_In();
+        if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
+        {
+            if (m_Crouching) Crouching_Out();
+            else Crouching_In();
 
-        m_Crouching = !m_Crouching;
+            m_Crouching = !m_Crouching;
+        }
     }
 
     void Crouching_In()
     {
-        if(Input.GetKeyDown(m_InputController.m_CrouchingKey))
-        {
-            m_Animation.PlayAnimation("Crouching", m_Crouching);
-            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
-            StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0, 0), 2));
-        }
+        m_Animation.PlayAnimation("Crouching", m_Crouching);
+        m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
+        StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0, 0), 2));
+        
     }
 
     void Crouching_Out()
     {
-        if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
-        {
-            float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
-            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
-            StartCoroutine(ModifyCharacterCollider(duration, new Vector3(0, -0.5f, 0), 1));
-        }
+        
+        float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
+        m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+        StartCoroutine(ModifyCharacterCollider(duration, new Vector3(0, -0.5f, 0), 1));
+        
     }
 
     IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
