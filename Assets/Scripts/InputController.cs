@@ -36,7 +36,7 @@ public class InputController : MonoBehaviour
             m_MouseWorldPosition = l_Hit.point;
         }
 
-        Debug.Log(m_MouseWorldPosition);
+        //Debug.Log(m_MouseWorldPosition);
 
         if (Input.GetMouseButtonDown((int) MouseButton.Left))
         {
