@@ -6,8 +6,10 @@ public class GrenadeItem : BaseItem
 {
     [SerializeField] private float m_MoveSpeed;
     [SerializeField] private float m_ExplosionRadius;
+    [SerializeField] private float m_MaxDistance;
     [SerializeField] private float m_MaxBounds;
     [SerializeField] private float m_CurrentBound;
+    private bool m_UsedItem;
 
 
     public override void ApplyEffectItem()
@@ -15,8 +17,17 @@ public class GrenadeItem : BaseItem
         base.ApplyEffectItem();
 
         /*  Write your own code below */
+        m_UsedItem = true;
+        gameObject.SetActive(true);
+        
 
-        transform.Translate(Vector3.up * m_MoveSpeed * Time.deltaTime);
+    }
 
+    private void Update()
+    {
+        if (m_UsedItem)
+        {
+            transform.Translate(Vector3.forward * m_MoveSpeed * Time.deltaTime);
+        }
     }
 }
