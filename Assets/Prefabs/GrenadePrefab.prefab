@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 3812618718441030791}
   - component: {fileID: 3812618718441030790}
   - component: {fileID: 3812618718441030789}
-  - component: {fileID: 3812618718441030788}
   - component: {fileID: 3812618718441030843}
+  - component: {fileID: 5512699313081325918}
+  - component: {fileID: 3812618718441030788}
   m_Layer: 0
   m_Name: GrenadePrefab
   m_TagString: Untagged
@@ -34089,24 +34090,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &3812618718441030788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3812618718441030787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f546a5c8e222e224794c8ea0d9075ceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MoveSpeed: 5
-  m_LifeSpan: 1.5
-  m_CurrentTime: 0
-  m_ExplosionRadius: 10
-  m_ExplosionForce: 20
-  m_Damage: 30
 --- !u!135 &3812618718441030843
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -34120,3 +34103,38 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: -0.5, y: 0.5, z: -0.5}
+--- !u!54 &5512699313081325918
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812618718441030787}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3812618718441030788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812618718441030787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f546a5c8e222e224794c8ea0d9075ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveSpeed: 3
+  m_LifeSpan: 3
+  m_CurrentTime: 0
+  m_ExplosionRadius: 10
+  m_ExplosionForce: 20
+  m_Damage: 30
+  m_GrenadePrefab: {fileID: 3812618718441030787}
