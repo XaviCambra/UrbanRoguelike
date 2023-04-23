@@ -14,7 +14,7 @@ public class GrenadeItem : BaseItem
     [SerializeField] private float m_Damage;
 
 
-    [SerializeField] private GameObject m_Player;
+    //[SerializeField] private GameObject m_Player;
 
     //private GameObject m_Explosion;
 
