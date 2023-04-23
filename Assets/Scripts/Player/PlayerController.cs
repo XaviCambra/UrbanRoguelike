@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
         m_CharacterController = GetComponent<CharacterController>();
         m_Animation = GetComponent<Module_Animation>();
 
+        m_Crouching = true;
+
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
     }
 
