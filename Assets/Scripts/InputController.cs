@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    [SerializeField] private Vector3 m_MouseScreenPosition;
-    [SerializeField] private Vector3 m_MouseWorldPosition;
-
     [SerializeField] private Camera m_Camera;
 
     public GameObject m_test;
@@ -23,24 +20,18 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        m_MouseScreenPosition = Input.mousePosition;
-
-        /*m_MouseScreenPosition.z = m_Camera.nearClipPlane;
-
-        m_MouseWorldPosition = m_Camera.ScreenToWorldPoint(m_MouseScreenPosition);*/
-
-        Ray l_ray = m_Camera.ScreenPointToRay(m_MouseScreenPosition);
-
-        if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
-        {
-            m_MouseWorldPosition = l_Hit.point;
-        }
-
-        //Debug.Log(m_MouseWorldPosition);
-
         if (Input.GetMouseButtonDown((int) MouseButton.Left))
         {
-            Instantiate(m_test, m_MouseWorldPosition, Quaternion.Euler(0, 0, 0));
+            Vector3 l_MouseScreenPosition = Input.mousePosition;
+
+            Ray l_ray = m_Camera.ScreenPointToRay(l_MouseScreenPosition);
+
+            Vector3 l_MouseWorldPosition = Vector3.zero;
+            if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
+            {
+                l_MouseWorldPosition = l_Hit.point;
+            }
+            Instantiate(m_test, l_MouseWorldPosition, Quaternion.Euler(0, 0, 0));
         }
     }
 }

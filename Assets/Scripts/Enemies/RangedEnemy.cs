@@ -7,8 +7,8 @@ using UnityEngine;
 public class RangedEnemy : FSM_EnemyBase
 {
     Module_AttackRanged m_AttackRanged;
-    [SerializeField] GameObject m_Player;
-    [SerializeField] GameObject m_PlayerHitpoint;
+    GameObject m_Player;
+    GameObject m_PlayerHitpoint;
 
     private void Start()
     {
