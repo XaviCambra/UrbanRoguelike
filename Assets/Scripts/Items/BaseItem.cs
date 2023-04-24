@@ -14,8 +14,14 @@ public class BaseItem : MonoBehaviour
 
         if (playerController == null) return;
 
-        playerController.GetComponent<PlayerController>().m_Item = this;
+        if (playerController.m_Item != null) return;
 
-        gameObject.SetActive(false);
+        else
+        {
+            playerController.GetComponent<PlayerController>().m_Item = this;
+
+            gameObject.SetActive(false);
+        }
+
     }
 }
