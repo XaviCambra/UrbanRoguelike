@@ -9,8 +9,6 @@ public class GrenadeDropper : BaseItem
     public GameObject m_GrenadePrefab;
     private GameObject m_Player;
 
-    private bool m_UsedItem;
-
     public override void ApplyEffectItem()
     {
         base.ApplyEffectItem();
@@ -20,10 +18,9 @@ public class GrenadeDropper : BaseItem
 
         GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Player.transform.position, m_Player.transform.rotation);
         Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
-        l_rb.AddForce(l_grenade.transform.forward * m_MoveSpeed, ForceMode.VelocityChange);
+        l_rb.AddForce(m_Player.transform.forward * m_MoveSpeed, ForceMode.VelocityChange);
+        l_grenade.SetActive(true);
 
         Debug.Log("Granada creada");
-
-        m_UsedItem = true;
     }
 }

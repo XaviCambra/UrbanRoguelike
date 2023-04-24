@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrenadeItem : BaseItem
+public class GrenadeItem : MonoBehaviour
 {
     [SerializeField] private float m_LifeSpan;
     [SerializeField] private float m_CurrentTime;
@@ -12,25 +12,17 @@ public class GrenadeItem : BaseItem
     [SerializeField] private float m_Damage;
 
     //private GameObject m_Explosion;
-    
 
-    public override void ApplyEffectItem()
-    {
-        base.ApplyEffectItem();
-
-        /*  Write your own code below */
-        
-    }
 
     private void Update()
     {
-        m_CurrentTime += Time.deltaTime;
-
         if (m_CurrentTime >= m_LifeSpan)
         {
             Debug.Log("Llamada a explosion");
             Explode();
         }
+
+        else m_CurrentTime += Time.deltaTime;
     }
 
     private void Explode()
