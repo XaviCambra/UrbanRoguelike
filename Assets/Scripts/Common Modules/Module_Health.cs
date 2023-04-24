@@ -23,9 +23,6 @@ public class Module_Health : MonoBehaviour
     {
         m_CurrentHealth -= l_Damage;
 
-        Debug.Log(gameObject.name + " received damage: " + l_Damage);
-        Debug.Log(gameObject.name +  " has health: " + m_CurrentHealth);
-
         Death();
     }
     public void GetHeal(float l_Heal)

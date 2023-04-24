@@ -14,8 +14,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision detected");
-
         if (collision.collider.GetComponent<Module_Health>() != null)
         {
             collision.collider.GetComponent<Module_Health>().TakeDamage(m_Damage);
