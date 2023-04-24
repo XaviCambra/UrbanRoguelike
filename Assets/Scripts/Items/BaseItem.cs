@@ -4,21 +4,21 @@ public class BaseItem : MonoBehaviour
 {
     public virtual void ApplyEffectItem()
     {
-        PlayerController playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        playerController.m_Item = null;
+        Player_BLACKBOARD playerBlackBoard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
+        playerBlackBoard.m_Item = null;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerController playerController = other.GetComponent<PlayerController>();
+        Player_BLACKBOARD playerBlackBoard = other.GetComponent<Player_BLACKBOARD>();
 
-        if (playerController == null) return;
+        if (playerBlackBoard == null) return;
 
-        if (playerController.m_Item != null) return;
+        if (playerBlackBoard.m_Item != null) return;
 
         else
         {
-            playerController.GetComponent<PlayerController>().m_Item = this;
+            playerBlackBoard.GetComponent<Player_BLACKBOARD>().m_Item = this;
 
             gameObject.SetActive(false);
         }

@@ -24,6 +24,9 @@ public class Player_BLACKBOARD : MonoBehaviour
     public float m_BulletCritChange;
     public float m_BulletCritDamage;
 
+    public BaseItem m_Item;
+    public PowerUp_Base m_PowerUp;
+
     public void ResetAllStats()
     {
         m_MovementSpeed = m_BASEMovementSpeed;

@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool m_CanInteract;
     private bool m_Crouching;
 
-    public BaseItem m_Item;
+    
 
     private float m_MovementSpeed;
 
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         m_CharacterController = GetComponent<CharacterController>();
         m_Animation = GetComponent<Module_Animation>();
 
-        m_Crouching = true;
+        m_Crouching = false;
 
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
     }
@@ -75,9 +75,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_UseItemKey))
         {
-            if (m_Item == null) return;
+            if (m_Blackboard.m_Item == null) return;
 
-            m_Item.ApplyEffectItem();
+            m_Blackboard.m_Item.ApplyEffectItem();
         }
     }
 
@@ -88,22 +88,37 @@ public class PlayerController : MonoBehaviour
             if (m_Crouching) Crouching_Out();
             else Crouching_In();
 
-            m_Crouching = !m_Crouching;
+        }
+    }
+
+    void SetSpeed()
+    {
+        if (m_Crouching)
+        {
+            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+        }
+        else if (!m_Crouching)
+        {
+            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
         }
     }
 
     void Crouching_In()
     {
         float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
-        m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+        
         StartCoroutine(ModifyCharacterCollider(duration/2, new Vector3(0, 1, 0), 2));
+        SetSpeed();
+        m_Crouching = true;
     }
 
     void Crouching_Out()
     {
         m_Animation.PlayAnimation("Crouching", m_Crouching);
-        m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
+        
         StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0.5f, 0), 1));
+        SetSpeed();
+        m_Crouching = false;
     }
 
     IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
