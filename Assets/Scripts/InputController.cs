@@ -29,24 +29,24 @@ public class InputController : MonoBehaviour
     //Shoot
     public MouseButton m_ShootButton = MouseButton.Left;
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown((int) MouseButton.Right))
-        {
-            Vector3 l_MouseScreenPosition = Input.mousePosition;
+    //private void Update()
+    //{
+    //    if (Input.GetMouseButtonDown((int) MouseButton.Right))
+    //    {
+    //        Vector3 l_MouseScreenPosition = Input.mousePosition;
 
-            Ray l_ray = m_Camera.ScreenPointToRay(l_MouseScreenPosition);
+    //        Ray l_ray = m_Camera.ScreenPointToRay(l_MouseScreenPosition);
 
-            Vector3 l_MouseWorldPosition = Vector3.zero;
+    //        Vector3 l_MouseWorldPosition = Vector3.zero;
 
-            if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
-            {
-                l_MouseWorldPosition = l_Hit.point;
-            }
+    //        if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
+    //        {
+    //            l_MouseWorldPosition = l_Hit.point;
+    //        }
 
-            Instantiate(m_test, l_MouseWorldPosition, Quaternion.Euler(0, 0, 0));
-        }
-    }
+    //        Instantiate(m_test, l_MouseWorldPosition, Quaternion.Euler(0, 0, 0));
+    //    }
+    //}
 }
 
 public enum MouseButton

@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         Shoot();
         UseItem();
         FaceMouse();
+        SetSpeed();
     }
 
     void MovementInput()
@@ -98,7 +99,6 @@ public class PlayerController : MonoBehaviour
         {
             if (m_Crouching) Crouching_Out();
             else Crouching_In();
-
         }
     }
 
@@ -106,30 +106,26 @@ public class PlayerController : MonoBehaviour
     {
         if (m_Crouching)
         {
-            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
         }
         else if (!m_Crouching)
         {
-            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
+            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
         }
     }
 
     void Crouching_In()
     {
-        float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
-        
-        StartCoroutine(ModifyCharacterCollider(duration/2, new Vector3(0, 1, 0), 2));
-        SetSpeed();
         m_Crouching = true;
+        m_Animation.PlayAnimation("Crouching", m_Crouching);
+        StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0.5f, 0), 1));
     }
 
     void Crouching_Out()
     {
-        m_Animation.PlayAnimation("Crouching", m_Crouching);
-        
-        StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0.5f, 0), 1));
-        SetSpeed();
         m_Crouching = false;
+        float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
+        StartCoroutine(ModifyCharacterCollider(duration / 2, new Vector3(0, 1, 0), 2)); 
     }
 
     IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
@@ -143,6 +139,7 @@ public class PlayerController : MonoBehaviour
     {
         m_CanInteract = !isDead;
     }
+
     void FaceMouse()
     {
         m_MouseScreenPosition = Input.mousePosition;
@@ -153,7 +150,7 @@ public class PlayerController : MonoBehaviour
         {
             m_MouseWorldPosition = l_Hit.point;
 
-            var l_direction = m_MouseWorldPosition - transform.position;
+            Vector3 l_direction = m_MouseWorldPosition - transform.position;
 
             l_direction.y = 0;
 
