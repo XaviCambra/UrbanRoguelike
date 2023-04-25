@@ -17,6 +17,15 @@ public class PlayerController : MonoBehaviour
 
     private float m_MovementSpeed;
 
+    [SerializeField] private Camera m_Camera;
+
+    [SerializeField] private GameObject m_Mesh;
+
+
+    [SerializeField] private Vector3 m_MouseScreenPosition;
+
+    [SerializeField] private Vector3 m_MouseWorldPosition = Vector3.zero;
+
     private void Start()
     {
         m_CanInteract = true;
@@ -29,6 +38,7 @@ public class PlayerController : MonoBehaviour
         m_Crouching = false;
         m_Blackboard.m_CanAttack = true;
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+
     }
 
     private void Update()
@@ -39,6 +49,7 @@ public class PlayerController : MonoBehaviour
         Crouching();
         Shoot();
         UseItem();
+        FaceMouse();
     }
 
     void MovementInput()
@@ -121,6 +132,24 @@ public class PlayerController : MonoBehaviour
         m_Crouching = false;
     }
 
+    void FaceMouse()
+    {
+        m_MouseScreenPosition = Input.mousePosition;
+
+        Ray l_ray = m_Camera.ScreenPointToRay(m_MouseScreenPosition);
+
+        if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
+        {
+            m_MouseWorldPosition = l_Hit.point;
+
+            var l_direction = m_MouseWorldPosition - transform.position;
+
+            l_direction.y = 0;
+
+            m_Mesh.transform.forward = l_direction;
+        }
+    }
+
     IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
     {
         yield return new WaitForSeconds(transitionDuration);
@@ -136,6 +165,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown((int) MouseButton.Left))
         {
+            Ray l_ray = m_Camera.ScreenPointToRay(m_MouseScreenPosition);
+
+            if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
+            {
+                m_MouseWorldPosition = l_Hit.point;
+                m_MouseWorldPosition.y = 1;
+            }
+
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage);
             m_Blackboard.m_CanAttack = false;
         }

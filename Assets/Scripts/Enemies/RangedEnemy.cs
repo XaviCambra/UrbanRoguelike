@@ -24,7 +24,8 @@ public class RangedEnemy : FSM_EnemyBase
     {
         base.Update();
 
-        m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
+        //m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
+        transform.LookAt(m_PlayerHitpoint.transform);
     }
 
     public override void EnemyMovement()
