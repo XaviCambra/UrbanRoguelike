@@ -6,8 +6,11 @@ using UnityEngine.AI;
 public class MeleEnemy : FSM_EnemyBase
 {
     Module_AttackMele m_AttackMele;
-    GameObject m_Player;
+    [SerializeField] GameObject m_Player;
     NavMeshAgent m_NavMeshAgent;
+
+    private bool m_CanMove;
+    private bool m_CanAttack;
 
     private void Start()
     {
@@ -22,7 +25,9 @@ public class MeleEnemy : FSM_EnemyBase
 
     public override void EnemyMovement()
     {
-        if(Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance)
+        transform.forward = m_NavMeshAgent.velocity.normalized;
+
+        if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance)
         {
             SetMovementDestination();
         }
@@ -30,12 +35,23 @@ public class MeleEnemy : FSM_EnemyBase
 
     public override void EnemyAttack()
     {
-        
+        m_CanMove = Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance;
+
+        m_AttackMele.HitOnDirection(m_Blackboard.m_Damage);
+        StartCoroutine(RechargeAttack());
+    }
+
+    private IEnumerator RechargeAttack()
+    {
+        m_CanAttack = false;
+        yield return new WaitForSeconds(m_Blackboard.m_AttackCooldown);
+        m_CanAttack = true;
     }
 
     private void SetMovementDestination()
     {
         m_NavMeshAgent.SetDestination(m_Player.transform.position);
+        m_NavMeshAgent.updateRotation = true;
 
         if (Vector3.Distance(transform.position, m_Player.transform.position) < m_Blackboard.m_RunDistance)
         {
