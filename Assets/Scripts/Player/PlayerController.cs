@@ -27,8 +27,7 @@ public class PlayerController : MonoBehaviour
         m_Animation = GetComponent<Module_Animation>();
 
         m_Crouching = false;
-
-        m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+        SetSpeed();
     }
 
     private void Update()
@@ -39,6 +38,7 @@ public class PlayerController : MonoBehaviour
         Crouching();
 
         UseItem();
+        SetSpeed();
     }
 
     void MovementInput()
@@ -95,30 +95,28 @@ public class PlayerController : MonoBehaviour
     {
         if (m_Crouching)
         {
-            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
         }
         else if (!m_Crouching)
         {
-            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
+            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
         }
     }
 
     void Crouching_In()
     {
+        m_Crouching = true;
         float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
         
         StartCoroutine(ModifyCharacterCollider(duration/2, new Vector3(0, 1, 0), 2));
-        SetSpeed();
-        m_Crouching = true;
     }
 
     void Crouching_Out()
     {
+        m_Crouching = false;
         m_Animation.PlayAnimation("Crouching", m_Crouching);
         
         StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0.5f, 0), 1));
-        SetSpeed();
-        m_Crouching = false;
     }
 
     IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)

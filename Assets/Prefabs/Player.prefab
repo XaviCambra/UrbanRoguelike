@@ -59,7 +59,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &4305059239035193024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,8 +72,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb48ba4d7f5e6dd47ae334ec32fc54df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MouseScreenPosition: {x: 0, y: 0, z: 0}
-  m_MouseWorldPosition: {x: 0, y: 0, z: 0}
   m_Camera: {fileID: 4305059240041437890}
   m_test: {fileID: 7662921772514033802, guid: 2531221f5cbf2c841be717bbdbd7d862, type: 3}
   m_ForwardKey: 119
@@ -113,6 +111,8 @@ MonoBehaviour:
   m_BulletSpeed: 0
   m_BulletCritChange: 0
   m_BulletCritDamage: 0
+  m_Item: {fileID: 0}
+  m_PowerUp: {fileID: 0}
 --- !u!114 &4305059239035193025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7529ae443fdd0543ba21905d20c2539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Item: {fileID: 0}
 --- !u!114 &4305059239035193038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4305059239315900510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

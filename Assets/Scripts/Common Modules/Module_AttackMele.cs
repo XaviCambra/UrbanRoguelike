@@ -19,6 +19,11 @@ public class Module_AttackMele : MonoBehaviour
         m_HitPoint.SetActive(true);
     }
 
+    public void DeactivateCollisionDetection()
+    {
+        m_HitPoint.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Module_Health objectHealth = other.GetComponent<Module_Health>();
