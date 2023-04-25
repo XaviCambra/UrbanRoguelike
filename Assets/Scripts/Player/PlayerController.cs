@@ -132,6 +132,17 @@ public class PlayerController : MonoBehaviour
         m_Crouching = false;
     }
 
+    IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
+    {
+        yield return new WaitForSeconds(transitionDuration);
+        m_CharacterController.center = l_Position;
+        m_CharacterController.height = l_Height;
+    }
+
+    private void InvertInteract(bool isDead)
+    {
+        m_CanInteract = !isDead;
+    }
     void FaceMouse()
     {
         m_MouseScreenPosition = Input.mousePosition;
@@ -150,29 +161,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
-    {
-        yield return new WaitForSeconds(transitionDuration);
-        m_CharacterController.center = l_Position;
-        m_CharacterController.height = l_Height;
-    }
-
-    private void InvertInteract(bool isDead)
-    {
-        m_CanInteract = !isDead;
-    }
     private void Shoot()
     {
         if (Input.GetMouseButtonDown((int) MouseButton.Left))
         {
-            Ray l_ray = m_Camera.ScreenPointToRay(m_MouseScreenPosition);
-
-            if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
-            {
-                m_MouseWorldPosition = l_Hit.point;
-                m_MouseWorldPosition.y = 1;
-            }
-
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage);
             m_Blackboard.m_CanAttack = false;
         }
