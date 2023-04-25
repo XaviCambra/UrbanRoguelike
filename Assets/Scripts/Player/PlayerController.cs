@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         m_Blackboard = GetComponent<Player_BLACKBOARD>();
         m_CharacterController = GetComponent<CharacterController>();
         m_Animation = GetComponent<Module_Animation>();
+        m_RangedAttack = GetComponent<Module_AttackRanged>();
 
         m_Crouching = false;
         m_Blackboard.m_CanAttack = true;
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown((int)MouseButton.Right))
+        if (Input.GetMouseButtonDown((int) MouseButton.Left))
         {
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage);
             m_Blackboard.m_CanAttack = false;
