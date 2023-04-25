@@ -18,9 +18,12 @@ public class InputController : MonoBehaviour
     //Item
     public KeyCode m_UseItemKey = KeyCode.Q;
 
+    //Shoot
+    public MouseButton m_ShootButton = MouseButton.Left;
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown((int) MouseButton.Left))
+        if (Input.GetMouseButtonDown((int) MouseButton.Right))
         {
             Vector3 l_MouseScreenPosition = Input.mousePosition;
 

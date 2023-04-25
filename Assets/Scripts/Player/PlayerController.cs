@@ -9,12 +9,11 @@ public class PlayerController : MonoBehaviour
     Player_BLACKBOARD m_Blackboard;
     CharacterController m_CharacterController;
 
+    Module_AttackRanged m_RangedAttack;
     Module_Animation m_Animation;
 
     private bool m_CanInteract;
     private bool m_Crouching;
-
-    
 
     private float m_MovementSpeed;
 
@@ -27,7 +26,7 @@ public class PlayerController : MonoBehaviour
         m_Animation = GetComponent<Module_Animation>();
 
         m_Crouching = false;
-
+        m_Blackboard.m_CanAttack = true;
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
     }
 
@@ -37,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
         MovementInput();
         Crouching();
-
+        Shoot();
         UseItem();
     }
 
@@ -131,6 +130,14 @@ public class PlayerController : MonoBehaviour
     private void InvertInteract(bool isDead)
     {
         m_CanInteract = !isDead;
+    }
+    private void Shoot()
+    {
+        if (Input.GetMouseButtonDown((int)MouseButton.Right))
+        {
+            m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage);
+            m_Blackboard.m_CanAttack = false;
+        }
     }
 
     private void OnEnable()
