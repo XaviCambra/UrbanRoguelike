@@ -7,12 +7,11 @@ public class InventoryManager : MonoBehaviour
     private GameObject m_player;
     private Player_BLACKBOARD m_BlackBoard;
     private InputController m_InputController;
+    [SerializeField] private GameObject m_DropItemPoint;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        m_player = GameObject.FindGameObjectWithTag("player");
+        m_player = GameObject.FindGameObjectWithTag("Player");
 
         m_BlackBoard = m_player.GetComponent<Player_BLACKBOARD>();
 
@@ -22,6 +21,8 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Descomentar para testear el DropItem()
+
         if (m_BlackBoard.m_Item != null && Input.GetKeyDown(m_InputController.m_DropItemKey))
         {
             DropItem(m_BlackBoard.m_Item);
@@ -39,6 +40,7 @@ public class InventoryManager : MonoBehaviour
             if (m_BlackBoard.m_Item == null)
             {
                 GrabItem(l_item);
+                other.gameObject.SetActive(false);
             }
             
             if (m_BlackBoard.m_Item != null && Input.GetKeyDown(m_InputController.m_SwapItemKey))
@@ -76,7 +78,8 @@ public class InventoryManager : MonoBehaviour
 
         else
         {
-
+            Instantiate(m_BlackBoard.m_Item, m_DropItemPoint.transform.position, m_DropItemPoint.transform.rotation);
+            m_BlackBoard.m_Item = null;
         }
     }
 
