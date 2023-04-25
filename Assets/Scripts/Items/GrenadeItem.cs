@@ -36,13 +36,13 @@ public class GrenadeItem : MonoBehaviour
             foreach (Collider l_nearbyObject in l_colliders)
             {
 
-                Rigidbody l_rb = l_nearbyObject.GetComponent<Rigidbody>();
+                //Rigidbody l_rb = l_nearbyObject.GetComponent<Rigidbody>();
                 Module_Health l_health = l_nearbyObject.GetComponent<Module_Health>();
 
-                if (l_rb != null && l_health != null)
+                if (/*l_rb != null && */l_health != null)
                 {
                     l_health.TakeDamage(m_Damage);
-                    l_rb.AddExplosionForce(m_ExplosionForce, transform.position, m_ExplosionRadius);
+                    //l_rb.AddExplosionForce(m_ExplosionForce, transform.position, m_ExplosionRadius);
                 }
             }
         }
