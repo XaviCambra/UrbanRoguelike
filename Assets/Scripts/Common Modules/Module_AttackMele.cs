@@ -41,8 +41,11 @@ public class Module_AttackMele : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Module_Health objectHealth = other.GetComponent<Module_Health>();
-        if (objectHealth == null) return;
-        objectHealth.TakeDamage(m_Damage);
+        if (other.tag == "Player")
+        {
+            Module_Health objectHealth = other.GetComponent<Module_Health>();
+            //if (objectHealth == null) return;
+            objectHealth.TakeDamage(m_Damage);
+        }
     }
 }
