@@ -13,10 +13,7 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
     public float m_Damage;
     public float m_AttackSpeed;
     public float m_AttackCooldown;
-
-    //Distances
-    public float m_DetectionRadius;
-    public float m_AttackRadius;
+    public float m_AttackDistance;
 
     //Variables
     public bool m_CanAttack;
