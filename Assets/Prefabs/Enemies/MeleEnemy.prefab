@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7307ac2a29da87749be7f08b56dfc36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HitPoint: {fileID: 1929100728874782536}
+  m_EnemyFist: {fileID: 1929100728874782536}
 --- !u!195 &3361234631826205963
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -170,9 +170,10 @@ GameObject:
   - component: {fileID: 1929100728874782537}
   - component: {fileID: 1929100728874782583}
   - component: {fileID: 1929100728874782582}
+  - component: {fileID: 1794771723713800472}
   m_Layer: 0
-  m_Name: HitPoint
-  m_TagString: Untagged
+  m_Name: EnemyFist
+  m_TagString: EnemyFist
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,6 +243,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1794771723713800472
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929100728874782536}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5657417745743806224
 GameObject:
   m_ObjectHideFlags: 0
