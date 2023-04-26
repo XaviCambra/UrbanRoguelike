@@ -15,7 +15,7 @@ public class MeleEnemy : FSM_EnemyBase
 
     public GameObject m_Player;
 
-    float m_VectorDistance;
+    [SerializeField] float m_VectorDistance;
 
     void Start()
     {
@@ -40,18 +40,28 @@ public class MeleEnemy : FSM_EnemyBase
     {
         m_VectorDistance = Vector3.Distance(m_Player.transform.position, transform.position);
 
-        if (m_VectorDistance > m_BlackBoard.m_DetectionRadius)
+        m_CanMove = Vector3.Distance(m_Player.transform.position, transform.position) <= m_Blackboard.m_DetectionRadius;
+
+        m_CanAttack = Vector3.Distance(m_Player.transform.position, transform.position) <= m_Blackboard.m_AttackRadius;
+
+        if (m_CanMove)
+        {
+            //m_CanMove = true;
+            m_NavMeshAgent.speed = m_Blackboard.m_WalkSpeed;
+            EnemyMovement();
+        }
+
+        else
         {
             //m_CanMove = true;
             m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
             EnemyMovement();
         }
 
-        if (m_VectorDistance <= m_BlackBoard.m_DetectionRadius)
+        if (m_CanAttack)
         {
-            //m_CanMove = true;
-            m_NavMeshAgent.speed = m_Blackboard.m_WalkSpeed;
-            EnemyMovement();
+            //m_CanAttack = true;
+            EnemyAttack();
         }
 
         else return;
@@ -61,18 +71,12 @@ public class MeleEnemy : FSM_EnemyBase
     {
         //m_CanMove = Vector3.Distance(m_Player.transform.position, transform.position) > m_BlackBoard.m_AttackRadius;
 
-        transform.LookAt(m_Player.transform.position);
+        //transform.LookAt(m_Player.transform.position);
 
         if (m_CanMove == false) return;
 
         SetMovementDestination();
         transform.LookAt(m_NavMeshAgent.velocity.normalized);
-
-        if (m_VectorDistance <= m_BlackBoard.m_AttackRadius)
-        {
-            //m_CanAttack = true;
-            EnemyAttack();
-        }
     }
 
     public override void EnemyAttack()
@@ -103,7 +107,7 @@ public class MeleEnemy : FSM_EnemyBase
     {
         m_NavMeshAgent.SetDestination(m_Player.transform.position);
 
-        /*if (Vector3.Distance(transform.position, m_BlackBoard.m_Player.transform.position) < m_Blackboard.m_RunDistance)
+        /*if (Vector3.Distance(transform.position, m_Player.transform.position) < m_Blackboard.m_RunDistance)
         {
             m_NavMeshAgent.speed = m_Blackboard.m_WalkSpeed;
         }
