@@ -60,7 +60,8 @@ public class MeleEnemy : FSM_EnemyBase
 
     private void SetMovementDestination()
     {
-        m_NavMeshAgent.SetDestination(m_Player.transform.position);
+        Vector3 l_ClosestPointOnPlayer = m_Player.transform.position - (m_Player.transform.position - transform.position).normalized * (m_Blackboard.m_AttackDistance *0.95f);
+        m_NavMeshAgent.SetDestination(l_ClosestPointOnPlayer);
 
         if (Vector3.Distance(transform.position, m_Player.transform.position) < m_Blackboard.m_RunDistance)
         {
