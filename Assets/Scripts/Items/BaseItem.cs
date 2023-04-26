@@ -8,7 +8,7 @@ public class BaseItem : MonoBehaviour
         playerBlackBoard.m_Item = null;
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         Player_BLACKBOARD playerBlackBoard = other.GetComponent<Player_BLACKBOARD>();
 
@@ -23,5 +23,5 @@ public class BaseItem : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-    }
+    }*/
 }

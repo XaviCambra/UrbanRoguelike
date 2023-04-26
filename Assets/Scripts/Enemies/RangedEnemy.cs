@@ -7,16 +7,21 @@ using UnityEngine;
 public class RangedEnemy : FSM_EnemyBase
 {
     Module_AttackRanged m_AttackRanged;
-    GameObject m_Player;
     GameObject m_PlayerHitpoint;
 
-    private void Start()
+    //EnemyBase_BLACKBOARD m_BlackBoard;
+
+    public GameObject m_Player;
+
+    void Start()
     {
         m_Blackboard = GetComponent<EnemyBase_BLACKBOARD>();
         m_AttackRanged = GetComponent<Module_AttackRanged>();
-        m_Player = GameObject.FindGameObjectWithTag("Player");
         m_PlayerHitpoint = GameObject.FindGameObjectWithTag("PlayerHitpoint");
 
+        
+        m_Player = GameObject.FindGameObjectWithTag("Player");
+        
         m_Blackboard.m_CanAttack = true;
     }
 
@@ -24,7 +29,8 @@ public class RangedEnemy : FSM_EnemyBase
     {
         base.Update();
 
-        m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
+        //m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
+        transform.LookAt(m_PlayerHitpoint.transform);
     }
 
     public override void EnemyMovement()

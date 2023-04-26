@@ -2,27 +2,36 @@ using UnityEngine;
 
 public class Module_AttackMele : MonoBehaviour
 {
-    public GameObject m_HitPoint;
+    public GameObject m_EnemyFist;
     float m_Damage;
     Module_Animation m_Animation;
+
+    public Module_TriggerDamage m_FistCollider;
+
+    private void Start()
+    {
+        m_Animation = GetComponent<Module_Animation>();
+    }
 
     public void HitOnDirection(float l_Damage)
     {
         m_Damage = l_Damage;
+        
 
-        if (m_Animation == null) return;
+        if (m_Animation == null)
+        {
+            Debug.LogWarning("No Module Animation found");
+            return;
+        }
+        if (m_FistCollider == null)
+        {
+            Debug.LogWarning("No FistCollider detected");
+            return;
+        }
+        m_FistCollider.m_Damage = l_Damage;
         m_Animation.PlayAnimation("MeleAttack");
+
+
     }
 
-    public void ActivateCollisionDetection()
-    {
-        m_HitPoint.SetActive(true);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Module_Health objectHealth = other.GetComponent<Module_Health>();
-        if (objectHealth == null) return;
-        objectHealth.TakeDamage(m_Damage);
-    }
 }

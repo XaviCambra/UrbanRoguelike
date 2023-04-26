@@ -19,6 +19,6 @@ public class FSM_EnemyBase : MonoBehaviour
 
     public virtual void EnemyAttack()
     {
-        //if (m_Blackboard.m_CanAttack == false) return;
+
     }
 }

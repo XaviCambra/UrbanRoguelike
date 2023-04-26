@@ -10,30 +10,43 @@ public class InputController : MonoBehaviour
     
     [Header("Inputs")]
     public KeyCode m_ForwardKey = KeyCode.W;
-    public KeyCode m_BackKey = KeyCode.S;
     public KeyCode m_LeftKey = KeyCode.A;
+    public KeyCode m_BackKey = KeyCode.S;
     public KeyCode m_RightKey = KeyCode.D;
+    
     //Crouch
     public KeyCode m_CrouchingKey = KeyCode.LeftShift;
-    //Item
+    
+    //Use Item
     public KeyCode m_UseItemKey = KeyCode.Q;
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown((int) MouseButton.Left))
-        {
-            Vector3 l_MouseScreenPosition = Input.mousePosition;
+    //Swap Item
+    public KeyCode m_SwapItemKey = KeyCode.Tab;
 
-            Ray l_ray = m_Camera.ScreenPointToRay(l_MouseScreenPosition);
+    //Drop Item
+    public KeyCode m_DropItemKey = KeyCode.X;
 
-            Vector3 l_MouseWorldPosition = Vector3.zero;
-            if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
-            {
-                l_MouseWorldPosition = l_Hit.point;
-            }
-            Instantiate(m_test, l_MouseWorldPosition, Quaternion.Euler(0, 0, 0));
-        }
-    }
+    //Shoot
+    public MouseButton m_ShootButton = MouseButton.Left;
+
+    //private void Update()
+    //{
+    //    if (Input.GetMouseButtonDown((int) MouseButton.Right))
+    //    {
+    //        Vector3 l_MouseScreenPosition = Input.mousePosition;
+
+    //        Ray l_ray = m_Camera.ScreenPointToRay(l_MouseScreenPosition);
+
+    //        Vector3 l_MouseWorldPosition = Vector3.zero;
+
+    //        if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
+    //        {
+    //            l_MouseWorldPosition = l_Hit.point;
+    //        }
+
+    //        Instantiate(m_test, l_MouseWorldPosition, Quaternion.Euler(0, 0, 0));
+    //    }
+    //}
 }
 
 public enum MouseButton

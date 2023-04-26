@@ -23,6 +23,8 @@ public class Player_BLACKBOARD : MonoBehaviour
     public float m_BulletSpeed;
     public float m_BulletCritChange;
     public float m_BulletCritDamage;
+    public Transform m_ShootPoint;
+    public bool m_CanAttack;
 
     public BaseItem m_Item;
     public PowerUp_Base m_PowerUp;
