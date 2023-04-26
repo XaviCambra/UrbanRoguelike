@@ -11,6 +11,7 @@ public class MeleEnemy : FSM_EnemyBase
 
     private bool m_CanMove;
     private bool m_CanAttack;
+    private bool m_AttackOnCooldown;
 
     private void Start()
     {
@@ -20,18 +21,17 @@ public class MeleEnemy : FSM_EnemyBase
 
         m_Player = GameObject.FindGameObjectWithTag("Player");
         
-        m_AttackMele.DeactivateCollisionDetection();
         m_Blackboard.m_CanAttack = true;
+        m_AttackOnCooldown = false;
     }
 
 
     public override void EnemyMovement()
     {
         m_CanMove = Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance;
-        transform.LookAt(m_Player.transform.position);
 
         if (m_CanMove == false) return;
-
+        
         SetMovementDestination();
         transform.LookAt(m_NavMeshAgent.velocity.normalized);
     }
@@ -42,17 +42,20 @@ public class MeleEnemy : FSM_EnemyBase
 
         if (m_CanAttack == false) return;
 
-        Debug.Log("Attack");
+        transform.LookAt(m_Player.transform.position);
+
+        if (m_AttackOnCooldown == true) return;
+
+        transform.LookAt(m_Player.transform.position);
         m_AttackMele.HitOnDirection(m_Blackboard.m_Damage);
+        m_AttackOnCooldown = true;
         StartCoroutine(RechargeAttack());
     }
 
     private IEnumerator RechargeAttack()
     {
-        Debug.Log("Recharging attack");
-        m_CanAttack = false;
         yield return new WaitForSeconds(m_Blackboard.m_AttackCooldown);
-        m_CanAttack = true;
+        m_AttackOnCooldown = false;
     }
 
     private void SetMovementDestination()

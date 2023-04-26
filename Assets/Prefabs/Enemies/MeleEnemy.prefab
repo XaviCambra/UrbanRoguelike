@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3361234631826205960}
   - component: {fileID: 3361234631826205963}
   - component: {fileID: 3361234631826206006}
+  - component: {fileID: 3643817588902411935}
   m_Layer: 0
   m_Name: MeleEnemy
   m_TagString: Untagged
@@ -66,13 +67,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0404f4101a9b5046a083e6b9c79eee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RunDistance: 4
+  m_RunDistance: 8
   m_WalkSpeed: 2
   m_RunSpeed: 6
   m_Damage: 10
   m_AttackSpeed: 15
   m_AttackCooldown: 5
-  m_AttackDistance: 6
+  m_AttackDistance: 2
   m_CanAttack: 0
   m_AttackPoint: {fileID: 1929100728874782537}
 --- !u!114 &3361234631826205962
@@ -116,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EnemyFist: {fileID: 1929100728874782536}
+  m_FistCollider: {fileID: 1741096985300705895}
 --- !u!195 &3361234631826205963
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -159,6 +161,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3643817588902411935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929100728554390843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58e2298f692e5e4e931bc9b37b45d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 3361234631826206006}
 --- !u!1 &1929100728874782536
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +186,7 @@ GameObject:
   - component: {fileID: 1929100728874782583}
   - component: {fileID: 1929100728874782582}
   - component: {fileID: 1794771723713800472}
+  - component: {fileID: 1741096985300705895}
   m_Layer: 0
   m_Name: EnemyFist
   m_TagString: EnemyFist
@@ -252,10 +268,23 @@ BoxCollider:
   m_GameObject: {fileID: 1929100728874782536}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1741096985300705895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929100728874782536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d84bb68fec26b7418355b31b47d7b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Damage: 0
 --- !u!1 &5657417745743806224
 GameObject:
   m_ObjectHideFlags: 0
