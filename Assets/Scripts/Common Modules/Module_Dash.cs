@@ -8,7 +8,7 @@ public class Module_Dash : MonoBehaviour
     public void DashDisplacement(Vector3 l_Direction, float l_Distance, float l_Speed)
     {
         transform.position = transform.position + l_Direction.normalized * l_Distance;
-        return;
+        //return;
         RaycastHit l_RayCast;
 
         if (Physics.Raycast(transform.position, l_Direction, out l_RayCast, l_Distance))

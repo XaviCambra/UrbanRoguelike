@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject m_Mesh;
 
 
-    [SerializeField] private Vector3 m_MouseScreenPosition;
+    /*[SerializeField] private Vector3 m_MouseScreenPosition;
 
-    [SerializeField] private Vector3 m_MouseWorldPosition = Vector3.zero;
+    [SerializeField] private Vector3 m_MouseWorldPosition = Vector3.zero;*/
 
     private void Start()
     {
@@ -105,18 +105,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void SetSpeed()
-    {
-        if (m_Crouching)
-        {
-            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
-        }
-        else if (!m_Crouching)
-        {
-            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
-        }
-    }
-
     void Crouching_In()
     {
         m_Crouching = true;
@@ -130,6 +118,17 @@ public class PlayerController : MonoBehaviour
         float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(duration / 2, new Vector3(0, 1, 0), 2)); 
     }
+    void SetSpeed()
+    {
+        if (m_Crouching)
+        {
+            m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
+        }
+        else if (!m_Crouching)
+        {
+            m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+        }
+    }
 
     IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
     {
@@ -138,14 +137,10 @@ public class PlayerController : MonoBehaviour
         m_CharacterController.height = l_Height;
     }
 
-    private void InvertInteract(bool isDead)
-    {
-        m_CanInteract = !isDead;
-    }
 
     void FaceMouse()
     {
-        Ray l_ray = m_InputController.m_MousePositionRay();
+        /*Ray l_ray = m_InputController.m_MousePositionRay();
 
         if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
         {
@@ -156,7 +151,15 @@ public class PlayerController : MonoBehaviour
             l_direction.y = 0;
 
             m_Mesh.transform.forward = l_direction;
-        }
+        }*/
+
+        Vector3 l_MouseWorldPosition = m_InputController.m_MousePositionRay();
+
+        Vector3 l_direction = l_MouseWorldPosition - transform.position;
+
+        l_direction.y = 0;
+
+        m_Mesh.transform.forward = l_direction;
     }
 
     private void Shoot()
@@ -172,9 +175,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return;
 
-        Vector3 l_MouseOnWorld = m_Camera.ScreenToViewportPoint(m_InputController.m_VectorToMouse(transform.position));
-        Debug.Log(l_MouseOnWorld);
-        m_Dash.DashDisplacement(l_MouseOnWorld, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
+        //Vector3 l_MouseOnWorld = m_Camera.ScreenToViewportPoint(m_InputController.m_VectorToMouse(transform.position));
+        //Vector3 l_MouseWorldPosition = m_InputController.m_MousePositionRay();
+        //Debug.Log(l_MouseWorldPosition);
+
+        //m_Dash.DashDisplacement(l_MouseWorldPosition, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
+        m_Dash.DashDisplacement(transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
     }
 
     private void OnEnable()
@@ -185,5 +191,9 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         gameObject.GetComponent<Module_Health>().m_PlayerIsDead -= InvertInteract;
+    }
+    private void InvertInteract(bool isDead)
+    {
+        m_CanInteract = !isDead;
     }
 }
