@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     CharacterController m_CharacterController;
 
     Module_AttackRanged m_RangedAttack;
+    Module_Dash m_Dash;
     Module_Animation m_Animation;
 
     private bool m_CanInteract;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         m_CharacterController = GetComponent<CharacterController>();
         m_Animation = GetComponent<Module_Animation>();
         m_RangedAttack = GetComponent<Module_AttackRanged>();
+        m_Dash = GetComponent<Module_Dash>();
 
         m_Crouching = false;
         m_Blackboard.m_CanAttack = true;
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
         UseItem();
         FaceMouse();
         SetSpeed();
+        Dash();
     }
 
     void MovementInput()
@@ -142,9 +145,7 @@ public class PlayerController : MonoBehaviour
 
     void FaceMouse()
     {
-        m_MouseScreenPosition = Input.mousePosition;
-
-        Ray l_ray = m_Camera.ScreenPointToRay(m_MouseScreenPosition);
+        Ray l_ray = m_InputController.m_MousePositionRay();
 
         if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
         {
@@ -165,6 +166,15 @@ public class PlayerController : MonoBehaviour
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage);
             m_Blackboard.m_CanAttack = false;
         }
+    }
+
+    private void Dash()
+    {
+        if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return;
+
+        Vector3 l_MouseOnWorld = m_Camera.ScreenToViewportPoint(m_InputController.m_VectorToMouse(transform.position));
+        Debug.Log(l_MouseOnWorld);
+        m_Dash.DashDisplacement(l_MouseOnWorld, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
     }
 
     private void OnEnable()

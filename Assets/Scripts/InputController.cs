@@ -15,8 +15,11 @@ public class InputController : MonoBehaviour
     public KeyCode m_RightKey = KeyCode.D;
     
     //Crouch
-    public KeyCode m_CrouchingKey = KeyCode.LeftShift;
+    public KeyCode m_CrouchingKey = KeyCode.LeftControl;
     
+    //Dash
+    public KeyCode m_DashKey = KeyCode.LeftShift;
+
     //Use Item
     public KeyCode m_UseItemKey = KeyCode.Q;
 
@@ -29,24 +32,27 @@ public class InputController : MonoBehaviour
     //Shoot
     public MouseButton m_ShootButton = MouseButton.Left;
 
-    //private void Update()
-    //{
-    //    if (Input.GetMouseButtonDown((int) MouseButton.Right))
-    //    {
-    //        Vector3 l_MouseScreenPosition = Input.mousePosition;
+    public Ray m_MousePositionRay()
+    {
+        Ray l_ray = m_MousePositionRay();
+        Vector3 m_MouseWorldPosition = Vector3.zero;
 
-    //        Ray l_ray = m_Camera.ScreenPointToRay(l_MouseScreenPosition);
+        if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
+        {
+            m_MouseWorldPosition = l_Hit.point;
+        }
+        return m_Camera.ScreenPointToRay(m_MouseWorldPosition);
+    }
 
-    //        Vector3 l_MouseWorldPosition = Vector3.zero;
+    public Vector3 m_VectorToMouse(Vector3 l_StartPoint)
+    {
+        return Input.mousePosition - l_StartPoint;
+    }
 
-    //        if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
-    //        {
-    //            l_MouseWorldPosition = l_Hit.point;
-    //        }
-
-    //        Instantiate(m_test, l_MouseWorldPosition, Quaternion.Euler(0, 0, 0));
-    //    }
-    //}
+    public Vector3 m_MousePosition()
+    {
+        return Input.mousePosition;
+    }
 }
 
 public enum MouseButton

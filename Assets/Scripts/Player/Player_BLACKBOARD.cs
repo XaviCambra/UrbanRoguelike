@@ -7,6 +7,8 @@ public class Player_BLACKBOARD : MonoBehaviour
     [SerializeField] private const float m_BASEMovementSpeed = 6.0f;
     [SerializeField] private const float m_BASECrouchingSpeed = 4.0f;
 
+    [SerializeField] private const float m_BASEDashSpeed = 10.0f;
+
     [SerializeField] private const float m_BASEShootingDamage = 10.0f;
     [SerializeField] private const float m_BASEReloadSpeed = 3.0f;
     [SerializeField] private const float m_BASEBulletSpeed = 10.0f;
@@ -16,6 +18,9 @@ public class Player_BLACKBOARD : MonoBehaviour
     [Header("Variable Movement")]
     public float m_MovementSpeed;
     public float m_CrouchingSpeed;
+
+    public float m_DashSpeed;
+    public float m_DashDistance;
 
     [Header("Variable Shoot")]
     public float m_ShootingDamage;
@@ -32,6 +37,7 @@ public class Player_BLACKBOARD : MonoBehaviour
     public void ResetAllStats()
     {
         m_MovementSpeed = m_BASEMovementSpeed;
+        m_DashSpeed = m_BASEDashSpeed;
         m_CrouchingSpeed = m_BASECrouchingSpeed;
         m_ShootingDamage = m_BASEShootingDamage;
         m_ReloadSpeed = m_BASEReloadSpeed;

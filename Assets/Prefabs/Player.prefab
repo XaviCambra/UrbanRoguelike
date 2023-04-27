@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4305059239035193038}
   - component: {fileID: 4305059239035193037}
   - component: {fileID: 1869202327440159875}
+  - component: {fileID: 2084469235018128055}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -78,7 +79,8 @@ MonoBehaviour:
   m_LeftKey: 97
   m_BackKey: 115
   m_RightKey: 100
-  m_CrouchingKey: 304
+  m_CrouchingKey: 306
+  m_DashKey: 304
   m_UseItemKey: 113
   m_SwapItemKey: 9
   m_DropItemKey: 120
@@ -109,6 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovementSpeed: 6
   m_CrouchingSpeed: 3
+  m_DashSpeed: 0
+  m_DashDistance: 0
   m_ShootingDamage: 10
   m_ReloadSpeed: 3
   m_BulletSpeed: 40
@@ -188,6 +192,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Bullet: {fileID: 213737385128584455, guid: eb52a598051ebf44fa122a94423d3ba7, type: 3}
+--- !u!114 &2084469235018128055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305059239035193031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac6ad601eb53e04b9baef1585d4f8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4305059239315900510
 GameObject:
   m_ObjectHideFlags: 0
