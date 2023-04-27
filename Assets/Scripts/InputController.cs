@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class InputController : MonoBehaviour
@@ -32,27 +33,20 @@ public class InputController : MonoBehaviour
     //Shoot
     public MouseButton m_ShootButton = MouseButton.Left;
 
-    public Vector3 m_MousePositionRay()
+    public Vector3 m_MousePositionInScreen()
     {
-        //Ray l_ray = m_MousePositionRay();
-
         Vector3 l_mouseScreenPosition = Input.mousePosition;
-        Vector3 m_MouseWorldPosition = Vector3.zero;
 
         Ray l_ray = m_Camera.ScreenPointToRay(l_mouseScreenPosition);
 
-
         if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
         {
-            m_MouseWorldPosition = l_Hit.point;
+            Vector3 l_HitPoint = l_Hit.point;
+            Debug.DrawRay(m_Camera.transform.position, l_HitPoint, Color.yellow);
+            return l_HitPoint;
         }
-        //return m_Camera.ScreenPointToRay(m_MouseWorldPosition);
-        return m_MouseWorldPosition;
-    }
 
-    public Vector3 m_VectorToMouse(Vector3 l_StartPoint)
-    {
-        return Input.mousePosition - l_StartPoint;
+        return Vector3.zero;
     }
 
     public Vector3 m_MousePosition()

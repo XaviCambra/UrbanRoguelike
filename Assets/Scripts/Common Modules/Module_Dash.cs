@@ -7,40 +7,33 @@ public class Module_Dash : MonoBehaviour
 {
     public void DashDisplacement(Vector3 l_Direction, float l_Distance, float l_Speed)
     {
-        transform.position = transform.position + l_Direction.normalized * l_Distance;
-        //return;
         RaycastHit l_RayCast;
 
         if (Physics.Raycast(transform.position, l_Direction, out l_RayCast, l_Distance))
         {
-            Vector3 l_DisplacementPosition = l_RayCast.point;
+            Vector3 l_HitPoint = l_RayCast.point;
+            Vector3 l_DisplacementPosition = l_HitPoint - (l_HitPoint - transform.position).normalized;
 
-            l_DisplacementPosition = l_DisplacementPosition - (l_DisplacementPosition - transform.position).normalized;
-
-            //StartCoroutine(DashMovement(l_DisplacementPosition, l_Speed));
-
-            transform.position = l_DisplacementPosition;
+            StartCoroutine(DashMovement(l_DisplacementPosition, l_Speed));
             return;
         }
-
-        transform.position = l_Direction.normalized * l_Distance;
-        //StartCoroutine(DashMovement(l_Direction * l_Distance, l_Speed));
+        StartCoroutine(DashMovement(transform.position + l_Direction * l_Distance, l_Speed));
     }
 
     private IEnumerator DashMovement(Vector3 l_DisplacementPosition, float l_Speed)
     {
-        float elapsedFrames = 0;
-        float interpolationFramesCount = l_Speed;
+        float l_TimeSpent = 0;
+        float l_MaxTimeSpent = l_Speed;
 
         Vector3 l_StartPosition = transform.position;
 
-        while (elapsedFrames != interpolationFramesCount)
+        while (l_TimeSpent != l_MaxTimeSpent)
         {
-            float interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
+            float l_ActualTime = l_TimeSpent / l_MaxTimeSpent;
 
-            Vector3 interpolatedPosition = Vector3.Lerp(l_StartPosition, l_DisplacementPosition, interpolationRatio);
+            Vector3 interpolatedPosition = Vector3.Lerp(l_StartPosition, l_DisplacementPosition, l_ActualTime);
 
-            elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
+            l_TimeSpent = (l_TimeSpent + 1) % (l_MaxTimeSpent + 1);
 
             transform.position = interpolatedPosition;
             yield return null;

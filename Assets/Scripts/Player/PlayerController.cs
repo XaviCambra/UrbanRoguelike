@@ -22,11 +22,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject m_Mesh;
 
-
-    /*[SerializeField] private Vector3 m_MouseScreenPosition;
-
-    [SerializeField] private Vector3 m_MouseWorldPosition = Vector3.zero;*/
-
     private void Start()
     {
         m_CanInteract = true;
@@ -47,12 +42,12 @@ public class PlayerController : MonoBehaviour
     {
         if(m_CanInteract == false) return;
 
-        MovementInput();
-        Crouching();
-        Shoot();
-        UseItem();
         FaceMouse();
-        SetSpeed();
+        MovementInput();
+        //Crouching();
+        Shoot();
+        //UseItem();
+        //SetSpeed();
         Dash();
     }
 
@@ -78,6 +73,8 @@ public class PlayerController : MonoBehaviour
         }
 
         l_Direction.Normalize();
+
+        if (l_Direction == Vector3.zero) return;
 
         l_Direction = Module_LinearGravity.SetGravityToVector(l_Direction);
 
@@ -140,26 +137,11 @@ public class PlayerController : MonoBehaviour
 
     void FaceMouse()
     {
-        /*Ray l_ray = m_InputController.m_MousePositionRay();
+        Vector3 m_MouseWorldPosition = m_InputController.m_MousePositionInScreen();
 
-        if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
-        {
-            m_MouseWorldPosition = l_Hit.point;
+        m_MouseWorldPosition.y = transform.position.y;
 
-            Vector3 l_direction = m_MouseWorldPosition - transform.position;
-
-            l_direction.y = 0;
-
-            m_Mesh.transform.forward = l_direction;
-        }*/
-
-        Vector3 l_MouseWorldPosition = m_InputController.m_MousePositionRay();
-
-        Vector3 l_direction = l_MouseWorldPosition - transform.position;
-
-        l_direction.y = 0;
-
-        m_Mesh.transform.forward = l_direction;
+        m_Mesh.transform.forward = m_MouseWorldPosition - transform.position;
     }
 
     private void Shoot()
@@ -175,12 +157,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return;
 
-        //Vector3 l_MouseOnWorld = m_Camera.ScreenToViewportPoint(m_InputController.m_VectorToMouse(transform.position));
-        //Vector3 l_MouseWorldPosition = m_InputController.m_MousePositionRay();
-        //Debug.Log(l_MouseWorldPosition);
-
-        //m_Dash.DashDisplacement(l_MouseWorldPosition, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
-        m_Dash.DashDisplacement(transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
+        m_Dash.DashDisplacement(m_Mesh.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
     }
 
     private void OnEnable()
