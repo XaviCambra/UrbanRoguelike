@@ -44,7 +44,7 @@ public class RangedEnemy : FSM_EnemyBase
     {
         //base.EnemyAttack();
         if (m_Blackboard.m_CanAttack == false) return;
-        m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage);
+        m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage, "Player");
         m_Blackboard.m_CanAttack = false;
         StartCoroutine(RechargeAttack());
     }

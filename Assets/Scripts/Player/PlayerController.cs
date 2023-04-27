@@ -44,10 +44,10 @@ public class PlayerController : MonoBehaviour
 
         FaceMouse();
         MovementInput();
-        //Crouching();
+        Crouching();
         Shoot();
-        //UseItem();
-        //SetSpeed();
+        UseItem();
+        SetSpeed();
         Dash();
     }
 
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown((int) MouseButton.Left))
         {
-            m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage);
+            m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Enemy");
             m_Blackboard.m_CanAttack = false;
         }
     }
