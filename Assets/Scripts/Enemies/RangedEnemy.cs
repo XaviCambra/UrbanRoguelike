@@ -29,20 +29,21 @@ public class RangedEnemy : FSM_EnemyBase
     {
         base.Update();
 
-        //m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
-        transform.LookAt(m_PlayerHitpoint.transform);
+        m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
+        //transform.LookAt(m_PlayerHitpoint.transform);
     }
 
     public override void EnemyMovement()
     {
         base.EnemyMovement();
         Vector3 l_LookAtPlayer = m_Player.transform.position;
+        l_LookAtPlayer.y = transform.position.y;
         transform.LookAt(l_LookAtPlayer);
     }
 
     public override void EnemyAttack()
     {
-        //base.EnemyAttack();
+        base.EnemyAttack();
         if (m_Blackboard.m_CanAttack == false) return;
         m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage, "Player");
         m_Blackboard.m_CanAttack = false;
