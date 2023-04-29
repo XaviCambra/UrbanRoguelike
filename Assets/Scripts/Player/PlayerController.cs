@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     Module_Animation m_Animation;
 
     private bool m_CanInteract;
+    private bool m_CanMove;
     private bool m_Crouching;
     private bool m_CanShoot;
     public bool m_CanOverheat;
@@ -45,14 +46,16 @@ public class PlayerController : MonoBehaviour
         m_CanShoot = true;
         m_CurrentTime = 0;
         m_CanOverheat = true;
+        m_CanMove = true;
     }
 
     private void Update()
     {
         if(m_CanInteract == false) return;
+        
+        if (m_CanMove) MovementInput();
 
         FaceMouse();
-        MovementInput();
         Crouching();
         Shoot();
         UseItem();
@@ -178,7 +181,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return;
 
+        m_CanMove = false;
+        
         m_Dash.DashDisplacement(m_Mesh.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
+
+        m_CanMove = true;
     }
 
     private void OverHeat()

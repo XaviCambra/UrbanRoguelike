@@ -12,6 +12,8 @@ public class MeleEnemy : FSM_EnemyBase
     private bool m_CanMove;
     private bool m_CanAttack;
     private bool m_AttackOnCooldown;
+    
+    [SerializeField] private float m_distance;
 
     private void Start()
     {
@@ -23,14 +25,16 @@ public class MeleEnemy : FSM_EnemyBase
         
         m_Blackboard.m_CanAttack = true;
         m_AttackOnCooldown = false;
+
+        m_CanMove = false;
     }
 
 
     public override void EnemyMovement()
     {
-        m_CanMove = Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance;
+        //m_CanMove = Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance;
 
-        if (m_CanMove == false) return;
+        //if (m_CanMove == false) return;
 
         SetMovementDestination();
         transform.LookAt(m_NavMeshAgent.velocity.normalized);
@@ -51,7 +55,7 @@ public class MeleEnemy : FSM_EnemyBase
         m_AttackOnCooldown = true;
         StartCoroutine(RechargeAttack());
         
-        m_CanMove = true;
+        //m_CanMove = true;
     }
 
     private IEnumerator RechargeAttack()
@@ -74,29 +78,31 @@ public class MeleEnemy : FSM_EnemyBase
             m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
         }*/
 
-        float l_distance = Vector3.Distance(transform.position, m_Player.transform.position);
+        m_distance = Vector3.Distance(transform.position, m_Player.transform.position);
 
-        if (l_distance > m_Blackboard.m_DetectionRadius)
+        if (m_distance > m_Blackboard.m_DetectionRadius)
         {
-            m_CanMove = false;
+            //m_CanMove = false;
+            return;
         }
 
         else
         {
-            if (l_distance < m_Blackboard.m_FollowDistance)
+            if (m_distance < m_Blackboard.m_FollowDistance)
             {
+                m_CanMove = true;
                 m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
 
                 Vector3 l_ClosestPointOnPlayer = m_Player.transform.position - (m_Player.transform.position - transform.position).normalized * (m_Blackboard.m_AttackDistance * 0.95f);
                 m_NavMeshAgent.SetDestination(l_ClosestPointOnPlayer);
             }
 
-            if (l_distance < m_Blackboard.m_DashDistance)
+            /*if (m_distance < m_Blackboard.m_DashDistance)
             {
-                //EnemyDash();
-            }
+                EnemyDash();
+            }*/
 
-            if (l_distance < m_Blackboard.m_AttackDistance)
+            if (m_distance < m_Blackboard.m_AttackDistance)
             {
                 m_CanMove = false;
                 EnemyAttack();
