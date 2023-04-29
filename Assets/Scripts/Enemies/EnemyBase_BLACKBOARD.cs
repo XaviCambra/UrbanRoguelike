@@ -24,4 +24,7 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
 
     //Objects
     public Transform m_AttackPoint;
+
+    //Points
+    public float m_Points;
 }

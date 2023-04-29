@@ -173,16 +173,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0404f4101a9b5046a083e6b9c79eee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RunDistance: 0
   m_WalkSpeed: 0
   m_RunSpeed: 0
   m_Damage: 10
   m_AttackSpeed: 15
   m_AttackCooldown: 5
   m_DetectionRadius: 0
+  m_FollowDistance: 0
   m_AttackDistance: 0
+  m_DashDistance: 0
   m_CanAttack: 1
   m_AttackPoint: {fileID: 7632940219939552535}
+  m_Points: 10
 --- !u!114 &7632940219825347292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +200,7 @@ MonoBehaviour:
   m_MaxHealth: 10
   m_CurrentHealth: 10
   ObjectMesh: {fileID: 7632940219825347291}
+  m_GameController: {fileID: 0}
 --- !u!1 &7632940219939552534
 GameObject:
   m_ObjectHideFlags: 0
