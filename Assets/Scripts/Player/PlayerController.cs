@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private int m_CurrentShots;
 
-    [SerializeField] private Camera m_Camera;
+    //[SerializeField] private Camera m_Camera;
 
     [SerializeField] private GameObject m_Mesh;
 

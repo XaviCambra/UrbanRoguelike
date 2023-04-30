@@ -31,8 +31,8 @@ public class Module_Health : MonoBehaviour
 
     public void TakeDamage(float l_Damage)
     {
-        Debug.Log(gameObject.name + " losses " + l_Damage + "hp");
         m_CurrentHealth -= l_Damage;
+        Debug.Log(gameObject.name + " losses " + l_Damage + "hp. Current hp: " + m_CurrentHealth);
 
         Death();
     }
@@ -49,8 +49,7 @@ public class Module_Health : MonoBehaviour
 
         if (m_CurrentHealth > m_MaxHealth) m_CurrentHealth = m_MaxHealth;
 
-        Debug.Log(gameObject.name + " recieved heal: " + l_Heal);
-        Debug.Log(gameObject.name + " has health: " + m_CurrentHealth);
+        Debug.Log(gameObject.name + " recieved " + l_Heal + " heal. Current hp: " + m_CurrentHealth);
         
     }
     public void Death()
