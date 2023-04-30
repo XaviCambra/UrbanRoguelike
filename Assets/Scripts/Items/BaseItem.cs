@@ -2,26 +2,19 @@ using UnityEngine;
 
 public class BaseItem : MonoBehaviour
 {
+    public InventoryManager m_InventoryManager;
+    public PlayerController m_PlayerController;
+    public Module_Health m_PlayerHealth;
     public virtual void ApplyEffectItem()
     {
-        Player_BLACKBOARD playerBlackBoard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
-        playerBlackBoard.m_Item = null;
+        
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        Player_BLACKBOARD playerBlackBoard = other.GetComponent<Player_BLACKBOARD>();
+        m_InventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+        m_PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        m_PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Module_Health>();
+    }
 
-        if (playerBlackBoard == null) return;
-
-        if (playerBlackBoard.m_Item != null) return;
-
-        else
-        {
-            playerBlackBoard.GetComponent<Player_BLACKBOARD>().m_Item = this;
-
-            gameObject.SetActive(false);
-        }
-
-    }*/
 }

@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 5039492002607862996}
   - component: {fileID: 5039492002607862997}
   - component: {fileID: 5039492002607863018}
-  - component: {fileID: 1062672045896101852}
+  - component: {fileID: 112738713340774732}
   m_Layer: 0
-  m_Name: KeyPrefab
-  m_TagString: Untagged
+  m_Name: KeyDropper
+  m_TagString: ItemDropper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,7 +359,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0.5, y: 0.5, z: 0.5}
---- !u!114 &1062672045896101852
+--- !u!114 &112738713340774732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5039492002607863019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5d04eff4606a6e45bb75730cbf87f1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d631d1c24eab7348a820a30846429a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DetectionRadius: 20
+  m_Key: {fileID: 5454753218877972957, guid: 6f1ba3c71b3423743acdf25dd16396e1, type: 3}

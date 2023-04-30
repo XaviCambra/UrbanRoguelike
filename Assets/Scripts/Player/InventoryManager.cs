@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     private GameObject m_player;
-    private Player_BLACKBOARD m_BlackBoard;
+    private PlayerController m_playerController;
     private InputController m_InputController;
     [SerializeField] private GameObject m_DropItemPoint;
 
@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour
     {
         m_player = GameObject.FindGameObjectWithTag("Player");
 
-        m_BlackBoard = m_player.GetComponent<Player_BLACKBOARD>();
+        m_playerController = m_player.GetComponent<PlayerController>();
 
         m_InputController = m_player.GetComponent<InputController>();
     }
@@ -23,10 +23,10 @@ public class InventoryManager : MonoBehaviour
     {
         // Descomentar para testear el DropItem()
 
-        /*if (m_BlackBoard.m_Item != null && Input.GetKeyDown(m_InputController.m_DropItemKey))
+        if (m_playerController.m_Blackboard.m_Item != null && Input.GetKeyDown(m_InputController.m_DropItemKey))
         {
-            DropItem(m_BlackBoard.m_Item);
-        }*/
+            DropItem(m_playerController.m_Blackboard.m_Item);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,13 +37,13 @@ public class InventoryManager : MonoBehaviour
         {
             BaseItem l_item = other.GetComponent<BaseItem>();
 
-            if (m_BlackBoard.m_Item == null)
+            if (m_playerController.m_Blackboard.m_Item == null)
             {
                 GrabItem(l_item);
                 other.gameObject.SetActive(false);
             }
             
-            if (m_BlackBoard.m_Item != null && Input.GetKeyDown(m_InputController.m_SwapItemKey))
+            if (m_playerController.m_Blackboard.m_Item != null && Input.GetKeyDown(m_InputController.m_SwapItemKey))
             {
                 SwapItem(l_item);
             }
@@ -53,34 +53,40 @@ public class InventoryManager : MonoBehaviour
     void GrabItem(BaseItem l_item)
     {
 
-        if (m_BlackBoard.m_Item != null) return;
+        if (m_playerController.m_Blackboard.m_Item != null) return;
 
         else
         {
-            m_BlackBoard.m_Item = l_item;
+            m_playerController.m_Blackboard.m_Item = l_item;
         }
     }
 
     void SwapItem(BaseItem l_item)
     {
-        if (m_BlackBoard.m_Item == null) return;
+        if (m_playerController.m_Blackboard.m_Item == null) return;
 
         else
         {
-            DropItem(m_BlackBoard.m_Item);
+            DropItem(m_playerController.m_Blackboard.m_Item);
             GrabItem(l_item);
         }
     }
 
     void DropItem(BaseItem l_item)
     {
-        if (m_BlackBoard.m_Item == null) return;
+        if (m_playerController.m_Blackboard.m_Item == null) return;
 
         else
         {
-            Instantiate(m_BlackBoard.m_Item, m_DropItemPoint.transform.position, m_DropItemPoint.transform.rotation);
-            m_BlackBoard.m_Item = null;
+            //l_item.gameObject.SetActive(true);
+            Instantiate(m_playerController.m_Blackboard.m_Item, m_DropItemPoint.transform.position, m_DropItemPoint.transform.rotation);
+            UseItem();
         }
+    }
+
+    public void UseItem()
+    {
+        m_playerController.m_Blackboard.m_Item = null;
     }
 
 }

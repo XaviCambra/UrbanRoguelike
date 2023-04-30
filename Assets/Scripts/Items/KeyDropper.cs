@@ -2,18 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealItem : BaseItem
+public class KeyDropper : BaseItem
 {
-    [SerializeField] private float m_HealAmount;
+    public KeyItem m_Key;
     public override void ApplyEffectItem()
     {
-        
         base.ApplyEffectItem();
 
         /*  Write your own code below */
-
-        m_PlayerHealth.GetHeal(m_HealAmount);
-
-        m_InventoryManager.UseItem();
+        m_Key.ApplyEffectItem();
     }
 }

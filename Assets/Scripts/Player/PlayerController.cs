@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     InputController m_InputController;
-    Player_BLACKBOARD m_Blackboard;
+    public Player_BLACKBOARD m_Blackboard;
     CharacterController m_CharacterController;
 
     Module_AttackRanged m_RangedAttack;
@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
         {
             m_CurrentShots = 0;
             m_CurrentTime = 0;
-            Debug.Log("Realoaded");
+            Debug.Log("Reloaded");
             m_CanShoot = true;
         }
 

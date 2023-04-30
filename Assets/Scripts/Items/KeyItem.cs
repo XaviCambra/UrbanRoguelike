@@ -11,7 +11,7 @@ public class KeyItem : BaseItem
 
         /*  Write your own code below */
 
-        Collider[] l_colliders = Physics.OverlapSphere(transform.position, m_DetectionRadius);
+        Collider[] l_colliders = Physics.OverlapSphere(m_PlayerController.transform.position, m_DetectionRadius);
         
         foreach (Collider l_nearbyObject in l_colliders)
         {
@@ -23,7 +23,8 @@ public class KeyItem : BaseItem
                 l_DoorTrigger.OpenDoor();
 
                 Debug.Log("KeyUsed");
-                Destroy(gameObject);
+
+                m_InventoryManager.UseItem();
             }
 
             else return;

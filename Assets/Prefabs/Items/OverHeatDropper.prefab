@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3394747071601407517}
   m_Layer: 0
   m_Name: OverHeatDropper
-  m_TagString: Untagged
+  m_TagString: ItemDropper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,6 +358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1038f1b562381c249aa42f1921b1b6ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_InventoryManager: {fileID: 0}
+  m_PlayerController: {fileID: 0}
+  m_PlayerHealth: {fileID: 0}
   m_OverHeatItem: {fileID: 2832696505763662074, guid: 83ab6b617944233449e81fae76cdc305,
     type: 3}
 --- !u!65 &3394747071601407517
@@ -368,7 +371,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3876951203216536487}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
