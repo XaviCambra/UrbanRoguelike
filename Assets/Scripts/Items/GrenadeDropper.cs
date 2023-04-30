@@ -22,5 +22,7 @@ public class GrenadeDropper : BaseItem
         l_grenade.SetActive(true);
 
         Debug.Log("Granada creada");
+
+        m_InventoryManager.UseItem();
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class OverHeatItem : BaseItem
 {
+
+    private PlayerController m_PlayerController;
+
     [SerializeField] private float m_Duration;
     [SerializeField] private float m_CurrentTime =  0f;
     public override void ApplyEffectItem()
@@ -14,6 +17,7 @@ public class OverHeatItem : BaseItem
 
         m_PlayerController.m_CanOverheat = false;
     }
+
 
     private void Update()
     {

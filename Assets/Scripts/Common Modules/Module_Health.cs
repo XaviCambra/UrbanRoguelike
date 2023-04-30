@@ -6,7 +6,7 @@ public class Module_Health : MonoBehaviour
 {
     [Header("Statistics")]
     public float m_MaxHealth;
-    [SerializeField] private float m_CurrentHealth;
+    public float m_CurrentHealth;
 
     [Header("Object Model")]
     public GameObject ObjectMesh;

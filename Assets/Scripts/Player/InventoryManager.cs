@@ -37,17 +37,24 @@ public class InventoryManager : MonoBehaviour
         {
             BaseItem l_item = other.GetComponent<BaseItem>();
 
+            Debug.Log("Player collides with " + l_item);
+
             if (m_playerController.m_Blackboard.m_Item == null)
             {
                 GrabItem(l_item);
                 other.gameObject.SetActive(false);
             }
             
-            if (m_playerController.m_Blackboard.m_Item != null && Input.GetKeyDown(m_InputController.m_SwapItemKey))
+            if (m_playerController.m_Blackboard.m_Item != null)
             {
                 SwapItem(l_item);
             }
         }
+    }
+
+    public void UseItem()
+    {
+        m_playerController.m_Blackboard.m_Item = null;
     }
 
     void GrabItem(BaseItem l_item)
@@ -65,7 +72,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (m_playerController.m_Blackboard.m_Item == null) return;
 
-        else
+        if (Input.GetKeyDown(m_InputController.m_SwapItemKey))
         {
             DropItem(m_playerController.m_Blackboard.m_Item);
             GrabItem(l_item);
@@ -78,15 +85,14 @@ public class InventoryManager : MonoBehaviour
 
         else
         {
-            //l_item.gameObject.SetActive(true);
-            Instantiate(m_playerController.m_Blackboard.m_Item, m_DropItemPoint.transform.position, m_DropItemPoint.transform.rotation);
+            //Instantiate(m_playerController.m_Blackboard.m_Item, m_DropItemPoint.transform.position, m_DropItemPoint.transform.rotation);
+
+            l_item.transform.position = m_DropItemPoint.transform.position;
+            l_item.transform.rotation = m_DropItemPoint.transform.rotation;
+            l_item.m_DropperCollider.isTrigger = true;
+            l_item.gameObject.SetActive(true);
             UseItem();
         }
-    }
-
-    public void UseItem()
-    {
-        m_playerController.m_Blackboard.m_Item = null;
     }
 
 }
