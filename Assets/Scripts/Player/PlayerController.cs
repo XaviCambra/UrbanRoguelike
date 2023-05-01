@@ -17,11 +17,14 @@ public class PlayerController : MonoBehaviour
     private bool m_CanMove;
     private bool m_Crouching;
     private bool m_CanShoot;
+
     public bool m_CanOverheat;
+    public bool m_OverheatCancelled;
 
     private float m_MovementSpeed;
 
-    private float m_CurrentTime;
+    [SerializeField] private float m_CurrentShootTime;
+    [SerializeField] private float m_CurrentOverheatTime;
 
     [SerializeField] private int m_CurrentShots;
 
@@ -31,7 +34,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        m_CanInteract = true;
         m_InputController = GetComponent<InputController>();
         m_Blackboard = GetComponent<Player_BLACKBOARD>();
         m_CharacterController = GetComponent<CharacterController>();
@@ -39,14 +41,17 @@ public class PlayerController : MonoBehaviour
         m_RangedAttack = GetComponent<Module_AttackRanged>();
         m_Dash = GetComponent<Module_Dash>();
 
+        m_CanInteract = true;
+        m_CanMove = true;
         m_Crouching = false;
-        m_Blackboard.m_CanAttack = true;
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
 
+        m_Blackboard.m_CanAttack = true;
         m_CanShoot = true;
-        m_CurrentTime = 0;
+        m_CurrentShootTime = 0;
+
         m_CanOverheat = true;
-        m_CanMove = true;
+        m_OverheatCancelled = false;
     }
 
     private void Update()
@@ -62,6 +67,9 @@ public class PlayerController : MonoBehaviour
         SetSpeed();
         Dash();
         OverHeat();
+        
+        if (m_OverheatCancelled) CancelOverHeat();
+        
     }
 
     void MovementInput()
@@ -164,15 +172,15 @@ public class PlayerController : MonoBehaviour
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Enemy");
             m_Blackboard.m_CanAttack = false;
 
-            if (m_CurrentTime < m_Blackboard.m_OverHeatWindow)
+            if (m_CurrentShootTime < m_Blackboard.m_OverHeatWindow)
             {
                 m_CurrentShots++;
-                m_CurrentTime = 0;
+                m_CurrentShootTime = 0;
             }
 
             else
             {
-                m_CurrentTime += 1 * Time.deltaTime;
+                m_CurrentShootTime += 1 * Time.deltaTime;
             }
         }
     }
@@ -203,12 +211,30 @@ public class PlayerController : MonoBehaviour
         else return;
     }
 
+    public void CancelOverHeat()
+    {
+        if (m_CurrentOverheatTime >= m_Blackboard.m_OverHeatCancelDuration)
+        {
+            Debug.Log("Over Heat Item Duration Finished");
+            m_CanOverheat = true;
+            m_CurrentOverheatTime = 0;
+            m_OverheatCancelled = false;
+        }
+
+        else if (m_CurrentOverheatTime < m_Blackboard.m_OverHeatCancelDuration)
+        {
+            Debug.Log("Over Heat Cancelled");
+            m_CanOverheat = false;
+            m_CurrentOverheatTime += 1 * Time.deltaTime;
+        }
+    }
+
     private void Reload()
     {
-        if (m_CurrentTime >= m_Blackboard.m_ReloadSpeed)
+        if (m_CurrentShootTime >= m_Blackboard.m_ReloadSpeed)
         {
             m_CurrentShots = 0;
-            m_CurrentTime = 0;
+            m_CurrentShootTime = 0;
             Debug.Log("Reloaded");
             m_CanShoot = true;
         }
@@ -216,7 +242,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("Reloading");
-            m_CurrentTime += 1 * Time.deltaTime;
+            m_CurrentShootTime += 1 * Time.deltaTime;
         }
     }
 

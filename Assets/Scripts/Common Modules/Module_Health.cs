@@ -38,12 +38,12 @@ public class Module_Health : MonoBehaviour
     }
     public void GetHeal(float l_Heal)
     {
-        if (m_CurrentHealth == m_MaxHealth)
+        /*if (m_CurrentHealth == m_MaxHealth)
         {
             Debug.Log(gameObject.name + " can't get healed.");
             Debug.Log(gameObject.name + " has health: " + m_CurrentHealth);
             return;
-        }
+        }*/
         
         m_CurrentHealth += l_Heal;
 

@@ -26,8 +26,6 @@ public class KeyItem : BaseItem
                 l_DoorTrigger.OpenDoor();
 
                 Debug.Log("KeyUsed");
-
-                m_InventoryManager.UseItem();
             }
 
             else return;

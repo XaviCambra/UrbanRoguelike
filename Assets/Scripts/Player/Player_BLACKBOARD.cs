@@ -35,6 +35,8 @@ public class Player_BLACKBOARD : MonoBehaviour
     public Transform m_ShootPoint;
     public bool m_CanAttack;
 
+    public float m_OverHeatCancelDuration;
+
     public BaseItem m_Item;
     public PowerUp_Base m_PowerUp;
 

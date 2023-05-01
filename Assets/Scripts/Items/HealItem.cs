@@ -21,8 +21,6 @@ public class HealItem : BaseItem
         else
         {
             m_PlayerHealth.GetHeal(m_HealAmount);
-
-            m_InventoryManager.UseItem();
         }
     }
 }

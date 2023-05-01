@@ -11,6 +11,12 @@ public class OverheatDropper : BaseItem
 
         /*  Write your own code below */
 
+        m_InventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+
+        m_DropperCollider = GetComponent<BoxCollider>();
+        m_DropperCollider.isTrigger = true;
+
         m_OverHeatItem.ApplyEffectItem();
+        m_InventoryManager.UseItem();
     }
 }

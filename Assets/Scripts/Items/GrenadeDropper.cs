@@ -14,6 +14,13 @@ public class GrenadeDropper : BaseItem
         base.ApplyEffectItem();
 
         /*  Write your own code below */
+
+        m_InventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+
+        m_DropperCollider = GetComponent<BoxCollider>();
+        m_DropperCollider.isTrigger = true;
+        
+
         m_PlayerBulletOrigin = GameObject.FindGameObjectWithTag("PlayerBulletOrigin");
 
         GameObject l_grenade = Instantiate(m_GrenadePrefab, m_PlayerBulletOrigin.transform.position, m_PlayerBulletOrigin.transform.rotation);

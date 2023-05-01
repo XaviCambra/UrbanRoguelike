@@ -14,24 +14,9 @@ public class OverHeatItem : BaseItem
         base.ApplyEffectItem();
 
         /*  Write your own code below */
+        m_PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
-        m_PlayerController.m_CanOverheat = false;
-    }
-
-
-    private void Update()
-    {
-        if (m_CurrentTime >= m_Duration)
-        {
-            m_PlayerController.m_CanOverheat = true;
-            m_CurrentTime = 0;
-            m_InventoryManager.UseItem();
-        }
-
-        else if (m_CurrentTime < m_Duration)
-        {
-            ApplyEffectItem();
-            m_CurrentTime += 1 * Time.deltaTime;
-        }
+        m_PlayerController.m_OverheatCancelled = true;
+        Debug.Log("Over Heat Item Used");
     }
 }

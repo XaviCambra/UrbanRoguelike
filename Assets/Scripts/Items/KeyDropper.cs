@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class KeyDropper : BaseItem
 {
-    public KeyItem m_Key;
+    public KeyItem m_KeyItem;
     public override void ApplyEffectItem()
     {
         base.ApplyEffectItem();
 
         /*  Write your own code below */
-        m_Key.ApplyEffectItem();
+        m_InventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+
+        m_DropperCollider = GetComponent<BoxCollider>();
+        m_DropperCollider.isTrigger = true;
+
+        m_KeyItem.ApplyEffectItem();
+        m_InventoryManager.UseItem();
     }
 }
