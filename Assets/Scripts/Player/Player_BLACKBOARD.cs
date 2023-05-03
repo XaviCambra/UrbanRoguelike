@@ -40,6 +40,9 @@ public class Player_BLACKBOARD : MonoBehaviour
     public BaseItem m_Item;
     public PowerUp_Base m_PowerUp;
 
+
+    public bool m_HasKey;
+
     public void ResetAllStats()
     {
         m_MovementSpeed = m_BASEMovementSpeed;

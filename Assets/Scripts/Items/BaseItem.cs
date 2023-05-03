@@ -4,20 +4,31 @@ public class BaseItem : MonoBehaviour
 {
     public InventoryManager m_InventoryManager;
     public BoxCollider m_DropperCollider;
+
+    public GameObject m_FloatingText;
     public virtual void ApplyEffectItem()
     {
         
     }
 
-    private void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        /*m_InventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+        Player_BLACKBOARD l_blackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
 
-        m_DropperCollider = GetComponent<BoxCollider>();
-        m_DropperCollider.isTrigger = true;
+        if (other.CompareTag("Player") && l_blackboard.m_Item != null)
+        {
+            m_FloatingText.SetActive(true);
+        }
+    }
 
-       m_PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        m_PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Module_Health>();*/
+    private void OnTriggerExit(Collider other)
+    {
+        Player_BLACKBOARD l_blackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
+
+        if (other.CompareTag("Player") && l_blackboard.m_Item != null)
+        {
+            m_FloatingText.SetActive(false);
+        }
     }
 
 }

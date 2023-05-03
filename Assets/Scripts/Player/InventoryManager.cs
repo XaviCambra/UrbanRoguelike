@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour
     private BaseItem m_ItemToSwap;
 
     private bool m_CanSwap;
+    private bool m_CanDrop;
 
     void Start()
     {
@@ -22,13 +23,14 @@ public class InventoryManager : MonoBehaviour
         m_InputController = m_player.GetComponent<InputController>();
 
         m_CanSwap = false;
+        m_CanDrop = false;
         m_ItemToSwap = null;
     }
 
 
     void Update()
     {
-        if (m_playerController.m_Blackboard.m_Item != null && Input.GetKeyDown(m_InputController.m_DropItemKey))
+        if (m_CanDrop && Input.GetKeyDown(m_InputController.m_DropItemKey))
         {
             DropItem(m_playerController.m_Blackboard.m_Item);
         }
@@ -41,19 +43,17 @@ public class InventoryManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "ItemDropper") return;
+        //if (other.CompareTag("ItemDropper") || other.CompareTag("KeyDropper")) return;
 
-        else
+        if (other.CompareTag("ItemDropper") || other.CompareTag("KeyDropper"))
         {
             BaseItem l_item = other.GetComponent<BaseItem>();
-
-            Debug.Log("Player collides with " + l_item);
 
             if (m_playerController.m_Blackboard.m_Item == null)
             {
                 GrabItem(l_item);
             }
-            
+
             if (m_playerController.m_Blackboard.m_Item != null)
             {
                 //SwapItem(l_item);
@@ -62,23 +62,32 @@ public class InventoryManager : MonoBehaviour
                 Debug.Log("Can swap Item");
             }
         }
+
+        else return;
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.tag != "ItemDropper") return;
+        //if (other.tag != "ItemDropper") return;
 
-        else
+        if (other.CompareTag("ItemDropper") || other.CompareTag("KeyDropper"))
         {
             m_CanSwap = false;
             m_ItemToSwap = null;
             Debug.Log("Player exited swapping radius");
         }
+
+        else return;
     }
 
     public void UseItem()
     {
         m_playerController.m_Blackboard.m_Item = null;
+
+        if (m_playerController.m_Blackboard.m_HasKey == true)
+        {
+            m_playerController.m_Blackboard.m_HasKey = false;
+        } 
     }
 
     void GrabItem(BaseItem l_item)
@@ -86,17 +95,27 @@ public class InventoryManager : MonoBehaviour
 
         if (m_playerController.m_Blackboard.m_Item != null) return;
 
-        else
+        if (l_item.CompareTag("KeyDropper"))
         {
             m_playerController.m_Blackboard.m_Item = l_item;
             l_item.gameObject.SetActive(false);
+            m_playerController.m_Blackboard.m_HasKey = true;
+            m_CanDrop = true;
+            Debug.Log("Player grabbed a key");
+        }
+
+        else if (l_item.CompareTag("ItemDropper"))
+        {
+            m_playerController.m_Blackboard.m_Item = l_item;
+            l_item.gameObject.SetActive(false);
+            m_CanDrop = true;
             Debug.Log("Player grabbed " + l_item);
         }
     }
 
     void SwapItem(BaseItem l_item)
     {
-        Debug.Log("Swap Entered");
+        Debug.Log("Swap Radius Entered");
         DropItem(m_playerController.m_Blackboard.m_Item);
         GrabItem(l_item);
     }
@@ -107,13 +126,13 @@ public class InventoryManager : MonoBehaviour
 
         else
         {
-            //Instantiate(m_playerController.m_Blackboard.m_Item, m_DropItemPoint.transform.position, m_DropItemPoint.transform.rotation);
-
             l_item.transform.position = m_DropItemPoint.transform.position;
             l_item.transform.rotation = m_DropItemPoint.transform.rotation;
 
             l_item.m_DropperCollider.isTrigger = true;
             l_item.gameObject.SetActive(true);
+            m_CanDrop = false;
+
             Debug.Log("Player dropped " + l_item);
             UseItem();
         }

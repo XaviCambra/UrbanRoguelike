@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
         m_CanOverheat = true;
         m_OverheatCancelled = false;
+
+        m_Blackboard.m_HasKey = false;
     }
 
     private void Update()
