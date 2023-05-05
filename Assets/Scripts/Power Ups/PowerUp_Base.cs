@@ -2,31 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp_Base : MonoBehaviour
+
+public class PowerUp_Base : ScriptableObject
 {
     protected Player_BLACKBOARD m_BlackBoard;
 
-    public virtual void ApplyPowerUp
-        ()
+    public string PowerUp_Name;
+    public Sprite PowerUp_Image;
+    public string PowerUp_Description;
+
+    public virtual void ApplyPowerUp()
     {
         m_BlackBoard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
-        m_BlackBoard.m_PowerUp = null;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        m_BlackBoard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
-
         if (m_BlackBoard == null) return;
-
-        if (m_BlackBoard.m_PowerUp != null) return;
-
-        else
-        {
-            m_BlackBoard.GetComponent<Player_BLACKBOARD>().m_PowerUp = this;
-
-            gameObject.SetActive(false);
-        }
-
+        m_BlackBoard.m_PowerUp = null;
     }
 }

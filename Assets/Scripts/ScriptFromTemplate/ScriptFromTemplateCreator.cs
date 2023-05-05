@@ -13,7 +13,7 @@ public class ScriptFromTemplateCreator : MonoBehaviour
     }
 
 
-    [MenuItem(itemName: "Assets/Create/PowerUp/Power Up Script", isValidateFunction: false, priority = 2)]
+    [MenuItem(itemName: "Assets/Create/Power Up/Power Up Script", isValidateFunction: false, priority = 2)]
     public static void CreateScriptFromTemplate_01()
     {
         ProjectWindowUtil.CreateScriptAssetFromTemplateFile(pathToTemplate_PowerUp, "new Item.cs");
