@@ -12,6 +12,12 @@ public class PowerUpCard : MonoBehaviour
     public Image m_CardSprite;
     public TextMeshProUGUI m_CardDescription;
 
+    public void SetPower(PowerUp_Base l_PowerUp)
+    {
+        m_PowerUp = l_PowerUp;
+        SetCardStats();
+    }
+
     public void SetCardStats()
     {
         m_CardName.text = m_PowerUp.PowerUp_Name;

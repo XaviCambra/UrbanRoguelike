@@ -9,6 +9,7 @@ public class PowerUp_Base : ScriptableObject
 
     public string PowerUp_Name;
     public Sprite PowerUp_Image;
+    [TextArea(3, 3, order = 1)]
     public string PowerUp_Description;
 
     public virtual void ApplyPowerUp()
