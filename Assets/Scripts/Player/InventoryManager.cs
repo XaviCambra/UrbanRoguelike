@@ -18,15 +18,15 @@ public class InventoryManager : MonoBehaviour
         m_InputController = m_player.GetComponent<InputController>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         // Descomentar para testear el DropItem()
 
-        if (m_BlackBoard.m_Item != null && Input.GetKeyDown(m_InputController.m_DropItemKey))
+        /*if (m_BlackBoard.m_Item != null && Input.GetKeyDown(m_InputController.m_DropItemKey))
         {
             DropItem(m_BlackBoard.m_Item);
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)
