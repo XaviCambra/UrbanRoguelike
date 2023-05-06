@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "PowerUp_MoveSpeed", menuName = "Power Up/PowerUp_MoveSpeed", order = 1)]
 public class PowerUp_MoveSpeed : PowerUp_Base
 {
 	public float m_ExtraSpeed;

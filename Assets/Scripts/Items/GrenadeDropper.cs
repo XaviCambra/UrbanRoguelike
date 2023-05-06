@@ -6,8 +6,7 @@ public class GrenadeDropper : BaseItem
 
 {
     [SerializeField] private float m_MoveSpeed;
-
-    public GameObject m_GrenadePrefab;
+    [SerializeField] private GameObject m_GrenadePrefab;
     [SerializeField] private GameObject m_PlayerBulletOrigin;
 
     public override void ApplyEffectItem()
