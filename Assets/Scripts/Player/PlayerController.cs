@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
         Shoot();
         UseItem();
         SetSpeed();
-        Dash();
         OverHeat();
         
         if (m_OverheatCancelled) CancelOverHeat();
@@ -98,6 +97,8 @@ public class PlayerController : MonoBehaviour
         l_Direction.Normalize();
 
         if (l_Direction == Vector3.zero) return;
+
+        if (Dash()) return;
 
         l_Direction = Module_LinearGravity.SetGravityToVector(l_Direction);
 
@@ -183,15 +184,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Dash()
+    private bool Dash()
     {
-        if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return;
-
-        m_CanMove = false;
+        if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return false;
         
         m_Dash.DashDisplacement(m_Mesh.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
-
-        m_CanMove = true;
+        return true;
     }
 
     private void OverHeat()
