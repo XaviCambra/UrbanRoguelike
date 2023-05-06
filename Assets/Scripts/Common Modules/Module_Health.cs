@@ -22,6 +22,7 @@ public class Module_Health : MonoBehaviour
         m_CurrentHealth = m_MaxHealth;
 
         m_GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        if (m_GameController == null) Debug.LogError("Custom Error - No object attached to Module_Health on " + gameObject.name + ".\nNo points will be added");
 
         if (gameObject.CompareTag("Enemy"))
         {
@@ -32,7 +33,6 @@ public class Module_Health : MonoBehaviour
     public void TakeDamage(float l_Damage)
     {
         m_CurrentHealth -= l_Damage;
-        Debug.Log(gameObject.name + " losses " + l_Damage + "hp. Current hp: " + m_CurrentHealth);
 
         Death();
     }
@@ -49,7 +49,6 @@ public class Module_Health : MonoBehaviour
 
         if (m_CurrentHealth > m_MaxHealth) m_CurrentHealth = m_MaxHealth;
 
-        Debug.Log(gameObject.name + " recieved " + l_Heal + " heal. Current hp: " + m_CurrentHealth);
         
     }
     public void Death()
@@ -64,10 +63,9 @@ public class Module_Health : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy"))
         {
-            m_GameController.AddPoints(m_EnemyBlackBoard.m_Points);
+            if (m_GameController != null) m_GameController.AddPoints(m_EnemyBlackBoard.m_Points);
         }
 
-        Debug.Log(gameObject.name + " is dead");
         m_PlayerIsDead?.Invoke(true);
         ObjectMesh.SetActive(false);
     }

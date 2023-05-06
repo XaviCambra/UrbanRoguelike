@@ -160,11 +160,7 @@ public class PlayerController : MonoBehaviour
 
     void FaceMouse()
     {
-        Vector3 m_MouseWorldPosition = m_InputController.m_MousePositionInScreen();
-
-        m_MouseWorldPosition.y = transform.position.y;
-
-        m_Mesh.transform.forward = m_MouseWorldPosition - transform.position;
+        m_Mesh.transform.forward = m_InputController.m_MouseDirectionScreen();
     }
 
     private void Shoot()
