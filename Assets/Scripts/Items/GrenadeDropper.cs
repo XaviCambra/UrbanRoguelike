@@ -6,8 +6,7 @@ public class GrenadeDropper : BaseItem
 
 {
     [SerializeField] private float m_MoveSpeed;
-
-    public GameObject m_GrenadePrefab;
+    [SerializeField] private GameObject m_GrenadePrefab;
     [SerializeField] private GameObject m_PlayerBulletOrigin;
 
     public override void ApplyEffectItem()
@@ -15,6 +14,13 @@ public class GrenadeDropper : BaseItem
         base.ApplyEffectItem();
 
         /*  Write your own code below */
+
+        m_InventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+
+        m_DropperCollider = GetComponent<BoxCollider>();
+        m_DropperCollider.isTrigger = true;
+        
+
         m_PlayerBulletOrigin = GameObject.FindGameObjectWithTag("PlayerBulletOrigin");
 
         GameObject l_grenade = Instantiate(m_GrenadePrefab, m_PlayerBulletOrigin.transform.position, m_PlayerBulletOrigin.transform.rotation);
@@ -23,5 +29,7 @@ public class GrenadeDropper : BaseItem
         l_grenade.SetActive(true);
 
         Debug.Log("Granada creada");
+
+        m_InventoryManager.UseItem();
     }
 }

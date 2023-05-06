@@ -2,26 +2,33 @@ using UnityEngine;
 
 public class BaseItem : MonoBehaviour
 {
+    public InventoryManager m_InventoryManager;
+    public BoxCollider m_DropperCollider;
+
+    public GameObject m_FloatingText;
     public virtual void ApplyEffectItem()
     {
-        Player_BLACKBOARD playerBlackBoard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
-        playerBlackBoard.m_Item = null;
+        
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        Player_BLACKBOARD playerBlackBoard = other.GetComponent<Player_BLACKBOARD>();
+        Player_BLACKBOARD l_blackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
 
-        if (playerBlackBoard == null) return;
-
-        if (playerBlackBoard.m_Item != null) return;
-
-        else
+        if (other.CompareTag("Player") && l_blackboard.m_Item != null)
         {
-            playerBlackBoard.GetComponent<Player_BLACKBOARD>().m_Item = this;
-
-            gameObject.SetActive(false);
+            m_FloatingText.SetActive(true);
         }
+    }
 
-    }*/
+    private void OnTriggerExit(Collider other)
+    {
+        Player_BLACKBOARD l_blackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
+
+        if (other.CompareTag("Player") && l_blackboard.m_Item != null)
+        {
+            m_FloatingText.SetActive(false);
+        }
+    }
+
 }

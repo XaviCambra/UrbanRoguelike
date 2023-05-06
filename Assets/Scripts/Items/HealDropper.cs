@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class HealDropper : BaseItem
 {
-    GameObject m_player;
-    public float m_healAmount;
+    [SerializeField] private HealItem m_HealItem;
     public override void ApplyEffectItem()
     {
         base.ApplyEffectItem();
 
         /*  Write your own code below */
+        m_InventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
 
-    }
+        m_DropperCollider = GetComponent<BoxCollider>();
+        m_DropperCollider.isTrigger = true;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-
-            m_player.GetComponent<Module_Health>().GetHeal(m_healAmount);
-
-        }
+        m_HealItem.ApplyEffectItem();
+        m_InventoryManager.UseItem();
     }
 }

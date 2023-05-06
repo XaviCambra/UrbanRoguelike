@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyBase_BLACKBOARD : MonoBehaviour
 {
     //Movement
-    public float m_RunDistance;
     public float m_WalkSpeed;
     public float m_RunSpeed;
 
@@ -16,11 +15,16 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
 
     //Distances
     public float m_DetectionRadius;
+    public float m_FollowDistance;
     public float m_AttackDistance;
+    public float m_DashDistance;
 
     //Variables
     public bool m_CanAttack;
 
     //Objects
     public Transform m_AttackPoint;
+
+    //Points
+    public float m_Points;
 }
