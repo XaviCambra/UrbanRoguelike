@@ -10,7 +10,12 @@ public class HealDropper : BaseItem
         base.ApplyEffectItem();
 
         /*  Write your own code below */
+        m_InventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+
+        m_DropperCollider = GetComponent<BoxCollider>();
+        m_DropperCollider.isTrigger = true;
 
         m_HealItem.ApplyEffectItem();
+        m_InventoryManager.UseItem();
     }
 }

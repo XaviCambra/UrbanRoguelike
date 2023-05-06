@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5779471816601336739
+--- !u!1 &4539909153910320584
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3710322259090706192}
-  - component: {fileID: 5289175619910675935}
+  - component: {fileID: 4539909153910320586}
+  - component: {fileID: 4539909153910320587}
   m_Layer: 0
-  m_Name: HealItemPrefab
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3710322259090706192
+--- !u!4 &4539909153910320586
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5779471816601336739}
+  m_GameObject: {fileID: 4539909153910320584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,19 +32,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5289175619910675935
+--- !u!114 &4539909153910320587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5779471816601336739}
+  m_GameObject: {fileID: 4539909153910320584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a8302bc23f71e41b307e12f0490787, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bf6cf6c342581e46b9cbb6885b9dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InventoryManager: {fileID: 0}
-  m_DropperCollider: {fileID: 5039492002607863018, guid: d3f5731d98b525749ac86a8dab5bc09f,
-    type: 3}
-  m_HealAmount: 10
+  m_MaxPoints: 9999
+  m_CurrentPoints: 0

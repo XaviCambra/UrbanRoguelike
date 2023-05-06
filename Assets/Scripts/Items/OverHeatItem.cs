@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class OverHeatItem : BaseItem
 {
-    [SerializeField] private PlayerController m_playerController;
+
+    private PlayerController m_PlayerController;
+
     [SerializeField] private float m_Duration;
-    private float m_CurrentTime =  0f;
+    [SerializeField] private float m_CurrentTime =  0f;
     public override void ApplyEffectItem()
     {
         base.ApplyEffectItem();
 
         /*  Write your own code below */
+        m_PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
-        if (m_CurrentTime < m_Duration)
-        {
-            m_playerController.m_CanOverheat = false;
-        }
-
-        else m_CurrentTime += 1 * Time.deltaTime;
-
+        m_PlayerController.m_OverheatCancelled = true;
+        Debug.Log("Over Heat Item Used");
     }
 }

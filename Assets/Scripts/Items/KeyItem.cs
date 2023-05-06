@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KeyItem : BaseItem
 {
+    private GameObject m_Player;
     [SerializeField] private float m_DetectionRadius;
 
     public override void ApplyEffectItem()
@@ -11,7 +12,9 @@ public class KeyItem : BaseItem
 
         /*  Write your own code below */
 
-        Collider[] l_colliders = Physics.OverlapSphere(transform.position, m_DetectionRadius);
+        m_Player = GameObject.FindGameObjectWithTag("Player");
+
+        Collider[] l_colliders = Physics.OverlapSphere(m_Player.transform.position, m_DetectionRadius);
         
         foreach (Collider l_nearbyObject in l_colliders)
         {
@@ -23,7 +26,6 @@ public class KeyItem : BaseItem
                 l_DoorTrigger.OpenDoor();
 
                 Debug.Log("KeyUsed");
-                Destroy(gameObject);
             }
 
             else return;

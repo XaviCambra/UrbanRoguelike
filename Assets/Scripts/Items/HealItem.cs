@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealItem : BaseItem
 {
+
+    private Module_Health m_PlayerHealth;
     [SerializeField] private float m_HealAmount;
     public override void ApplyEffectItem()
     {
@@ -12,9 +14,13 @@ public class HealItem : BaseItem
 
         /*  Write your own code below */
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        m_PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Module_Health>();
 
-        player.GetComponent<Module_Health>().GetHeal(m_HealAmount);
+        if (m_PlayerHealth.m_CurrentHealth == m_PlayerHealth.m_MaxHealth) return;
 
+        else
+        {
+            m_PlayerHealth.GetHeal(m_HealAmount);
+        }
     }
 }
