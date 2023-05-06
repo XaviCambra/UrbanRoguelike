@@ -24,13 +24,11 @@ public class GameController : MonoBehaviour
     public void AddPoints(float l_points)
     {
         m_CurrentPoints += l_points;
-        Debug.Log("Player recibe: " + l_points + " puntos. Puntos actuales: " + m_CurrentPoints);
     }
 
     public void SubstractPoints (float l_points)
     {
         m_CurrentPoints -= l_points;
-        Debug.Log("Player gasta: " + l_points + " puntos. Puntos actuales: " + m_CurrentPoints);
     }
 
 }

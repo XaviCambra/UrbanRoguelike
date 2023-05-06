@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform m_Player;
+    public GameObject m_Player;
 
     public float m_SmoothSpeed;
-    public Vector3 m_Offset;
-   // public Quaternion m_Rotation;
+    public float m_OffsetOnDirection;
+
+    public Vector3 m_CameraFarOffset;
 
     private void Start()
     {
-        m_Player = GameObject.FindGameObjectWithTag("Player").transform;
-        //transform.rotation = m_Rotation;
+        m_Player = GameObject.FindGameObjectWithTag("Player");
     }
     private void FixedUpdate()
     {
-        Vector3 l_desiredPosition = m_Player.transform.position + m_Offset;
+        Debug.Log(m_Player.GetComponent<InputController>().m_MouseDirectionScreen());
+        Vector3 l_PlayerPosition = m_Player.transform.position + m_CameraFarOffset;
+        Vector3 l_desiredPosition = l_PlayerPosition + m_OffsetOnDirection * m_Player.GetComponent<InputController>().m_MouseDirectionScreen();
         Vector3 l_smoothedPosition = Vector3.Lerp(transform.position, l_desiredPosition, m_SmoothSpeed * Time.deltaTime);
 
         transform.position = l_smoothedPosition;
-        //transform.rotation = m_Rotation;
 
-        transform.LookAt(m_Player);
+        //transform.LookAt(m_Player);
+
+
     }
 }

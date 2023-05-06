@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-<<<<<<< Updated upstream
-=======
     [SerializeField] private Vector3 m_MouseScreenPosition;
     [SerializeField] private Vector3 m_MouseWorldPosition;
 
->>>>>>> Stashed changes
     [SerializeField] private Camera m_Camera;
 
     public GameObject m_test;
@@ -30,7 +27,6 @@ public class InputController : MonoBehaviour
     //Use Item
     public KeyCode m_UseItemKey = KeyCode.Q;
 
-<<<<<<< Updated upstream
     //Swap Item
     public KeyCode m_SwapItemKey = KeyCode.Tab;
 
@@ -39,6 +35,20 @@ public class InputController : MonoBehaviour
 
     //Shoot
     public MouseButton m_ShootButton = MouseButton.Left;
+
+    private void Start()
+    {
+        m_Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
+
+    public Vector3 m_MouseDirectionScreen()
+    {
+        Vector3 m_MouseWorldPosition = m_MousePositionInScreen();
+
+        m_MouseWorldPosition.y = transform.position.y;
+
+        return (m_MouseWorldPosition - transform.position).normalized;
+    }
 
     public Vector3 m_MousePositionInScreen()
     {
@@ -59,29 +69,6 @@ public class InputController : MonoBehaviour
     public Vector3 m_MousePosition()
     {
         return Input.mousePosition;
-=======
-    private void Update()
-    {
-        m_MouseScreenPosition = Input.mousePosition;
-
-        /*m_MouseScreenPosition.z = m_Camera.nearClipPlane;
-
-        m_MouseWorldPosition = m_Camera.ScreenToWorldPoint(m_MouseScreenPosition);*/
-
-        Ray l_ray = m_Camera.ScreenPointToRay(m_MouseScreenPosition);
-
-        if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
-        {
-            m_MouseWorldPosition = l_Hit.point;
-        }
-
-        Debug.Log(m_MouseWorldPosition);
-
-        if (Input.GetMouseButtonDown((int) MouseButton.Left))
-        {
-            Instantiate(m_test, m_MouseWorldPosition, Quaternion.Euler(0, 0, 0));
-        }
->>>>>>> Stashed changes
     }
 }
 
