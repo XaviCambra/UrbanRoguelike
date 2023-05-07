@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     private bool m_CanInteract;
     private bool m_CanMove;
     private bool m_Crouching;
-    private bool m_CanShoot;
 
     public bool m_CanOverheat;
     public bool m_OverheatCancelled;
@@ -48,7 +47,6 @@ public class PlayerController : MonoBehaviour
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
 
         m_Blackboard.m_CanAttack = true;
-        m_CanShoot = true;
         m_CurrentShootTime = 0;
 
         m_CanOverheat = true;
@@ -67,10 +65,9 @@ public class PlayerController : MonoBehaviour
         Shoot();
         UseItem();
         SetSpeed();
-        OverHeat();
         
-        if (m_OverheatCancelled) CancelOverHeat();
-        
+        //if (m_OverheatCancelled) CancelOverHeat();
+        if(m_OverheatCancelled == false) OverHeat();
     }
 
     void MovementInput()
@@ -96,6 +93,12 @@ public class PlayerController : MonoBehaviour
 
         l_Direction.Normalize();
 
+        if (Dash())
+        {
+            HipsFaceMouse();
+            return;
+        }
+
         if (l_Direction == Vector3.zero)
         {
             BodyFaceMouse();
@@ -103,7 +106,6 @@ public class PlayerController : MonoBehaviour
         }
         else HipsFaceMouse();
 
-        if (Dash()) return;
 
         l_Direction = Module_LinearGravity.SetGravityToVector(l_Direction);
 
@@ -134,6 +136,7 @@ public class PlayerController : MonoBehaviour
     void Crouching_In()
     {
         m_Crouching = true;
+        m_Blackboard.m_CanAttack = false;
         m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0.5f, 0), 1));
     }
@@ -141,6 +144,7 @@ public class PlayerController : MonoBehaviour
     void Crouching_Out()
     {
         m_Crouching = false;
+        m_Blackboard.m_CanAttack = true;
         float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(duration / 2, new Vector3(0, 1, 0), 2)); 
     }
@@ -189,10 +193,9 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown((int) MouseButton.Left) && m_CanShoot)
+        if (Input.GetMouseButtonDown((int) MouseButton.Left) && m_Blackboard.m_CanAttack)
         {
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Enemy");
-            m_Blackboard.m_CanAttack = false;
 
             if (m_CurrentShootTime < m_Blackboard.m_OverHeatWindow)
             {
@@ -221,7 +224,7 @@ public class PlayerController : MonoBehaviour
         {
             if (m_CurrentShots >= m_Blackboard.m_MaxOverHeat)
             {
-                m_CanShoot = false;
+                m_Blackboard.m_CanAttack = false;
                 Debug.Log("Over Heat");
                 Reload();
             }
@@ -230,39 +233,18 @@ public class PlayerController : MonoBehaviour
         else return;
     }
 
-    public void CancelOverHeat()
+    public IEnumerator CancelOverHeat()
     {
-        if (m_CurrentOverheatTime >= m_Blackboard.m_OverHeatCancelDuration)
-        {
-            Debug.Log("Over Heat Item Duration Finished");
-            m_CanOverheat = true;
-            m_CurrentOverheatTime = 0;
-            m_OverheatCancelled = false;
-        }
-
-        else if (m_CurrentOverheatTime < m_Blackboard.m_OverHeatCancelDuration)
-        {
-            Debug.Log("Over Heat Cancelled");
-            m_CanOverheat = false;
-            m_CurrentOverheatTime += 1 * Time.deltaTime;
-        }
+        m_OverheatCancelled = true;
+        yield return new WaitForSeconds(m_Blackboard.m_OverHeatCancelDuration);
+        m_OverheatCancelled = false;
     }
 
-    private void Reload()
+    private IEnumerator Reload()
     {
-        if (m_CurrentShootTime >= m_Blackboard.m_ReloadSpeed)
-        {
-            m_CurrentShots = 0;
-            m_CurrentShootTime = 0;
-            Debug.Log("Reloaded");
-            m_CanShoot = true;
-        }
-
-        else
-        {
-            Debug.Log("Reloading");
-            m_CurrentShootTime += 1 * Time.deltaTime;
-        }
+        yield return new WaitForSeconds(m_Blackboard.m_ReloadSpeed);
+        m_Blackboard.m_CanAttack = true;
+        m_CurrentShots = 0;
     }
 
     private void OnEnable()
