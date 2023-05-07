@@ -14,7 +14,6 @@ public class DoorTriggerController : MonoBehaviour
     {
         m_Animator.Play("DoorOpening", 0, 0.0f);
         m_Open = true;
-        //gameObject.SetActive(false);
         m_FloatingText.SetActive(false);
         Debug.Log("Door Opened");
     }
@@ -23,7 +22,6 @@ public class DoorTriggerController : MonoBehaviour
     {
         m_Animator.Play("DoorClosing", 0, 0.0f);
         m_Open = false;
-        //gameObject.SetActive(false);
         Debug.Log("Door Closed");
     }
 
