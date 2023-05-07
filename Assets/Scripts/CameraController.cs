@@ -17,31 +17,10 @@ public class CameraController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-<<<<<<< Updated upstream
-        Debug.Log(m_Player.GetComponent<InputController>().m_MouseDirectionScreen());
-        Vector3 l_PlayerPosition = m_Player.transform.position + m_CameraFarOffset;
-        Vector3 l_desiredPosition = l_PlayerPosition + m_OffsetOnDirection * m_Player.GetComponent<InputController>().m_MouseDirectionScreen();
-=======
-<<<<<<< Updated upstream
-        Vector3 l_desiredPosition = m_Player.transform.position + m_Offset;
->>>>>>> Stashed changes
-        Vector3 l_smoothedPosition = Vector3.Lerp(transform.position, l_desiredPosition, m_SmoothSpeed * Time.deltaTime);
-
-        transform.position = l_smoothedPosition;
-
-<<<<<<< Updated upstream
-        //transform.LookAt(m_Player);
-
-
-=======
-        transform.LookAt(m_Player);
-=======
         Vector3 l_PlayerPosition = m_Player.transform.position + m_CameraFarOffset;
         Vector3 l_desiredPosition = l_PlayerPosition + m_OffsetOnDirection * m_Player.GetComponent<InputController>().m_MouseDirectionScreen();
         Vector3 l_smoothedPosition = Vector3.Lerp(transform.position, l_desiredPosition, m_SmoothSpeed * Time.deltaTime);
 
         transform.position = l_smoothedPosition;
->>>>>>> Stashed changes
->>>>>>> Stashed changes
     }
 }
