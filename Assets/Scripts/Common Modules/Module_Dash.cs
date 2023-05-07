@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Module_Dash : MonoBehaviour
 {
+    public float m_DashSpeed;
+    public float m_DashDistance;
     public void DashDisplacement(Vector3 l_Direction, float l_Distance, float l_Speed)
     {
         RaycastHit l_RayCast;
