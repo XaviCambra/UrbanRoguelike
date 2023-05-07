@@ -31,7 +31,6 @@ public class MeleEnemy : FSM_EnemyBase
 
     public override void EnemyMovement()
     {
-        Debug.Log(m_HasToDash);
         if (m_HasToDash)
         {
             if(Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance)
