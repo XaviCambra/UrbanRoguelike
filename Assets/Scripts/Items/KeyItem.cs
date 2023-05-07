@@ -15,8 +15,6 @@ public class KeyItem : BaseItem
         m_Player = GameObject.FindGameObjectWithTag("Player");
 
         Collider[] l_colliders = Physics.OverlapSphere(m_Player.transform.position, m_DetectionRadius);
-
-        Debug.Log("Overlap sphere thrown");
         
         foreach (Collider l_nearbyObject in l_colliders)
         {
@@ -28,8 +26,6 @@ public class KeyItem : BaseItem
                 l_DoorTrigger.OpenDoor();
 
                 Debug.Log("KeyUsed");
-
-                m_InventoryManager.UseItem();
             }
 
             else return;

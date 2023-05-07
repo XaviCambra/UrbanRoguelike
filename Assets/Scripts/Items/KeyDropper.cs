@@ -15,7 +15,7 @@ public class KeyDropper : BaseItem
         m_DropperCollider = GetComponent<BoxCollider>();
         m_DropperCollider.isTrigger = true;
 
-        Debug.Log("KeyDropped sent signal");
         m_KeyItem.ApplyEffectItem();
+        m_InventoryManager.UseItem();
     }
 }
