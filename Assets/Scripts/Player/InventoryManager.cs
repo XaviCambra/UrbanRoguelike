@@ -56,7 +56,7 @@ public class InventoryManager : MonoBehaviour
 
             if (m_playerController.m_Blackboard.m_Item != null)
             {
-                //SwapItem(l_item);
+                l_item.ActivateText();
                 m_CanSwap = true;
                 m_ItemToSwap = l_item;
                 Debug.Log("Can swap Item");
@@ -72,6 +72,8 @@ public class InventoryManager : MonoBehaviour
 
         if (other.CompareTag("ItemDropper") || other.CompareTag("KeyDropper"))
         {
+            BaseItem l_item = other.GetComponent<BaseItem>();
+            l_item.DeactivateText();
             m_CanSwap = false;
             m_ItemToSwap = null;
             Debug.Log("Player exited swapping radius");
@@ -117,6 +119,7 @@ public class InventoryManager : MonoBehaviour
     {
         Debug.Log("Swap Radius Entered");
         DropItem(m_playerController.m_Blackboard.m_Item);
+        l_item.DeactivateText();
         GrabItem(l_item);
     }
 
@@ -129,12 +132,15 @@ public class InventoryManager : MonoBehaviour
             l_item.transform.position = m_DropItemPoint.transform.position;
             l_item.transform.rotation = m_DropItemPoint.transform.rotation;
 
-            l_item.m_DropperCollider.isTrigger = true;
-            l_item.gameObject.SetActive(true);
             m_CanDrop = false;
 
             Debug.Log("Player dropped " + l_item);
+
+            l_item.DeactivateText();
+            l_item.gameObject.SetActive(true);
+            l_item.m_DropperCollider.isTrigger = true;
             UseItem();
+            //m_playerController.m_Blackboard.m_Item = null;
         }
     }
 

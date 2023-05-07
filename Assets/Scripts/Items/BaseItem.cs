@@ -11,7 +11,7 @@ public class BaseItem : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         Player_BLACKBOARD l_blackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
 
@@ -29,6 +29,16 @@ public class BaseItem : MonoBehaviour
         {
             m_FloatingText.SetActive(false);
         }
+    }*/
+
+    public void ActivateText()
+    {
+        m_FloatingText.SetActive(true);
+    }
+
+    public void DeactivateText()
+    {
+        m_FloatingText.SetActive(false);
     }
 
 }

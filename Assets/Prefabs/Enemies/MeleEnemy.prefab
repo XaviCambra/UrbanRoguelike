@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 6528876050359306511}
   - component: {fileID: 6528876050359306510}
   - component: {fileID: 6528876050359306509}
+  - component: {fileID: 2490364322719871442}
   m_Layer: 0
   m_Name: MeleEnemy
   m_TagString: Enemy
@@ -151,7 +152,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &6528876050359306499
@@ -171,10 +172,10 @@ MonoBehaviour:
   m_Damage: 10
   m_AttackSpeed: 15
   m_AttackCooldown: 5
-  m_DetectionRadius: 20
-  m_FollowDistance: 10
-  m_AttackDistance: 2
-  m_DashDistance: 5
+  m_DetectionRadius: 40
+  m_FollowDistance: 20
+  m_AttackDistance: 5
+  m_DashDistance: 6
   m_CanAttack: 0
   m_AttackPoint: {fileID: 6528876050542563968}
   m_Points: 10
@@ -207,7 +208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Player: {fileID: 0}
-  m_distance: 0
 --- !u!114 &6528876050359306496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +278,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 6528876050359306510}
+--- !u!114 &2490364322719871442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528876050359306508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac6ad601eb53e04b9baef1585d4f8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DashSpeed: 8
+  m_DashDistance: 5
 --- !u!1 &6528876050542563979
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    [SerializeField] private Vector3 m_MouseScreenPosition;
-    [SerializeField] private Vector3 m_MouseWorldPosition;
-
     [SerializeField] private Camera m_Camera;
 
     public GameObject m_test;
@@ -35,11 +32,6 @@ public class InputController : MonoBehaviour
 
     //Shoot
     public MouseButton m_ShootButton = MouseButton.Left;
-
-    private void Start()
-    {
-        m_Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-    }
 
     public Vector3 m_MouseDirectionScreen()
     {

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class MeleEnemy : FSM_EnemyBase
 {
     Module_AttackMele m_AttackMele;
+    Module_Dash m_Dash;
     [SerializeField] GameObject m_Player;
     NavMeshAgent m_NavMeshAgent;
 
@@ -13,29 +14,29 @@ public class MeleEnemy : FSM_EnemyBase
     private bool m_CanAttack;
     private bool m_AttackOnCooldown;
     
-    [SerializeField] private float m_distance;
+    private bool m_HasToDash;
 
     private void Start()
     {
         m_Blackboard = GetComponent<EnemyBase_BLACKBOARD>();
         m_AttackMele = GetComponent<Module_AttackMele>();
+        m_Dash = GetComponent<Module_Dash>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
 
         m_Player = GameObject.FindGameObjectWithTag("Player");
         
         m_Blackboard.m_CanAttack = true;
         m_AttackOnCooldown = false;
-
-        m_CanMove = false;
     }
 
 
     public override void EnemyMovement()
-    {
-        //m_CanMove = Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance;
-
-        //if (m_CanMove == false) return;
-
+    { 
+        if(Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance
+            && Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance)
+        {
+            m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Dash.m_DashDistance, m_Dash.m_DashSpeed);
+        }
         SetMovementDestination();
         transform.LookAt(m_NavMeshAgent.velocity.normalized);
     }
@@ -54,8 +55,6 @@ public class MeleEnemy : FSM_EnemyBase
         m_AttackMele.HitOnDirection(m_Blackboard.m_Damage);
         m_AttackOnCooldown = true;
         StartCoroutine(RechargeAttack());
-        
-        //m_CanMove = true;
     }
 
     private IEnumerator RechargeAttack()
@@ -66,29 +65,16 @@ public class MeleEnemy : FSM_EnemyBase
 
     private void SetMovementDestination()
     {
-        /*Vector3 l_ClosestPointOnPlayer = m_Player.transform.position - (m_Player.transform.position - transform.position).normalized * (m_Blackboard.m_AttackDistance *0.95f);
-        m_NavMeshAgent.SetDestination(l_ClosestPointOnPlayer);
+        float l_Distance = Vector3.Distance(transform.position, m_Player.transform.position);
 
-        if (Vector3.Distance(transform.position, m_Player.transform.position) < m_Blackboard.m_RunDistance)
+        if (l_Distance > m_Blackboard.m_DetectionRadius)
         {
-            m_NavMeshAgent.speed = m_Blackboard.m_WalkSpeed;
-        }
-        else
-        {
-            m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
-        }*/
-
-        m_distance = Vector3.Distance(transform.position, m_Player.transform.position);
-
-        if (m_distance > m_Blackboard.m_DetectionRadius)
-        {
-            //m_CanMove = false;
             return;
         }
 
         else
         {
-            if (m_distance < m_Blackboard.m_FollowDistance)
+            if (l_Distance < m_Blackboard.m_FollowDistance)
             {
                 m_CanMove = true;
                 m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
@@ -97,12 +83,7 @@ public class MeleEnemy : FSM_EnemyBase
                 m_NavMeshAgent.SetDestination(l_ClosestPointOnPlayer);
             }
 
-            /*if (m_distance < m_Blackboard.m_DashDistance)
-            {
-                EnemyDash();
-            }*/
-
-            if (m_distance < m_Blackboard.m_AttackDistance)
+            if (l_Distance < m_Blackboard.m_AttackDistance)
             {
                 m_CanMove = false;
                 EnemyAttack();
