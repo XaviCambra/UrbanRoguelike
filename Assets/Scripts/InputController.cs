@@ -33,6 +33,15 @@ public class InputController : MonoBehaviour
     //Shoot
     public MouseButton m_ShootButton = MouseButton.Left;
 
+    public Vector3 m_MouseDirectionScreen()
+    {
+        Vector3 m_MouseWorldPosition = m_MousePositionInScreen();
+
+        m_MouseWorldPosition.y = transform.position.y;
+
+        return (m_MouseWorldPosition - transform.position).normalized;
+    }
+
     public Vector3 m_MousePositionInScreen()
     {
         Vector3 l_mouseScreenPosition = Input.mousePosition;
