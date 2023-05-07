@@ -23,7 +23,6 @@ public class RoomGenerator : MonoBehaviour
         var asyncLoadLevel = SceneManager.LoadSceneAsync(l_Scene, LoadSceneMode.Additive);
         while (!asyncLoadLevel.isDone)
         {
-            Debug.Log("Loading the Scene");
             yield return null;
         }
 

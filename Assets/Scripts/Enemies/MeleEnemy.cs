@@ -44,11 +44,6 @@ public class MeleEnemy : FSM_EnemyBase
         SetMovementDestination();
     }
 
-    private void HasToDash()
-    {
-        m_HasToDash = Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance * 2;
-    }
-
     public override void EnemyAttack()
     {
         if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance) return;
@@ -74,8 +69,12 @@ public class MeleEnemy : FSM_EnemyBase
 
         if (l_Distance > m_Blackboard.m_DetectionRadius)
         {
-            m_HasToDash = true;
             return;
+        }
+
+        if(l_Distance > m_Blackboard.m_DashChargedDistance)
+        {
+            m_HasToDash = true;
         }
 
         else

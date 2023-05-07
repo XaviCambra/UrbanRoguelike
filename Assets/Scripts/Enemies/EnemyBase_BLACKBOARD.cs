@@ -18,6 +18,7 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
     public float m_FollowDistance;
     public float m_AttackDistance;
     public float m_DashDistance;
+    public float m_DashChargedDistance;
 
     //Variables
     public bool m_CanAttack;
