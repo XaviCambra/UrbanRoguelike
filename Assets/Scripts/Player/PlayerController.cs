@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
 
     //[SerializeField] private Camera m_Camera;
 
-    [SerializeField] private GameObject m_Mesh;
+    [SerializeField] private GameObject m_Body;
+    [SerializeField] private GameObject m_HipsDontLie;
 
     private void Start()
     {
@@ -62,7 +63,6 @@ public class PlayerController : MonoBehaviour
         
         if (m_CanMove) MovementInput();
 
-        FaceMouse();
         Crouching();
         Shoot();
         UseItem();
@@ -96,7 +96,12 @@ public class PlayerController : MonoBehaviour
 
         l_Direction.Normalize();
 
-        if (l_Direction == Vector3.zero) return;
+        if (l_Direction == Vector3.zero)
+        {
+            BodyFaceMouse();
+            return;
+        }
+        else HipsFaceMouse();
 
         if (Dash()) return;
 
@@ -159,9 +164,27 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void FaceMouse()
+    void BodyFaceMouse()
     {
-        m_Mesh.transform.forward = m_InputController.m_MouseDirectionScreen();
+        m_Body.transform.forward = m_InputController.m_MouseDirectionScreen();
+        if (m_Body.transform.localRotation.y * Mathf.Rad2Deg > 40)
+        {
+            Quaternion l_HipsRotation = m_Body.transform.localRotation;
+            l_HipsRotation.y -= 40 * Mathf.Deg2Rad;
+            m_HipsDontLie.transform.localRotation = l_HipsRotation;
+        }
+        else if (m_Body.transform.localRotation.y * Mathf.Rad2Deg < -40)
+        {
+            Quaternion l_HipsRotation = m_Body.transform.localRotation;
+            l_HipsRotation.y += 40 * Mathf.Deg2Rad;
+            m_HipsDontLie.transform.localRotation = l_HipsRotation;
+        }
+    }
+
+    void HipsFaceMouse()
+    {
+        m_Body.transform.forward = m_InputController.m_MouseDirectionScreen();
+        m_HipsDontLie.transform.forward = m_InputController.m_MouseDirectionScreen();
     }
 
     private void Shoot()
@@ -188,7 +211,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return false;
         
-        m_Dash.DashDisplacement(m_Mesh.transform.forward, m_Dash.m_DashDistance, m_Dash.m_DashSpeed);
+        m_Dash.DashDisplacement(m_Body.transform.forward, m_Dash.m_DashDistance, m_Dash.m_DashSpeed);
         return true;
     }
 
