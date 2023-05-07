@@ -244,15 +244,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        gameObject.GetComponent<Module_Health>().m_PlayerIsDead += InvertInteract;
+        gameObject.GetComponent<Player_Health>().m_PlayerIsDead += InvertInteract;
     }
 
     private void OnDisable()
     {
-        gameObject.GetComponent<Module_Health>().m_PlayerIsDead -= InvertInteract;
+        gameObject.GetComponent<Player_Health>().m_PlayerIsDead -= InvertInteract;
     }
-    private void InvertInteract(bool isDead)
+    private void InvertInteract()
     {
-        m_CanInteract = !isDead;
+        m_CanInteract = false;
     }
 }

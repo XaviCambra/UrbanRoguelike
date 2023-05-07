@@ -10,10 +10,9 @@ public class MeleEnemy : FSM_EnemyBase
     [SerializeField] GameObject m_Player;
     NavMeshAgent m_NavMeshAgent;
 
-    private bool m_CanMove;
+
     private bool m_CanAttack;
     private bool m_AttackOnCooldown;
-    
     private bool m_HasToDash;
 
     private void Start()
@@ -31,27 +30,33 @@ public class MeleEnemy : FSM_EnemyBase
 
 
     public override void EnemyMovement()
-    { 
-        if(Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance
-            && Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance)
+    {
+        Debug.Log(m_HasToDash);
+        if (m_HasToDash)
         {
-            m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Dash.m_DashDistance, m_Dash.m_DashSpeed);
+            if(Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance)
+            {
+                m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Dash.m_DashDistance, m_Dash.m_DashSpeed);
+                m_HasToDash = false;
+                return;
+            }
         }
         SetMovementDestination();
-        transform.LookAt(m_NavMeshAgent.velocity.normalized);
+    }
+
+    private void HasToDash()
+    {
+        m_HasToDash = Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance * 2;
     }
 
     public override void EnemyAttack()
     {
-        m_CanAttack = Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance;
-
-        if (m_CanAttack == false) return;
+        if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance) return;
 
         transform.LookAt(m_Player.transform.position);
 
         if (m_AttackOnCooldown == true) return;
 
-        transform.LookAt(m_Player.transform.position);
         m_AttackMele.HitOnDirection(m_Blackboard.m_Damage);
         m_AttackOnCooldown = true;
         StartCoroutine(RechargeAttack());
@@ -69,6 +74,7 @@ public class MeleEnemy : FSM_EnemyBase
 
         if (l_Distance > m_Blackboard.m_DetectionRadius)
         {
+            m_HasToDash = true;
             return;
         }
 
@@ -76,7 +82,6 @@ public class MeleEnemy : FSM_EnemyBase
         {
             if (l_Distance < m_Blackboard.m_FollowDistance)
             {
-                m_CanMove = true;
                 m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
 
                 Vector3 l_ClosestPointOnPlayer = m_Player.transform.position - (m_Player.transform.position - transform.position).normalized * (m_Blackboard.m_AttackDistance * 0.95f);
@@ -85,7 +90,6 @@ public class MeleEnemy : FSM_EnemyBase
 
             if (l_Distance < m_Blackboard.m_AttackDistance)
             {
-                m_CanMove = false;
                 EnemyAttack();
             }
         }
