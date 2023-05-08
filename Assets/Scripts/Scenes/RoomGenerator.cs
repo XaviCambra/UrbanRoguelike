@@ -10,11 +10,12 @@ public class RoomGenerator : MonoBehaviour
     private void Start()
     {
         GenerateRandomScene();
+        GenerateRandomScene();
     }
 
     public void GenerateRandomScene()
     {
-        int RandomIndexScene = Random.Range(1, 3);
+        int RandomIndexScene = Random.Range(1, 4);
         StartCoroutine(LoadRoom("Nivel_"+RandomIndexScene));
     }
 
