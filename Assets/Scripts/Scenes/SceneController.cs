@@ -14,5 +14,6 @@ public class SceneController : MonoBehaviour
 
         m_SettedRoom = SettedRoom;
         m_DoorToNextRoom.SetActive(true);
+        GetComponent<GenerateNav>().UpdateNavigation();
     }
 }

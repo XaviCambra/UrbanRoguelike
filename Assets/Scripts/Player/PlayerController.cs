@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
 
     private float m_MovementSpeed;
 
-    [SerializeField] private float m_CurrentShootTime;
     [SerializeField] private float m_CurrentOverheatTime;
 
     [SerializeField] private int m_CurrentShots;
@@ -30,7 +29,7 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private Camera m_Camera;
 
     [SerializeField] private GameObject m_Body;
-    [SerializeField] private GameObject m_HipsDontLie;
+    [SerializeField] private GameObject m_Hips;
 
     private void Start()
     {
@@ -47,7 +46,6 @@ public class PlayerController : MonoBehaviour
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
 
         m_Blackboard.m_CanAttack = true;
-        m_CurrentShootTime = 0;
 
         m_CanOverheat = true;
         m_OverheatCancelled = false;
@@ -66,7 +64,6 @@ public class PlayerController : MonoBehaviour
         UseItem();
         SetSpeed();
         
-        //if (m_OverheatCancelled) CancelOverHeat();
         if(m_OverheatCancelled == false) OverHeat();
     }
 
@@ -160,6 +157,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private bool Dash()
+    {
+        if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return false;
+
+        m_Dash.DashDisplacement(m_Body.transform.forward, m_Dash.m_DashDistance, m_Dash.m_DashSpeed);
+        return true;
+    }
+
     IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
     {
         yield return new WaitForSeconds(transitionDuration);
@@ -175,20 +180,20 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion l_HipsRotation = m_Body.transform.localRotation;
             l_HipsRotation.y -= 40 * Mathf.Deg2Rad;
-            m_HipsDontLie.transform.localRotation = l_HipsRotation;
+            m_Hips.transform.localRotation = l_HipsRotation;
         }
         else if (m_Body.transform.localRotation.y * Mathf.Rad2Deg < -40)
         {
             Quaternion l_HipsRotation = m_Body.transform.localRotation;
             l_HipsRotation.y += 40 * Mathf.Deg2Rad;
-            m_HipsDontLie.transform.localRotation = l_HipsRotation;
+            m_Hips.transform.localRotation = l_HipsRotation;
         }
     }
 
     void HipsFaceMouse()
     {
         m_Body.transform.forward = m_InputController.m_MouseDirectionScreen();
-        m_HipsDontLie.transform.forward = m_InputController.m_MouseDirectionScreen();
+        m_Hips.transform.forward = m_InputController.m_MouseDirectionScreen();
     }
 
     private void Shoot()
@@ -196,26 +201,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown((int) MouseButton.Left) && m_Blackboard.m_CanAttack)
         {
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Enemy");
-
-            if (m_CurrentShootTime < m_Blackboard.m_OverHeatWindow)
-            {
-                m_CurrentShots++;
-                m_CurrentShootTime = 0;
-            }
-
-            else
-            {
-                m_CurrentShootTime += 1 * Time.deltaTime;
-            }
+            OverHeat();
         }
-    }
-
-    private bool Dash()
-    {
-        if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return false;
-        
-        m_Dash.DashDisplacement(m_Body.transform.forward, m_Dash.m_DashDistance, m_Dash.m_DashSpeed);
-        return true;
     }
 
     private void OverHeat()
@@ -225,12 +212,12 @@ public class PlayerController : MonoBehaviour
             if (m_CurrentShots >= m_Blackboard.m_MaxOverHeat)
             {
                 m_Blackboard.m_CanAttack = false;
-                Debug.Log("Over Heat");
                 Reload();
+                return;
             }
+            StopCoroutine(Reload());
+            StartCoroutine(Reload());
         }
-
-        else return;
     }
 
     public IEnumerator CancelOverHeat()

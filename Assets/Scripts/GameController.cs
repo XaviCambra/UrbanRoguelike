@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
 {
     private static GameController m_instance;
 
+    public PowerUp_Base m_PermanentPowerUp;
+
     public float m_MaxPoints;
     public float m_CurrentPoints;
 
@@ -30,5 +32,6 @@ public class GameController : MonoBehaviour
     {
         m_CurrentPoints -= l_points;
     }
+
 
 }

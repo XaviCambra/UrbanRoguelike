@@ -10,6 +10,7 @@ public class RoomGenerator : MonoBehaviour
     private void Start()
     {
         GenerateRandomScene();
+        GenerateRandomScene();
     }
 
     public void GenerateRandomScene()

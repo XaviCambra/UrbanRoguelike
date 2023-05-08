@@ -190,11 +190,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6528876050359306508, guid: 0d177b97630ef004ea7769dfc2fc0d5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d177b97630ef004ea7769dfc2fc0d5c, type: 3}
 --- !u!4 &4970997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6528876050359306501, guid: 0d177b97630ef004ea7769dfc2fc0d5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4970996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4970998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6528876050359306508, guid: 0d177b97630ef004ea7769dfc2fc0d5c,
     type: 3}
   m_PrefabInstance: {fileID: 4970996}
   m_PrefabAsset: {fileID: 0}
@@ -209,6 +220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangedEnemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632940219825347291, guid: a55e69bcdbc899e4eb1579285024472f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7632940219825347297, guid: a55e69bcdbc899e4eb1579285024472f,
         type: 3}
@@ -270,6 +286,12 @@ PrefabInstance:
 --- !u!4 &71824918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7632940219825347297, guid: a55e69bcdbc899e4eb1579285024472f,
+    type: 3}
+  m_PrefabInstance: {fileID: 71824917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &71824919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7632940219825347291, guid: a55e69bcdbc899e4eb1579285024472f,
     type: 3}
   m_PrefabInstance: {fileID: 71824917}
   m_PrefabAsset: {fileID: 0}
@@ -520,6 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 155796169}
   - component: {fileID: 155796170}
+  - component: {fileID: 155796171}
   m_Layer: 0
   m_Name: Blockout
   m_TagString: MainMap
@@ -571,6 +594,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SettedRoom: 0
   m_DoorToNextRoom: {fileID: 1727308112}
+--- !u!114 &155796171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155796168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8000ddb5229a57439545ed1616e1f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies:
+  - {fileID: 2118792250}
+  - {fileID: 1166443973}
+  - {fileID: 160139055}
+  - {fileID: 4970998}
+  - {fileID: 71824919}
+  - {fileID: 1704278671}
 --- !u!1001 &160139053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -638,11 +680,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6528876050359306508, guid: 0d177b97630ef004ea7769dfc2fc0d5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d177b97630ef004ea7769dfc2fc0d5c, type: 3}
 --- !u!4 &160139054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6528876050359306501, guid: 0d177b97630ef004ea7769dfc2fc0d5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 160139053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &160139055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6528876050359306508, guid: 0d177b97630ef004ea7769dfc2fc0d5c,
     type: 3}
   m_PrefabInstance: {fileID: 160139053}
   m_PrefabAsset: {fileID: 0}
@@ -3065,6 +3118,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7632940219825347291, guid: a55e69bcdbc899e4eb1579285024472f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7632940219825347297, guid: a55e69bcdbc899e4eb1579285024472f,
         type: 3}
       propertyPath: m_RootOrder
@@ -3125,6 +3183,12 @@ PrefabInstance:
 --- !u!4 &1166443972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7632940219825347297, guid: a55e69bcdbc899e4eb1579285024472f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1166443971}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1166443973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7632940219825347291, guid: a55e69bcdbc899e4eb1579285024472f,
     type: 3}
   m_PrefabInstance: {fileID: 1166443971}
   m_PrefabAsset: {fileID: 0}
@@ -4469,11 +4533,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleEnemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6528876050359306508, guid: 0d177b97630ef004ea7769dfc2fc0d5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d177b97630ef004ea7769dfc2fc0d5c, type: 3}
 --- !u!4 &1704278670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6528876050359306501, guid: 0d177b97630ef004ea7769dfc2fc0d5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1704278669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1704278671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6528876050359306508, guid: 0d177b97630ef004ea7769dfc2fc0d5c,
     type: 3}
   m_PrefabInstance: {fileID: 1704278669}
   m_PrefabAsset: {fileID: 0}
@@ -5671,6 +5746,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7632940219825347291, guid: a55e69bcdbc899e4eb1579285024472f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7632940219825347297, guid: a55e69bcdbc899e4eb1579285024472f,
         type: 3}
       propertyPath: m_RootOrder
@@ -5731,6 +5811,12 @@ PrefabInstance:
 --- !u!4 &2118792249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7632940219825347297, guid: a55e69bcdbc899e4eb1579285024472f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2118792248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2118792250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7632940219825347291, guid: a55e69bcdbc899e4eb1579285024472f,
     type: 3}
   m_PrefabInstance: {fileID: 2118792248}
   m_PrefabAsset: {fileID: 0}
