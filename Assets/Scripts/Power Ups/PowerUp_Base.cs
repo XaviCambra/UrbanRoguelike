@@ -7,11 +7,10 @@ public class PowerUp_Base : ScriptableObject
 {
     protected Player_BLACKBOARD m_BlackBoard;
 
-    public string m_PowerUp_Name;
-    public Sprite m_PowerUp_Image;
+    public string PowerUp_Name;
+    public Sprite PowerUp_Image;
     [TextArea(3, 3, order = 1)]
-    public string m_PowerUp_Description;
-    public int m_PowerUp_Price;
+    public string PowerUp_Description;
 
     public virtual void ApplyPowerUp()
     {
