@@ -39,12 +39,12 @@ public class Module_Health : MonoBehaviour
 
         if (m_CurrentHealth > m_MaxHealth) m_CurrentHealth = m_MaxHealth;
 
-        if (m_CurrentHealth > 0) return;
-
-        Death();
+        
     }
     public virtual void Death()
     {
+        if (m_CurrentHealth > 0) return;
+
         if(ObjectMesh == null)
         {
             Debug.LogError("Custom Error - No object attached to Module_Health on " + gameObject.name);
