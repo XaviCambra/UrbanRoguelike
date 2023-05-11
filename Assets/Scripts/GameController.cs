@@ -33,5 +33,8 @@ public class GameController : MonoBehaviour
         m_CurrentPoints -= l_points;
     }
 
+    public void SetPowerUp()
+    {
 
+    }
 }
