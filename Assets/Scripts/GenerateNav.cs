@@ -10,7 +10,7 @@ public class GenerateNav : MonoBehaviour
     public void UpdateNavigation()
     {
         NavMeshBuilder.BuildNavMeshAsync();
-        StartCoroutine(ActivateEnemies(2.5f));
+        StartCoroutine(ActivateEnemies(4.0f));
     }
 
     private IEnumerator ActivateEnemies(float WaitingTime)

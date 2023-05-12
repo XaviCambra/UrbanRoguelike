@@ -1517,7 +1517,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-43622
+  m_Name: pb_Mesh-141406
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5399,12 +5399,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1167054165}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1172066460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5866003101248930173, guid: 97ba78d46bb61014c8c60961d9b54dd3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1249585998}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1180201661
 GameObject:
   m_ObjectHideFlags: 0
@@ -5627,6 +5621,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 449747735}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1918434214}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 1697182108}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 410370994}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[4]
+      value: 
+      objectReference: {fileID: 578371820}
     - target: {fileID: 5866003101248930173, guid: 97ba78d46bb61014c8c60961d9b54dd3,
         type: 3}
       propertyPath: m_Name
@@ -5640,6 +5664,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1249585998}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1249586000 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1249585998}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b03e02dac08c34aacb7854d9d3da75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1354433867
 GameObject:
   m_ObjectHideFlags: 0
@@ -5753,7 +5789,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1373268198}
   - component: {fileID: 1373268199}
-  - component: {fileID: 1373268200}
   m_Layer: 0
   m_Name: Blockout
   m_TagString: MainMap
@@ -5808,25 +5843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SettedRoom: 0
-  m_DoorToNextRoom: {fileID: 1172066460}
---- !u!114 &1373268200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373268197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8000ddb5229a57439545ed1616e1f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemies:
-  - {fileID: 449747735}
-  - {fileID: 1918434214}
-  - {fileID: 1697182108}
-  - {fileID: 410370994}
-  - {fileID: 578371820}
+  m_DoorToNextRoom: {fileID: 1249586000}
 --- !u!1001 &1382934650
 PrefabInstance:
   m_ObjectHideFlags: 0

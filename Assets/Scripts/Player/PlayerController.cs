@@ -90,11 +90,7 @@ public class PlayerController : MonoBehaviour
 
         l_Direction.Normalize();
 
-        if (Dash())
-        {
-            HipsFaceMouse();
-            return;
-        }
+        if (Dash())return;
 
         if (l_Direction == Vector3.zero)
         {
@@ -102,7 +98,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         else HipsFaceMouse();
-
 
         l_Direction = Module_LinearGravity.SetGravityToVector(l_Direction);
 
