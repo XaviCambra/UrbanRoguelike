@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         if (m_CanMove) MovementInput();
 
         Crouching();
-        Shoot();
+        if(m_Crouching) Shoot();
         UseItem();
         SetSpeed();
         
@@ -133,7 +133,6 @@ public class PlayerController : MonoBehaviour
     void Crouching_In()
     {
         m_Crouching = true;
-        m_Blackboard.m_CanAttack = false;
         m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0.5f, 0), 1));
     }
@@ -141,7 +140,6 @@ public class PlayerController : MonoBehaviour
     void Crouching_Out()
     {
         m_Crouching = false;
-        m_Blackboard.m_CanAttack = true;
         float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(duration / 2, new Vector3(0, 1, 0), 2)); 
     }
@@ -215,8 +213,7 @@ public class PlayerController : MonoBehaviour
                 Reload();
                 return;
             }
-            StopCoroutine(Reload());
-            StartCoroutine(Reload());
+            m_CurrentShots++;
         }
     }
 
