@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Shop))]
-public class ShopEditor : Editor
+[CustomEditor(typeof(PermanentShop))]
+public class PermanentShopEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        Shop l_Shop = (Shop)target;
+        PermanentShop l_Shop = (PermanentShop)target;
         EditorGUILayout.Space();
         if (GUILayout.Button("Renew Shop"))
         {
-            l_Shop.RandomPowerUps();
+            l_Shop.RandomPowerUps(l_Shop.m_NotPickedPowerUps);
         }
     }
 }

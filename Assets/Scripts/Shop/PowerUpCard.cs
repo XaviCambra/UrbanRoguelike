@@ -21,9 +21,13 @@ public class PowerUpCard : MonoBehaviour
 
     public void SetCardStats()
     {
-        m_CardName.text = m_PowerUp.m_PowerUp_Name;
-        m_CardSprite.sprite = m_PowerUp.m_PowerUp_Image;
-        m_CardDescription.text = m_PowerUp.m_PowerUp_Description;
-        m_CardPrice.text = m_PowerUp.m_PowerUp_Price.ToString();
+        if(m_CardName != null)
+            m_CardName.text = m_PowerUp.m_PowerUp_Name;
+        if(m_CardSprite != null)
+            m_CardSprite.sprite = m_PowerUp.m_PowerUp_Image;
+        if(m_CardDescription != null)
+            m_CardDescription.text = m_PowerUp.m_PowerUp_Description;
+        if(m_CardPrice != null)
+            m_CardPrice.text = m_PowerUp.m_PowerUp_Price.ToString();
     }
 }
