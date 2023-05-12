@@ -20,6 +20,7 @@ public class PowerUpCard : MonoBehaviour
 
     public void SetCardStats()
     {
+        Debug.Log(m_PowerUp.PowerUp_Name);
         m_CardName.text = m_PowerUp.PowerUp_Name;
         m_CardSprite.sprite = m_PowerUp.PowerUp_Image;
         m_CardDescription.text = m_PowerUp.PowerUp_Description;

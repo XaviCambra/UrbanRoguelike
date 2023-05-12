@@ -52,7 +52,6 @@ public class Shop : MonoBehaviour
     private PowerUp_Base GiveRandomPower()
     {
         PowerUp_Base powerUp = m_NotPickedPowerUps[Random.Range(0, m_NotPickedPowerUps.Count)];
-        Debug.Log(powerUp.PowerUp_Name);
         if (m_ShopList.Contains(powerUp))
         {
             return GiveRandomPower();
