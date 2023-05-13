@@ -10,8 +10,6 @@ public class Player_BLACKBOARD : MonoBehaviour
     [SerializeField] private const float m_BASEShootingDamage = 10.0f;
     [SerializeField] private const float m_BASEReloadSpeed = 3.0f;
     [SerializeField] private const float m_BASEBulletSpeed = 10.0f;
-    [SerializeField] private const float m_BASEBulletCritChange = 10.0f;
-    [SerializeField] private const float m_BASEBulletCritDamage = 150.0f;
     [SerializeField] private const int m_BASEMaxOverHeat = 5;
     [SerializeField] private const int m_BaseOverHeatWindow = 3;
 
