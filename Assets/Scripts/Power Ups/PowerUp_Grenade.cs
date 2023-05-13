@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PowerUpPerma_Grenade", menuName = "Power Up/PowerUpPerma_Grenade", order = 1)]
-public class PowerUpPerma_Grenade : PowerUp_Base
+[CreateAssetMenu(fileName = "PowerUp_Grenade", menuName = "Power Up/PowerUp_Grenade", order = 1)]
+public class PowerUp_Grenade : PowerUp_Base
 {
     public BaseItem m_GrenadePrefab;
     public override void ApplyPowerUp()
