@@ -23,6 +23,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public static int GetCurrentPoints()
+    {
+        return m_CurrentPoints;
+    }
+
     public static bool HasMorePoints(int l_Points)
     {
         return l_Points >= m_CurrentPoints;
@@ -43,6 +48,11 @@ public class GameController : MonoBehaviour
     public static void SetPowerUp(PowerUp_Base l_PowerUp)
     {
         m_PermanentPowerUp = l_PowerUp;
+    }
+
+    public static PowerUp_Base GetPowerUp()
+    {
+        return m_PermanentPowerUp;
     }
 
     public static void UsePermanentPowerUp()
