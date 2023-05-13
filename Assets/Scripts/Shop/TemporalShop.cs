@@ -12,7 +12,7 @@ public class TemporalShop : Shop
 
     public void OneUsePowerUp(int l_PowerUpIndex)
     {
-        m_ShopList[l_PowerUpIndex].ApplyPowerUp();
+        //m_ShopList[l_PowerUpIndex].ApplyPowerUp();
         CloseShop();
     }
 

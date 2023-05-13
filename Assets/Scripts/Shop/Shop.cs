@@ -40,7 +40,7 @@ public class Shop : MonoBehaviour
         return powerUp;
     }
 
-    private void AddShopListToCards()
+    protected void AddShopListToCards()
     {
         foreach(PowerUpCard l_Card in m_CardsShop)
         {
@@ -52,16 +52,16 @@ public class Shop : MonoBehaviour
             Debug.Log("Cards: " + m_CardsShop.Length + " vs Shop: " + m_ShopList.Count);
             for (int i = 0; i < m_CardsShop.Length; i++)
             {
-                m_CardsShop[i].SetPower(m_ShopList[i]);
                 m_CardsShop[i].gameObject.SetActive(true);
+                m_CardsShop[i].SetPower(m_ShopList[i]);
             }
         }
         else
         {
             for (int i = 0; i < m_ShopList.Count; i++)
             {
-                m_CardsShop[i].SetPower(m_ShopList[i]);
                 m_CardsShop[i].gameObject.SetActive(true);
+                m_CardsShop[i].SetPower(m_ShopList[i]);
             }
         }
         
