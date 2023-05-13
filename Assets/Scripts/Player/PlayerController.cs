@@ -18,9 +18,8 @@ public class PlayerController : MonoBehaviour
     private bool m_CanMove;
     private bool m_Crouching;
 
-    public bool m_CanOverheat;
-    public bool m_OverheatCancelled;
 
+    public bool m_CanOverheat;
     private float m_MovementSpeed;
 
     [SerializeField] private float m_CurrentOverheatTime;
@@ -46,11 +45,8 @@ public class PlayerController : MonoBehaviour
         m_CanMove = true;
         m_Crouching = false;
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
-
         m_Blackboard.m_CanAttack = true;
-
         m_CanOverheat = true;
-        m_OverheatCancelled = false;
 
         StartCoroutine(Inmortality(m_Blackboard.m_InmortalityDuration));
     }
@@ -214,9 +210,9 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator CancelOverHeat()
     {
-        m_OverheatCancelled = true;
+        m_CanOverheat = false;
         yield return new WaitForSeconds(m_Blackboard.m_OverHeatCancelDuration);
-        m_OverheatCancelled = false;
+        m_CanOverheat = true;
     }
 
     private IEnumerator Reload()
