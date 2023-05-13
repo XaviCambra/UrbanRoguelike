@@ -8,8 +8,6 @@ public class DoorTriggerController : MonoBehaviour
     public bool m_Open = false;
     public GameObject m_FloatingText;
 
-    KeyItem m_key;
-
     public void OpenDoor()
     {
         m_Animator.Play("DoorOpening", 0, 0.0f);
@@ -29,10 +27,10 @@ public class DoorTriggerController : MonoBehaviour
     {
         Player_BLACKBOARD l_blackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
 
-        if (other.CompareTag("Player") && l_blackboard.m_HasKey)
-        {
-            m_FloatingText.SetActive(true);
-        }
+        //if (other.CompareTag("Player") && l_blackboard.m_HasKey)
+        //{
+        //    m_FloatingText.SetActive(true);
+        //}
     }
 
     private void OnTriggerExit(Collider other)
