@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return false;
 
-        m_Dash.DashDisplacement(m_Body.transform.forward, m_Dash.m_DashDistance, m_Dash.m_DashSpeed);
+        m_Dash.DashDisplacement(m_Body.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
         return true;
     }
 

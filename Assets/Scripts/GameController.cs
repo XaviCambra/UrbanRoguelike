@@ -6,51 +6,55 @@ public class GameController : MonoBehaviour
 {
     private static GameController m_instance;
 
-    private static PowerUp_Base m_PermanentPowerUp;
+    public PowerUp_Base m_PermanentPowerUp;
 
-    public static float m_MaxPoints;
-    private static int m_CurrentPoints;
+    public int m_MaxPoints;
+    public int m_CurrentPoints;
 
     private void Awake()
     {
         if (m_instance != null)
             Destroy(gameObject);
-
         else
         {
-            m_instance = null;
+            m_instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
 
-    public static int GetCurrentPoints()
+    public int GetCurrentPoints()
     {
         return m_CurrentPoints;
     }
 
-    public static bool HasMorePoints(int l_Points)
+    public bool HasMorePoints(int l_Points)
     {
-        return l_Points >= m_CurrentPoints;
+        return l_Points <= m_CurrentPoints;
     }
 
-    public static void AddPoints(int l_Points)
+    public void AddPoints(int l_Points)
     {
         m_CurrentPoints += l_Points;
         Mathf.Clamp(m_CurrentPoints, 0, m_MaxPoints);
     }
 
-    public static void SubstractPoints (int l_Points)
+    public void SubstractPoints (int l_Points)
     {
         m_CurrentPoints -= l_Points;
         Mathf.Clamp(m_CurrentPoints, 0, m_MaxPoints);
     }
 
-    public static void SetPowerUp(PowerUp_Base l_PowerUp)
+    public void SetPowerUp(PowerUp_Base l_PowerUp)
     {
         m_PermanentPowerUp = l_PowerUp;
     }
 
-    public static void UsePermanentPowerUp()
+    public PowerUp_Base GetPowerUp()
+    {
+        return m_PermanentPowerUp;
+    }
+
+    public void UsePermanentPowerUp()
     {
         if(m_PermanentPowerUp != null)
             m_PermanentPowerUp.ApplyPowerUp();

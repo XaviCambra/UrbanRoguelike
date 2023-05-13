@@ -8,6 +8,7 @@ public class PowerUpCard : MonoBehaviour
 {
     public PowerUp_Base m_PowerUp;
 
+    public int m_CardIndex;
     public TextMeshProUGUI m_CardName;
     public Image m_CardSprite;
     public TextMeshProUGUI m_CardDescription;
@@ -27,7 +28,22 @@ public class PowerUpCard : MonoBehaviour
             m_CardSprite.sprite = m_PowerUp.m_PowerUp_Image;
         if(m_CardDescription != null)
             m_CardDescription.text = m_PowerUp.m_PowerUp_Description;
-        if(m_CardPrice != null)
+        if (m_CardPrice == null)
+            return;
+        if(PlayerPrefs.GetInt(m_PowerUp.m_PowerUp_Name) == 1)
+        {
+            if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().GetPowerUp() != null &&
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().GetPowerUp().m_PowerUp_Name.Equals(m_PowerUp.m_PowerUp_Name))
+            {
+                m_CardPrice.text = "Activo";
+            }
+            else
+            {
+                m_CardPrice.text = "Activar";
+            }
+        }
+        else
             m_CardPrice.text = m_PowerUp.m_PowerUp_Price.ToString();
+
     }
 }
