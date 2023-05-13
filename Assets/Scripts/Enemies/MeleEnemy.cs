@@ -35,7 +35,7 @@ public class MeleEnemy : FSM_EnemyBase
         {
             if(Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance)
             {
-                m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Dash.m_DashDistance, m_Dash.m_DashSpeed);
+                m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
                 m_HasToDash = false;
                 return;
             }

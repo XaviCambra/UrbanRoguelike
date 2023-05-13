@@ -50,6 +50,11 @@ public class GameController : MonoBehaviour
         m_PermanentPowerUp = l_PowerUp;
     }
 
+    public static PowerUp_Base GetPowerUp()
+    {
+        return m_PermanentPowerUp;
+    }
+
     public static void UsePermanentPowerUp()
     {
         if(m_PermanentPowerUp != null)
