@@ -85,26 +85,12 @@ public class InventoryManager : MonoBehaviour
     public void UseItem()
     {
         m_playerController.m_Blackboard.m_Item = null;
-
-        if (m_playerController.m_Blackboard.m_HasKey == true)
-        {
-            m_playerController.m_Blackboard.m_HasKey = false;
-        } 
     }
 
     void GrabItem(BaseItem l_item)
     {
 
         if (m_playerController.m_Blackboard.m_Item != null) return;
-
-        if (l_item.CompareTag("KeyDropper"))
-        {
-            m_playerController.m_Blackboard.m_Item = l_item;
-            l_item.gameObject.SetActive(false);
-            m_playerController.m_Blackboard.m_HasKey = true;
-            m_CanDrop = true;
-            Debug.Log("Player grabbed a key");
-        }
 
         else if (l_item.CompareTag("ItemDropper"))
         {
