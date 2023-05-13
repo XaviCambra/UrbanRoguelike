@@ -52,7 +52,7 @@ public class Module_Health : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy"))
         {
-            GameController.AddPoints(m_EnemyBlackBoard.m_Points);
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().AddPoints(m_EnemyBlackBoard.m_Points);
         }
 
         ObjectMesh.SetActive(false);

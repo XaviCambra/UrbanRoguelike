@@ -15,6 +15,6 @@ public class UI_Coins : MonoBehaviour
 
     public void UpdateText()
     {
-        m_Text.text = GameController.GetCurrentPoints().ToString();
+        m_Text.text = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().GetCurrentPoints().ToString();
     }
 }

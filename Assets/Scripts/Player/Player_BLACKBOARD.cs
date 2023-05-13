@@ -41,7 +41,7 @@ public class Player_BLACKBOARD : MonoBehaviour
 
     private void Start()
     {
-        GameController.UsePermanentPowerUp();
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().UsePermanentPowerUp();
     }
 
     public void ResetAllStats()
