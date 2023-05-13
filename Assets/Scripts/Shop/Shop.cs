@@ -40,7 +40,7 @@ public class Shop : MonoBehaviour
         return powerUp;
     }
 
-    private void AddShopListToCards()
+    protected void AddShopListToCards()
     {
         foreach(PowerUpCard l_Card in m_CardsShop)
         {
