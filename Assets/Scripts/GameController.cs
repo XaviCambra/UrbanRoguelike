@@ -23,6 +23,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public static int GetCurrentPoints()
+    {
+        return m_CurrentPoints;
+    }
+
     public static bool HasMorePoints(int l_Points)
     {
         return l_Points >= m_CurrentPoints;
