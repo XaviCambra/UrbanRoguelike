@@ -8,9 +8,18 @@ public class Bullet : MonoBehaviour
     public float m_Speed;
     public string m_TagToKill;
 
+    public Vector3 m_Direction;
+
+    public int m_BouncingNumber;
+
+    private void Start()
+    {
+        m_Direction = Vector3.forward;
+    }
+
     private void Update()
     {
-        transform.Translate(Vector3.forward * m_Speed * Time.deltaTime);
+        transform.Translate(m_Direction * m_Speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -19,6 +28,17 @@ public class Bullet : MonoBehaviour
         if (m_Health != null && collision.collider.tag.Equals(m_TagToKill))
         {
             m_Health.TakeDamage(m_Damage);
+            Destroy(gameObject);
+            return;
+        }
+
+        if(m_BouncingNumber > 0)
+        {
+            ContactPoint contact = collision.contacts[0];
+            Vector3 position = contact.normal;
+            m_Direction = Vector3.Reflect(m_Direction, position);
+            m_BouncingNumber--;
+            return;
         }
 
         Destroy(gameObject);

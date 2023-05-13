@@ -27,5 +27,5 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
     public Transform m_AttackPoint;
 
     //Points
-    public float m_Points;
+    public int m_Points;
 }

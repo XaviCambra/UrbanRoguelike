@@ -11,6 +11,7 @@ public class PowerUpCard : MonoBehaviour
     public TextMeshProUGUI m_CardName;
     public Image m_CardSprite;
     public TextMeshProUGUI m_CardDescription;
+    public TextMeshProUGUI m_CardPrice;
 
     public void SetPower(PowerUp_Base l_PowerUp)
     {
@@ -20,9 +21,13 @@ public class PowerUpCard : MonoBehaviour
 
     public void SetCardStats()
     {
-        Debug.Log(m_PowerUp.PowerUp_Name);
-        m_CardName.text = m_PowerUp.PowerUp_Name;
-        m_CardSprite.sprite = m_PowerUp.PowerUp_Image;
-        m_CardDescription.text = m_PowerUp.PowerUp_Description;
+        if(m_CardName != null)
+            m_CardName.text = m_PowerUp.m_PowerUp_Name;
+        if(m_CardSprite != null)
+            m_CardSprite.sprite = m_PowerUp.m_PowerUp_Image;
+        if(m_CardDescription != null)
+            m_CardDescription.text = m_PowerUp.m_PowerUp_Description;
+        if(m_CardPrice != null)
+            m_CardPrice.text = m_PowerUp.m_PowerUp_Price.ToString();
     }
 }
