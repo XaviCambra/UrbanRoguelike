@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Player_BLACKBOARD m_Blackboard;
     CharacterController m_CharacterController;
 
+    Player_Health m_Health;
     Module_AttackRanged m_RangedAttack;
     Module_Dash m_Dash;
     Module_Animation m_Animation;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
         m_InputController = GetComponent<InputController>();
         m_Blackboard = GetComponent<Player_BLACKBOARD>();
         m_CharacterController = GetComponent<CharacterController>();
+        m_Health = GetComponent<Player_Health>();
         m_Animation = GetComponent<Module_Animation>();
         m_RangedAttack = GetComponent<Module_AttackRanged>();
         m_Dash = GetComponent<Module_Dash>();
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
         m_CanOverheat = true;
         m_OverheatCancelled = false;
 
-        m_Blackboard.m_HasKey = false;
+        StartCoroutine(Inmortality(m_Blackboard.m_InmortalityDuration));
     }
 
     private void Update()
@@ -60,11 +62,9 @@ public class PlayerController : MonoBehaviour
         if (m_CanMove) MovementInput();
 
         Crouching();
-        if(m_Crouching) Shoot();
+        if(!m_Crouching) Shoot();
         UseItem();
         SetSpeed();
-        
-        if(m_OverheatCancelled == false) OverHeat();
     }
 
     void MovementInput()
@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
             if (m_CurrentShots >= m_Blackboard.m_MaxOverHeat)
             {
                 m_Blackboard.m_CanAttack = false;
-                Reload();
+                StartCoroutine(Reload());
                 return;
             }
             m_CurrentShots++;
@@ -224,6 +224,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(m_Blackboard.m_ReloadSpeed);
         m_Blackboard.m_CanAttack = true;
         m_CurrentShots = 0;
+    }
+
+    private IEnumerator Inmortality(float l_Duration)
+    {
+        m_Health.m_CanLooseHealth = false;
+        yield return new WaitForSeconds(l_Duration);
+        m_Health.m_CanLooseHealth = true;
     }
 
     private void OnEnable()

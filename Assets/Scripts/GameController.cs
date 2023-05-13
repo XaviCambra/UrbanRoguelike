@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
 
     public static void UsePermanentPowerUp()
     {
-        m_PermanentPowerUp.ApplyPowerUp();
+        if(m_PermanentPowerUp != null)
+            m_PermanentPowerUp.ApplyPowerUp();
     }
 }

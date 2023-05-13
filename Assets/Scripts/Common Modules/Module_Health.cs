@@ -23,7 +23,7 @@ public class Module_Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float l_Damage)
+    public virtual void TakeDamage(float l_Damage)
     {
         m_CurrentHealth -= l_Damage;
 

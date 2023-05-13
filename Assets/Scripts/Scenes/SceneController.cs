@@ -21,7 +21,7 @@ public class SceneController : MonoBehaviour
     public void UpdateNavigation()
     {
         NavMeshBuilder.BuildNavMeshAsync();
-        StartCoroutine(ActivateEnemies(4.0f));
+        StartCoroutine(ActivateEnemies(2.0f));
     }
 
     private IEnumerator ActivateEnemies(float WaitingTime)

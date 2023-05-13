@@ -37,7 +37,7 @@ public class PermanentShop : Shop
 
     public void BuyPowerUp(int l_PowerUpIndex)
     {
-        if (GameController.HasMorePoints(m_ShopList[l_PowerUpIndex].m_PowerUp_Price) == false) return;
+        if (!GameController.HasMorePoints(m_ShopList[l_PowerUpIndex].m_PowerUp_Price)) return;
         GameController.SubstractPoints(m_ShopList[l_PowerUpIndex].m_PowerUp_Price);
         PlayerPrefs.SetInt(m_ShopList[l_PowerUpIndex].m_PowerUp_Name, 1);
         m_ShopList[l_PowerUpIndex].GetComponent<Button>().enabled = false;

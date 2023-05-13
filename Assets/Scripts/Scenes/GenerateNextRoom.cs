@@ -25,6 +25,8 @@ public class GenerateNextRoom : MonoBehaviour
 
     private void GenerateNewRoom()
     {
+        Time.timeScale = 0;
+        SceneLoader.LoadAdditiveScene("InGamePowerUp");
         FindAnyObjectByType(typeof(RoomGenerator)).GetComponent<RoomGenerator>().GenerateRandomScene();
         Destroy(gameObject);
     }

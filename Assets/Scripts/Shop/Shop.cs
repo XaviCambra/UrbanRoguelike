@@ -42,9 +42,14 @@ public class Shop : MonoBehaviour
 
     private void AddShopListToCards()
     {
+        foreach(PowerUpCard l_Card in m_CardsShop)
+        {
+            l_Card.gameObject.SetActive(false);
+        }
         for(int i = 0; i < m_CardsShop.Length; i++)
         {
             m_CardsShop[i].SetPower(m_ShopList[i]);
+            m_CardsShop[i].gameObject.SetActive(true);
         }
     }
 }
