@@ -403,6 +403,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1478582723}
   m_CardSprite: {fileID: 1563016012}
   m_CardDescription: {fileID: 0}
@@ -722,6 +725,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1556265654}
   m_CardSprite: {fileID: 1285663619}
   m_CardDescription: {fileID: 0}
@@ -965,6 +971,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1784084126}
   m_CardSprite: {fileID: 1407900900}
   m_CardDescription: {fileID: 0}
@@ -1292,6 +1301,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 283859308}
   m_CardSprite: {fileID: 162883750}
   m_CardDescription: {fileID: 1499327193}
@@ -1500,6 +1512,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1177340721}
   m_CardSprite: {fileID: 1390034732}
   m_CardDescription: {fileID: 0}
@@ -1667,6 +1682,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1805325389}
   m_CardSprite: {fileID: 238808316}
   m_CardDescription: {fileID: 0}
@@ -1834,6 +1852,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 61016115}
   m_CardSprite: {fileID: 1387160228}
   m_CardDescription: {fileID: 0}
@@ -2500,6 +2521,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1330000757}
   m_CardSprite: {fileID: 1237073363}
   m_CardDescription: {fileID: 0}
@@ -3397,6 +3421,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 404486541}
+        m_TargetAssemblyTypeName: PowerUpCard, Assembly-CSharp
+        m_MethodName: SetCardStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1206514213
 GameObject:
   m_ObjectHideFlags: 0
@@ -3725,7 +3761,6 @@ MonoBehaviour:
   - {fileID: 283845569}
   - {fileID: 1856271743}
   m_NotPickedPowerUps: []
-  m_PickedPowerUps: []
 --- !u!1 &1237073361
 GameObject:
   m_ObjectHideFlags: 0
@@ -5167,6 +5202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1221946743}
   m_CardSprite: {fileID: 268475476}
   m_CardDescription: {fileID: 0}
@@ -5840,6 +5878,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 536651641}
   m_CardSprite: {fileID: 2099811752}
   m_CardDescription: {fileID: 0}
@@ -6007,6 +6048,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1088231828}
   m_CardSprite: {fileID: 29046491}
   m_CardDescription: {fileID: 0}
@@ -6174,6 +6218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1059011886}
   m_CardSprite: {fileID: 2124643548}
   m_CardDescription: {fileID: 0}
@@ -6341,6 +6388,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
+  m_OwnedColor: {r: 0.5411765, g: 0.9137255, b: 0.8862745, a: 1}
+  m_ActiveColor: {r: 0.34509805, g: 0.83137256, b: 0.31764707, a: 1}
+  m_CardIndex: 0
   m_CardName: {fileID: 1635449146}
   m_CardSprite: {fileID: 1088432374}
   m_CardDescription: {fileID: 0}
