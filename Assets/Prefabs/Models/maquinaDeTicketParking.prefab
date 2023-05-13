@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4097568366313011972}
   - component: {fileID: 1113135871289848993}
   - component: {fileID: 2924613400747638891}
-  - component: {fileID: 3404424081532355310}
+  - component: {fileID: 6296530103942796520}
   m_Layer: 0
   m_Name: maquinaDeTicketParking
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3404424081532355310
-BoxCollider:
+--- !u!64 &6296530103942796520
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,6 +94,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4724007, y: 1.8985536, z: 2.3454065}
-  m_Center: {x: -0.045507245, y: 0.011661789, z: 1.172703}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5613867604693661769, guid: e42d1bbf15a78ba46accf0a04e26f8d8, type: 3}

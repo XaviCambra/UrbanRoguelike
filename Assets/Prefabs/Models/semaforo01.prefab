@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 8454092245982914913}
   - component: {fileID: 4827053470051542724}
   - component: {fileID: 7285087825696772622}
-  - component: {fileID: 594873802522312614}
-  - component: {fileID: 5805955468201767493}
+  - component: {fileID: 5204587236240005857}
   m_Layer: 0
   m_Name: semaforo01
   m_TagString: Untagged
@@ -85,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &594873802522312614
-CapsuleCollider:
+--- !u!64 &5204587236240005857
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,21 +94,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.13
-  m_Height: 2.58
-  m_Direction: 2
-  m_Center: {x: 0.0017312318, y: -0.01, z: 1.24}
---- !u!136 &5805955468201767493
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9086338492837032923}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.37
-  m_Height: 1.92
-  m_Direction: 2
-  m_Center: {x: 0.0017312318, y: 0.08, z: 3.6}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 690106047850165013, guid: e174585819a9b7943936ae49f4853134, type: 3}
