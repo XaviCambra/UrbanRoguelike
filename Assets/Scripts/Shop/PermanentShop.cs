@@ -11,6 +11,11 @@ public class PermanentShop : Shop
 
     void Start()
     {
+        ClearPowerUpsList();
+    }
+
+    private void ClearPowerUpsList()
+    {
         m_NotPickedPowerUps = m_AllPowerUpList;
 
         foreach (PowerUp_Base l_PowerUp in m_AllPowerUpList)
@@ -38,8 +43,16 @@ public class PermanentShop : Shop
     public void BuyPowerUp(int l_PowerUpIndex)
     {
         if (!GameController.HasMorePoints(m_ShopList[l_PowerUpIndex].m_PowerUp_Price)) return;
+        Debug.Log(GameController.GetCurrentPoints());
         GameController.SubstractPoints(m_ShopList[l_PowerUpIndex].m_PowerUp_Price);
-        PlayerPrefs.SetInt(m_ShopList[l_PowerUpIndex].m_PowerUp_Name, 1);
+        //PlayerPrefs.SetInt(m_ShopList[l_PowerUpIndex].m_PowerUp_Name, 1);
         m_ShopList[l_PowerUpIndex].GetComponent<Button>().enabled = false;
+
+        ClearPowerUpsList();
+    }
+
+    public void ClearSavedData()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

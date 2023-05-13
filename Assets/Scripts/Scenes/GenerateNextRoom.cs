@@ -14,7 +14,6 @@ public class GenerateNextRoom : MonoBehaviour
 
         foreach (GameObject enemy in Enemies)
         {
-            Debug.Log(enemy.name + " is active? " + enemy.activeSelf);
 
             if (enemy.activeSelf)
                 return;

@@ -27,7 +27,8 @@ public class Module_Health : MonoBehaviour
     {
         m_CurrentHealth -= l_Damage;
 
-        Death();
+        if(m_CurrentHealth <= 0)
+            Death();
     }
 
     public void GetHeal(float l_Heal)

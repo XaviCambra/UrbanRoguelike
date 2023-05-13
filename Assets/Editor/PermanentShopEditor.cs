@@ -12,9 +12,9 @@ public class PermanentShopEditor : Editor
 
         PermanentShop l_Shop = (PermanentShop)target;
         EditorGUILayout.Space();
-        if (GUILayout.Button("Renew Shop"))
+        if (GUILayout.Button("Clear Shop"))
         {
-            l_Shop.RandomPowerUps(l_Shop.m_NotPickedPowerUps);
+            l_Shop.ClearSavedData();
         }
     }
 }
