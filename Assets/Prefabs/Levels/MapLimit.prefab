@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5866003101248930174}
   - component: {fileID: 5866003101248930175}
   - component: {fileID: 5866003101248930172}
+  - component: {fileID: 1723328575789000714}
   m_Layer: 0
   m_Name: MapLimit
   m_TagString: Untagged
@@ -93,7 +94,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5866003101248930173}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -110,3 +111,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b03e02dac08c34aacb7854d9d3da75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemies: []
+--- !u!65 &1723328575789000714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5866003101248930173}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

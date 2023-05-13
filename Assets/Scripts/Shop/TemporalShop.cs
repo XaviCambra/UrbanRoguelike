@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TemporalShop : Shop
 {
+
     void Start()
     {
         RandomPowerUps(m_AllPowerUpList);

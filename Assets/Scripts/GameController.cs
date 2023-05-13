@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 
     private static PowerUp_Base m_PermanentPowerUp;
 
-    public float m_MaxPoints;
+    public static float m_MaxPoints;
     private static int m_CurrentPoints;
 
     private void Awake()
@@ -31,15 +31,23 @@ public class GameController : MonoBehaviour
     public static void AddPoints(int l_Points)
     {
         m_CurrentPoints += l_Points;
+        Mathf.Clamp(m_CurrentPoints, 0, m_MaxPoints);
     }
 
     public static void SubstractPoints (int l_Points)
     {
         m_CurrentPoints -= l_Points;
+        Mathf.Clamp(m_CurrentPoints, 0, m_MaxPoints);
     }
 
     public static void SetPowerUp(PowerUp_Base l_PowerUp)
     {
         m_PermanentPowerUp = l_PowerUp;
+    }
+
+    public static void UsePermanentPowerUp()
+    {
+        if(m_PermanentPowerUp != null)
+            m_PermanentPowerUp.ApplyPowerUp();
     }
 }

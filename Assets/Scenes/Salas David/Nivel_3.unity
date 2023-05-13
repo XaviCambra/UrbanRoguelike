@@ -3222,7 +3222,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1057778025}
   - component: {fileID: 1057778026}
-  - component: {fileID: 1057778027}
   m_Layer: 0
   m_Name: Blockout
   m_TagString: MainMap
@@ -3294,25 +3293,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SettedRoom: 0
   m_DoorToNextRoom: {fileID: 2128046160}
---- !u!114 &1057778027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057778024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8000ddb5229a57439545ed1616e1f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemies:
-  - {fileID: 1969520088}
-  - {fileID: 855887604}
-  - {fileID: 1637205823}
-  - {fileID: 989213563}
-  - {fileID: 1047085469}
-  - {fileID: 1299032498}
 --- !u!1001 &1063993694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4275,6 +4255,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MapBorder
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733363685468848240, guid: e3f7ab0c5af7b754ea83d7d423b2ae3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2733363685468848243, guid: e3f7ab0c5af7b754ea83d7d423b2ae3c,
         type: 3}
@@ -6784,6 +6769,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 1969520088}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 855887604}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 1637205823}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 989213563}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[4]
+      value: 
+      objectReference: {fileID: 1047085469}
+    - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+        type: 3}
+      propertyPath: Enemies.Array.data[5]
+      value: 
+      objectReference: {fileID: 1299032498}
     - target: {fileID: 5866003101248930173, guid: 97ba78d46bb61014c8c60961d9b54dd3,
         type: 3}
       propertyPath: m_Name
@@ -6791,12 +6811,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97ba78d46bb61014c8c60961d9b54dd3, type: 3}
---- !u!1 &2128046160 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5866003101248930173, guid: 97ba78d46bb61014c8c60961d9b54dd3,
+--- !u!114 &2128046160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
     type: 3}
   m_PrefabInstance: {fileID: 2128046159}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b03e02dac08c34aacb7854d9d3da75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2128046161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5866003101248930168, guid: 97ba78d46bb61014c8c60961d9b54dd3,
