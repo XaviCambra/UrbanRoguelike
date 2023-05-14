@@ -7,6 +7,7 @@ using UnityEngine;
 public class RangedEnemy : FSM_EnemyBase
 {
     Module_AttackRanged m_AttackRanged;
+    Module_Crouch m_Crouch;
     GameObject m_PlayerHitpoint;
 
     //EnemyBase_BLACKBOARD m_BlackBoard;
@@ -17,9 +18,9 @@ public class RangedEnemy : FSM_EnemyBase
     {
         m_Blackboard = GetComponent<EnemyBase_BLACKBOARD>();
         m_AttackRanged = GetComponent<Module_AttackRanged>();
+        m_Crouch = GetComponent<Module_Crouch>();
         m_PlayerHitpoint = GameObject.FindGameObjectWithTag("PlayerHitpoint");
 
-        
         m_Player = GameObject.FindGameObjectWithTag("Player");
         
         m_Blackboard.m_CanAttack = true;
@@ -30,7 +31,6 @@ public class RangedEnemy : FSM_EnemyBase
         base.Update();
 
         m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
-        //transform.LookAt(m_PlayerHitpoint.transform);
     }
 
     public override void EnemyMovement()
@@ -45,15 +45,29 @@ public class RangedEnemy : FSM_EnemyBase
     {
         base.EnemyAttack();
         if (m_Blackboard.m_CanAttack == false) return;
-        m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage, "Player");
+        m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage, "Enemy");
         m_Blackboard.m_CanAttack = false;
+        StartCoroutine(CrouchIn());
+    }
+
+    private IEnumerator CrouchIn()
+    {
+        yield return new WaitForSeconds(1.0f);
+        m_Crouch.AlternateCrouching(false);
         StartCoroutine(RechargeAttack());
     }
 
     protected IEnumerator RechargeAttack()
     {
-        float l_RechargeAttack = m_Blackboard.m_AttackCooldown + Random.Range(-0.5f, 0.5f);
+        float l_RechargeAttack = m_Blackboard.m_AttackCooldown + Random.Range(-0.75f, 0.75f);
         yield return new WaitForSeconds(l_RechargeAttack);
+        StartCoroutine(CrouchOut());
+    }
+
+    private IEnumerator CrouchOut()
+    {
+        yield return new WaitForSeconds(1.0f);
+        m_Crouch.AlternateCrouching(true);
         m_Blackboard.m_CanAttack = true;
     }
 }

@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
         {
-            m_Blackboard.m_Crouching = m_Crouch.AlternateCrouching();
+            m_Blackboard.m_Crouching = m_Crouch.AlternateCrouching(m_Blackboard.m_Crouching);
         }
     }
 
@@ -124,8 +124,21 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_DashKey) == false) return false;
 
-        m_Dash.DashDisplacement(m_Body.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
+        if(m_Blackboard.m_DashCount >= m_Blackboard.m_DashMaxCount) return false;
+
+        m_Dash.DashDisplacement(m_Hips.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
+
+        m_Blackboard.m_DashCount++;
+
+        if (m_Blackboard.m_DashCount >= m_Blackboard.m_DashMaxCount) StartCoroutine(DashReload());
+
         return true;
+    }
+
+    private IEnumerator DashReload()
+    {
+        yield return new WaitForSeconds(m_Blackboard.m_DashCooldown);
+        m_Blackboard.m_DashCount = 0;
     }
 
     void BodyFaceMouse()
@@ -155,7 +168,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown((int) MouseButton.Left) && m_Blackboard.m_CanAttack)
         {
-            m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Enemy");
+            m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Player");
             m_Blackboard.OverHeat();
         }
     }

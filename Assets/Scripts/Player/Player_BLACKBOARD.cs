@@ -31,6 +31,9 @@ public class Player_BLACKBOARD : MonoBehaviour
     [Header("Dash")]
     public float m_DashDistance;
     public float m_DashSpeed;
+    public int m_DashCount = 0;
+    public int m_DashMaxCount = 2;
+    public float m_DashCooldown = 3;
 
     [Header("Health")]
     public float m_InmortalityDuration;

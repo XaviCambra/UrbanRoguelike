@@ -23,6 +23,7 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
 
     //Variables
     public bool m_CanAttack;
+    public bool m_Crouching;
 
     //Objects
     public Transform m_AttackPoint;

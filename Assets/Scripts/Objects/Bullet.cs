@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float m_Damage;
     public float m_Speed;
-    public string m_TagToKill;
+    public string m_TagToIgnore;
 
     public Vector3 m_Direction;
 
@@ -24,10 +24,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Bullet collided with " + collision.collider.name);
-        Debug.Log("Bullet collided with " + collision.collider.name);
+        if (collision.collider.tag.Equals(m_TagToIgnore))
+            return;
+
         Module_Health m_Health = collision.collider.GetComponent<Module_Health>();
-        if (m_Health != null && collision.collider.tag.Equals(m_TagToKill))
+        if (m_Health != null)
         {
             m_Health.TakeDamage(m_Damage);
             Destroy(gameObject);
@@ -43,6 +44,5 @@ public class Bullet : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
     }
 }
