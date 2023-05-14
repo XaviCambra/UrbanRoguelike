@@ -10,7 +10,7 @@ public class Player_BLACKBOARD : MonoBehaviour
 
     [SerializeField] private const float m_BASEShootingDamage = 10.0f;
     [SerializeField] private const float m_BASEReloadSpeed = 3.0f;
-    [SerializeField] private const float m_BASEBulletSpeed = 10.0f;
+    [SerializeField] private const float m_BASEBulletSpeed = 40.0f;
     [SerializeField] private const float m_BASEDashDistance = 1.5f;
     [SerializeField] private const float m_BASEDashSpeed = 8.0f;
     [SerializeField] private const int m_BASEMaxOverHeat = 5;
@@ -53,7 +53,7 @@ public class Player_BLACKBOARD : MonoBehaviour
 
     private void Start()
     {
-        ResetAllStats();
+        //ResetAllStats();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().UsePermanentPowerUp();
     }
 

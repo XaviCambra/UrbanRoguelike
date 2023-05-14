@@ -52,7 +52,8 @@ public class RangedEnemy : FSM_EnemyBase
 
     private IEnumerator CrouchIn()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(3.0f);
+        Debug.Log("Crouch");
         m_Crouch.AlternateCrouching(false);
         StartCoroutine(RechargeAttack());
     }
@@ -67,6 +68,7 @@ public class RangedEnemy : FSM_EnemyBase
     private IEnumerator CrouchOut()
     {
         yield return new WaitForSeconds(1.0f);
+        Debug.Log("Crouch Out");
         m_Crouch.AlternateCrouching(true);
         m_Blackboard.m_CanAttack = true;
     }
