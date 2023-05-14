@@ -59,4 +59,9 @@ public class PowerUpCard : MonoBehaviour
                 l_CardImage.color = Color.white;
         }
     }
+
+    public void BuyThisCard()
+    {
+        FindObjectOfType<PermanentShop>().BuyPowerUp(m_CardIndex);
+    }
 }
