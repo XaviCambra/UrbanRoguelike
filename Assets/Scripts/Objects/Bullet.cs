@@ -24,6 +24,8 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Bullet collided with " + collision.collider.name);
+        Debug.Log("Bullet collided with " + collision.collider.name);
         Module_Health m_Health = collision.collider.GetComponent<Module_Health>();
         if (m_Health != null && collision.collider.tag.Equals(m_TagToKill))
         {
@@ -38,9 +40,9 @@ public class Bullet : MonoBehaviour
             Vector3 position = contact.normal;
             m_Direction = Vector3.Reflect(m_Direction, position);
             m_BouncingNumber--;
-            return;
         }
+        else
+            Destroy(gameObject);
 
-        Destroy(gameObject);
     }
 }
