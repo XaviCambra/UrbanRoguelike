@@ -9,14 +9,13 @@ public class RoomGenerator : MonoBehaviour
 
     private void Start()
     {
-        GenerateRandomScene();
-        GenerateRandomScene();
-        GenerateRandomScene();
-        StartCoroutine(LoadRoom("Boss_Room"));
-
+        GenerateRandomScene(3);
+        //GenerateRandomScene();
+        //GenerateRandomScene();
+        //StartCoroutine(LoadRoom("Boss_Room"));
     }
 
-    public void GenerateRandomScene()
+    public void GenerateRandomScene(int RoomsLeft)
     {
         int RandomIndexScene = Random.Range(1, 4);
         StartCoroutine(LoadRoom("Nivel_"+RandomIndexScene));
