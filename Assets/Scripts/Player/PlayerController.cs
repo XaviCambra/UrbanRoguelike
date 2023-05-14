@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(InputController))]
@@ -72,7 +73,11 @@ public class PlayerController : MonoBehaviour
 
         l_Direction.Normalize();
 
-        if (Dash())return;
+        if (Dash())
+        {
+            CancelMovementDash();
+            return;
+        }
 
         //if (l_Direction == Vector3.zero)
         //{
@@ -88,6 +93,13 @@ public class PlayerController : MonoBehaviour
         l_Direction = l_Direction * m_MovementSpeed * Time.deltaTime;
 
         m_CharacterController.Move(l_Direction);
+    }
+
+    private IEnumerator CancelMovementDash()
+    {
+        m_Blackboard.m_CanMove = false;
+        yield return new WaitForSeconds(0.1f);
+        m_Blackboard.m_CanMove = true;
     }
 
     private void Crouching()
