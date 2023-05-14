@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.AI;
+//using UnityEditor.AI;
 
 public class SceneController : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class SceneController : MonoBehaviour
 
     public void UpdateNavigation()
     {
-        NavMeshBuilder.BuildNavMeshAsync();
+        //NavMeshBuilder.BuildNavMeshAsync();
         StartCoroutine(ActivateEnemies(2.0f));
     }
 
