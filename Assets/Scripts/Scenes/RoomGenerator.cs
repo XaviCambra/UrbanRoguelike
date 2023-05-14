@@ -11,6 +11,9 @@ public class RoomGenerator : MonoBehaviour
     {
         GenerateRandomScene();
         GenerateRandomScene();
+        GenerateRandomScene();
+        StartCoroutine(LoadRoom("Boss_Room"));
+
     }
 
     public void GenerateRandomScene()
