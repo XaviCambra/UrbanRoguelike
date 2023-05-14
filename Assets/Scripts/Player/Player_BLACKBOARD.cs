@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Player_BLACKBOARD : MonoBehaviour
@@ -39,8 +40,17 @@ public class Player_BLACKBOARD : MonoBehaviour
     public PowerUp_Base m_PowerUp;
 
 
+    public bool m_CanInteract = true;
+    public bool m_CanMove = true;
+    public bool m_Crouching = false;
+
+    public bool m_CanOverheat = true;
+    private int m_CurrentShots;
+
+
     private void Start()
     {
+        ResetAllStats();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().UsePermanentPowerUp();
     }
 
@@ -52,5 +62,25 @@ public class Player_BLACKBOARD : MonoBehaviour
         m_ReloadSpeed = m_BASEReloadSpeed;
         m_BulletSpeed = m_BASEBulletSpeed;
         m_MaxOverHeat = m_BASEMaxOverHeat;
+    }
+
+    public void OverHeat()
+    {
+        if (m_CanOverheat)
+        {
+            if (m_CurrentShots >= m_MaxOverHeat)
+            {
+                m_CanAttack = false;
+                StartCoroutine(Reload());
+                return;
+            }
+            m_CurrentShots++;
+        }
+    }
+    private IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(m_ReloadSpeed);
+        m_CanAttack = true;
+        m_CurrentShots = 0;
     }
 }

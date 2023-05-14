@@ -5,28 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(InputController))]
 public class PlayerController : MonoBehaviour
 {
-    InputController m_InputController;
     public Player_BLACKBOARD m_Blackboard;
+    InputController m_InputController;
     CharacterController m_CharacterController;
 
     Player_Health m_Health;
-    Module_AttackRanged m_RangedAttack;
+    Module_Crouch m_Crouch;
     Module_Dash m_Dash;
+    Module_AttackRanged m_RangedAttack;
     Module_Animation m_Animation;
 
-    private bool m_CanInteract;
-    private bool m_CanMove;
-    private bool m_Crouching;
-
-
-    public bool m_CanOverheat;
     private float m_MovementSpeed;
-
-    [SerializeField] private float m_CurrentOverheatTime;
-
-    [SerializeField] private int m_CurrentShots;
-
-    //[SerializeField] private Camera m_Camera;
 
     [SerializeField] private GameObject m_Body;
     [SerializeField] private GameObject m_Hips;
@@ -40,25 +29,22 @@ public class PlayerController : MonoBehaviour
         m_Animation = GetComponent<Module_Animation>();
         m_RangedAttack = GetComponent<Module_AttackRanged>();
         m_Dash = GetComponent<Module_Dash>();
-
-        m_CanInteract = true;
-        m_CanMove = true;
-        m_Crouching = false;
+        m_Crouch = GetComponent<Module_Crouch>();
+        
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
         m_Blackboard.m_CanAttack = true;
-        m_CanOverheat = true;
 
         StartCoroutine(Inmortality(m_Blackboard.m_InmortalityDuration));
     }
 
     private void Update()
     {
-        if(m_CanInteract == false) return;
+        if(m_Blackboard.m_CanInteract == false) return;
         
-        if (m_CanMove) MovementInput();
+        if (m_Blackboard.m_CanMove) MovementInput();
 
         Crouching();
-        if(!m_Crouching) Shoot();
+        if(!m_Blackboard.m_Crouching) Shoot();
         UseItem();
         SetSpeed();
     }
@@ -102,6 +88,14 @@ public class PlayerController : MonoBehaviour
         m_CharacterController.Move(l_Direction);
     }
 
+    private void Crouching()
+    {
+        if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
+        {
+            m_Blackboard.m_Crouching = m_Crouch.AlternateCrouching();
+        }
+    }
+
     void UseItem()
     {
         if (Input.GetKeyDown(m_InputController.m_UseItemKey))
@@ -112,35 +106,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Crouching()
-    {
-        if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
-        {
-            if (m_Crouching) Crouching_Out();
-            else Crouching_In();
-        }
-    }
-
-    void Crouching_In()
-    {
-        m_Crouching = true;
-        m_Animation.PlayAnimation("Crouching", m_Crouching);
-        StartCoroutine(ModifyCharacterCollider(0, new Vector3(0, 0.5f, 0), 1));
-    }
-
-    void Crouching_Out()
-    {
-        m_Crouching = false;
-        float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
-        StartCoroutine(ModifyCharacterCollider(duration / 2, new Vector3(0, 1, 0), 2)); 
-    }
     void SetSpeed()
     {
-        if (m_Crouching)
+        if (m_Blackboard.m_Crouching)
         {
             m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
         }
-        else if (!m_Crouching)
+        else
         {
             m_MovementSpeed = m_Blackboard.m_MovementSpeed;
         }
@@ -153,14 +125,6 @@ public class PlayerController : MonoBehaviour
         m_Dash.DashDisplacement(m_Body.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
         return true;
     }
-
-    IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
-    {
-        yield return new WaitForSeconds(transitionDuration);
-        m_CharacterController.center = l_Position;
-        m_CharacterController.height = l_Height;
-    }
-
 
     void BodyFaceMouse()
     {
@@ -190,36 +154,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown((int) MouseButton.Left) && m_Blackboard.m_CanAttack)
         {
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Enemy");
-            OverHeat();
-        }
-    }
-
-    private void OverHeat()
-    {
-        if (m_CanOverheat)
-        {
-            if (m_CurrentShots >= m_Blackboard.m_MaxOverHeat)
-            {
-                m_Blackboard.m_CanAttack = false;
-                StartCoroutine(Reload());
-                return;
-            }
-            m_CurrentShots++;
+            m_Blackboard.OverHeat();
         }
     }
 
     public IEnumerator CancelOverHeat()
     {
-        m_CanOverheat = false;
+        m_Blackboard.m_CanOverheat = false;
         yield return new WaitForSeconds(m_Blackboard.m_OverHeatCancelDuration);
-        m_CanOverheat = true;
-    }
-
-    private IEnumerator Reload()
-    {
-        yield return new WaitForSeconds(m_Blackboard.m_ReloadSpeed);
-        m_Blackboard.m_CanAttack = true;
-        m_CurrentShots = 0;
+        m_Blackboard.m_CanOverheat = true;
     }
 
     private IEnumerator Inmortality(float l_Duration)
@@ -240,6 +183,6 @@ public class PlayerController : MonoBehaviour
     }
     private void InvertInteract()
     {
-        m_CanInteract = false;
+        m_Blackboard.m_CanInteract = false;
     }
 }
