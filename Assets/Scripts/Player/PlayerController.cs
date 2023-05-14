@@ -74,12 +74,14 @@ public class PlayerController : MonoBehaviour
 
         if (Dash())return;
 
-        if (l_Direction == Vector3.zero)
-        {
-            BodyFaceMouse();
-            return;
-        }
-        else HipsFaceMouse();
+        //if (l_Direction == Vector3.zero)
+        //{
+        //    BodyFaceMouse();
+        //    return;
+        //}
+        //else HipsFaceMouse();
+
+        HipsFaceMouse();
 
         l_Direction = Module_LinearGravity.SetGravityToVector(l_Direction);
 
@@ -145,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     void HipsFaceMouse()
     {
-        m_Body.transform.forward = m_InputController.m_MouseDirectionScreen();
+        //m_Body.transform.forward = m_InputController.m_MouseDirectionScreen();
         m_Hips.transform.forward = m_InputController.m_MouseDirectionScreen();
     }
 
