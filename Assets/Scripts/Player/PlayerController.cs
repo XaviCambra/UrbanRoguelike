@@ -79,11 +79,11 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        //if (l_Direction == Vector3.zero)
-        //{
-        //    BodyFaceMouse();
-        //    return;
-        //}
+        if (l_Direction == Vector3.zero)
+        {
+            //BodyFaceMouse();
+            return;
+        }
         //else HipsFaceMouse();
 
         HipsFaceMouse();

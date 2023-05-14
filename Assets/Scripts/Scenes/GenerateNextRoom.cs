@@ -14,7 +14,6 @@ public class GenerateNextRoom : MonoBehaviour
 
         foreach (GameObject enemy in Enemies)
         {
-
             if (enemy.activeSelf)
                 return;
         }
