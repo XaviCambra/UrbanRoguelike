@@ -14,7 +14,8 @@ public class SceneController : MonoBehaviour
         if (!SettedRoom) return;
 
         m_SettedRoom = SettedRoom;
-        m_DoorToNextRoom.gameObject.SetActive(true);
+        if (m_DoorToNextRoom != null)
+            m_DoorToNextRoom.gameObject.SetActive(true);
         UpdateNavigation();
     }
 

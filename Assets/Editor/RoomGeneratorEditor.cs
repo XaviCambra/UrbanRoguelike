@@ -14,7 +14,7 @@ public class RoomGeneratorEditor : Editor
         EditorGUILayout.Space();
         if (GUILayout.Button("Generate Room Testing Button"))
         {
-            m_RoomGenerator.GenerateRandomScene();
+            //m_RoomGenerator.GenerateRandomScene();
         }
     }
 }

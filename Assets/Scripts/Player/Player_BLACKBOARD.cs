@@ -10,12 +10,16 @@ public class Player_BLACKBOARD : MonoBehaviour
 
     [SerializeField] private const float m_BASEShootingDamage = 10.0f;
     [SerializeField] private const float m_BASEReloadSpeed = 3.0f;
-    [SerializeField] private const float m_BASEBulletSpeed = 10.0f;
+    [SerializeField] private const float m_BASEBulletSpeed = 40.0f;
     [SerializeField] private const float m_BASEDashDistance = 1.5f;
     [SerializeField] private const float m_BASEDashSpeed = 8.0f;
     [SerializeField] private const int m_BASEMaxOverHeat = 5;
 
+    public bool m_CanInteract = true;
+
     [Header("Movement")]
+    public bool m_CanMove = true;
+    public bool m_Crouching = false;
     public float m_MovementSpeed;
     public float m_CrouchingSpeed;
 
@@ -27,10 +31,15 @@ public class Player_BLACKBOARD : MonoBehaviour
     public float m_MaxOverHeat;
     public float m_OverHeatCancelDuration;
     public Transform m_ShootPoint;
+    public int m_CurrentShots;
+    public bool m_CanOverheat = true;
 
     [Header("Dash")]
     public float m_DashDistance;
     public float m_DashSpeed;
+    public int m_DashCount = 0;
+    public int m_DashMaxCount = 2;
+    public float m_DashCooldown = 3;
 
     [Header("Health")]
     public float m_InmortalityDuration;
@@ -39,18 +48,9 @@ public class Player_BLACKBOARD : MonoBehaviour
     public BaseItem m_Item;
     public PowerUp_Base m_PowerUp;
 
-
-    public bool m_CanInteract = true;
-    public bool m_CanMove = true;
-    public bool m_Crouching = false;
-
-    public bool m_CanOverheat = true;
-    private int m_CurrentShots;
-
-
     private void Start()
     {
-        ResetAllStats();
+        //ResetAllStats();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().UsePermanentPowerUp();
     }
 
@@ -68,13 +68,13 @@ public class Player_BLACKBOARD : MonoBehaviour
     {
         if (m_CanOverheat)
         {
-            if (m_CurrentShots >= m_MaxOverHeat)
+            if (m_CurrentShots < m_MaxOverHeat)
             {
-                m_CanAttack = false;
-                StartCoroutine(Reload());
+                m_CurrentShots++;
                 return;
             }
-            m_CurrentShots++;
+            m_CanAttack = false;
+            StartCoroutine(Reload());
         }
     }
     private IEnumerator Reload()

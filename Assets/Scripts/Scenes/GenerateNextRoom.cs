@@ -14,7 +14,6 @@ public class GenerateNextRoom : MonoBehaviour
 
         foreach (GameObject enemy in Enemies)
         {
-
             if (enemy.activeSelf)
                 return;
         }
@@ -26,7 +25,7 @@ public class GenerateNextRoom : MonoBehaviour
     {
         Time.timeScale = 0;
         SceneLoader.LoadAdditiveScene("InGamePowerUp");
-        FindAnyObjectByType(typeof(RoomGenerator)).GetComponent<RoomGenerator>().GenerateRandomScene();
+        //FindAnyObjectByType(typeof(RoomGenerator)).GetComponent<RoomGenerator>().GenerateRandomScene();
         Destroy(gameObject);
     }
 }

@@ -190,11 +190,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7632940219825347297}
-  - component: {fileID: 7632940219825347296}
   - component: {fileID: 7632940219825347295}
   - component: {fileID: 7632940219825347294}
   - component: {fileID: 7632940219825347293}
   - component: {fileID: 7632940219825347292}
+  - component: {fileID: 6715640174091328150}
+  - component: {fileID: 5111558361304374676}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -220,20 +221,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!136 &7632940219825347296
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7632940219825347291}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7632940219825347295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +268,10 @@ MonoBehaviour:
   m_FollowDistance: 0
   m_AttackDistance: 0
   m_DashDistance: 0
+  m_DashSpeed: 0
+  m_DashChargedDistance: 0
   m_CanAttack: 1
+  m_Crouching: 0
   m_AttackPoint: {fileID: 7632940219939552535}
   m_Points: 10
 --- !u!114 &7632940219825347292
@@ -299,7 +289,36 @@ MonoBehaviour:
   m_MaxHealth: 10
   m_CurrentHealth: 10
   ObjectMesh: {fileID: 7632940219825347291}
-  m_GameController: {fileID: 0}
+--- !u!114 &6715640174091328150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7632940219825347291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4b432726ece344eba58201023abc21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!143 &5111558361304374676
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7632940219825347291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7632940219939552534
 GameObject:
   m_ObjectHideFlags: 0

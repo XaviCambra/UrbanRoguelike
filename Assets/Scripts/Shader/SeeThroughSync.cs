@@ -22,7 +22,7 @@ public class SeeThroughSync : MonoBehaviour
 
     void Update()
     {
-        var view = m_Camera.WorldToViewportPoint(m_Player.position);
+        Vector3 view = m_Camera.WorldToViewportPoint(m_Player.position);
         m_Material.SetVector(PosID, view);
     }
 }
