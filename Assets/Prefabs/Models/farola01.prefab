@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6579149676458267878}
   - component: {fileID: 7845849240200076099}
   - component: {fileID: 5406282290377797513}
-  - component: {fileID: 4147270079350580846}
+  - component: {fileID: 4350311641855111820}
   m_Layer: 0
   m_Name: farola01
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4147270079350580846
-MeshCollider:
+--- !u!136 &4350311641855111820
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 690106047850165013, guid: c4956e7a50cf9464f9facdddd74f86e5, type: 3}
+  m_Radius: 0.11
+  m_Height: 4.12
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 2.0181563}
