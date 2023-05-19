@@ -25,6 +25,7 @@ public class SceneController : MonoBehaviour
 
     public void UpdateNavigation()
     {
+        Debug.Log("Abandona tu cuerpo");
         m_Surface.BuildNavMesh();
         //NavMeshBuilder.BuildNavMeshAsync();
         StartCoroutine(ActivateEnemies(2.0f));
