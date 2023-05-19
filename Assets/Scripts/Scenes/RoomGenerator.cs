@@ -10,7 +10,6 @@ public class RoomGenerator : MonoBehaviour
     private void Start()
     {
         GenerateRandomScene(3);
-        //StartCoroutine(LoadRoom("Boss_Room"));
     }
 
     public void GenerateRandomScene(int l_RoomsLeft)

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 //using UnityEditor.AI;
+using UnityEngine.AI;
 
 public class SceneController : MonoBehaviour
 {
     public bool m_SettedRoom = false;
+
+    public NavMeshSurface m_Surface;
 
     public GenerateNextRoom m_DoorToNextRoom;
 
@@ -21,6 +25,7 @@ public class SceneController : MonoBehaviour
 
     public void UpdateNavigation()
     {
+        m_Surface.BuildNavMesh();
         //NavMeshBuilder.BuildNavMeshAsync();
         StartCoroutine(ActivateEnemies(2.0f));
     }

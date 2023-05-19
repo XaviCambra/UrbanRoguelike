@@ -22,7 +22,7 @@ public class GenerateNextRoom : MonoBehaviour
     {
         Time.timeScale = 0;
         SceneLoader.LoadAdditiveScene("InGamePowerUp");
-        //FindAnyObjectByType(typeof(RoomGenerator)).GetComponent<RoomGenerator>().GenerateRandomScene();
+        //GameObject.FindObjectOfType<RoomGenerator>().GenerateRandomScene();
         Destroy(gameObject);
     }
 }
