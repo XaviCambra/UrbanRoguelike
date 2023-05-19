@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.AI;
+//using UnityEditor.AI;
 using UnityEngine;
 
 public class GenerateNav : MonoBehaviour
@@ -9,7 +9,7 @@ public class GenerateNav : MonoBehaviour
 
     public void UpdateNavigation()
     {
-        NavMeshBuilder.BuildNavMeshAsync();
+        //NavMeshBuilder.BuildNavMeshAsync();
         StartCoroutine(ActivateEnemies(4.0f));
     }
 

@@ -7,11 +7,12 @@ public class Module_Crouch : MonoBehaviour
     private bool m_Crouching;
 
     private CharacterController m_CharacterController;
-    private Module_Animation m_Animation;
+    private Animator m_Animator;
 
     private void Start()
     {
         m_CharacterController = GetComponent<CharacterController>();
+        m_Animator = GetComponent<Animator>();
     }
 
     public bool AlternateCrouching(bool l_Crocuching)
@@ -25,12 +26,14 @@ public class Module_Crouch : MonoBehaviour
     {
         //m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(0, m_CharacterController.center/2, m_CharacterController.height/2));
+        m_Animator.SetTrigger("CrouchIn");
     }
 
     void Crouching_Out()
     {
         //float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(1, m_CharacterController.center*2, m_CharacterController.height*2));
+        m_Animator.SetTrigger("CrouchOut");
     }
 
     IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)
