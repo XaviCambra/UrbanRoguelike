@@ -10,6 +10,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadSceneAsync(l_Scene);
     }
 
+    public static void LoadAdditiveScene(string l_Scene)
+    {
+        SceneManager.LoadSceneAsync(l_Scene, LoadSceneMode.Additive);
+    }
+
     public static void UnLoadScene(string l_Scene)
     {
         SceneManager.UnloadSceneAsync(l_Scene);

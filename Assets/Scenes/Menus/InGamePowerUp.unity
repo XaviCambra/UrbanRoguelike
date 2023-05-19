@@ -162,8 +162,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 458, y: 507.7}
+  m_AnchoredPosition: {x: 0, y: -75}
+  m_SizeDelta: {x: 400, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &52721850
 MonoBehaviour:
@@ -208,7 +208,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 52721851}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616750639}
+        m_TargetAssemblyTypeName: TemporalShop, Assembly-CSharp
+        m_MethodName: OneUsePowerUp
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &52721851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,9 +272,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
-  m_CardName: {fileID: 0}
+  m_OwnedColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ActiveColor: {r: 0, g: 0, b: 0, a: 0}
+  m_CardIndex: 0
+  m_CardName: {fileID: 66338171}
   m_CardSprite: {fileID: 0}
-  m_CardDescription: {fileID: 0}
+  m_CardDescription: {fileID: 442903868}
   m_CardPrice: {fileID: 0}
 --- !u!1 &66338169
 GameObject:
@@ -276,7 +291,7 @@ GameObject:
   - component: {fileID: 66338172}
   - component: {fileID: 66338171}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PowerUpName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,10 +312,10 @@ RectTransform:
   m_Father: {fileID: 52721849}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -338.1}
-  m_SizeDelta: {x: 472.2, y: 623}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -105}
+  m_SizeDelta: {x: -20, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66338171
 MonoBehaviour:
@@ -614,7 +629,7 @@ GameObject:
   - component: {fileID: 442903869}
   - component: {fileID: 442903868}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PowerUpDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -635,10 +650,10 @@ RectTransform:
   m_Father: {fileID: 52721849}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 56}
-  m_SizeDelta: {x: 432.4, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -70}
+  m_SizeDelta: {x: -20, y: -160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &442903868
 MonoBehaviour:
@@ -776,8 +791,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 609, y: -170}
-  m_SizeDelta: {x: 458, y: 507.7}
+  m_AnchoredPosition: {x: 525, y: -75}
+  m_SizeDelta: {x: 400, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474745497
 MonoBehaviour:
@@ -822,7 +837,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 474745498}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616750639}
+        m_TargetAssemblyTypeName: TemporalShop, Assembly-CSharp
+        m_MethodName: OneUsePowerUp
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &474745498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,9 +901,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
-  m_CardName: {fileID: 0}
+  m_OwnedColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ActiveColor: {r: 0, g: 0, b: 0, a: 0}
+  m_CardIndex: 0
+  m_CardName: {fileID: 1249465660}
   m_CardSprite: {fileID: 0}
-  m_CardDescription: {fileID: 0}
+  m_CardDescription: {fileID: 1678749833}
   m_CardPrice: {fileID: 0}
 --- !u!1 &559061660
 GameObject:
@@ -1057,7 +1087,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea6e3dc01351b144ae2e117440c0cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllPowerUpList: []
+  m_AllPowerUpList:
+  - {fileID: 11400000, guid: 30e77e578dddc5c4ebec86ed2781b7fa, type: 2}
+  - {fileID: 11400000, guid: a1f43da1a8dbff643957629c2fd3e0c1, type: 2}
+  - {fileID: 11400000, guid: e780800c74ae7de45bc01e42811655f4, type: 2}
+  - {fileID: 11400000, guid: 3dc60e9ae129288448cc6496a41a3ba1, type: 2}
+  - {fileID: 11400000, guid: 20c760036e64ab848a68c0bf159a725e, type: 2}
+  - {fileID: 11400000, guid: f63cb420016a5174ca8b0afbb62e4db3, type: 2}
   m_ShopList: []
   m_CardsShop:
   - {fileID: 1452840994}
@@ -1223,7 +1259,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920.3, y: 1073.4}
+  m_SizeDelta: {x: 1620, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &792125247
 MonoBehaviour:
@@ -1529,7 +1565,7 @@ GameObject:
   - component: {fileID: 1249465661}
   - component: {fileID: 1249465660}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PowerUpName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1550,10 +1586,10 @@ RectTransform:
   m_Father: {fileID: 474745496}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -338.1}
-  m_SizeDelta: {x: 472.2, y: 623}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -105}
+  m_SizeDelta: {x: -20, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249465660
 MonoBehaviour:
@@ -1664,7 +1700,7 @@ GameObject:
   - component: {fileID: 1424240601}
   - component: {fileID: 1424240600}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PowerUpDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1685,10 +1721,10 @@ RectTransform:
   m_Father: {fileID: 1452840990}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 56}
-  m_SizeDelta: {x: 432.4, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -70}
+  m_SizeDelta: {x: -20, y: -160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424240600
 MonoBehaviour:
@@ -1826,8 +1862,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -612, y: -170}
-  m_SizeDelta: {x: 458, y: 507.7}
+  m_AnchoredPosition: {x: -525, y: -75}
+  m_SizeDelta: {x: 400, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1452840991
 MonoBehaviour:
@@ -1872,7 +1908,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1452840992}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 616750639}
+        m_TargetAssemblyTypeName: TemporalShop, Assembly-CSharp
+        m_MethodName: OneUsePowerUp
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1452840992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,9 +1972,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PowerUp: {fileID: 0}
-  m_CardName: {fileID: 0}
+  m_OwnedColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ActiveColor: {r: 0, g: 0, b: 0, a: 0}
+  m_CardIndex: 0
+  m_CardName: {fileID: 1993985992}
   m_CardSprite: {fileID: 0}
-  m_CardDescription: {fileID: 0}
+  m_CardDescription: {fileID: 1424240600}
   m_CardPrice: {fileID: 0}
 --- !u!1 &1524227986
 GameObject:
@@ -2116,7 +2167,7 @@ GameObject:
   - component: {fileID: 1678749834}
   - component: {fileID: 1678749833}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PowerUpDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2137,10 +2188,10 @@ RectTransform:
   m_Father: {fileID: 474745496}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 56}
-  m_SizeDelta: {x: 432.4, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -70}
+  m_SizeDelta: {x: -20, y: -160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1678749833
 MonoBehaviour:
@@ -2626,7 +2677,7 @@ GameObject:
   - component: {fileID: 1993985993}
   - component: {fileID: 1993985992}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PowerUpName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2647,10 +2698,10 @@ RectTransform:
   m_Father: {fileID: 1452840990}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -338.1}
-  m_SizeDelta: {x: 472.2, y: 623}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -105}
+  m_SizeDelta: {x: -20, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1993985992
 MonoBehaviour:
@@ -2919,8 +2970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -153.77002}
-  m_SizeDelta: {x: 893.1, y: 89}
+  m_AnchoredPosition: {x: 0, y: -250}
+  m_SizeDelta: {x: 900, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2134950651
 MonoBehaviour:
@@ -2969,15 +3020,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90.7
-  m_fontSizeBase: 90.7
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

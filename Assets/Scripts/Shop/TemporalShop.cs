@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TemporalShop : Shop
 {
+
     void Start()
     {
         RandomPowerUps(m_AllPowerUpList);
@@ -12,6 +13,7 @@ public class TemporalShop : Shop
     public void OneUsePowerUp(int l_PowerUpIndex)
     {
         m_ShopList[l_PowerUpIndex].ApplyPowerUp();
+        Time.timeScale = 1;
         CloseShop();
     }
 

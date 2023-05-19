@@ -23,11 +23,12 @@ public class Module_Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float l_Damage)
+    public virtual void TakeDamage(float l_Damage)
     {
         m_CurrentHealth -= l_Damage;
 
-        Death();
+        if(m_CurrentHealth <= 0)
+            Death();
     }
 
     public void GetHeal(float l_Heal)
@@ -51,7 +52,7 @@ public class Module_Health : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy"))
         {
-            GameController.AddPoints(m_EnemyBlackBoard.m_Points);
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().AddPoints(m_EnemyBlackBoard.m_Points);
         }
 
         ObjectMesh.SetActive(false);

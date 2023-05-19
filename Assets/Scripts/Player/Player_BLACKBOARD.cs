@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Player_BLACKBOARD : MonoBehaviour
@@ -9,35 +10,49 @@ public class Player_BLACKBOARD : MonoBehaviour
 
     [SerializeField] private const float m_BASEShootingDamage = 10.0f;
     [SerializeField] private const float m_BASEReloadSpeed = 3.0f;
-    [SerializeField] private const float m_BASEBulletSpeed = 10.0f;
-    [SerializeField] private const float m_BASEBulletCritChange = 10.0f;
-    [SerializeField] private const float m_BASEBulletCritDamage = 150.0f;
+    [SerializeField] private const float m_BASEBulletSpeed = 40.0f;
+    [SerializeField] private const float m_BASEDashDistance = 1.5f;
+    [SerializeField] private const float m_BASEDashSpeed = 8.0f;
     [SerializeField] private const int m_BASEMaxOverHeat = 5;
-    [SerializeField] private const int m_BaseOverHeatWindow = 3;
 
-    [Header("Variable Movement")]
+    public bool m_CanInteract = true;
+
+    [Header("Movement")]
+    public bool m_CanMove = true;
+    public bool m_Crouching = false;
     public float m_MovementSpeed;
     public float m_CrouchingSpeed;
 
-
-    [Header("Variable Shoot")]
+    [Header("Shoot")]
+    public bool m_CanAttack;
     public float m_ShootingDamage;
     public float m_BulletSpeed;
     public float m_ReloadSpeed;
     public float m_MaxOverHeat;
-    public float m_OverHeatWindow;
-    public float m_BulletCritChange;
-    public float m_BulletCritDamage;
-    public Transform m_ShootPoint;
-    public bool m_CanAttack;
-
     public float m_OverHeatCancelDuration;
+    public Transform m_ShootPoint;
+    public int m_CurrentShots;
+    public bool m_CanOverheat = true;
 
+    [Header("Dash")]
+    public float m_DashDistance;
+    public float m_DashSpeed;
+    public int m_DashCount = 0;
+    public int m_DashMaxCount = 2;
+    public float m_DashCooldown = 3;
+
+    [Header("Health")]
+    public float m_InmortalityDuration;
+
+    [Header("Items")]
     public BaseItem m_Item;
     public PowerUp_Base m_PowerUp;
 
-
-    public bool m_HasKey;
+    private void Start()
+    {
+        //ResetAllStats();
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().UsePermanentPowerUp();
+    }
 
     public void ResetAllStats()
     {
@@ -46,9 +61,26 @@ public class Player_BLACKBOARD : MonoBehaviour
         m_ShootingDamage = m_BASEShootingDamage;
         m_ReloadSpeed = m_BASEReloadSpeed;
         m_BulletSpeed = m_BASEBulletSpeed;
-        m_BulletCritChange = m_BASEBulletCritChange;
-        m_BulletCritDamage = m_BASEBulletCritDamage;
         m_MaxOverHeat = m_BASEMaxOverHeat;
-        m_OverHeatWindow = m_BaseOverHeatWindow;
+    }
+
+    public void OverHeat()
+    {
+        if (m_CanOverheat)
+        {
+            if (m_CurrentShots < m_MaxOverHeat)
+            {
+                m_CurrentShots++;
+                return;
+            }
+            m_CanAttack = false;
+            StartCoroutine(Reload());
+        }
+    }
+    private IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(m_ReloadSpeed);
+        m_CanAttack = true;
+        m_CurrentShots = 0;
     }
 }

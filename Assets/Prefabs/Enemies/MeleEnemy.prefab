@@ -174,10 +174,12 @@ MonoBehaviour:
   m_AttackCooldown: 1
   m_DetectionRadius: 40
   m_FollowDistance: 30
-  m_AttackDistance: 2
+  m_AttackDistance: 1.2
   m_DashDistance: 6
+  m_DashSpeed: 20
   m_DashChargedDistance: 15
   m_CanAttack: 0
+  m_Crouching: 0
   m_AttackPoint: {fileID: 6528876050542563968}
   m_Points: 10
 --- !u!114 &6528876050359306498
@@ -195,7 +197,6 @@ MonoBehaviour:
   m_MaxHealth: 50
   m_CurrentHealth: 50
   ObjectMesh: {fileID: 6528876050359306508}
-  m_GameController: {fileID: 0}
 --- !u!114 &6528876050359306497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,8 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac6ad601eb53e04b9baef1585d4f8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DashSpeed: 8
-  m_DashDistance: 5
 --- !u!1 &6528876050542563979
 GameObject:
   m_ObjectHideFlags: 0
