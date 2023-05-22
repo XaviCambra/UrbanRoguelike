@@ -20,6 +20,7 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
     public float m_DashDistance;
     public float m_DashSpeed;
     public float m_DashChargedDistance;
+    public float m_GrenadeDistance;
 
     //Variables
     public bool m_CanAttack;
