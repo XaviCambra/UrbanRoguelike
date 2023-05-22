@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,69 +28,71 @@ public class MeleEnemy : FSM_EnemyBase
         m_Blackboard.m_CanAttack = true;
         m_AttackOnCooldown = false;
     }
-
-
-    public override void EnemyMovement()
+    public override void StateIdle()
     {
-        if (m_HasToDash)
-        {
-            if(Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance + m_Blackboard.m_AttackDistance)
-            {
-                m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
-                m_HasToDash = false;
-                return;
-            }
-        }
-        SetMovementDestination();
+        base.StateIdle();
+        if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DetectionRadius)
+            SetStateMovement();
     }
 
-    public override void EnemyAttack()
+    protected override void SetStateMovement()
     {
-        if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance) return;
+        float l_Distance = Vector3.Distance(transform.position, m_Player.transform.position);
+
+        if (l_Distance > m_Blackboard.m_DashChargedDistance)
+            m_HasToDash = true;
+
+        if (l_Distance < m_Blackboard.m_FollowDistance)
+            m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
+        else
+            m_NavMeshAgent.speed = m_Blackboard.m_WalkSpeed;
+
+        base.SetStateMovement();
+    }
+
+    public override void StateMovement()
+    {
+        Debug.Log(Vector3.Distance(m_Player.transform.position, transform.position) + " < " + m_Blackboard.m_AttackDistance + "?" + (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance));
+        if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance)
+        {
+            SetStateAttack();
+            return;
+        }
+        if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_DetectionRadius)
+        {
+            SetStateIdle();
+            return;
+        }
+
+        if (m_HasToDash && Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance + m_Blackboard.m_AttackDistance  * 0.95f)
+        {
+            m_HasToDash = m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
+            Attack();
+            return;
+        }
+
+        Vector3 l_ClosestPointOnPlayer = m_Player.transform.position - (m_Player.transform.position - transform.position).normalized * (m_Blackboard.m_AttackDistance * 0.95f);
+        m_NavMeshAgent.SetDestination(l_ClosestPointOnPlayer);
+    }
+
+    public override void StateAttack()
+    {
+        if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_DetectionRadius)
+            SetStateIdle();
+        if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance)
+            SetStateMovement();
 
         transform.LookAt(m_Player.transform.position);
 
         if (m_AttackOnCooldown == true) return;
 
+        Attack();
+    }
+
+    private void Attack()
+    {
         m_AttackMele.HitOnDirection(m_Blackboard.m_Damage);
         m_AttackOnCooldown = true;
-        StartCoroutine(RechargeAttack());
-    }
-
-    private IEnumerator RechargeAttack()
-    {
-        yield return new WaitForSeconds(m_Blackboard.m_AttackCooldown);
-        m_AttackOnCooldown = false;
-    }
-
-    private void SetMovementDestination()
-    {
-        float l_Distance = Vector3.Distance(transform.position, m_Player.transform.position);
-
-        if (l_Distance > m_Blackboard.m_DetectionRadius)
-        {
-            return;
-        }
-
-        if(l_Distance > m_Blackboard.m_DashChargedDistance)
-        {
-            m_HasToDash = true;
-        }
-
-        else
-        {
-            if (l_Distance < m_Blackboard.m_FollowDistance)
-            {
-                m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
-
-                Vector3 l_ClosestPointOnPlayer = m_Player.transform.position - (m_Player.transform.position - transform.position).normalized * (m_Blackboard.m_AttackDistance * 0.95f);
-                m_NavMeshAgent.SetDestination(l_ClosestPointOnPlayer);
-            }
-
-            if (l_Distance < m_Blackboard.m_AttackDistance)
-            {
-                EnemyAttack();
-            }
-        }
+        SetStateWait(m_Blackboard.m_AttackCooldown);
     }
 }
