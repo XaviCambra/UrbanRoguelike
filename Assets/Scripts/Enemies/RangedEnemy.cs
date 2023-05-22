@@ -14,6 +14,10 @@ public class RangedEnemy : FSM_EnemyBase
 
     public GameObject m_Player;
 
+
+    [SerializeField] private GameObject m_GrenadePrefab;
+    [SerializeField] private float m_GrenadeForce;
+
     void Start()
     {
         m_Blackboard = GetComponent<EnemyBase_BLACKBOARD>();
@@ -33,19 +37,39 @@ public class RangedEnemy : FSM_EnemyBase
         m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
     }
 
-    public override void EnemyMovement()
+    public override void StateIdle()
     {
-        base.EnemyMovement();
+        base.StateIdle();
+        if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DetectionRadius)
+            SetStateAttack();
+    }
+
+    protected override void SetStateMovement()
+    {
+        base.SetStateMovement();
         Vector3 l_LookAtPlayer = m_Player.transform.position;
         l_LookAtPlayer.y = transform.position.y;
         transform.LookAt(l_LookAtPlayer);
     }
 
-    public override void EnemyAttack()
+    protected override void SetStateAttack()
     {
-        base.EnemyAttack();
+        base.SetStateAttack();
         if (m_Blackboard.m_CanAttack == false) return;
-        m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage, "Enemy");
+
+        if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance)
+        {
+            m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage, "Enemy");
+        }
+
+        if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_GrenadeDistance)
+        {
+            GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
+            Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
+            l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_GrenadeForce, ForceMode.VelocityChange);
+            l_grenade.SetActive(true);
+        }
+
         m_Blackboard.m_CanAttack = false;
         StartCoroutine(CrouchIn());
     }
@@ -57,6 +81,13 @@ public class RangedEnemy : FSM_EnemyBase
         m_Crouch.AlternateCrouching(false);
         StartCoroutine(RechargeAttack());
     }
+    private IEnumerator CrouchOut()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Debug.Log("Crouch Out");
+        m_Crouch.AlternateCrouching(true);
+        m_Blackboard.m_CanAttack = true;
+    }
 
     protected IEnumerator RechargeAttack()
     {
@@ -65,11 +96,4 @@ public class RangedEnemy : FSM_EnemyBase
         StartCoroutine(CrouchOut());
     }
 
-    private IEnumerator CrouchOut()
-    {
-        yield return new WaitForSeconds(1.0f);
-        Debug.Log("Crouch Out");
-        m_Crouch.AlternateCrouching(true);
-        m_Blackboard.m_CanAttack = true;
-    }
 }
