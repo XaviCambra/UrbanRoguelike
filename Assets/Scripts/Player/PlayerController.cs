@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
     void UseItem()
     {
-        if (Input.GetKeyDown(m_InputController.m_UseItemKey))
+        if (Input.GetKeyUp(m_InputController.m_UseItemKey))
         {
             if (m_Blackboard.m_Item == null) return;
 
@@ -184,14 +184,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public IEnumerator CancelOverHeat()
+    public IEnumerator CancelOverHeat
+        ()
     {
         m_Blackboard.m_CanOverheat = false;
         yield return new WaitForSeconds(m_Blackboard.m_OverHeatCancelDuration);
         m_Blackboard.m_CanOverheat = true;
     }
 
-    private IEnumerator Inmortality(float l_Duration)
+    public IEnumerator Inmortality(float l_Duration)
     {
         m_Health.m_CanLooseHealth = false;
         yield return new WaitForSeconds(l_Duration);
