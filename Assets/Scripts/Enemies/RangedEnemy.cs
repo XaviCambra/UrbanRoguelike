@@ -60,6 +60,9 @@ public class RangedEnemy : FSM_EnemyBase
         if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance)
         {
             m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage, "Enemy");
+            
+            m_Blackboard.m_CanAttack = false;
+            StartCoroutine(CrouchIn());
         }
 
         if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_GrenadeDistance)
@@ -68,10 +71,10 @@ public class RangedEnemy : FSM_EnemyBase
             Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
             l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_GrenadeForce, ForceMode.VelocityChange);
             l_grenade.SetActive(true);
-        }
 
-        m_Blackboard.m_CanAttack = false;
-        StartCoroutine(CrouchIn());
+            m_Blackboard.m_CanAttack = false;
+            StartCoroutine(CrouchIn());
+        }
     }
 
     private IEnumerator CrouchIn()
