@@ -43,6 +43,12 @@ public class FSM_EnemyBase : MonoBehaviour
     public virtual void StateMovement() { }
     protected virtual void SetStateAttack() { m_State = EnemyStates.Attack; }
     public virtual void StateAttack() { }
+    protected virtual void SetStateWait(float l_Duration) { StartCoroutine(StateWait(l_Duration)); }
+    public virtual IEnumerator StateWait(float l_Duration)
+    {
+        yield return new WaitForSeconds(l_Duration);
+        m_State = EnemyStates.Idle;
+    }
 
     private void SetInnactiveObject()
     {

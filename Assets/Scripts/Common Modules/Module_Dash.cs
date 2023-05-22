@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Module_Dash : MonoBehaviour
 {
-    public void DashDisplacement(Vector3 l_Direction, float l_Distance, float l_Speed)
+    public bool DashDisplacement(Vector3 l_Direction, float l_Distance, float l_Speed)
     {
         RaycastHit l_RayCast;
 
@@ -15,9 +15,9 @@ public class Module_Dash : MonoBehaviour
             Vector3 l_DisplacementPosition = l_HitPoint - (l_HitPoint - transform.position).normalized;
 
             StartCoroutine(DashMovement(l_DisplacementPosition, l_Speed));
-            return;
+            return false;
         }
-        StartCoroutine(DashMovement(transform.position + l_Direction * l_Distance, l_Speed));
+        return true;
     }
 
     private IEnumerator DashMovement(Vector3 l_DisplacementPosition, float l_Speed)

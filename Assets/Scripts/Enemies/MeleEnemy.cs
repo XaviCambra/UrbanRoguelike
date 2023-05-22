@@ -38,10 +38,10 @@ public class MeleEnemy : FSM_EnemyBase
     protected override void SetStateMovement()
     {
         float l_Distance = Vector3.Distance(transform.position, m_Player.transform.position);
+
         if (l_Distance > m_Blackboard.m_DashChargedDistance)
-        {
             m_HasToDash = true;
-        }
+
         if (l_Distance < m_Blackboard.m_FollowDistance)
             m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
         else
@@ -57,10 +57,10 @@ public class MeleEnemy : FSM_EnemyBase
         if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_DetectionRadius)
             SetStateIdle();
 
-        if (m_HasToDash && Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance + m_Blackboard.m_AttackDistance)
+        if (m_HasToDash && Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance + m_Blackboard.m_AttackDistance  * 0.95f)
         {
-            m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
-            m_HasToDash = false;
+            m_HasToDash = m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
+            Attack();
             return;
         }
 
@@ -79,14 +79,13 @@ public class MeleEnemy : FSM_EnemyBase
 
         if (m_AttackOnCooldown == true) return;
 
-        m_AttackMele.HitOnDirection(m_Blackboard.m_Damage);
-        m_AttackOnCooldown = true;
-        StartCoroutine(RechargeAttack());
+        Attack();
     }
 
-    private IEnumerator RechargeAttack()
+    private void Attack()
     {
-        yield return new WaitForSeconds(m_Blackboard.m_AttackCooldown);
-        m_AttackOnCooldown = false;
+        m_AttackMele.HitOnDirection(m_Blackboard.m_Damage);
+        m_AttackOnCooldown = true;
+        SetStateWait(m_Blackboard.m_AttackCooldown);
     }
 }
