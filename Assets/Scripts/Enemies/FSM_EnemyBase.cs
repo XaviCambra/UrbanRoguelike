@@ -7,22 +7,42 @@ public class FSM_EnemyBase : MonoBehaviour
     protected EnemyBase_BLACKBOARD m_Blackboard;
     private bool m_IsActive = true;
 
+    protected enum EnemyStates
+    {
+        Idle,
+        Movement,
+        Attack
+    }
+
+    protected EnemyStates m_State = EnemyStates.Idle;
+
     protected virtual void Update()
     {
         if (m_IsActive == false) return;
-        EnemyMovement();
-        EnemyAttack();
+
+        switch (m_State)
+        {
+            case EnemyStates.Idle:
+                StateIdle();
+                break;
+            case EnemyStates.Movement:
+                StateMovement();
+                break;
+            case EnemyStates.Attack:
+                StateAttack();
+                break;
+            default:
+                SetStateIdle();
+                break;
+        }
     }
 
-    public virtual void EnemyMovement()
-    {
-
-    }
-
-    public virtual void EnemyAttack()
-    {
-
-    }
+    protected virtual void SetStateIdle() { m_State = EnemyStates.Idle; }
+    public virtual void StateIdle() { }
+    protected virtual void SetStateMovement() { m_State = EnemyStates.Movement; }
+    public virtual void StateMovement() { }
+    protected virtual void SetStateAttack() { m_State = EnemyStates.Attack; }
+    public virtual void StateAttack() { }
 
     private void SetInnactiveObject()
     {
