@@ -52,10 +52,17 @@ public class MeleEnemy : FSM_EnemyBase
 
     public override void StateMovement()
     {
+        Debug.Log(Vector3.Distance(m_Player.transform.position, transform.position) + " < " + m_Blackboard.m_AttackDistance + "?" + (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance));
         if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance)
+        {
             SetStateAttack();
+            return;
+        }
         if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_DetectionRadius)
+        {
             SetStateIdle();
+            return;
+        }
 
         if (m_HasToDash && Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance + m_Blackboard.m_AttackDistance  * 0.95f)
         {

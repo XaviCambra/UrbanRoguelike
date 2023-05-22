@@ -14,7 +14,7 @@ public class FSM_EnemyBase : MonoBehaviour
         Attack
     }
 
-    protected EnemyStates m_State = EnemyStates.Idle;
+    [SerializeField] protected EnemyStates m_State = EnemyStates.Idle;
 
     protected virtual void Update()
     {

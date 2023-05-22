@@ -22,10 +22,6 @@ public class PermanentShop : Shop
 
     public void BuyPowerUp(int l_PowerUpIndex)
     {
-        foreach(var power in m_ShopList)
-        {
-            Debug.Log("Items in Shop List: " + power);
-        }
         if (PlayerPrefs.GetInt(m_ShopList[l_PowerUpIndex].m_PowerUp_Name) == 1)
         {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SetPowerUp(m_ShopList[l_PowerUpIndex]);
