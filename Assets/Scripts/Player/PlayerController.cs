@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         if(!m_Blackboard.m_Crouching) Shoot();
         UseItem();
         SetSpeed();
+        HipsFaceMouse();
     }
 
     void MovementInput()
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour
         }
         //else HipsFaceMouse();
 
-        HipsFaceMouse();
+        
 
         l_Direction = Module_LinearGravity.SetGravityToVector(l_Direction);
 

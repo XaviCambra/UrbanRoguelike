@@ -39,12 +39,25 @@ public class InputController : MonoBehaviour
 
         m_MouseWorldPosition.y = transform.position.y;
 
+
+        Ray l_ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+
+        Plane l_plane = new Plane(Vector3.up, 0);
+
+        float l_distance;
+
+        if (l_plane.Raycast(l_ray, out l_distance))
+        {
+            m_MouseWorldPosition = l_ray.GetPoint(l_distance);
+
+        }
+
         return (m_MouseWorldPosition - transform.position).normalized;
     }
 
     public Vector3 m_MousePositionInScreen()
     {
-        Vector3 l_mouseScreenPosition = Input.mousePosition;
+        /*Vector3 l_mouseScreenPosition = Input.mousePosition;
 
         Ray l_ray = m_Camera.ScreenPointToRay(l_mouseScreenPosition);
 
@@ -53,7 +66,9 @@ public class InputController : MonoBehaviour
             Vector3 l_HitPoint = l_Hit.point;
             Debug.DrawRay(m_Camera.transform.position, l_HitPoint, Color.yellow);
             return l_HitPoint;
-        }
+        }*/
+
+        
 
         return Vector3.zero;
     }
