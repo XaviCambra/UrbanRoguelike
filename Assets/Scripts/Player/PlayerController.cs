@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
         m_Crouch = GetComponent<Module_Crouch>();
         
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
-        m_Blackboard.m_CanAttack = true;
 
         StartCoroutine(Inmortality(m_Blackboard.m_InmortalityDuration));
     }
@@ -105,7 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
         {
-            m_Blackboard.m_Crouching = m_Crouch.AlternateCrouching(m_Blackboard.m_Crouching);
+            m_Blackboard.m_Crouching = m_Crouch.Crouching(m_Blackboard.m_Crouching, 0.5f);
         }
     }
 
@@ -177,7 +176,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown((int) MouseButton.Left) && m_Blackboard.m_CanAttack)
+        if (Input.GetMouseButtonDown((int) MouseButton.Left) && m_Blackboard.CanShoot())
         {
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Player");
             m_Blackboard.OverHeat();
