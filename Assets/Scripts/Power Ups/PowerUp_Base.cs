@@ -6,6 +6,7 @@ using UnityEngine;
 public class PowerUp_Base : ScriptableObject
 {
     protected Player_BLACKBOARD m_BlackBoard;
+    protected EnemyBase_BLACKBOARD m_EnemyBlackboard;
     protected Player_Health m_PlayerHP;
 
     public string m_PowerUp_Name;

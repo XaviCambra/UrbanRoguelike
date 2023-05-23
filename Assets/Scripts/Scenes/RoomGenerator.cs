@@ -7,11 +7,11 @@ public class RoomGenerator : MonoBehaviour
 {
     public float m_RoomOffset = 20;
 
-    [SerializeField] private bool m_CustomRoom = false;
-    [SerializeField] private int m_RoomIndex = 0;
+    [Header("Testing Tools")]
+    [SerializeField, Tooltip("Selecciona esta casilla para generar una sala en concreto")] private bool m_CustomRoom = false;
+    [SerializeField, Tooltip("Indica una sala para generarla, recuerda que necesitas tener la casilla 'Custom Room' activada")] private int m_RoomIndex = 0;
 
-    [Range(1,3)]
-    public int m_RoomCount = 3;
+    [Range(1,3), Tooltip("Numero de habitaciones que van a generarse")] public int m_RoomCount = 3;
 
     private void Start()
     {
@@ -44,10 +44,10 @@ public class RoomGenerator : MonoBehaviour
             yield return null;
         }
 
-        SetScenesOnPosition();
+        SetScenesOnPosition(l_Scene.Equals("Boss_Room"));
     }
 
-    private void SetScenesOnPosition()
+    private void SetScenesOnPosition(bool l_GenerateNav)
     {
         GameObject[] l_Rooms = GameObject.FindGameObjectsWithTag("MainMap");
 
@@ -60,7 +60,7 @@ public class RoomGenerator : MonoBehaviour
             Vector3 l_MapPosition = Vector3.right * m_RoomOffset * i;
             l_Rooms[i].transform.position = l_MapPosition;
 
-            l_SceneController.RoomSetted(true);
+            l_SceneController.RoomSetted(true, l_GenerateNav);
         }
     }
 }

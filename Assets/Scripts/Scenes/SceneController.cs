@@ -13,14 +13,18 @@ public class SceneController : MonoBehaviour
 
     public GenerateNextRoom m_DoorToNextRoom;
 
-    public void RoomSetted(bool SettedRoom)
+    public void RoomSetted(bool l_SettedRoom, bool l_GenerateNav)
     {
-        if (!SettedRoom) return;
+        if (!l_SettedRoom) return;
 
-        m_SettedRoom = SettedRoom;
+        m_SettedRoom = l_SettedRoom;
         if (m_DoorToNextRoom != null)
+        {
+            StartCoroutine(ActivateEnemies(2.0f));
             m_DoorToNextRoom.gameObject.SetActive(true);
-        UpdateNavigation();
+        }
+        if(l_GenerateNav)
+            UpdateNavigation();
     }
 
     public void UpdateNavigation()

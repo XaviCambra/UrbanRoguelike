@@ -6,11 +6,23 @@ public class GrenadeItem : MonoBehaviour
 {
     [SerializeField] private float m_LifeSpan;
     [SerializeField] private float m_CurrentTime;
+    [SerializeField] private float m_MoveSpeed;
 
     [SerializeField] private float m_ExplosionRadius;
     [SerializeField] private float m_ExplosionForce;
     [SerializeField] private float m_Damage;
 
+
+    [SerializeField] private InputController m_InputController;
+    [SerializeField] private Player_BLACKBOARD m_PlayerBlackboard;
+    [SerializeField] private GameObject m_PlayerBulletOrigin;
+
+    private void Start()
+    {
+        m_InputController = GameObject.FindGameObjectWithTag("Player").GetComponent<InputController>();
+        m_PlayerBlackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
+        m_PlayerBulletOrigin = GameObject.FindGameObjectWithTag("PlayerBulletOrigin");
+    }
 
     private void Update()
     {
@@ -21,6 +33,18 @@ public class GrenadeItem : MonoBehaviour
         }
         
         m_CurrentTime += Time.deltaTime;
+
+        if (Input.GetKeyUp(m_InputController.m_UseItemKey) && m_PlayerBlackboard.m_HasGrenade)
+        {
+            Rigidbody l_rb = gameObject.GetComponent<Rigidbody>();
+            l_rb.useGravity = true;
+            l_rb.AddForce(m_PlayerBulletOrigin.transform.forward * m_MoveSpeed, ForceMode.VelocityChange);
+
+            gameObject.transform.SetParent(null);
+
+            m_PlayerBlackboard.m_HasGrenade = false;
+            Debug.Log("Granada lanzada");
+        }
     }
 
     private void Explode()
@@ -38,7 +62,12 @@ public class GrenadeItem : MonoBehaviour
                 l_health.TakeDamage(m_Damage);
             }
         }
-
+        Debug.Log("Granada explota");
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(gameObject.transform.position, m_ExplosionRadius);
     }
 }

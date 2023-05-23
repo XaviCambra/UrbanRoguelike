@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Module_Crouch : MonoBehaviour
 {
-    private bool m_Crouching;
-
     private CharacterController m_CharacterController;
     private Animator m_Animator;
 
@@ -15,21 +13,21 @@ public class Module_Crouch : MonoBehaviour
         m_Animator = GetComponent<Animator>();
     }
 
-    public bool AlternateCrouching(bool l_Crocuching)
+    public bool Crouching(bool l_Crocuching, float l_TransitionDuration)
     {
-        if (l_Crocuching) Crouching_Out();
-        else Crouching_In();
+        if (l_Crocuching) Crouching_Out(l_TransitionDuration);
+        else Crouching_In(l_TransitionDuration);
         return !l_Crocuching;
     }
 
-    void Crouching_In()
+    void Crouching_In(float l_TransitionDuration)
     {
         //m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(0, m_CharacterController.center/2, m_CharacterController.height/2));
         m_Animator.SetTrigger("CrouchIn");
     }
 
-    void Crouching_Out()
+    void Crouching_Out(float l_TransitionDuration)
     {
         //float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(1, m_CharacterController.center*2, m_CharacterController.height*2));
