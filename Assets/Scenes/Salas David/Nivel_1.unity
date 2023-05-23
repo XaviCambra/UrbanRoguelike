@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 104645710}
   - component: {fileID: 104645709}
   - component: {fileID: 104645708}
+  - component: {fileID: 104645711}
   m_Layer: 0
   m_Name: Seto (6)
   m_TagString: Untagged
@@ -362,6 +363,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104645706}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &104645711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104645706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &117655916
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +469,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SettedRoom: 0
-  m_Surface: {fileID: 1672732904265824974}
+  m_Surface:
+  - {fileID: 1672732904265824974}
+  - {fileID: 3297306858086472770}
+  - {fileID: 1375953374}
+  - {fileID: 373263708}
+  - {fileID: 1809506850}
+  - {fileID: 146477118788405502}
+  - {fileID: 205620273}
+  - {fileID: 1719593094}
+  - {fileID: 1897836470}
+  - {fileID: 740524337}
+  - {fileID: 386563668}
+  - {fileID: 1768921067}
+  - {fileID: 1420605088}
+  - {fileID: 1093986541}
+  - {fileID: 260663050}
+  - {fileID: 2034487802}
+  - {fileID: 1261641878}
+  - {fileID: 1148917012}
+  - {fileID: 1469516034}
+  - {fileID: 1454942445}
+  - {fileID: 1322706979}
   m_DoorToNextRoom: {fileID: 5866003101759889454}
 --- !u!1 &163412899
 GameObject:
@@ -469,7 +507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &163412900
 Transform:
   m_ObjectHideFlags: 0
@@ -600,6 +638,7 @@ GameObject:
   - component: {fileID: 205620272}
   - component: {fileID: 205620271}
   - component: {fileID: 205620270}
+  - component: {fileID: 205620273}
   m_Layer: 0
   m_Name: Calzada (1)
   m_TagString: Untagged
@@ -686,6 +725,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205620268}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &205620273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205620268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &213034885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -784,6 +853,7 @@ GameObject:
   - component: {fileID: 227879732}
   - component: {fileID: 227879731}
   - component: {fileID: 227879730}
+  - component: {fileID: 227879733}
   m_Layer: 0
   m_Name: Seto (5)
   m_TagString: Untagged
@@ -869,6 +939,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227879728}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &227879733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227879728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &247918767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -956,6 +1042,7 @@ GameObject:
   - component: {fileID: 260663049}
   - component: {fileID: 260663048}
   - component: {fileID: 260663047}
+  - component: {fileID: 260663050}
   m_Layer: 0
   m_Name: Calzada (11)
   m_TagString: Untagged
@@ -1042,6 +1129,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260663045}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &260663050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260663045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &327441436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,6 +1171,7 @@ GameObject:
   - component: {fileID: 327441440}
   - component: {fileID: 327441439}
   - component: {fileID: 327441438}
+  - component: {fileID: 327441441}
   m_Layer: 0
   m_Name: Seto
   m_TagString: Untagged
@@ -1139,6 +1257,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327441436}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &327441441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327441436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!4 &330657776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8823742942203722081, guid: 229a205c0ca647f4bb346cf616037d27,
@@ -1403,6 +1537,7 @@ GameObject:
   - component: {fileID: 373263707}
   - component: {fileID: 373263706}
   - component: {fileID: 373263705}
+  - component: {fileID: 373263708}
   m_Layer: 0
   m_Name: Road (2)
   m_TagString: Untagged
@@ -1489,6 +1624,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373263703}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &373263708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373263703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &386563663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,6 +1666,7 @@ GameObject:
   - component: {fileID: 386563667}
   - component: {fileID: 386563666}
   - component: {fileID: 386563665}
+  - component: {fileID: 386563668}
   m_Layer: 0
   m_Name: Calzada (6)
   m_TagString: Untagged
@@ -1587,6 +1753,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386563663}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &386563668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386563663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!4 &417873193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7850015976684313154, guid: 9f51f506af945104b8aae3602fe02c29,
@@ -1611,6 +1807,7 @@ GameObject:
   - component: {fileID: 419053906}
   - component: {fileID: 419053905}
   - component: {fileID: 419053904}
+  - component: {fileID: 419053907}
   m_Layer: 0
   m_Name: Seto (4)
   m_TagString: Untagged
@@ -1696,6 +1893,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419053902}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &419053907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419053902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!4 &420346869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2829866511227636832, guid: 6402b48844d22b545baf3252a4e3dfdc,
@@ -1962,6 +2175,7 @@ GameObject:
   - component: {fileID: 527232039}
   - component: {fileID: 527232038}
   - component: {fileID: 527232037}
+  - component: {fileID: 527232040}
   m_Layer: 0
   m_Name: Seto
   m_TagString: Untagged
@@ -2047,6 +2261,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527232035}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &527232040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527232035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &529032205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,6 +2289,7 @@ GameObject:
   - component: {fileID: 529032209}
   - component: {fileID: 529032208}
   - component: {fileID: 529032207}
+  - component: {fileID: 529032210}
   m_Layer: 0
   m_Name: Seto
   m_TagString: Untagged
@@ -2144,6 +2375,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529032205}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &529032210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529032205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &576647974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2225,6 +2472,7 @@ GameObject:
   - component: {fileID: 578549134}
   - component: {fileID: 578549133}
   - component: {fileID: 578549132}
+  - component: {fileID: 578549135}
   m_Layer: 0
   m_Name: Seto (2)
   m_TagString: Untagged
@@ -2310,6 +2558,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578549130}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &578549135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578549130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &598812479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2552,6 +2816,7 @@ GameObject:
   - component: {fileID: 740524336}
   - component: {fileID: 740524335}
   - component: {fileID: 740524334}
+  - component: {fileID: 740524337}
   m_Layer: 0
   m_Name: Calzada (5)
   m_TagString: Untagged
@@ -2638,6 +2903,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740524332}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &740524337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740524332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &751747357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3494,6 +3789,7 @@ GameObject:
   - component: {fileID: 1093986540}
   - component: {fileID: 1093986539}
   - component: {fileID: 1093986538}
+  - component: {fileID: 1093986541}
   m_Layer: 0
   m_Name: Calzada (10)
   m_TagString: Untagged
@@ -3580,6 +3876,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093986536}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1093986541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093986536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1121324855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3673,6 +3999,7 @@ GameObject:
   - component: {fileID: 1148917011}
   - component: {fileID: 1148917010}
   - component: {fileID: 1148917009}
+  - component: {fileID: 1148917012}
   m_Layer: 0
   m_Name: Calzada (16)
   m_TagString: Untagged
@@ -3759,6 +4086,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148917007}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1148917012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148917007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!4 &1157964245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3297306859076140437, guid: 6086eb5a2757b224aaca375abda435a7,
@@ -3944,6 +4301,7 @@ GameObject:
   - component: {fileID: 1261641877}
   - component: {fileID: 1261641876}
   - component: {fileID: 1261641875}
+  - component: {fileID: 1261641878}
   m_Layer: 0
   m_Name: Calzada (15)
   m_TagString: Untagged
@@ -4030,6 +4388,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261641873}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1261641878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261641873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &1272355170
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,6 +4469,7 @@ GameObject:
   - component: {fileID: 1322706978}
   - component: {fileID: 1322706977}
   - component: {fileID: 1322706976}
+  - component: {fileID: 1322706979}
   m_Layer: 0
   m_Name: Calzada (7)
   m_TagString: Untagged
@@ -4167,6 +4556,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322706974}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1322706979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322706974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &1353011784
 GameObject:
   m_ObjectHideFlags: 0
@@ -4351,6 +4770,7 @@ GameObject:
   - component: {fileID: 1375953373}
   - component: {fileID: 1375953372}
   - component: {fileID: 1375953371}
+  - component: {fileID: 1375953374}
   m_Layer: 0
   m_Name: Road (1)
   m_TagString: Untagged
@@ -4437,6 +4857,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375953369}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1375953374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375953369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &1384739631
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,6 +4899,7 @@ GameObject:
   - component: {fileID: 1384739635}
   - component: {fileID: 1384739634}
   - component: {fileID: 1384739633}
+  - component: {fileID: 1384739636}
   m_Layer: 0
   m_Name: Seto (1)
   m_TagString: Untagged
@@ -4534,6 +4985,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384739631}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1384739636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384739631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1399450659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4632,6 +5099,7 @@ GameObject:
   - component: {fileID: 1420605087}
   - component: {fileID: 1420605086}
   - component: {fileID: 1420605085}
+  - component: {fileID: 1420605088}
   m_Layer: 0
   m_Name: Calzada (9)
   m_TagString: Untagged
@@ -4718,6 +5186,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420605083}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1420605088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420605083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &1445247734
 GameObject:
   m_ObjectHideFlags: 0
@@ -4827,6 +5325,7 @@ GameObject:
   - component: {fileID: 1454942444}
   - component: {fileID: 1454942443}
   - component: {fileID: 1454942442}
+  - component: {fileID: 1454942445}
   m_Layer: 0
   m_Name: Calzada (20)
   m_TagString: Untagged
@@ -4913,6 +5412,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454942440}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1454942445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454942440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &1469516029
 GameObject:
   m_ObjectHideFlags: 0
@@ -4925,6 +5454,7 @@ GameObject:
   - component: {fileID: 1469516033}
   - component: {fileID: 1469516032}
   - component: {fileID: 1469516031}
+  - component: {fileID: 1469516034}
   m_Layer: 0
   m_Name: Calzada (17)
   m_TagString: Untagged
@@ -5011,6 +5541,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469516029}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1469516034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469516029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1489625856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5109,6 +5669,7 @@ GameObject:
   - component: {fileID: 1491012971}
   - component: {fileID: 1491012970}
   - component: {fileID: 1491012969}
+  - component: {fileID: 1491012973}
   m_Layer: 0
   m_Name: Escombros (2)
   m_TagString: Untagged
@@ -5194,6 +5755,22 @@ Transform:
   m_Father: {fileID: 84039641}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1491012973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491012968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1572392226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5367,6 +5944,7 @@ GameObject:
   - component: {fileID: 1651091617}
   - component: {fileID: 1651091616}
   - component: {fileID: 1651091615}
+  - component: {fileID: 1651091619}
   m_Layer: 0
   m_Name: Escombros
   m_TagString: Untagged
@@ -5452,6 +6030,22 @@ Transform:
   m_Father: {fileID: 84039641}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1651091619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651091614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1698104695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5677,6 +6271,7 @@ GameObject:
   - component: {fileID: 1719593093}
   - component: {fileID: 1719593092}
   - component: {fileID: 1719593091}
+  - component: {fileID: 1719593094}
   m_Layer: 0
   m_Name: Calzada (2)
   m_TagString: Untagged
@@ -5763,6 +6358,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719593089}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1719593094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719593089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!4 &1727308117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5866003101248930168, guid: 97ba78d46bb61014c8c60961d9b54dd3,
@@ -5781,6 +6406,7 @@ GameObject:
   - component: {fileID: 1768921066}
   - component: {fileID: 1768921065}
   - component: {fileID: 1768921064}
+  - component: {fileID: 1768921067}
   m_Layer: 0
   m_Name: Calzada (8)
   m_TagString: Untagged
@@ -5867,6 +6493,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768921062}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1768921067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768921062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!4 &1789997601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 146477118160255709, guid: 7a2413605d55a314ba2de67a2e1e9752,
@@ -6027,6 +6683,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1809506848}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1809506850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2382157591784765328, guid: 6086eb5a2757b224aaca375abda435a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1809506848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1813884734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6117,7 +6785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1884974931
 Transform:
   m_ObjectHideFlags: 0
@@ -6149,6 +6817,7 @@ GameObject:
   - component: {fileID: 1897836469}
   - component: {fileID: 1897836468}
   - component: {fileID: 1897836467}
+  - component: {fileID: 1897836470}
   m_Layer: 0
   m_Name: Calzada (4)
   m_TagString: Untagged
@@ -6235,6 +6904,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897836465}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1897836470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897836465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1001 &2006645200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6538,6 +7237,7 @@ GameObject:
   - component: {fileID: 2034487801}
   - component: {fileID: 2034487800}
   - component: {fileID: 2034487799}
+  - component: {fileID: 2034487802}
   m_Layer: 0
   m_Name: Calzada (12)
   m_TagString: Untagged
@@ -6624,6 +7324,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034487797}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2034487802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034487797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 0}
+  m_BuildHeightMesh: 0
 --- !u!1 &2051132884
 GameObject:
   m_ObjectHideFlags: 0
@@ -6819,6 +7549,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a2413605d55a314ba2de67a2e1e9752, type: 3}
+--- !u!114 &146477118788405502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4461194692231722868, guid: 7a2413605d55a314ba2de67a2e1e9752,
+    type: 3}
+  m_PrefabInstance: {fileID: 146477118788405500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1672732904265824973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6836,6 +7578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 70x70 Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230755161277977259, guid: f3835ec73e8ff8f4a9d3bb08a08d5841,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5230755161277977260, guid: f3835ec73e8ff8f4a9d3bb08a08d5841,
         type: 3}
@@ -6985,6 +7732,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6086eb5a2757b224aaca375abda435a7, type: 3}
+--- !u!114 &3297306858086472770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2382157591784765328, guid: 6086eb5a2757b224aaca375abda435a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3297306858086472768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5866003101759889453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7061,32 +7820,32 @@ PrefabInstance:
         type: 3}
       propertyPath: Enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 1399450661}
+      objectReference: {fileID: 1258222712}
     - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
         type: 3}
       propertyPath: Enemies.Array.data[1]
       value: 
-      objectReference: {fileID: 1258222712}
+      objectReference: {fileID: 1572392228}
     - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
         type: 3}
       propertyPath: Enemies.Array.data[2]
       value: 
-      objectReference: {fileID: 1572392228}
+      objectReference: {fileID: 372293409}
     - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
         type: 3}
       propertyPath: Enemies.Array.data[3]
       value: 
-      objectReference: {fileID: 372293409}
+      objectReference: {fileID: 213034887}
     - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
         type: 3}
       propertyPath: Enemies.Array.data[4]
       value: 
-      objectReference: {fileID: 213034887}
+      objectReference: {fileID: 1489625858}
     - target: {fileID: 5866003101248930172, guid: 97ba78d46bb61014c8c60961d9b54dd3,
         type: 3}
       propertyPath: Enemies.Array.data[5]
       value: 
-      objectReference: {fileID: 1489625858}
+      objectReference: {fileID: 1399450661}
     - target: {fileID: 5866003101248930173, guid: 97ba78d46bb61014c8c60961d9b54dd3,
         type: 3}
       propertyPath: m_Name
