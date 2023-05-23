@@ -6,6 +6,7 @@ public class GrenadeItem : MonoBehaviour
 {
     [SerializeField] private float m_LifeSpan;
     [SerializeField] private float m_CurrentTime;
+    [SerializeField] private float m_MoveSpeed;
 
     [SerializeField] private float m_ExplosionRadius;
     [SerializeField] private float m_ExplosionForce;
@@ -15,7 +16,6 @@ public class GrenadeItem : MonoBehaviour
     [SerializeField] private InputController m_InputController;
     [SerializeField] private Player_BLACKBOARD m_PlayerBlackboard;
     [SerializeField] private GameObject m_PlayerBulletOrigin;
-    [SerializeField] private float m_MoveSpeed;
 
     private void Start()
     {
@@ -62,8 +62,12 @@ public class GrenadeItem : MonoBehaviour
                 l_health.TakeDamage(m_Damage);
             }
         }
-
         Debug.Log("Granada explota");
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(gameObject.transform.position, m_ExplosionRadius);
     }
 }
