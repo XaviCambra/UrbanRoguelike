@@ -11,7 +11,8 @@ public class FSM_EnemyBase : MonoBehaviour
     {
         Idle,
         Movement,
-        Attack
+        Attack,
+        Wait
     }
 
     [SerializeField] protected EnemyStates m_State = EnemyStates.Idle;
@@ -31,6 +32,8 @@ public class FSM_EnemyBase : MonoBehaviour
             case EnemyStates.Attack:
                 StateAttack();
                 break;
+            case EnemyStates.Wait:
+                break;
             default:
                 SetStateIdle();
                 break;
@@ -43,7 +46,11 @@ public class FSM_EnemyBase : MonoBehaviour
     public virtual void StateMovement() { }
     protected virtual void SetStateAttack() { m_State = EnemyStates.Attack; }
     public virtual void StateAttack() { }
-    protected virtual void SetStateWait(float l_Duration) { StartCoroutine(StateWait(l_Duration)); }
+    protected virtual void SetStateWait(float l_Duration)
+    {
+        m_State = EnemyStates.Wait;
+        StartCoroutine(StateWait(l_Duration));
+    }
     public virtual IEnumerator StateWait(float l_Duration)
     {
         yield return new WaitForSeconds(l_Duration);
