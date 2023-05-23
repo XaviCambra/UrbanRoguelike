@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
     void UseItem()
     {
-        if (Input.GetKeyUp(m_InputController.m_UseItemKey))
+        if (Input.GetKeyDown(m_InputController.m_UseItemKey))
         {
             if (m_Blackboard.m_Item == null) return;
 

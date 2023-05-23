@@ -45,6 +45,7 @@ public class Player_BLACKBOARD : MonoBehaviour
     [Header("Items")]
     public BaseItem m_Item;
     public PowerUp_Base m_PowerUp;
+    public bool m_HasGrenade;
 
     private void Start()
     {
@@ -59,6 +60,8 @@ public class Player_BLACKBOARD : MonoBehaviour
         m_ReloadSpeed = m_BASEReloadSpeed;
         m_BulletSpeed = m_BASEBulletSpeed;
         m_MaxOverHeat = m_BASEMaxOverHeat;
+
+        m_HasGrenade = false;
     }
 
     public void OverHeat()
