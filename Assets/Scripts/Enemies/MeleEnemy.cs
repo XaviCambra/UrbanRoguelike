@@ -31,6 +31,7 @@ public class MeleEnemy : FSM_EnemyBase
     public override void StateIdle()
     {
         base.StateIdle();
+        Debug.Log(m_Blackboard.m_DetectionRadius + " - " + Vector3.Distance(m_Player.transform.position, transform.position));
         if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DetectionRadius)
             SetStateMovement();
     }
@@ -52,7 +53,7 @@ public class MeleEnemy : FSM_EnemyBase
 
     public override void StateMovement()
     {
-        Debug.Log(Vector3.Distance(m_Player.transform.position, transform.position) + " < " + m_Blackboard.m_AttackDistance + "?" + (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance));
+        Debug.Log(m_Blackboard.m_DetectionRadius + " - " + Vector3.Distance(m_Player.transform.position, transform.position));
         if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_AttackDistance)
         {
             SetStateAttack();
@@ -64,6 +65,8 @@ public class MeleEnemy : FSM_EnemyBase
             return;
         }
 
+        //Debug.Log(m_HasToDash);
+        //Debug.Log(Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance + m_Blackboard.m_AttackDistance * 0.95f);
         if (m_HasToDash && Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DashDistance + m_Blackboard.m_AttackDistance  * 0.95f)
         {
             m_HasToDash = m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
@@ -77,14 +80,14 @@ public class MeleEnemy : FSM_EnemyBase
 
     public override void StateAttack()
     {
+        Debug.Log(Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_DetectionRadius);
         if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_DetectionRadius)
             SetStateIdle();
+        Debug.Log(Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance);
         if (Vector3.Distance(m_Player.transform.position, transform.position) > m_Blackboard.m_AttackDistance)
             SetStateMovement();
 
         transform.LookAt(m_Player.transform.position);
-
-        if (m_AttackOnCooldown == true) return;
 
         Attack();
     }
@@ -92,7 +95,6 @@ public class MeleEnemy : FSM_EnemyBase
     private void Attack()
     {
         m_AttackMele.HitOnDirection(m_Blackboard.m_Damage);
-        m_AttackOnCooldown = true;
         SetStateWait(m_Blackboard.m_AttackCooldown);
     }
 }
