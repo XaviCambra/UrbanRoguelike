@@ -42,14 +42,13 @@ public class InputController : MonoBehaviour
 
         Ray l_ray = m_Camera.ScreenPointToRay(Input.mousePosition);
 
-        Plane l_plane = new Plane(Vector3.up, 0);
+        Plane l_plane = new Plane(Vector3.up, transform.position.y);
 
         float l_distance;
 
         if (l_plane.Raycast(l_ray, out l_distance))
         {
             m_MouseWorldPosition = l_ray.GetPoint(l_distance);
-
         }
 
         return (m_MouseWorldPosition - transform.position).normalized;

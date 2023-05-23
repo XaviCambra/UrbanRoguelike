@@ -9,7 +9,7 @@ public class SceneController : MonoBehaviour
 {
     public bool m_SettedRoom = false;
 
-    public NavMeshSurface m_Surface;
+    public NavMeshSurface[] m_Surface;
 
     public GenerateNextRoom m_DoorToNextRoom;
 
@@ -25,8 +25,11 @@ public class SceneController : MonoBehaviour
 
     public void UpdateNavigation()
     {
-        m_Surface.BuildNavMesh();
-        //NavMeshBuilder.BuildNavMeshAsync();
+        foreach(NavMeshSurface surface in m_Surface)
+        {
+            surface.BuildNavMesh();
+        }
+
         StartCoroutine(ActivateEnemies(2.0f));
     }
 

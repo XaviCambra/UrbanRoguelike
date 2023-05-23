@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class Module_Dash : MonoBehaviour
 {
-    public bool DashDisplacement(Vector3 l_Direction, float l_Distance, float l_Speed)
+    public void DashDisplacement(Vector3 l_Direction, float l_Distance, float l_Speed)
     {
         RaycastHit l_RayCast;
 
-        if (Physics.Raycast(transform.position, l_Direction, out l_RayCast, l_Distance))
+        if (Physics.Raycast(transform.position + Vector3.up/2, l_Direction, out l_RayCast, l_Distance))
         {
             Vector3 l_HitPoint = l_RayCast.point;
             Vector3 l_DisplacementPosition = l_HitPoint - (l_HitPoint - transform.position).normalized;
 
             StartCoroutine(DashMovement(l_DisplacementPosition, l_Speed));
-            return false;
+            return;
         }
-        return true;
+        StartCoroutine(DashMovement(transform.position + l_Direction * l_Distance, l_Speed));
     }
 
     private IEnumerator DashMovement(Vector3 l_DisplacementPosition, float l_Speed)
