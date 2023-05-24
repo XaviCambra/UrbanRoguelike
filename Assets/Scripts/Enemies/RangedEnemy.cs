@@ -51,7 +51,7 @@ public class RangedEnemy : FSM_EnemyBase
 
     protected override void SetStateAttack()
     {
-        CrouchOut();
+        StartCoroutine(CrouchOut());        
         base.SetStateAttack();
     }
 
@@ -62,6 +62,7 @@ public class RangedEnemy : FSM_EnemyBase
         if (!m_Blackboard.m_CanAttack)
             return;
 
+        Debug.Log(m_AttackType);
         switch (m_AttackType)
         {
             case AttackType.Bullet:
@@ -78,20 +79,21 @@ public class RangedEnemy : FSM_EnemyBase
         }
         m_Blackboard.m_CanAttack = false;
         StartCoroutine(CrouchIn());
-
     }
 
     private IEnumerator CrouchOut()
     {
         yield return new WaitForSeconds(1.0f);
-        m_Crouch.AlternateCrouching(true);
+        m_Crouch.Crouching(true, 1);
+        Debug.Log("Crouch Out");
         m_Blackboard.m_CanAttack = true;
     }
 
     private IEnumerator CrouchIn()
     {
         yield return new WaitForSeconds(3.0f);
-        m_Crouch.AlternateCrouching(false);
+        m_Crouch.Crouching(false, 0);
+        Debug.Log("Crouch In");
         SetStateWait(m_Blackboard.m_AttackCooldown);
     }
 }

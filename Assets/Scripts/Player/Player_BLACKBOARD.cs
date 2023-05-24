@@ -22,7 +22,6 @@ public class Player_BLACKBOARD : MonoBehaviour
     public float m_CrouchingSpeed;
 
     [Header("Shoot")]
-    public bool m_CanAttack;
     public float m_ShootingDamage;
     public float m_BulletSpeed;
     public float m_ReloadSpeed;
@@ -45,10 +44,13 @@ public class Player_BLACKBOARD : MonoBehaviour
     [Header("Items")]
     public BaseItem m_Item;
     public PowerUp_Base m_PowerUp;
+    public bool m_HasGrenade;
 
     private void Start()
     {
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().UsePermanentPowerUp();
+        GameController m_GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        if(m_GameController != null)
+            m_GameController.UsePermanentPowerUp();
     }
 
     public void ResetAllStats()
@@ -59,25 +61,26 @@ public class Player_BLACKBOARD : MonoBehaviour
         m_ReloadSpeed = m_BASEReloadSpeed;
         m_BulletSpeed = m_BASEBulletSpeed;
         m_MaxOverHeat = m_BASEMaxOverHeat;
+
+        m_HasGrenade = false;
     }
 
     public void OverHeat()
     {
         if (m_CanOverheat)
         {
-            if (m_CurrentShots < m_MaxOverHeat)
-            {
-                m_CurrentShots++;
-                return;
-            }
-            m_CanAttack = false;
+            m_CurrentShots = (int)Mathf.Clamp(m_CurrentShots + 1, 0, m_MaxOverHeat);
             StartCoroutine(Reload());
         }
     }
     private IEnumerator Reload()
     {
         yield return new WaitForSeconds(m_ReloadSpeed);
-        m_CanAttack = true;
-        m_CurrentShots = 0;
+        m_CurrentShots--;
+    }
+
+    public bool CanShoot()
+    {
+        return m_CurrentShots < m_MaxOverHeat; 
     }
 }
