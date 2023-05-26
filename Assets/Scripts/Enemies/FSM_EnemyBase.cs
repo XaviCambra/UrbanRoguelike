@@ -20,7 +20,6 @@ public class FSM_EnemyBase : MonoBehaviour
     protected virtual void Update()
     {
         if (m_IsActive == false) return;
-        Debug.Log("State: " + m_State);
         switch (m_State)
         {
             case EnemyStates.Idle:

@@ -8,7 +8,7 @@ public class BaseItem : MonoBehaviour
     public GameObject m_FloatingText;
     public virtual void ApplyEffectItem()
     {
-        
+        m_InventoryManager.UseItem();
     }
 
     /*private void OnTriggerEnter(Collider other)
