@@ -8,7 +8,8 @@ public class RangedEnemy : FSM_EnemyBase
     GameObject m_PlayerHitpoint;
     GameObject m_Player;
 
-    [SerializeField] private GrenadeItem m_GrenadePrefab;
+    [SerializeField] private GameObject m_GrenadePrefab;
+    [SerializeField] private float m_GrenadeForce;
 
     private enum AttackType
     {
@@ -33,7 +34,7 @@ public class RangedEnemy : FSM_EnemyBase
     protected override void Update()
     {
         base.Update();
-
+        transform.LookAt(m_Player.transform.position);
         m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
     }
 
@@ -68,13 +69,20 @@ public class RangedEnemy : FSM_EnemyBase
                 m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage, "Enemy");
                 break;
             case AttackType.Grenade:
-                m_GrenadePrefab.UseGrenade(m_Blackboard.m_AttackPoint, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_GrenadeForce, true);
+                GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
+                Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
+                l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_GrenadeForce, ForceMode.VelocityChange);
+                l_rb.useGravity = true;
+                l_grenade.SetActive(true);
+                m_Blackboard.m_GrenadeLoaded = false;
+                StartCoroutine(GrenadeCooldown());
                 break;
             default:
                 break;
         }
         m_Blackboard.m_CanAttack = false;
         StartCoroutine(CrouchIn());
+        SetStateWait(m_Blackboard.m_AttackCooldown + 3);
     }
 
     private IEnumerator CrouchOut()
@@ -90,11 +98,11 @@ public class RangedEnemy : FSM_EnemyBase
         yield return new WaitForSeconds(3.0f);
         m_Crouch.Crouching(false, 0);
         Debug.Log("Crouch In");
-        SetStateWait(m_Blackboard.m_AttackCooldown);
     }
 
     private IEnumerator GrenadeCooldown()
     {
-        yield return null;
+        yield return new WaitForSeconds(m_Blackboard.m_GrenadeCooldown);
+        m_Blackboard.m_GrenadeLoaded = true;
     }
 }

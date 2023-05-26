@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GrenadeItem : MonoBehaviour
@@ -22,15 +21,6 @@ public class GrenadeItem : MonoBehaviour
         m_InputController = GameObject.FindGameObjectWithTag("Player").GetComponent<InputController>();
         m_PlayerBlackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
         m_PlayerBulletOrigin = GameObject.FindGameObjectWithTag("PlayerBulletOrigin");
-    }
-
-    public void UseGrenade(Transform l_AttackPoint, Quaternion l_InitialRotation, float l_GrenadeForce, bool l_HaveGravity)
-    {
-        GameObject l_grenade = Instantiate(gameObject, l_AttackPoint.position, l_InitialRotation);
-        Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
-        l_rb.AddForce(l_AttackPoint.forward * l_GrenadeForce, ForceMode.VelocityChange);
-        l_rb.useGravity = l_HaveGravity;
-        l_grenade.SetActive(true);
     }
 
     private void Update()
