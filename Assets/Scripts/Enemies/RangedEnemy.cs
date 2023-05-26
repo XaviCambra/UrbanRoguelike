@@ -34,7 +34,7 @@ public class RangedEnemy : FSM_EnemyBase
     protected override void Update()
     {
         base.Update();
-
+        transform.LookAt(m_Player.transform.position);
         m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
     }
 
@@ -74,12 +74,15 @@ public class RangedEnemy : FSM_EnemyBase
                 l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_GrenadeForce, ForceMode.VelocityChange);
                 l_rb.useGravity = true;
                 l_grenade.SetActive(true);
+                m_Blackboard.m_GrenadeLoaded = false;
+                StartCoroutine(GrenadeCooldown());
                 break;
             default:
                 break;
         }
         m_Blackboard.m_CanAttack = false;
         StartCoroutine(CrouchIn());
+        SetStateWait(m_Blackboard.m_AttackCooldown + 3);
     }
 
     private IEnumerator CrouchOut()
@@ -95,11 +98,11 @@ public class RangedEnemy : FSM_EnemyBase
         yield return new WaitForSeconds(3.0f);
         m_Crouch.Crouching(false, 0);
         Debug.Log("Crouch In");
-        SetStateWait(m_Blackboard.m_AttackCooldown);
     }
 
     private IEnumerator GrenadeCooldown()
     {
-        yield return null;
+        yield return new WaitForSeconds(m_Blackboard.m_GrenadeCooldown);
+        m_Blackboard.m_GrenadeLoaded = true;
     }
 }
