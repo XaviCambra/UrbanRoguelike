@@ -8,8 +8,7 @@ public class RangedEnemy : FSM_EnemyBase
     GameObject m_PlayerHitpoint;
     GameObject m_Player;
 
-    [SerializeField] private GameObject m_GrenadePrefab;
-    [SerializeField] private float m_GrenadeForce;
+    [SerializeField] private GrenadeItem m_GrenadePrefab;
 
     private enum AttackType
     {
@@ -47,7 +46,11 @@ public class RangedEnemy : FSM_EnemyBase
 
     protected override void SetStateAttack()
     {
-        StartCoroutine(CrouchOut());        
+        StartCoroutine(CrouchOut());
+        if (m_Blackboard.m_GrenadeLoaded)
+            m_AttackType = AttackType.Grenade;
+        else
+            m_AttackType = AttackType.Bullet;
         base.SetStateAttack();
     }
 
@@ -65,10 +68,7 @@ public class RangedEnemy : FSM_EnemyBase
                 m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_Damage, "Enemy");
                 break;
             case AttackType.Grenade:
-                GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
-                Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
-                l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_GrenadeForce, ForceMode.VelocityChange);
-                l_grenade.SetActive(true);
+                m_GrenadePrefab.UseGrenade(m_Blackboard.m_AttackPoint, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_GrenadeForce, true);
                 break;
             default:
                 break;
