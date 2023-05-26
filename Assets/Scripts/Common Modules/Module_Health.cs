@@ -52,12 +52,10 @@ public class Module_Health : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy"))
         {
-            GameController l_GameController =  GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-            if (l_GameController != null)
-            {
+            if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>() != null)
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().AddPoints(m_EnemyBlackBoard.m_Points);
+            else
                 Debug.LogError("No GameController Found");
-                l_GameController.AddPoints(m_EnemyBlackBoard.m_Points);
-            }
         }
 
         ObjectMesh.SetActive(false);
