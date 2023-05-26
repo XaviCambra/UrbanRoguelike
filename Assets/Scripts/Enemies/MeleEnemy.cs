@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +5,7 @@ public class MeleEnemy : FSM_EnemyBase
 {
     Module_AttackMele m_AttackMele;
     Module_Dash m_Dash;
-    [SerializeField] GameObject m_Player;
+    GameObject m_Player;
     NavMeshAgent m_NavMeshAgent;
     [SerializeField] private bool m_HasToDash;
 

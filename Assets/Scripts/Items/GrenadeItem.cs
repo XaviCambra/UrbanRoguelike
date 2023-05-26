@@ -12,7 +12,6 @@ public class GrenadeItem : MonoBehaviour
     [SerializeField] private float m_ExplosionForce;
     [SerializeField] private float m_Damage;
 
-
     [SerializeField] private InputController m_InputController;
     [SerializeField] private Player_BLACKBOARD m_PlayerBlackboard;
     [SerializeField] private GameObject m_PlayerBulletOrigin;

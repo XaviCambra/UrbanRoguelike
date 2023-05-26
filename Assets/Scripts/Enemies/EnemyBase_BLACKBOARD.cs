@@ -12,6 +12,7 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
     public float m_Damage;
     public float m_AttackSpeed;
     public float m_AttackCooldown;
+    public float m_GrenadeCooldown;
 
     //Distances
     public float m_DetectionRadius;

@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class RangedEnemy : FSM_EnemyBase
@@ -9,8 +6,7 @@ public class RangedEnemy : FSM_EnemyBase
     Module_AttackRanged m_AttackRanged;
     Module_Crouch m_Crouch;
     GameObject m_PlayerHitpoint;
-
-    public GameObject m_Player;
+    GameObject m_Player;
 
     [SerializeField] private GameObject m_GrenadePrefab;
     [SerializeField] private float m_GrenadeForce;
@@ -21,7 +17,7 @@ public class RangedEnemy : FSM_EnemyBase
         Grenade
     }
 
-    private AttackType m_AttackType;
+    [SerializeField] private AttackType m_AttackType;
 
     void Start()
     {
@@ -95,5 +91,10 @@ public class RangedEnemy : FSM_EnemyBase
         m_Crouch.Crouching(false, 0);
         Debug.Log("Crouch In");
         SetStateWait(m_Blackboard.m_AttackCooldown);
+    }
+
+    private IEnumerator GrenadeCooldown()
+    {
+        yield return null;
     }
 }
