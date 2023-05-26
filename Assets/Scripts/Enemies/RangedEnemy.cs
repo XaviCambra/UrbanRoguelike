@@ -8,6 +8,7 @@ public class RangedEnemy : FSM_EnemyBase
     GameObject m_PlayerHitpoint;
     GameObject m_Player;
 
+    LineRenderer m_LineRenderer;
     [SerializeField] private GameObject m_GrenadePrefab;
     [SerializeField] private float m_GrenadeForce;
 
@@ -25,10 +26,12 @@ public class RangedEnemy : FSM_EnemyBase
         m_AttackRanged = GetComponent<Module_AttackRanged>();
         m_Crouch = GetComponent<Module_Crouch>();
         m_PlayerHitpoint = GameObject.FindGameObjectWithTag("PlayerHitpoint");
+        m_LineRenderer = GetComponent<LineRenderer>();
 
         m_Player = GameObject.FindGameObjectWithTag("Player");
         
         m_Blackboard.m_CanAttack = true;
+        StartCoroutine(CrouchIn());
     }
 
     protected override void Update()
@@ -59,10 +62,12 @@ public class RangedEnemy : FSM_EnemyBase
     {
         base.StateAttack();
 
+        m_LineRenderer.SetPosition(0, m_Blackboard.m_AttackPoint.position);
+        m_LineRenderer.SetPosition(1, m_PlayerHitpoint.transform.position);
+
         if (!m_Blackboard.m_CanAttack)
             return;
 
-        Debug.Log(m_AttackType);
         switch (m_AttackType)
         {
             case AttackType.Bullet:
@@ -89,7 +94,6 @@ public class RangedEnemy : FSM_EnemyBase
     {
         yield return new WaitForSeconds(1.0f);
         m_Crouch.Crouching(true, 1);
-        Debug.Log("Crouch Out");
         m_Blackboard.m_CanAttack = true;
     }
 
@@ -97,7 +101,6 @@ public class RangedEnemy : FSM_EnemyBase
     {
         yield return new WaitForSeconds(3.0f);
         m_Crouch.Crouching(false, 0);
-        Debug.Log("Crouch In");
     }
 
     private IEnumerator GrenadeCooldown()

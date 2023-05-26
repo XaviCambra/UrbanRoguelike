@@ -56,6 +56,7 @@ public class MeleEnemy : FSM_EnemyBase
 
         if (l_Distance > m_Blackboard.m_DetectionRadius)
         {
+            Debug.Log("Setted Idle");
             SetStateIdle();
             return;
         }
