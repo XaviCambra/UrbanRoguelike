@@ -24,14 +24,16 @@ public class Module_Crouch : MonoBehaviour
     {
         //m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(0, m_CharacterController.center/2, m_CharacterController.height/2));
-        m_Animator.SetTrigger("CrouchIn");
+        if(m_Animator != null)
+            m_Animator.SetTrigger("CrouchIn");
     }
 
     void Crouching_Out(float l_TransitionDuration)
     {
         //float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
         StartCoroutine(ModifyCharacterCollider(1, m_CharacterController.center*2, m_CharacterController.height*2));
-        m_Animator.SetTrigger("CrouchOut");
+        if (m_Animator != null)
+            m_Animator.SetTrigger("CrouchOut");
     }
 
     IEnumerator ModifyCharacterCollider(float transitionDuration, Vector3 l_Position, float l_Height)

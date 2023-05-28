@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
         m_Blackboard.m_DashCount++;
 
-        if (m_Blackboard.m_DashCount >= m_Blackboard.m_DashMaxCount) StartCoroutine(DashReload());
+        StartCoroutine(DashReload());
 
         return true;
     }
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator DashReload()
     {
         yield return new WaitForSeconds(m_Blackboard.m_DashCooldown);
-        m_Blackboard.m_DashCount = 0;
+        m_Blackboard.m_DashCount--;
     }
 
     void BodyFaceMouse()
