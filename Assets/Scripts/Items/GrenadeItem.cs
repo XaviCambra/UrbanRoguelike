@@ -61,7 +61,6 @@ public class GrenadeItem : MonoBehaviour
                 l_health.TakeDamage(m_Damage);
             }
         }
-        Debug.Log("Granada explota");
         Destroy(gameObject);
     }
 

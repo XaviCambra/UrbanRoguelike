@@ -5,7 +5,7 @@ using UnityEngine;
 public class FSM_EnemyBase : MonoBehaviour
 {
     protected EnemyBase_BLACKBOARD m_Blackboard;
-    private bool m_IsActive = true;
+    protected bool m_IsActive = true;
 
     protected enum EnemyStates
     {

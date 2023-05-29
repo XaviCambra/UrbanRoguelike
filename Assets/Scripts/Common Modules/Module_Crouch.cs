@@ -23,7 +23,7 @@ public class Module_Crouch : MonoBehaviour
     void Crouching_In(float l_TransitionDuration)
     {
         //m_Animation.PlayAnimation("Crouching", m_Crouching);
-        StartCoroutine(ModifyCharacterCollider(0, m_CharacterController.center/2, m_CharacterController.height/2));
+        StartCoroutine(ModifyCharacterCollider(l_TransitionDuration, m_CharacterController.center/2, m_CharacterController.height/2));
         if(m_Animator != null)
             m_Animator.SetTrigger("CrouchIn");
     }
@@ -31,7 +31,7 @@ public class Module_Crouch : MonoBehaviour
     void Crouching_Out(float l_TransitionDuration)
     {
         //float duration = m_Animation.PlayAnimation("Crouching", m_Crouching);
-        StartCoroutine(ModifyCharacterCollider(1, m_CharacterController.center*2, m_CharacterController.height*2));
+        StartCoroutine(ModifyCharacterCollider(l_TransitionDuration, m_CharacterController.center*2, m_CharacterController.height*2));
         if (m_Animator != null)
             m_Animator.SetTrigger("CrouchOut");
     }

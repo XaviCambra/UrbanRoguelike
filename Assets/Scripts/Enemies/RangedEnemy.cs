@@ -29,8 +29,9 @@ public class RangedEnemy : FSM_EnemyBase
         m_LineRenderer = GetComponent<LineRenderer>();
 
         m_Player = GameObject.FindGameObjectWithTag("Player");
-        
-        m_Blackboard.m_CanAttack = true;
+
+        m_LineRenderer.enabled = false;
+
         StartCoroutine(CrouchIn());
     }
 
@@ -39,6 +40,8 @@ public class RangedEnemy : FSM_EnemyBase
         base.Update();
         transform.LookAt(m_Player.transform.position);
         m_Blackboard.m_AttackPoint.transform.LookAt(m_PlayerHitpoint.transform);
+        m_LineRenderer.SetPosition(0, m_Blackboard.m_AttackPoint.position);
+        m_LineRenderer.SetPosition(1, m_PlayerHitpoint.transform.position);
     }
 
     public override void StateIdle()
@@ -50,11 +53,12 @@ public class RangedEnemy : FSM_EnemyBase
 
     protected override void SetStateAttack()
     {
-        StartCoroutine(CrouchOut());
+        Debug.Log("Is Attack");
         if (m_Blackboard.m_GrenadeLoaded)
             m_AttackType = AttackType.Grenade;
         else
             m_AttackType = AttackType.Bullet;
+        StartCoroutine(CrouchOut());
         base.SetStateAttack();
     }
 
@@ -62,12 +66,10 @@ public class RangedEnemy : FSM_EnemyBase
     {
         base.StateAttack();
 
-        m_LineRenderer.SetPosition(0, m_Blackboard.m_AttackPoint.position);
-        m_LineRenderer.SetPosition(1, m_PlayerHitpoint.transform.position);
-
         if (!m_Blackboard.m_CanAttack)
             return;
 
+        Debug.Log("Dispara");
         switch (m_AttackType)
         {
             case AttackType.Bullet:
@@ -92,15 +94,20 @@ public class RangedEnemy : FSM_EnemyBase
 
     private IEnumerator CrouchOut()
     {
+        Debug.Log("Is Idle");
+        m_Crouch.Crouching(true, m_Blackboard.m_CrouchOutTime); //0
+        m_LineRenderer.enabled = true;
         yield return new WaitForSeconds(1.0f);
-        m_Crouch.Crouching(true, 1);
+        Debug.Log("Se levanta");
         m_Blackboard.m_CanAttack = true;
     }
 
     private IEnumerator CrouchIn()
     {
-        yield return new WaitForSeconds(3.0f);
-        m_Crouch.Crouching(false, 0);
+        yield return new WaitForSeconds(1.0f);
+        Debug.Log("Se agacha");
+        m_Crouch.Crouching(false, m_Blackboard.m_CrouchInTime); //2
+        m_LineRenderer.enabled = false;
     }
 
     private IEnumerator GrenadeCooldown()

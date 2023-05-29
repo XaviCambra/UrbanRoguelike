@@ -13,6 +13,7 @@ public class Player_BLACKBOARD : MonoBehaviour
     [SerializeField] private const float m_BASEDashSpeed = 8.0f;
     [SerializeField] private const int m_BASEMaxOverHeat = 5;
 
+    [Header("Is Active")]
     public bool m_CanInteract = true;
 
     [Header("Movement")]
