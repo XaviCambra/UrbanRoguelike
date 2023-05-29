@@ -10,6 +10,7 @@ public class ItemTrigger : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().SetInnactiveWithTime(3);
             m_BaseItem.ApplyEffectItem();
             gameObject.SetActive(false);
         }

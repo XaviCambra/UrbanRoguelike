@@ -5,7 +5,6 @@ using UnityEngine;
 public class FSM_EnemyBase : MonoBehaviour
 {
     protected EnemyBase_BLACKBOARD m_Blackboard;
-    protected bool m_IsActive = true;
 
     protected enum EnemyStates
     {
@@ -19,7 +18,7 @@ public class FSM_EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (m_IsActive == false) return;
+        if (m_Blackboard.m_IsActive == false) return;
         switch (m_State)
         {
             case EnemyStates.Idle:
@@ -58,7 +57,7 @@ public class FSM_EnemyBase : MonoBehaviour
 
     private void SetInnactiveObject()
     {
-        m_IsActive = false;
+        m_Blackboard.m_IsActive = false;
     }
 
     private void OnEnable()

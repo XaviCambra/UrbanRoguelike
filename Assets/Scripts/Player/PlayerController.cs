@@ -205,15 +205,27 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        gameObject.GetComponent<Player_Health>().m_PlayerIsDead += InvertInteract;
+        gameObject.GetComponent<Player_Health>().m_PlayerIsDead += SetInnactive;
     }
 
     private void OnDisable()
     {
-        gameObject.GetComponent<Player_Health>().m_PlayerIsDead -= InvertInteract;
+        gameObject.GetComponent<Player_Health>().m_PlayerIsDead -= SetInnactive;
     }
-    private void InvertInteract()
+    private void SetInnactive()
     {
         m_Blackboard.m_CanInteract = false;
+    }
+
+    public void SetInnactiveWithTime(float l_Duration)
+    {
+        StartCoroutine(SetInnactive(l_Duration));
+    }
+
+    public IEnumerator SetInnactive(float l_Duration)
+    {
+        m_Blackboard.m_CanInteract = false;
+        yield return new WaitForSeconds(l_Duration);
+        m_Blackboard.m_CanInteract = true;
     }
 }

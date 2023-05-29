@@ -40,9 +40,16 @@ public class SceneController : MonoBehaviour
     private IEnumerator ActivateEnemies(float WaitingTime)
     {
         yield return new WaitForSeconds(WaitingTime);
-        foreach (GameObject enemy in m_DoorToNextRoom.Enemies)
+
+        if (m_DoorToNextRoom.Enemies.Length > 0)
         {
-            enemy.SetActive(true);
+            foreach (GameObject enemy in m_DoorToNextRoom.Enemies)
+            {
+                if (enemy != null)
+                    enemy.SetActive(true);
+            }
         }
+
+        
     }
 }

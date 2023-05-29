@@ -15,8 +15,13 @@ public class FinalBossEnemy : FSM_EnemyBase
         m_PlayerHitpoint = GameObject.FindGameObjectWithTag("PlayerHitpoint");
         m_LineRenderer = GetComponent<LineRenderer>();
 
-        m_IsActive = false;
+        m_Blackboard.m_IsActive = false;
     }
 
+    protected override void Update()
+    {
+        base.Update();
 
+
+    }
 }
