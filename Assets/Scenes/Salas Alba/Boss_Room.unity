@@ -2854,17 +2854,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 71037d59655825e43b08c76468607ea1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71037d59655825e43b08c76468607ea1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -11.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71037d59655825e43b08c76468607ea1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71037d59655825e43b08c76468607ea1,
         type: 3}
@@ -3030,6 +3030,7 @@ GameObject:
   - component: {fileID: 4411517148455592692}
   - component: {fileID: 4411517148455592691}
   - component: {fileID: 4411517148455592694}
+  - component: {fileID: 4411517148455592695}
   m_Layer: 0
   m_Name: Puerta
   m_TagString: Untagged
@@ -3046,7 +3047,7 @@ Transform:
   m_GameObject: {fileID: 4411517148455592689}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -25, y: 2.2, z: 0}
-  m_LocalScale: {x: 10.5, y: 4, z: 0.30000007}
+  m_LocalScale: {x: 10.5, y: 4, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1349612842}
@@ -3131,6 +3132,24 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &4411517148455592695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411517148455592689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e50db12a4586b42a45bd4fe1053bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InventoryManager: {fileID: 0}
+  m_DropperCollider: {fileID: 0}
+  m_FloatingText: {fileID: 0}
+  m_ClosePosition: {x: -25, y: 2.2, z: 0}
+  m_OpenPosition: {x: -25, y: -2.05, z: 0}
+  m_AnimationDuration: 2
 --- !u!64 &4692956927898775867
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3427,6 +3446,8 @@ MonoBehaviour:
   m_DashSpeed: 0
   m_DashChargedDistance: 0
   m_Crouching: 0
+  m_CrouchInTime: 0
+  m_CrouchOutTime: 0
   m_Damage: 10
   m_AttackSpeed: 100
   m_AttackCooldown: 0.5

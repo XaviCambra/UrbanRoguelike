@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3174271296979132270}
   - component: {fileID: 2377319704845072993}
   - component: {fileID: 5381712735741401772}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3603835176853083190}
   - component: {fileID: 8236697215769920787}
   - component: {fileID: 9072492641180520275}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 4291719252163422234}
   - component: {fileID: 8589690107225484308}
   - component: {fileID: 3561984343237344492}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 6528876050359306509}
   - component: {fileID: 2490364322719871442}
   - component: {fileID: 3852563807229165611}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MeleEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -351,21 +351,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WalkSpeed: 2
   m_RunSpeed: 6
+  m_DashDistance: 6
+  m_DashSpeed: 20
+  m_DashChargedDistance: 15
+  m_Crouching: 0
+  m_CrouchInTime: 0
+  m_CrouchOutTime: 0
   m_Damage: 10
   m_AttackSpeed: 15
   m_AttackCooldown: 3
   m_GrenadeLoaded: 1
+  m_GrenadeDistance: 0
   m_GrenadeCooldown: 0
   m_GrenadeForce: 0
   m_DetectionRadius: 40
   m_FollowDistance: 30
   m_AttackDistance: 1.2
-  m_DashDistance: 6
-  m_DashSpeed: 20
-  m_DashChargedDistance: 15
-  m_GrenadeDistance: 0
   m_CanAttack: 0
-  m_Crouching: 0
   m_AttackPoint: {fileID: 6528876050542563968}
   m_Points: 10
 --- !u!136 &6528876050359306500
@@ -612,7 +614,7 @@ GameObject:
   - component: {fileID: 6528876050542563982}
   - component: {fileID: 6528876050542563981}
   - component: {fileID: 6528876050542563980}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyFist
   m_TagString: EnemyFist
   m_Icon: {fileID: 0}
@@ -721,7 +723,7 @@ GameObject:
   - component: {fileID: 6528876051038865605}
   - component: {fileID: 6528876051038865607}
   - component: {fileID: 6528876051038865606}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,10 +872,55 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 71037d59655825e43b08c76468607ea1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: 71037d59655825e43b08c76468607ea1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 71037d59655825e43b08c76468607ea1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4714817154256824709, guid: 71037d59655825e43b08c76468607ea1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: 71037d59655825e43b08c76468607ea1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 71037d59655825e43b08c76468607ea1,
         type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 71037d59655825e43b08c76468607ea1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: 71037d59655825e43b08c76468607ea1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700725330082129686, guid: 71037d59655825e43b08c76468607ea1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821623529969584324, guid: 71037d59655825e43b08c76468607ea1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71037d59655825e43b08c76468607ea1, type: 3}

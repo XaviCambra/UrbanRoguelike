@@ -6,8 +6,7 @@ using UnityEngine;
 public class InputController : MonoBehaviour
 {
     [SerializeField] private Camera m_Camera;
-
-    public GameObject m_test;
+    public LayerMask m_PointerLayer;
     
     [Header("Inputs")]
     public KeyCode m_ForwardKey = KeyCode.W;
@@ -35,46 +34,20 @@ public class InputController : MonoBehaviour
 
     public Vector3 m_MouseDirectionScreen()
     {
-        Vector3 m_MouseWorldPosition = m_MousePositionInScreen();
+        Vector3 m_MouseWorldPosition = Vector3.zero;
 
-        m_MouseWorldPosition.y = transform.position.y;
-
+        RaycastHit hit;
 
         Ray l_ray = m_Camera.ScreenPointToRay(Input.mousePosition);
 
-        Plane l_plane = new Plane(Vector3.up, transform.position.y);
-
-        float l_distance;
-
-        if (l_plane.Raycast(l_ray, out l_distance))
+        if (Physics.Raycast(l_ray, out hit, Mathf.Infinity, m_PointerLayer))
         {
-            m_MouseWorldPosition = l_ray.GetPoint(l_distance);
+            m_MouseWorldPosition = hit.point;
+            Debug.DrawRay(m_Camera.transform.position, (hit.point - m_Camera.transform.position).normalized * hit.distance, Color.yellow);
         }
 
+        m_MouseWorldPosition.y = transform.position.y;
         return (m_MouseWorldPosition - transform.position).normalized;
-    }
-
-    public Vector3 m_MousePositionInScreen()
-    {
-        /*Vector3 l_mouseScreenPosition = Input.mousePosition;
-
-        Ray l_ray = m_Camera.ScreenPointToRay(l_mouseScreenPosition);
-
-        if (Physics.Raycast(l_ray, out RaycastHit l_Hit))
-        {
-            Vector3 l_HitPoint = l_Hit.point;
-            Debug.DrawRay(m_Camera.transform.position, l_HitPoint, Color.yellow);
-            return l_HitPoint;
-        }*/
-
-        
-
-        return Vector3.zero;
-    }
-
-    public Vector3 m_MousePosition()
-    {
-        return Input.mousePosition;
     }
 }
 
