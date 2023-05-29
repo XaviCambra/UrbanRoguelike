@@ -36,6 +36,7 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
 
     [Header("Other variables")]
     public bool m_CanAttack;
+    public bool m_IsActive = true;
 
     [Header("Objects")]
     public Transform m_AttackPoint;

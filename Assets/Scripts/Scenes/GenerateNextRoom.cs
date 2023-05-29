@@ -9,10 +9,16 @@ public class GenerateNextRoom : MonoBehaviour
         if (!other.tag.Equals("Player"))
             return;
 
-        foreach (GameObject enemy in Enemies)
+        if(Enemies.Length > 0)
         {
-            if (enemy.activeSelf)
-                return;
+            foreach (GameObject enemy in Enemies)
+            {
+                if(enemy != null)
+                {
+                    if (enemy.activeSelf)
+                        return;
+                }
+            }
         }
 
         GenerateNewRoom();
