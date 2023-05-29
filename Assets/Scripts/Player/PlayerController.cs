@@ -183,10 +183,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public IEnumerator CancelOverHeat
-        ()
+    public void StartKillerMode()
+    {
+        StartCoroutine(CancelOverHeat());
+    }
+
+    public IEnumerator CancelOverHeat()
     {
         m_Blackboard.m_CanOverheat = false;
+        Debug.Log("Overheat cancelled " + m_Blackboard.m_OverHeatCancelDuration + " seconds");
         yield return new WaitForSeconds(m_Blackboard.m_OverHeatCancelDuration);
         m_Blackboard.m_CanOverheat = true;
     }

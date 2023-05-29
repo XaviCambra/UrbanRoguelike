@@ -107,9 +107,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7632940219825347297}
+  - component: {fileID: 7632940219825347293}
   - component: {fileID: 7632940219825347295}
   - component: {fileID: 7632940219825347294}
-  - component: {fileID: 7632940219825347293}
   - component: {fileID: 7632940219825347292}
   - component: {fileID: 6715640174091328150}
   - component: {fileID: 5111558361304374676}
@@ -140,6 +140,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7632940219825347293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7632940219825347291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0404f4101a9b5046a083e6b9c79eee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WalkSpeed: 0
+  m_RunSpeed: 0
+  m_DashDistance: 0
+  m_DashSpeed: 0
+  m_DashChargedDistance: 0
+  m_Crouching: 0
+  m_CrouchInTime: 2
+  m_CrouchOutTime: 0
+  m_Damage: 10
+  m_AttackSpeed: 100
+  m_AttackCooldown: 0.5
+  m_GrenadeLoaded: 1
+  m_GrenadeDistance: 5
+  m_GrenadeCooldown: 12
+  m_GrenadeForce: 0
+  m_DetectionRadius: 10
+  m_FollowDistance: 0
+  m_AttackDistance: 10
+  m_CanAttack: 0
+  m_AttackPoint: {fileID: 7632940219939552535}
+  m_Points: 10
 --- !u!114 &7632940219825347295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,37 +203,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Bullet: {fileID: 213737385128584455, guid: eb52a598051ebf44fa122a94423d3ba7, type: 3}
---- !u!114 &7632940219825347293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7632940219825347291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0404f4101a9b5046a083e6b9c79eee0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_WalkSpeed: 0
-  m_RunSpeed: 0
-  m_Damage: 10
-  m_AttackSpeed: 100
-  m_AttackCooldown: 0.5
-  m_GrenadeLoaded: 1
-  m_GrenadeCooldown: 12
-  m_GrenadeForce: 0
-  m_DetectionRadius: 10
-  m_FollowDistance: 0
-  m_AttackDistance: 10
-  m_DashDistance: 0
-  m_DashSpeed: 0
-  m_DashChargedDistance: 0
-  m_GrenadeDistance: 5
-  m_CanAttack: 1
-  m_Crouching: 0
-  m_AttackPoint: {fileID: 7632940219939552535}
-  m_Points: 10
 --- !u!114 &7632940219825347292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +321,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.20168775
+        value: 0.100232065
         inSlope: 0
         outSlope: 0
         tangentMode: 0

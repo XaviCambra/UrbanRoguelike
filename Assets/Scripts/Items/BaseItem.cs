@@ -8,6 +8,7 @@ public class BaseItem : MonoBehaviour
     public GameObject m_FloatingText;
     public virtual void ApplyEffectItem()
     {
+        m_InventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
         m_InventoryManager.UseItem();
     }
 

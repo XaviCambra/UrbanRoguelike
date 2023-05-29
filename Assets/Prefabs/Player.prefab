@@ -71,10 +71,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1688452273801887248}
+  - component: {fileID: 1688452273801887252}
   - component: {fileID: 1688452273801887249}
   - component: {fileID: 1688452273801887254}
   - component: {fileID: 1688452273801887255}
-  - component: {fileID: 1688452273801887252}
   - component: {fileID: 1688452273801887253}
   - component: {fileID: 1688452273801887258}
   - component: {fileID: 1688452273801887256}
@@ -106,6 +106,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1688452273801887252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688452273801887263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c47e794dadf384b87749575c1991a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CanInteract: 1
+  m_CanMove: 1
+  m_Crouching: 0
+  m_MovementSpeed: 6
+  m_CrouchingSpeed: 3
+  m_ShootingDamage: 10
+  m_BulletSpeed: 50
+  m_ReloadSpeed: 3
+  m_MaxOverHeat: 5
+  m_OverHeatCancelDuration: 3
+  m_ShootPoint: {fileID: 1688452273337494128}
+  m_CurrentShots: 0
+  m_CanOverheat: 1
+  m_DashDistance: 4
+  m_DashSpeed: 8
+  m_DashCount: 0
+  m_DashMaxCount: 2
+  m_DashCooldown: 3
+  m_InmortalityDuration: 5
+  m_Item: {fileID: 0}
+  m_PowerUp: {fileID: 0}
+  m_HasGrenade: 0
 --- !u!143 &1688452273801887249
 CharacterController:
   m_ObjectHideFlags: 0
@@ -160,41 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3ff8b34a801134f8aa072df5064edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1688452273801887252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688452273801887263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70c47e794dadf384b87749575c1991a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CanInteract: 1
-  m_CanMove: 1
-  m_Crouching: 0
-  m_MovementSpeed: 6
-  m_CrouchingSpeed: 3
-  m_CanAttack: 1
-  m_ShootingDamage: 10
-  m_BulletSpeed: 50
-  m_ReloadSpeed: 3
-  m_MaxOverHeat: 5
-  m_OverHeatCancelDuration: 3
-  m_ShootPoint: {fileID: 1688452273337494128}
-  m_CurrentShots: 0
-  m_CanOverheat: 1
-  m_DashDistance: 4
-  m_DashSpeed: 8
-  m_DashCount: 0
-  m_DashMaxCount: 2
-  m_DashCooldown: 3
-  m_InmortalityDuration: 5
-  m_Item: {fileID: 0}
-  m_PowerUp: {fileID: 0}
-  m_HasGrenade: 0
 --- !u!114 &1688452273801887253
 MonoBehaviour:
   m_ObjectHideFlags: 0
