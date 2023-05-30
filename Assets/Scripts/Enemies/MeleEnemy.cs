@@ -82,8 +82,8 @@ public class MeleEnemy : FSM_EnemyBase
 
     private void Attack()
     {
-        m_AttackMele.HitOnDirection(m_Blackboard.m_Damage);
-        SetStateWait(m_Blackboard.m_AttackCooldown);
+        m_AttackMele.HitOnDirection(m_Blackboard.m_BulletDamage);
+        SetStateWait(m_Blackboard.m_BulletCooldown);
     }
 
     void OnDrawGizmosSelected()

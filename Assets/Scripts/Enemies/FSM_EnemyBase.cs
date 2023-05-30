@@ -19,6 +19,8 @@ public class FSM_EnemyBase : MonoBehaviour
     protected virtual void Update()
     {
         if (m_Blackboard.m_IsActive == false) return;
+
+        Debug.Log(m_State);
         switch (m_State)
         {
             case EnemyStates.Idle:
@@ -38,7 +40,7 @@ public class FSM_EnemyBase : MonoBehaviour
         }
     }
 
-    protected virtual void SetStateIdle() { m_State = EnemyStates.Idle; }
+    protected virtual void SetStateIdle() { m_State = EnemyStates.Idle; Debug.Log("Setter Idle Called"); }
     public virtual void StateIdle() { }
     protected virtual void SetStateMovement() { m_State = EnemyStates.Movement; }
     public virtual void StateMovement() { }
@@ -46,13 +48,15 @@ public class FSM_EnemyBase : MonoBehaviour
     public virtual void StateAttack() { }
     protected virtual void SetStateWait(float l_Duration)
     {
+        Debug.Log("Called Wait Setter");
         m_State = EnemyStates.Wait;
         StartCoroutine(StateWait(l_Duration));
     }
     public virtual IEnumerator StateWait(float l_Duration)
     {
         yield return new WaitForSeconds(l_Duration);
-        m_State = EnemyStates.Idle;
+        Debug.Log("Wait Done");
+        SetStateIdle();
     }
 
     private void SetInnactiveObject()
