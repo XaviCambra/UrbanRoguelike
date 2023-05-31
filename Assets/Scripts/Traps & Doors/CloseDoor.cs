@@ -39,6 +39,7 @@ public class CloseDoor : BaseItem
 
     private IEnumerator CloseDoorAnimation()
     {
+        
         float l_TimeRate = 1f / m_AnimationDuration;
         float t = 0.0f;
         Vector3 l_ClosePosition = transform.position;

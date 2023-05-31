@@ -42,6 +42,11 @@ public class Module_Health : MonoBehaviour
         Death();
     }
 
+    public float GetHealthPercent()
+    {
+        return (m_CurrentHealth * 100) / m_MaxHealth;
+    }
+
     public virtual void Death()
     {
         if(ObjectMesh == null)

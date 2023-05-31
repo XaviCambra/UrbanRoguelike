@@ -19,6 +19,7 @@ public class FSM_EnemyBase : MonoBehaviour
     protected virtual void Update()
     {
         if (m_Blackboard.m_IsActive == false) return;
+
         switch (m_State)
         {
             case EnemyStates.Idle:
@@ -52,7 +53,7 @@ public class FSM_EnemyBase : MonoBehaviour
     public virtual IEnumerator StateWait(float l_Duration)
     {
         yield return new WaitForSeconds(l_Duration);
-        m_State = EnemyStates.Idle;
+        SetStateIdle();
     }
 
     private void SetInnactiveObject()
