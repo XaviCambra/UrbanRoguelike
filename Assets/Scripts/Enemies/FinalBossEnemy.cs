@@ -20,6 +20,8 @@ public class FinalBossEnemy : FSM_EnemyBase
     [SerializeField] private GameObject m_GrenadePrefab;
     [SerializeField] private float m_GrenadeForce;
 
+    [SerializeField] private GameObject m_MisilePrefab;
+
     [SerializeField] private bool m_MisileUnlocked = false;
 
     private enum AttackType
@@ -57,10 +59,10 @@ public class FinalBossEnemy : FSM_EnemyBase
         foreach (BossPhase l_Phase in m_Phases)
         {
             if (m_Health.GetHealthPercent() > l_Phase.m_LifePercent)
-                return;
+                continue;
 
             if (l_Phase.m_IsCompleted)
-                return;
+                continue;
 
             for (int i = 0; i < l_Phase.m_InvokedEnemiesNumber; i++)
             {
@@ -88,14 +90,12 @@ public class FinalBossEnemy : FSM_EnemyBase
         if (m_Blackboard.m_GrenadeLoaded)
         {
             m_AttackType = AttackType.Grenade;
-            StartCoroutine(AttackDuration(m_Blackboard.m_GrenadeAttackDuration));
             StartCoroutine(GrenadeCooldown());
             return;
         }
         if (m_Blackboard.m_MisileLoaded && m_MisileUnlocked)
         {
             m_AttackType = AttackType.Misile;
-            StartCoroutine(AttackDuration(m_Blackboard.m_GrenadeAttackDuration));
             StartCoroutine(MisileCooldown());
             return;
         }
@@ -124,10 +124,14 @@ public class FinalBossEnemy : FSM_EnemyBase
                 l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_GrenadeForce, ForceMode.VelocityChange);
                 l_rb.useGravity = true;
                 l_grenade.SetActive(true);
-                m_Blackboard.m_GrenadeLoaded = false;
+                SetStateWait(m_Blackboard.m_BulletCooldown);
                 break;
             case AttackType.Misile:
-
+                GameObject l_Misile = Instantiate(m_MisilePrefab);
+                l_Misile.transform.parent = gameObject.transform;
+                l_Misile.transform.localPosition = Vector3.zero;
+                l_Misile.transform.parent = null;
+                SetStateWait(m_Blackboard.m_BulletCooldown);
                 break;
             default:
                 break;
@@ -142,9 +146,7 @@ public class FinalBossEnemy : FSM_EnemyBase
 
     private IEnumerator AttackDuration(float l_Duration)
     {
-        Debug.Log(l_Duration);
         yield return new WaitForSeconds(l_Duration);
-        Debug.Log("Setted Wait Time");
         SetStateWait(m_Blackboard.m_BulletCooldown);
     }
 
