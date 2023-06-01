@@ -175,6 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9020711735331929645}
+  - component: {fileID: 6758341234767988653}
   m_Layer: 0
   m_Name: low bargate
   m_TagString: Untagged
@@ -190,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8537647501612180631}
   m_LocalRotation: {x: -0, y: 0.935346, z: -0, w: -0.35373434}
-  m_LocalPosition: {x: -0.20797351, y: 0, z: 0.0051097833}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -199,3 +200,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 221.432, z: 0}
+--- !u!136 &6758341234767988653
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537647501612180631}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.27
+  m_Direction: 1
+  m_Center: {x: -0.1, y: 0.54, z: -0.04}
