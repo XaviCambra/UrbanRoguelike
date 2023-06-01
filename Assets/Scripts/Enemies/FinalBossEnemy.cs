@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class FinalBossEnemy : FSM_EnemyBase
@@ -10,6 +9,8 @@ public class FinalBossEnemy : FSM_EnemyBase
     GameObject m_PlayerHitpoint;
     GameObject m_Player;
     LineRenderer m_LineRenderer;
+
+    public Transform m_LookAtPlayerPoint;
 
     Module_Health m_Health;
 
@@ -124,6 +125,7 @@ public class FinalBossEnemy : FSM_EnemyBase
             case AttackType.Bullet:
                 if (m_Blackboard.m_BulletLoaded)
                 {
+                    m_LookAtPlayerPoint.LookAt(m_PlayerHitpoint.transform.position);
                     m_Blackboard.m_RotationAttackPoint.localRotation = Quaternion.Euler(0, UnityEngine.Random.Range(-m_Blackboard.m_BulletAngle/2, m_Blackboard.m_BulletAngle/2), 0);
                     m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_RotationAttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_BulletDamage, "Enemy");
                     m_Blackboard.m_BulletLoaded = false;
