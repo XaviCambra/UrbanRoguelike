@@ -5,8 +5,6 @@ using UnityEngine;
 public class FloatingText : MonoBehaviour
 {
     Transform m_Camera;
-    Transform m_Origin;
-    Transform m_Canvas;
 
     public Vector3 m_Offset;
 
@@ -14,16 +12,11 @@ public class FloatingText : MonoBehaviour
     void Start()
     {
         m_Camera = Camera.main.transform;
-        m_Origin = transform.parent;
-
-        m_Canvas = FindObjectOfType<Canvas>().transform;
-        transform.SetParent(m_Canvas);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(transform.position - m_Camera.transform.position);
-        transform.position = Camera.main.WorldToScreenPoint(m_Origin.transform.position) + m_Offset;
+        transform.rotation = Quaternion.LookRotation(m_Camera.transform.position);
     }
 }
