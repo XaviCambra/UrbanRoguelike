@@ -35,7 +35,7 @@ public class FingerprintTrigger : BaseItem
             bool l_CanActivate = false;
             foreach(FingerprintTrigger trigger in m_Triggers)
             {
-                if (!trigger.m_ItemEnabled)
+                if (trigger.m_ItemEnabled)
                     l_CanActivate = true;
             }
 
