@@ -13,6 +13,7 @@ public class FinalBossEnemy : FSM_EnemyBase
 
     Module_Health m_Health;
 
+    public List<FingerprintTrigger> m_Triggers;
     public List<CloseDoor> m_Barriers;
     public BossPhase[] m_Phases;
 
@@ -64,6 +65,11 @@ public class FinalBossEnemy : FSM_EnemyBase
 
             if (l_Phase.m_IsCompleted)
                 continue;
+
+            foreach (FingerprintTrigger trigger in m_Triggers)
+            {
+                trigger.m_ItemEnabled = true;
+            }
 
             foreach (CloseDoor l_Barrier in m_Barriers)
             {

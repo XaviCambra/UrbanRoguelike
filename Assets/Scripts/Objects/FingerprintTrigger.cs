@@ -32,13 +32,19 @@ public class FingerprintTrigger : BaseItem
         {
             Debug.Log("Button pressed");
             m_ItemEnabled = false;
+            bool l_CanActivate = false;
             foreach(FingerprintTrigger trigger in m_Triggers)
             {
-                trigger.m_ItemEnabled = false;
+                if (!trigger.m_ItemEnabled)
+                    l_CanActivate = true;
             }
-            foreach(CloseDoor l_Barrier in m_Barriers)
+
+            if (!l_CanActivate)
             {
-                l_Barrier.ApplyEffectItem();
+                foreach (CloseDoor l_Barrier in m_Barriers)
+                {
+                    l_Barrier.ApplyEffectItem();
+                }
             }
         }
     }
