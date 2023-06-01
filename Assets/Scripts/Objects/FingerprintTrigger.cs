@@ -27,10 +27,8 @@ public class FingerprintTrigger : BaseItem
         if (!m_IsActive)
             return;
 
-        Debug.Log("Is active");
         if (Input.GetKeyDown(m_InputController.m_UseItemKey))
         {
-            Debug.Log("Button pressed");
             m_ItemEnabled = false;
             bool l_CanActivate = false;
             foreach(FingerprintTrigger trigger in m_Triggers)
