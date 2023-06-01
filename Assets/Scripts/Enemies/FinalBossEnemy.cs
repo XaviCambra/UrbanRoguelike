@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class FinalBossEnemy : FSM_EnemyBase
 
     Module_Health m_Health;
 
+    public List<CloseDoor> m_Barriers;
     public BossPhase[] m_Phases;
 
     [SerializeField] private GameObject m_MeleEnemy;
@@ -62,6 +64,11 @@ public class FinalBossEnemy : FSM_EnemyBase
 
             if (l_Phase.m_IsCompleted)
                 continue;
+
+            foreach (CloseDoor l_Barrier in m_Barriers)
+            {
+                l_Barrier.ApplyEffectItem();
+            }
 
             for (int i = 0; i < l_Phase.m_InvokedEnemiesNumber; i++)
             {

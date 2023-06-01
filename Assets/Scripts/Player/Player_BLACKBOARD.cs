@@ -49,9 +49,9 @@ public class Player_BLACKBOARD : MonoBehaviour
 
     private void Start()
     {
-        GameController m_GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        GameObject m_GameController = GameObject.FindGameObjectWithTag("GameController");
         if(m_GameController != null)
-            m_GameController.UsePermanentPowerUp();
+            m_GameController.GetComponent<GameController>().UsePermanentPowerUp();
     }
 
     public void ResetAllStats()

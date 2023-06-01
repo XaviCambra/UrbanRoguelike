@@ -78,6 +78,12 @@ public class InventoryManager : MonoBehaviour
             m_CanSwap = false;
             m_ItemToSwap = null;
         }
+        if (other.CompareTag("Fingerprint"))
+        {
+            FingerprintTrigger l_item = other.GetComponent<FingerprintTrigger>();
+
+            l_item.DeactivateText();
+        }
     }
 
     public void UseItem()
