@@ -84,4 +84,13 @@ public class Player_BLACKBOARD : MonoBehaviour
     {
         return m_CurrentShots < m_MaxOverHeat; 
     }
+
+    public void TEST_GetBuff()
+    {
+        m_ShootingDamage += 10;
+        m_ReloadSpeed -= 0.5f;
+        m_MaxOverHeat += 1;
+        m_DashCooldown -= 0.5f;
+        m_DashMaxCount++;
+    }
 }
