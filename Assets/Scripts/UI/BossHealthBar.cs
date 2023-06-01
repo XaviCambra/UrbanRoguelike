@@ -26,8 +26,10 @@ public class BossHealthBar : MonoBehaviour
         if (m_Health.GetHealthPercent() > 0)
             return;
 
+        Debug.Log("Timer activated");
         if(m_TimeSinceWin <= 3)
         {
+            Debug.Log("Timer done");
             SceneLoader.LoadScene("Victory");
         }
         m_TimeSinceWin += Time.deltaTime;
