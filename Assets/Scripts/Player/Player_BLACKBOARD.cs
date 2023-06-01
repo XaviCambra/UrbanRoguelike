@@ -49,9 +49,9 @@ public class Player_BLACKBOARD : MonoBehaviour
 
     private void Start()
     {
-        GameController m_GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        GameObject m_GameController = GameObject.FindGameObjectWithTag("GameController");
         if(m_GameController != null)
-            m_GameController.UsePermanentPowerUp();
+            m_GameController.GetComponent<GameController>().UsePermanentPowerUp();
     }
 
     public void ResetAllStats()
@@ -83,5 +83,14 @@ public class Player_BLACKBOARD : MonoBehaviour
     public bool CanShoot()
     {
         return m_CurrentShots < m_MaxOverHeat; 
+    }
+
+    public void TEST_GetBuff()
+    {
+        m_ShootingDamage += 10;
+        m_ReloadSpeed -= 0.5f;
+        m_MaxOverHeat += 1;
+        m_DashCooldown -= 0.5f;
+        m_DashMaxCount++;
     }
 }

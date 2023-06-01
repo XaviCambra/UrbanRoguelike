@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -12,13 +13,13 @@ public class FinalBossEnemy : FSM_EnemyBase
 
     Module_Health m_Health;
 
+    public List<CloseDoor> m_Barriers;
     public BossPhase[] m_Phases;
 
     [SerializeField] private GameObject m_MeleEnemy;
     [SerializeField] private GameObject[] m_SpawnPoints;
 
     [SerializeField] private GameObject m_GrenadePrefab;
-    [SerializeField] private float m_GrenadeForce;
 
     [SerializeField] private GameObject m_MisilePrefab;
 
@@ -63,6 +64,11 @@ public class FinalBossEnemy : FSM_EnemyBase
 
             if (l_Phase.m_IsCompleted)
                 continue;
+
+            foreach (CloseDoor l_Barrier in m_Barriers)
+            {
+                l_Barrier.ApplyEffectItem();
+            }
 
             for (int i = 0; i < l_Phase.m_InvokedEnemiesNumber; i++)
             {
@@ -121,7 +127,8 @@ public class FinalBossEnemy : FSM_EnemyBase
             case AttackType.Grenade:
                 GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
                 Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
-                l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_GrenadeForce, ForceMode.VelocityChange);
+                Vector3 l_GrenadeUpScale = Vector3.up * m_Blackboard.m_GrenadeAngle;
+                l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_Blackboard.m_GrenadeForce + l_GrenadeUpScale, ForceMode.VelocityChange);
                 l_rb.useGravity = true;
                 l_grenade.SetActive(true);
                 SetStateWait(m_Blackboard.m_BulletCooldown);

@@ -49,11 +49,10 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
     public float m_GrenadeDistance;
     public float m_GrenadeCooldown;
     public float m_GrenadeForce;
-    public float m_GrenadeAttackDuration;
+    [Range(0, 100)] public float m_GrenadeAngle;
 
     [Header("Misile")]
     public bool m_MisileLoaded = true;
     public float m_MisileDamage;
     public float m_MisileCooldown;
-    public float m_MisileAttackDuration;
 }

@@ -68,6 +68,7 @@ public class FSM_EnemyBase : MonoBehaviour
 
     private void OnDisable()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Health>().m_PlayerIsDead -= SetInnactiveObject;
+        if(GameObject.FindGameObjectWithTag("Player") != null)
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Health>().m_PlayerIsDead -= SetInnactiveObject;
     }
 }
