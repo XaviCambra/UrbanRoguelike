@@ -351,25 +351,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WalkSpeed: 2
   m_RunSpeed: 6
+  m_DetectionRadius: 15
+  m_CanAttack: 0
+  m_IsActive: 1
+  m_RotationAttackPoint: {fileID: 0}
+  m_AttackPoint: {fileID: 6528876050542563968}
+  m_Points: 10
   m_DashDistance: 6
   m_DashSpeed: 20
   m_DashChargedDistance: 15
+  m_FollowDistance: 30
+  m_AttackDistance: 1.2
   m_Crouching: 0
   m_CrouchInTime: 0
   m_CrouchOutTime: 0
-  m_Damage: 10
+  m_BulletLoaded: 1
+  m_BulletDamage: 0
   m_AttackSpeed: 15
-  m_AttackCooldown: 3
+  m_BulletCooldown: 0
+  m_BulletAttackDuration: 0
+  m_BulletAngle: 0
   m_GrenadeLoaded: 1
   m_GrenadeDistance: 0
   m_GrenadeCooldown: 0
   m_GrenadeForce: 0
-  m_DetectionRadius: 40
-  m_FollowDistance: 30
-  m_AttackDistance: 1.2
-  m_CanAttack: 0
-  m_AttackPoint: {fileID: 6528876050542563968}
-  m_Points: 10
+  m_GrenadeAngle: 0
+  m_MisileLoaded: 1
+  m_MisileDamage: 0
+  m_MisileCooldown: 0
 --- !u!136 &6528876050359306500
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -81,7 +81,6 @@ public class InventoryManager : MonoBehaviour
         if (other.CompareTag("Fingerprint"))
         {
             FingerprintTrigger l_item = other.GetComponent<FingerprintTrigger>();
-
             l_item.DeactivateText();
         }
     }
