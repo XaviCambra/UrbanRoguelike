@@ -9,6 +9,7 @@ public class RangedEnemy : FSM_EnemyBase
     GameObject m_Player;
 
     LineRenderer m_LineRenderer;
+    [SerializeField] private bool m_HasGrenade;
     [SerializeField] private GameObject m_GrenadePrefab;
     [SerializeField] private float m_GrenadeForce;
 
@@ -52,10 +53,16 @@ public class RangedEnemy : FSM_EnemyBase
 
     protected override void SetStateAttack()
     {
-        if (m_Blackboard.m_GrenadeLoaded)
-            m_AttackType = AttackType.Grenade;
+        if (m_HasGrenade)
+        {
+            if (m_Blackboard.m_GrenadeLoaded)
+                m_AttackType = AttackType.Grenade;
+            else
+                m_AttackType = AttackType.Bullet;
+        }
         else
             m_AttackType = AttackType.Bullet;
+
         StartCoroutine(CrouchOut());
         base.SetStateAttack();
     }
