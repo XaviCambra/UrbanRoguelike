@@ -154,25 +154,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WalkSpeed: 0
   m_RunSpeed: 0
+  m_DetectionRadius: 10
+  m_CanAttack: 0
+  m_IsActive: 1
+  m_RotationAttackPoint: {fileID: 0}
+  m_AttackPoint: {fileID: 7632940219939552535}
+  m_Points: 10
   m_DashDistance: 0
   m_DashSpeed: 0
   m_DashChargedDistance: 0
+  m_FollowDistance: 0
+  m_AttackDistance: 10
   m_Crouching: 0
   m_CrouchInTime: 2
   m_CrouchOutTime: 0
-  m_Damage: 10
+  m_BulletLoaded: 1
+  m_BulletDamage: 10
   m_AttackSpeed: 100
-  m_AttackCooldown: 0.5
+  m_BulletCooldown: 0
+  m_BulletAttackDuration: 0
+  m_BulletAngle: 0
   m_GrenadeLoaded: 1
   m_GrenadeDistance: 5
   m_GrenadeCooldown: 12
   m_GrenadeForce: 0
-  m_DetectionRadius: 10
-  m_FollowDistance: 0
-  m_AttackDistance: 10
-  m_CanAttack: 0
-  m_AttackPoint: {fileID: 7632940219939552535}
-  m_Points: 10
+  m_GrenadeAngle: 0
+  m_MisileLoaded: 1
+  m_MisileDamage: 0
+  m_MisileCooldown: 0
 --- !u!114 &7632940219825347295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_State: 0
+  m_HasGrenade: 0
   m_GrenadePrefab: {fileID: 3812618718441030787, guid: c1176264b5754ad42aaab599eadc7895,
     type: 3}
   m_GrenadeForce: 10
