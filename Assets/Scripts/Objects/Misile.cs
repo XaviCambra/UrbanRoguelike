@@ -30,7 +30,6 @@ public class Misile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision with: " + other.name + " with tag " + other.tag);
         if (other.tag.Equals("Ground"))
         {
             Destroy(m_Misile);
@@ -42,18 +41,4 @@ public class Misile : MonoBehaviour
             other.GetComponent<Module_Health>().TakeDamage(m_Damage);
         }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.collider.CompareTag("Ground"))
-    //    {
-    //        m_Misile.SetActive(false);
-    //        return;
-    //    }
-
-    //    if (collision.collider.GetComponent<Module_Health>() == null)
-    //        return;
-
-    //    collision.collider.GetComponent<Module_Health>().TakeDamage(m_Damage);
-    //}
 }
