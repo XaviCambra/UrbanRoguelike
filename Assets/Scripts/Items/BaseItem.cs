@@ -12,25 +12,10 @@ public class BaseItem : MonoBehaviour
         m_InventoryManager.UseItem();
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        Player_BLACKBOARD l_blackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
-
-        if (other.CompareTag("Player") && l_blackboard.m_Item != null)
-        {
-            m_FloatingText.SetActive(true);
-        }
+        m_FloatingText.SetActive(false);
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Player_BLACKBOARD l_blackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
-
-        if (other.CompareTag("Player") && l_blackboard.m_Item != null)
-        {
-            m_FloatingText.SetActive(false);
-        }
-    }*/
 
     public void ActivateText()
     {
