@@ -133,6 +133,8 @@ public class FinalBossEnemy : FSM_EnemyBase
                 }
                 break;
             case AttackType.Grenade:
+                m_LookAtPlayerPoint.LookAt(m_PlayerHitpoint.transform.position);
+                m_Blackboard.m_RotationAttackPoint.localRotation = Quaternion.Euler(0, 0, 0);
                 GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
                 Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
                 Vector3 l_GrenadeUpScale = Vector3.up * m_Blackboard.m_GrenadeAngle;
