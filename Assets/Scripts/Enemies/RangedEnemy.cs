@@ -99,17 +99,22 @@ public class RangedEnemy : FSM_EnemyBase
 
     private IEnumerator CrouchOut()
     {
+        Debug.Log("Crouch Out");
+        yield return new WaitForSeconds(1.0f);
         m_Crouch.Crouching(true, m_Blackboard.m_CrouchOutTime); //0
         m_LineRenderer.enabled = true;
         yield return new WaitForSeconds(1.0f);
+        Debug.Log("Crouch Out Done");
         m_Blackboard.m_CanAttack = true;
     }
 
     private IEnumerator CrouchIn()
     {
+        Debug.Log("Crouch In");
         yield return new WaitForSeconds(1.0f);
         m_Crouch.Crouching(false, m_Blackboard.m_CrouchInTime); //2
         m_LineRenderer.enabled = false;
+        Debug.Log("Crouch In Done");
     }
 
     private IEnumerator GrenadeCooldown()
