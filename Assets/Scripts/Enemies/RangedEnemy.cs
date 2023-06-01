@@ -82,7 +82,8 @@ public class RangedEnemy : FSM_EnemyBase
             case AttackType.Grenade:
                 GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
                 Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
-                l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_GrenadeForce, ForceMode.VelocityChange);
+                Vector3 l_GrenadeUpScale = Vector3.up * m_Blackboard.m_GrenadeAngle;
+                l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_Blackboard.m_GrenadeForce + l_GrenadeUpScale, ForceMode.VelocityChange);
                 l_rb.useGravity = true;
                 l_grenade.SetActive(true);
                 m_Blackboard.m_GrenadeLoaded = false;
