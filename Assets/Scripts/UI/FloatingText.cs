@@ -24,6 +24,6 @@ public class FloatingText : MonoBehaviour
     void Update()
     {
         transform.rotation = Quaternion.LookRotation(transform.position - m_Camera.transform.position);
-        transform.position = m_Origin.transform.position + m_Offset;
+        transform.position = Camera.main.WorldToScreenPoint(m_Origin.transform.position) + m_Offset;
     }
 }
