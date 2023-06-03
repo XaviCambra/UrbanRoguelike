@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if(m_Blackboard.m_CanInteract == false) return;
+
+        PauseGame();
         
         if (m_Blackboard.m_CanMove) MovementInput();
 
@@ -46,6 +48,15 @@ public class PlayerController : MonoBehaviour
         UseItem();
         SetSpeed();
         HipsFaceMouse();
+    }
+
+    private void PauseGame()
+    {
+        if (Input.GetKeyDown(m_InputController.m_PauseButton))
+        {
+            Time.timeScale = 0;
+            SceneLoader.LoadAdditiveScene("PauseMenu");
+        }
     }
 
     void MovementInput()
@@ -176,7 +187,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown((int) MouseButton.Left) && m_Blackboard.CanShoot())
+        if (Input.GetMouseButtonDown((int)m_InputController.m_ShootButton) && m_Blackboard.CanShoot())
         {
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Player");
             m_Blackboard.OverHeat();
