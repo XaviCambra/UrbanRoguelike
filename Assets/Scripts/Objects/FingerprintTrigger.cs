@@ -9,9 +9,14 @@ public class FingerprintTrigger : BaseItem
     public bool m_ItemEnabled;
     Coroutine m_Coroutine;
     InputController m_InputController;
+    public Light m_Light;
+
+    public Color m_ColorEnabled;
+    public Color m_ColorDisabled;
 
     public List<FingerprintTrigger> m_Triggers;
     public List<CloseDoor> m_Barriers;
+
 
     private void Start()
     {
@@ -21,6 +26,8 @@ public class FingerprintTrigger : BaseItem
 
     private void Update()
     {
+        m_Light.color = m_ItemEnabled ? m_ColorDisabled : m_ColorEnabled;
+
         if (!m_ItemEnabled)
             return;
 

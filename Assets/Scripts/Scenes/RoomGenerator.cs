@@ -11,7 +11,7 @@ public class RoomGenerator : MonoBehaviour
     [SerializeField, Tooltip("Selecciona esta casilla para generar una sala en concreto")] private bool m_CustomRoom = false;
     [SerializeField, Tooltip("Indica una sala para generarla, recuerda que necesitas tener la casilla 'Custom Room' activada")] private int m_RoomIndex = 0;
 
-    [Range(1,15), Tooltip("Numero de habitaciones que van a generarse")] public int m_RoomCount = 3;
+    [Range(0,30), Tooltip("Numero de habitaciones que van a generarse")] public int m_RoomCount = 3;
 
     private void Start()
     {
