@@ -9,28 +9,32 @@ public class InputController : MonoBehaviour
     public LayerMask m_PointerLayer;
     
     [Header("Inputs")]
+    [Header("Movement")]
     public KeyCode m_ForwardKey = KeyCode.W;
     public KeyCode m_LeftKey = KeyCode.A;
     public KeyCode m_BackKey = KeyCode.S;
     public KeyCode m_RightKey = KeyCode.D;
-    
-    //Crouch
+
+    [Header("Crouch")]
     public KeyCode m_CrouchingKey = KeyCode.LeftControl;
-    
-    //Dash
+
+    [Header("Dash")]
     public KeyCode m_DashKey = KeyCode.Space;
 
-    //Use Item
+    [Header("Use Item")]
     public KeyCode m_UseItemKey = KeyCode.Q;
 
-    //Swap Item
+    [Header("Swap Item")]
     public KeyCode m_SwapItemKey = KeyCode.Tab;
 
-    //Drop Item
+    [Header("Drop Item")]
     public KeyCode m_DropItemKey = KeyCode.X;
 
-    //Shoot
+    [Header("Shoot")]
     public MouseButton m_ShootButton = MouseButton.Left;
+
+    [Header("Pause")]
+    public KeyCode m_PauseButton = KeyCode.Escape;
 
     public Vector3 m_MouseDirectionScreen()
     {

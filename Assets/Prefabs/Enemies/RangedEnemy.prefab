@@ -75,6 +75,7 @@ MonoBehaviour:
   m_BulletCooldown: 0
   m_BulletAttackDuration: 0
   m_BulletAngle: 0
+  m_AttackRecovery: 0
   m_GrenadeLoaded: 1
   m_GrenadeDistance: 5
   m_GrenadeCooldown: 12
@@ -321,7 +322,6 @@ GameObject:
   - component: {fileID: 3270717323901167169}
   - component: {fileID: 8002460414983938104}
   - component: {fileID: 1013117331814864182}
-  - component: {fileID: 7680313051113272973}
   m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -394,19 +394,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7680313051113272973
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8666501160914044205}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1917182541927243437
 PrefabInstance:
   m_ObjectHideFlags: 0
