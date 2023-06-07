@@ -43,6 +43,7 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
     public float m_BulletCooldown;
     public float m_BulletAttackDuration;
     public float m_BulletAngle;
+    public float m_AttackRecovery;
 
     [Header("Grenade")]
     public bool m_GrenadeLoaded = true;

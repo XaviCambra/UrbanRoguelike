@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     Module_AttackRanged m_RangedAttack;
     Module_Animation m_Animation;
 
+    
+
     private float m_MovementSpeed;
 
     [SerializeField] private GameObject m_Body;
@@ -38,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if(m_Blackboard.m_CanInteract == false) return;
+
+        PauseGame();
         
         if (m_Blackboard.m_CanMove) MovementInput();
 
@@ -46,6 +50,15 @@ public class PlayerController : MonoBehaviour
         UseItem();
         SetSpeed();
         HipsFaceMouse();
+    }
+
+    private void PauseGame()
+    {
+        if (Input.GetKeyDown(m_InputController.m_PauseButton))
+        {
+            Time.timeScale = 0;
+            SceneLoader.LoadAdditiveScene("PauseMenu");
+        }
     }
 
     void MovementInput()
@@ -79,10 +92,8 @@ public class PlayerController : MonoBehaviour
 
         if (l_Direction == Vector3.zero)
         {
-            //BodyFaceMouse();
             return;
         }
-        //else HipsFaceMouse();
 
         
 
@@ -151,32 +162,14 @@ public class PlayerController : MonoBehaviour
         m_Blackboard.m_DashCount--;
     }
 
-    void BodyFaceMouse()
-    {
-        m_Body.transform.forward = m_InputController.m_MouseDirectionScreen();
-        if (m_Body.transform.localRotation.y * Mathf.Rad2Deg > 40)
-        {
-            Quaternion l_HipsRotation = m_Body.transform.localRotation;
-            l_HipsRotation.y -= 40 * Mathf.Deg2Rad;
-            m_Hips.transform.localRotation = l_HipsRotation;
-        }
-        else if (m_Body.transform.localRotation.y * Mathf.Rad2Deg < -40)
-        {
-            Quaternion l_HipsRotation = m_Body.transform.localRotation;
-            l_HipsRotation.y += 40 * Mathf.Deg2Rad;
-            m_Hips.transform.localRotation = l_HipsRotation;
-        }
-    }
-
     void HipsFaceMouse()
     {
-        //m_Body.transform.forward = m_InputController.m_MouseDirectionScreen();
         m_Hips.transform.forward = m_InputController.m_MouseDirectionScreen();
     }
 
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown((int) MouseButton.Left) && m_Blackboard.CanShoot())
+        if (Input.GetMouseButtonDown((int)m_InputController.m_ShootButton) && m_Blackboard.CanShoot())
         {
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Player");
             m_Blackboard.OverHeat();
@@ -196,11 +189,22 @@ public class PlayerController : MonoBehaviour
         m_Blackboard.m_CanOverheat = true;
     }
 
+    private void StartInmortality()
+    {
+
+    }
+
     public IEnumerator Inmortality(float l_Duration)
     {
         m_Health.m_CanLooseHealth = false;
         yield return new WaitForSeconds(l_Duration);
         m_Health.m_CanLooseHealth = true;
+        EndInmortality();
+    }
+
+    private void EndInmortality()
+    {
+
     }
 
     private void OnEnable()

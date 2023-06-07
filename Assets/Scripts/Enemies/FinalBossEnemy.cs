@@ -164,7 +164,7 @@ public class FinalBossEnemy : FSM_EnemyBase
     private IEnumerator AttackDuration(float l_Duration)
     {
         yield return new WaitForSeconds(l_Duration);
-        SetStateWait(m_Blackboard.m_BulletCooldown);
+        SetStateWait(m_Blackboard.m_AttackRecovery);
     }
 
     private IEnumerator GrenadeCooldown()
