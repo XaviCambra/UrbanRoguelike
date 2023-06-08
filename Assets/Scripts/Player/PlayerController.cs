@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 [RequireComponent(typeof(InputController))]
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     InputController m_InputController;
     CharacterController m_CharacterController;
 
+    //Modules
     Player_Health m_Health;
     Module_Crouch m_Crouch;
     Module_Dash m_Dash;
@@ -18,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private float m_MovementSpeed;
 
-    [SerializeField] private GameObject m_Hips;
+    [SerializeField] private GameObject m_PlayerRotationPoint;
 
     private void Start()
     {
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
         m_Dash = GetComponent<Module_Dash>();
         m_Crouch = GetComponent<Module_Crouch>();
 
-        StartInmortality(m_Blackboard.m_InmortalityDuration);
+        StartCoroutine(Inmortality(3.0f));
 
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
 
@@ -147,7 +149,7 @@ public class PlayerController : MonoBehaviour
 
         if(m_Blackboard.m_DashCount >= m_Blackboard.m_DashMaxCount) return false;
 
-        m_Dash.DashDisplacement(m_Hips.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
+        m_Dash.DashDisplacement(m_PlayerRotationPoint.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
 
         m_Blackboard.m_DashCount++;
 
@@ -164,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
     void HipsFaceMouse()
     {
-        m_Hips.transform.forward = m_InputController.m_MouseDirectionScreen();
+        m_PlayerRotationPoint.transform.forward = m_InputController.m_MouseDirectionScreen();
     }
 
     private void Shoot()
@@ -192,6 +194,7 @@ public class PlayerController : MonoBehaviour
     public void StartInmortality(float l_Duration)
     {
         m_Shield.Appear();
+        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_ShieldAppearSound, transform.position);
         StartCoroutine(Inmortality(l_Duration));
     }
 

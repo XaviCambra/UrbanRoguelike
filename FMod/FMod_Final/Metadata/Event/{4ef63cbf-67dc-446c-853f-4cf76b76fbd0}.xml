@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{4ef63cbf-67dc-446c-853f-4cf76b76fbd0}">
 		<property name="name">
-			<value>Disparar V2</value>
+			<value>PlayerShoot</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{f457778a-22bd-4075-8673-93e15da273d4}</destination>
+			<destination>{cbad82a0-1a0e-4099-a077-e55956ba36bd}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{e556dec8-6a46-40f7-bca1-284db92168a1}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{9016923c-44aa-4001-a55e-d4319fc08551}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{082f227c-2f4a-4e06-8c24-08ffc8be29db}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{e556dec8-6a46-40f7-bca1-284db92168a1}">
