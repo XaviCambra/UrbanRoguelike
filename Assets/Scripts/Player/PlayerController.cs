@@ -14,11 +14,10 @@ public class PlayerController : MonoBehaviour
     Module_AttackRanged m_RangedAttack;
     Module_Animation m_Animation;
 
-    
+    public ShieldShaderController m_Shield;
 
     private float m_MovementSpeed;
 
-    [SerializeField] private GameObject m_Body;
     [SerializeField] private GameObject m_Hips;
 
     private void Start()
@@ -31,10 +30,11 @@ public class PlayerController : MonoBehaviour
         m_RangedAttack = GetComponent<Module_AttackRanged>();
         m_Dash = GetComponent<Module_Dash>();
         m_Crouch = GetComponent<Module_Crouch>();
-        
+
+        StartInmortality(m_Blackboard.m_InmortalityDuration);
+
         m_MovementSpeed = m_Blackboard.m_MovementSpeed;
 
-        StartCoroutine(Inmortality(m_Blackboard.m_InmortalityDuration));
     }
 
     private void Update()
@@ -189,12 +189,13 @@ public class PlayerController : MonoBehaviour
         m_Blackboard.m_CanOverheat = true;
     }
 
-    private void StartInmortality()
+    public void StartInmortality(float l_Duration)
     {
-
+        m_Shield.Appear();
+        StartCoroutine(Inmortality(l_Duration));
     }
 
-    public IEnumerator Inmortality(float l_Duration)
+    private IEnumerator Inmortality(float l_Duration)
     {
         m_Health.m_CanLooseHealth = false;
         yield return new WaitForSeconds(l_Duration);
@@ -204,7 +205,7 @@ public class PlayerController : MonoBehaviour
 
     private void EndInmortality()
     {
-
+        m_Shield.Dissapear();
     }
 
     private void OnEnable()
