@@ -1,6 +1,5 @@
+using FMODUnity;
 using System.Collections;
-using System.Collections.Generic;
-//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Module_Dash : MonoBehaviour
@@ -8,6 +7,8 @@ public class Module_Dash : MonoBehaviour
     public void DashDisplacement(Vector3 l_Direction, float l_Distance, float l_Speed)
     {
         RaycastHit l_RayCast;
+
+        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_DashSound, transform.position);
 
         if (Physics.Raycast(transform.position + Vector3.up/2, l_Direction, out l_RayCast, l_Distance))
         {

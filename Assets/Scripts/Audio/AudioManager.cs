@@ -1,6 +1,4 @@
 using FMODUnity;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -12,8 +10,10 @@ public class AudioManager : MonoBehaviour
         if(m_Instance != null)
         {
             Debug.LogError("More than one Audio Manager");
+            Destroy(gameObject);
         }
         m_Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
