@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "#SCRIPTNAME#", menuName = "Power Up/#SCRIPTNAME#", order = 1)]
+public class #SCRIPTNAME# : PowerUp_Base
+{
+	public float m_EditableValue;
+    public override void ApplyPowerUp()
+    {
+        base.ApplyPowerUp();
+
+        /*  Write your own code below */
+
+    }
+}
