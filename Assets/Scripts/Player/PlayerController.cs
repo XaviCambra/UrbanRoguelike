@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(m_InputController.m_PauseButton))
         {
             Time.timeScale = 0;
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PauseMenuSound, transform.position);
+
             SceneLoader.LoadAdditiveScene("PauseMenu");
         }
     }
@@ -149,6 +151,8 @@ public class PlayerController : MonoBehaviour
 
         if(m_Blackboard.m_DashCount >= m_Blackboard.m_DashMaxCount) return false;
 
+        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_DashSound, transform.position);
+
         m_Dash.DashDisplacement(m_PlayerRotationPoint.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
 
         m_Blackboard.m_DashCount++;
@@ -174,12 +178,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown((int)m_InputController.m_ShootButton) && m_Blackboard.CanShoot())
         {
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Player");
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerShoot, transform.position);
             m_Blackboard.OverHeat();
         }
     }
 
     public void StartKillerMode()
     {
+        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_KillerModeSound, transform.position);
         StartCoroutine(CancelOverHeat());
     }
 
