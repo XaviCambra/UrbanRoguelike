@@ -67,7 +67,6 @@ public class FModEvents : MonoBehaviour
         m_Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        eventInstances = new List<EventInstance>();
     }
 
     

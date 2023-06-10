@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
 
     private int m_StepCounter = 50;
 
-    [Header("Music")]
-    [SerializeField] private MusicController m_MenuMusic;
 
     private void Start()
     {
@@ -65,7 +63,6 @@ public class PlayerController : MonoBehaviour
         {
             Time.timeScale = 0;
             AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PauseMenuSound, transform.position);
-            AudioManager.m_Instance.SetMusic(m_MenuMusic);
             SceneLoader.LoadAdditiveScene("PauseMenu");
         }
     }

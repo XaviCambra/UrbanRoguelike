@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        InitializeMusic(FModEvents.m_Instance.m_PlayMusic);
+        InitializeMusic(FModEvents.m_Instance.m_LvlMusic);
     }
 
     public EventInstance CreateInstance(EventReference eventReference)
