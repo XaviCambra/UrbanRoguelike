@@ -181,6 +181,11 @@ public class PlayerController : MonoBehaviour
             AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerShoot, transform.position);
             m_Blackboard.OverHeat();
         }
+
+        if (!m_Blackboard.CanShoot())
+        {
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerCantShoot, transform.position);
+        }
     }
 
     public void StartKillerMode()

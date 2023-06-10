@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: FMod/FMod_Final/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638220008700779539
+  lastModified: 638220088083961494
   FileSizes:
   - Name: Desktop
-    Value: 991136
+    Value: 1009536
   Exists: 1
 --- !u!114 &-8059728589829436012
 MonoBehaviour:
@@ -62,7 +62,7 @@ MonoBehaviour:
   Path: FMod/FMod_Final/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638220008688419856
+  lastModified: 638220088083252050
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -94,6 +94,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1100
+--- !u!114 &-7148726998391298325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Effects/ShieldOff
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Effects/ShieldOff
+  Guid:
+    Data1: 1950015866
+    Data2: 1308304958
+    Data3: -1846049106
+    Data4: 1795217792
+  Banks:
+  - {fileID: -8628917684769200348}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1171
 --- !u!114 &-6004579755534326395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,10 +244,10 @@ MonoBehaviour:
   Path: FMod/FMod_Final/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638220008688442331
+  lastModified: 638220088083272059
   FileSizes:
   - Name: Desktop
-    Value: 2186
+    Value: 2340
   Exists: 1
 --- !u!114 &-4371246186297150279
 MonoBehaviour:
@@ -303,6 +330,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 30720
+--- !u!114 &-2747978231347414468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Disparo Sobrecalentamiento
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Disparo Sobrecalentamiento
+  Guid:
+    Data1: 907780610
+    Data2: 1228088950
+    Data3: -852116339
+    Data4: -990003111
+  Banks:
+  - {fileID: -8628917684769200348}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 883
 --- !u!114 &-2449572065313623964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,13 +538,43 @@ MonoBehaviour:
   - {fileID: -2449572065313623964}
   - {fileID: 5770313003188179577}
   - {fileID: 1814543540566973235}
+  - {fileID: 432158988063296692}
+  - {fileID: -7148726998391298325}
+  - {fileID: -2747978231347414468}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7910082465637949609}
   StringsBanks:
   - {fileID: -4639272429019415644}
-  cacheTime: 638220008700779539
+  cacheTime: 638220088083961494
   cacheVersion: 131603
+--- !u!114 &432158988063296692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/SFX/UI/Abrir men\xFA"
+  m_EditorClassIdentifier: 
+  Path: "event:/SFX/UI/Abrir men\xFA"
+  Guid:
+    Data1: 1461645615
+    Data2: 1104461332
+    Data3: -1078225218
+    Data4: 1085297267
+  Banks:
+  - {fileID: -8628917684769200348}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
 --- !u!114 &1179945749413573534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,7 +698,7 @@ MonoBehaviour:
   Path: FMod/FMod_Final/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638220008695688958
+  lastModified: 638220088083482120
   FileSizes:
   - Name: Desktop
     Value: 940000

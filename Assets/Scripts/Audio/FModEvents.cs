@@ -34,6 +34,8 @@ public class FModEvents : MonoBehaviour
     [field: SerializeField] public EventReference m_PlayerStep1 { get; private set; }
     [field: SerializeField] public EventReference m_PlayerStep2 { get; private set; }
     [field: SerializeField] public EventReference m_PlayerShoot { get; private set; }
+    [field: SerializeField] public EventReference m_PlayerHit { get; private set; }
+    [field: SerializeField] public EventReference m_PlayerCantShoot { get; private set; }
 
 
 
