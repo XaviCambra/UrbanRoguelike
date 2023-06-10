@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{743ae17a-263e-4dfb-ae86-f79180d9006b}">
 		<property name="name">
-			<value>Activar escudo</value>
+			<value>ShieldOff</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{7c5de464-a116-472d-9328-6ada7b4e355f}</destination>
+			<destination>{a9faf3f6-cf70-4b37-b154-aedf37948835}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{b6a15e49-639b-4989-a6f3-6baa674200e4}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{aa73cc8d-d638-4e4d-a5dd-d9cad7a5756e}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{082f227c-2f4a-4e06-8c24-08ffc8be29db}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{b6a15e49-639b-4989-a6f3-6baa674200e4}">
