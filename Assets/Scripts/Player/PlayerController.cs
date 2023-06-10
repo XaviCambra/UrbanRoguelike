@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject m_PlayerRotationPoint;
 
+    private int m_StepCounter = 50;
+
+    [Header("Music")]
+    [SerializeField] private MusicController m_MenuMusic;
+
     private void Start()
     {
         m_InputController = GetComponent<InputController>();
@@ -60,7 +65,7 @@ public class PlayerController : MonoBehaviour
         {
             Time.timeScale = 0;
             AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PauseMenuSound, transform.position);
-
+            AudioManager.m_Instance.SetMusic(m_MenuMusic);
             SceneLoader.LoadAdditiveScene("PauseMenu");
         }
     }
@@ -246,5 +251,21 @@ public class PlayerController : MonoBehaviour
         m_Blackboard.m_CanInteract = false;
         yield return new WaitForSeconds(l_Duration);
         m_Blackboard.m_CanInteract = true;
+    }
+
+    public void FootSteps()
+    {
+        int i = Random.Range(0, 100);
+
+        if (i > m_StepCounter)
+        {
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerStep1, transform.position);
+            m_StepCounter++;
+        }
+        else
+        {
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerStep2, transform.position);
+            m_StepCounter--;
+        }
     }
 }
