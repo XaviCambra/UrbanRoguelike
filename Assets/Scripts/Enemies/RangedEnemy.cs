@@ -77,10 +77,14 @@ public class RangedEnemy : FSM_EnemyBase
         switch (m_AttackType)
         {
             case AttackType.Bullet:
+                AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_RangedShoot, transform.position);
+
                 m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_BulletDamage, "Enemy");
                 break;
             case AttackType.Grenade:
                 GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
+                AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_GrenadeThrow, transform.position);
+
                 Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
                 Vector3 l_GrenadeUpScale = Vector3.up * m_Blackboard.m_GrenadeAngle;
                 l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_Blackboard.m_GrenadeForce + l_GrenadeUpScale, ForceMode.VelocityChange);
