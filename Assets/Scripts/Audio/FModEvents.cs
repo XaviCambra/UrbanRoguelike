@@ -7,7 +7,8 @@ using UnityEngine;
 public class FModEvents : MonoBehaviour
 {
     [field: Header("Music")]
-    [field: SerializeField] public EventReference m_PlayMusic { get; private set; }
+    [field: SerializeField] public EventReference m_MenuMusic { get; private set; }
+    [field: SerializeField] public EventReference m_LvlMusic { get; private set; }
 
     [field: Header("SFX - UI")]
     [field: SerializeField] public EventReference m_ClickMenuSound { get; private set; }
