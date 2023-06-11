@@ -184,7 +184,7 @@ public class PlayerController : MonoBehaviour
             m_Blackboard.OverHeat();
         }
 
-        if (!m_Blackboard.CanShoot())
+        if (Input.GetMouseButtonDown((int)m_InputController.m_ShootButton) && !m_Blackboard.CanShoot())
         {
             AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerCantShoot, transform.position);
         }
