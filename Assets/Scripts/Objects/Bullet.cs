@@ -26,6 +26,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.collider.tag.Equals(m_TagToIgnore))
             return;
+
         ParticleSystem m_Particles = collision.collider.GetComponent<ParticleSystem>();
 
         if (m_Particles != null)
