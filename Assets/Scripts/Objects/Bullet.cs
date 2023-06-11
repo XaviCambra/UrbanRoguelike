@@ -12,6 +12,8 @@ public class Bullet : MonoBehaviour
 
     public int m_BouncingNumber;
 
+    public ParticleSystem m_SmokeParticles;
+
     private void Start()
     {
         m_Direction = Vector3.forward;
@@ -27,18 +29,18 @@ public class Bullet : MonoBehaviour
         if (collision.collider.tag.Equals(m_TagToIgnore))
             return;
 
-        ParticleSystem m_Particles = collision.collider.GetComponent<ParticleSystem>();
+        ParticleSystem m_CollisionParticles = collision.collider.GetComponent<ParticleSystem>();
 
-        if (m_Particles != null)
+        if (m_CollisionParticles != null)
         {
             Vector3 direction = collision.transform.position - transform.position;
             float angle = Mathf.Atan2(direction.z, direction.x);
 
             Quaternion rotation = Quaternion.Euler(0, angle, 0);
 
-            m_Particles.transform.position = transform.position;
-            m_Particles.transform.rotation = rotation;
-            m_Particles.Play();
+            m_CollisionParticles.transform.position = transform.position;
+            m_CollisionParticles.transform.rotation = rotation;
+            m_CollisionParticles.Play();
 
         }
 
@@ -58,6 +60,10 @@ public class Bullet : MonoBehaviour
             m_BouncingNumber--;
         }
         else
+        {
+            m_SmokeParticles.transform.position = transform.position;
+            m_SmokeParticles.Play();
             Destroy(gameObject);
+        }
     }
 }
