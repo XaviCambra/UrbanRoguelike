@@ -26,6 +26,20 @@ public class Bullet : MonoBehaviour
     {
         if (collision.collider.tag.Equals(m_TagToIgnore))
             return;
+        ParticleSystem m_Particles = collision.collider.GetComponent<ParticleSystem>();
+
+        if (m_Particles != null)
+        {
+            Vector3 direction = collision.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.z, direction.x);
+
+            Quaternion rotation = Quaternion.Euler(0, angle, 0);
+
+            m_Particles.transform.position = transform.position;
+            m_Particles.transform.rotation = rotation;
+            m_Particles.Play();
+
+        }
 
         Module_Health m_Health = collision.collider.GetComponent<Module_Health>();
         if (m_Health != null)

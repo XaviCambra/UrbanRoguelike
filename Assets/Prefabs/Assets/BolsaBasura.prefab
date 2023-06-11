@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 264311157181750929}
   - component: {fileID: 3748364939978510644}
+  - component: {fileID: 561527386183481217}
   - component: {fileID: 1432190055516104190}
   m_Layer: 0
   m_Name: BolsaBasura
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639745567530796075}
-  m_LocalRotation: {x: -0.7991254, y: 0, z: -0, w: 0.6011644}
+  m_LocalRotation: {x: -0.74727637, y: 0, z: 0, w: 0.66451335}
   m_LocalPosition: {x: -17.919851, y: 0.45570156, z: 5.949395}
   m_LocalScale: {x: 0.692018, y: 0.692018, z: 0.866269}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -96.71, y: 0, z: 0}
 --- !u!33 &3748364939978510644
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41,6 +42,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639745567530796075}
   m_Mesh: {fileID: 6983595175397129057, guid: 21e260c25b00c034ab1cf3e806ff485d, type: 3}
+--- !u!135 &561527386183481217
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639745567530796075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.31601843
+  m_Center: {x: 0.0010333359, y: 0.12843186, z: -0.19646156}
 --- !u!23 &1432190055516104190
 MeshRenderer:
   m_ObjectHideFlags: 0
