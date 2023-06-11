@@ -11,7 +11,7 @@ public class ShieldItem : BaseItem
 
         /*  Write your own code below */
         m_PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-
-        m_PlayerController.Inmortality(m_PlayerController.m_Blackboard.m_InmortalityDuration);
+        
+        m_PlayerController.StartInmortality(m_PlayerController.m_Blackboard.m_InmortalityDuration);
     }
 }

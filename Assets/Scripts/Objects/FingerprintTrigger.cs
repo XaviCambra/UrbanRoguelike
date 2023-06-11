@@ -9,9 +9,14 @@ public class FingerprintTrigger : BaseItem
     public bool m_ItemEnabled;
     Coroutine m_Coroutine;
     InputController m_InputController;
+    public Light m_Light;
+
+    public Color m_ColorEnabled;
+    public Color m_ColorDisabled;
 
     public List<FingerprintTrigger> m_Triggers;
     public List<CloseDoor> m_Barriers;
+
 
     private void Start()
     {
@@ -21,24 +26,30 @@ public class FingerprintTrigger : BaseItem
 
     private void Update()
     {
+        m_Light.color = m_ItemEnabled ? m_ColorDisabled : m_ColorEnabled;
+
         if (!m_ItemEnabled)
             return;
 
         if (!m_IsActive)
             return;
 
-        Debug.Log("Is active");
         if (Input.GetKeyDown(m_InputController.m_UseItemKey))
         {
-            Debug.Log("Button pressed");
             m_ItemEnabled = false;
+            bool l_CanActivate = false;
             foreach(FingerprintTrigger trigger in m_Triggers)
             {
-                trigger.m_ItemEnabled = false;
+                if (trigger.m_ItemEnabled)
+                    l_CanActivate = true;
             }
-            foreach(CloseDoor l_Barrier in m_Barriers)
+
+            if (!l_CanActivate)
             {
-                l_Barrier.ApplyEffectItem();
+                foreach (CloseDoor l_Barrier in m_Barriers)
+                {
+                    l_Barrier.ApplyEffectItem();
+                }
             }
         }
     }

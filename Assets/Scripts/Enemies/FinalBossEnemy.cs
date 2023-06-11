@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class FinalBossEnemy : FSM_EnemyBase
@@ -11,8 +10,11 @@ public class FinalBossEnemy : FSM_EnemyBase
     GameObject m_Player;
     LineRenderer m_LineRenderer;
 
+    public Transform m_LookAtPlayerPoint;
+
     Module_Health m_Health;
 
+    public List<FingerprintTrigger> m_Triggers;
     public List<CloseDoor> m_Barriers;
     public BossPhase[] m_Phases;
 
@@ -64,6 +66,11 @@ public class FinalBossEnemy : FSM_EnemyBase
 
             if (l_Phase.m_IsCompleted)
                 continue;
+
+            foreach (FingerprintTrigger trigger in m_Triggers)
+            {
+                trigger.m_ItemEnabled = true;
+            }
 
             foreach (CloseDoor l_Barrier in m_Barriers)
             {
@@ -118,6 +125,7 @@ public class FinalBossEnemy : FSM_EnemyBase
             case AttackType.Bullet:
                 if (m_Blackboard.m_BulletLoaded)
                 {
+                    m_LookAtPlayerPoint.LookAt(m_PlayerHitpoint.transform.position);
                     m_Blackboard.m_RotationAttackPoint.localRotation = Quaternion.Euler(0, UnityEngine.Random.Range(-m_Blackboard.m_BulletAngle/2, m_Blackboard.m_BulletAngle/2), 0);
                     m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_RotationAttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_BulletDamage, "Enemy");
                     m_Blackboard.m_BulletLoaded = false;
@@ -125,6 +133,8 @@ public class FinalBossEnemy : FSM_EnemyBase
                 }
                 break;
             case AttackType.Grenade:
+                m_LookAtPlayerPoint.LookAt(m_PlayerHitpoint.transform.position);
+                m_Blackboard.m_RotationAttackPoint.localRotation = Quaternion.Euler(0, 0, 0);
                 GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
                 Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
                 Vector3 l_GrenadeUpScale = Vector3.up * m_Blackboard.m_GrenadeAngle;
@@ -154,7 +164,7 @@ public class FinalBossEnemy : FSM_EnemyBase
     private IEnumerator AttackDuration(float l_Duration)
     {
         yield return new WaitForSeconds(l_Duration);
-        SetStateWait(m_Blackboard.m_BulletCooldown);
+        SetStateWait(m_Blackboard.m_AttackRecovery);
     }
 
     private IEnumerator GrenadeCooldown()
