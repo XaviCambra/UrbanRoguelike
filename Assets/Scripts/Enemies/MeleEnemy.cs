@@ -81,7 +81,8 @@ public class MeleEnemy : FSM_EnemyBase
 
     private void Attack()
     {
-        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_MeleeAttack1, transform.position);
+        if(FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_MeleeAttack1, transform.position);
 
         m_AttackMele.HitOnDirection(m_Blackboard.m_BulletDamage);
         SetStateWait(m_Blackboard.m_BulletCooldown);
