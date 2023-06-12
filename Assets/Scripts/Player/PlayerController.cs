@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     //Modules
     Player_Health m_Health;
     Module_Crouch m_Crouch;
-    Module_Dash m_Dash;
+    [SerializeField] Module_Dash m_Dash;
     Module_AttackRanged m_RangedAttack;
     Module_Animation m_Animation;
 
@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator CancelMovementDash()
     {
+
         m_Blackboard.m_CanMove = false;
         yield return new WaitForSeconds(0.1f);
         m_Blackboard.m_CanMove = true;
@@ -154,8 +155,6 @@ public class PlayerController : MonoBehaviour
 
         if(m_Blackboard.m_DashCount >= m_Blackboard.m_DashMaxCount) return false;
 
-        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_DashSound, transform.position);
-
         m_Dash.DashDisplacement(m_PlayerRotationPoint.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
 
         m_Blackboard.m_DashCount++;
@@ -181,19 +180,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown((int)m_InputController.m_ShootButton) && m_Blackboard.CanShoot())
         {
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Player");
-            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerShoot, transform.position);
+            if (FindObjectOfType<AudioManager>() != null)
+                AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerShoot, transform.position);
             m_Blackboard.OverHeat();
         }
 
         if (Input.GetMouseButtonDown((int)m_InputController.m_ShootButton) && !m_Blackboard.CanShoot())
         {
-            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerCantShoot, transform.position);
+            if (FindObjectOfType<AudioManager>() != null)
+                AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerCantShoot, transform.position);
         }
     }
 
     public void StartKillerMode()
     {
-        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_KillerModeSound, transform.position);
+        if (FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_KillerModeSound, transform.position);
         StartCoroutine(CancelOverHeat());
     }
 
@@ -208,7 +210,8 @@ public class PlayerController : MonoBehaviour
     public void StartInmortality(float l_Duration)
     {
         m_Shield.Appear();
-        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_ShieldAppearSound, transform.position);
+        if (FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_ShieldAppearSound, transform.position);
         StartCoroutine(Inmortality(l_Duration));
     }
 
@@ -257,12 +260,14 @@ public class PlayerController : MonoBehaviour
 
         if (i > m_StepCounter)
         {
-            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerStep1, transform.position);
+            if (FindObjectOfType<AudioManager>() != null)
+                AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerStep1, transform.position);
             m_StepCounter++;
         }
         else
         {
-            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerStep2, transform.position);
+            if (FindObjectOfType<AudioManager>() != null)
+                AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerStep2, transform.position);
             m_StepCounter--;
         }
     }
