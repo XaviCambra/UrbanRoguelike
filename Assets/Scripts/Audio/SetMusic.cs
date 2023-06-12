@@ -10,6 +10,7 @@ public class SetMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.m_Instance.SetMusic(m_Music);
+        if (FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.SetMusic(m_Music);
     }
 }
