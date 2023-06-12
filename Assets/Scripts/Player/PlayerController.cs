@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject m_PlayerRotationPoint;
 
+    private int m_StepCounter = 50;
+
+
     private void Start()
     {
         m_InputController = GetComponent<InputController>();
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if(m_Blackboard.m_CanInteract == false) return;
+        if(Time.timeScale == 0) return;
 
         PauseGame();
         
@@ -60,7 +64,6 @@ public class PlayerController : MonoBehaviour
         {
             Time.timeScale = 0;
             AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PauseMenuSound, transform.position);
-
             SceneLoader.LoadAdditiveScene("PauseMenu");
         }
     }
@@ -182,7 +185,7 @@ public class PlayerController : MonoBehaviour
             m_Blackboard.OverHeat();
         }
 
-        if (!m_Blackboard.CanShoot())
+        if (Input.GetMouseButtonDown((int)m_InputController.m_ShootButton) && !m_Blackboard.CanShoot())
         {
             AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerCantShoot, transform.position);
         }
@@ -246,5 +249,21 @@ public class PlayerController : MonoBehaviour
         m_Blackboard.m_CanInteract = false;
         yield return new WaitForSeconds(l_Duration);
         m_Blackboard.m_CanInteract = true;
+    }
+
+    public void FootSteps()
+    {
+        int i = Random.Range(0, 100);
+
+        if (i > m_StepCounter)
+        {
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerStep1, transform.position);
+            m_StepCounter++;
+        }
+        else
+        {
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerStep2, transform.position);
+            m_StepCounter--;
+        }
     }
 }

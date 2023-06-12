@@ -1,12 +1,14 @@
 using FMODUnity;
+using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FModEvents : MonoBehaviour
 {
-    [field: Header("Abilities")]
-
+    [field: Header("Music")]
+    [field: SerializeField] public EventReference m_MenuMusic { get; private set; }
+    [field: SerializeField] public EventReference m_LvlMusic { get; private set; }
 
     [field: Header("SFX - UI")]
     [field: SerializeField] public EventReference m_ClickMenuSound { get; private set; }
@@ -64,5 +66,9 @@ public class FModEvents : MonoBehaviour
         }
         m_Instance = this;
         DontDestroyOnLoad(gameObject);
+
     }
+
+    
+
 }

@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: FMod/FMod_Final/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638220240359886130
+  lastModified: 638221104757291141
   FileSizes:
   - Name: Desktop
-    Value: 1009536
+    Value: 1167648
   Exists: 1
 --- !u!114 &-8059728589829436012
 MonoBehaviour:
@@ -62,7 +62,7 @@ MonoBehaviour:
   Path: FMod/FMod_Final/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638220240359686789
+  lastModified: 638221103996334056
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -244,10 +244,10 @@ MonoBehaviour:
   Path: FMod/FMod_Final/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638220240359706903
+  lastModified: 638221104757095811
   FileSizes:
   - Name: Desktop
-    Value: 2340
+    Value: 2436
   Exists: 1
 --- !u!114 &-4371246186297150279
 MonoBehaviour:
@@ -276,6 +276,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1392
+--- !u!114 &-4049775145602720874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/SFX/Player/Recibir da\xF1o tiro"
+  m_EditorClassIdentifier: 
+  Path: "event:/SFX/Player/Recibir da\xF1o tiro"
+  Guid:
+    Data1: 672271193
+    Data2: 1171637651
+    Data3: 25478800
+    Data4: 1645140314
+  Banks:
+  - {fileID: -8628917684769200348}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 285
 --- !u!114 &-3828975472934439238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,12 +568,13 @@ MonoBehaviour:
   - {fileID: 432158988063296692}
   - {fileID: -7148726998391298325}
   - {fileID: -2747978231347414468}
+  - {fileID: -4049775145602720874}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7910082465637949609}
   StringsBanks:
   - {fileID: -4639272429019415644}
-  cacheTime: 638220240359886130
+  cacheTime: 638221104757291141
   cacheVersion: 131603
 --- !u!114 &432158988063296692
 MonoBehaviour:
@@ -698,10 +726,10 @@ MonoBehaviour:
   Path: FMod/FMod_Final/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638220240359826774
+  lastModified: 638221104757191411
   FileSizes:
   - Name: Desktop
-    Value: 940000
+    Value: 943008
   Exists: 1
 --- !u!114 &3131873544942386813
 MonoBehaviour:
@@ -730,6 +758,32 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 236
+--- !u!114 &3969043047407950139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MUSICA MENU/Menu
+  m_EditorClassIdentifier: 
+  Name: Menu
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 603543852
+    data2: 4005334816
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Value A
+  - Value B
+  Exists: 1
 --- !u!114 &5770313003188179577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,11 +833,12 @@ MonoBehaviour:
   - {fileID: 3120631024470491742}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 3969043047407950139}
   MinDistance: 1
   MaxDistance: 20
-  Length: 54433
+  Length: 0
 --- !u!114 &6158550199950285516
 MonoBehaviour:
   m_ObjectHideFlags: 0
