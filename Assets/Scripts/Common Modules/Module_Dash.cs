@@ -8,7 +8,8 @@ public class Module_Dash : MonoBehaviour
     {
         RaycastHit l_RayCast;
 
-        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_DashSound, transform.position);
+        if (FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_DashSound, transform.position);
 
         if (Physics.Raycast(transform.position + Vector3.up/2, l_Direction, out l_RayCast, l_Distance))
         {
