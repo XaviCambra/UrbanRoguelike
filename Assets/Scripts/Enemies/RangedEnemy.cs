@@ -31,8 +31,6 @@ public class RangedEnemy : FSM_EnemyBase
         m_LineRenderer = GetComponent<LineRenderer>();
 
         m_LineRenderer.enabled = false;
-
-        StartCoroutine(CrouchIn());
     }
 
     protected override void Update()
@@ -63,7 +61,6 @@ public class RangedEnemy : FSM_EnemyBase
         else
             m_AttackType = AttackType.Bullet;
 
-        StartCoroutine(CrouchOut());
         base.SetStateAttack();
     }
 
@@ -97,24 +94,7 @@ public class RangedEnemy : FSM_EnemyBase
                 break;
         }
         m_Blackboard.m_CanAttack = false;
-        StartCoroutine(CrouchIn());
-        SetStateWait(m_Blackboard.m_BulletCooldown + 3);
-    }
-
-    private IEnumerator CrouchOut()
-    {
-        yield return new WaitForSeconds(1.0f);
-        m_Crouch.Crouching(true, m_Blackboard.m_CrouchOutTime); //0
-        m_LineRenderer.enabled = true;
-        yield return new WaitForSeconds(1.0f);
-        m_Blackboard.m_CanAttack = true;
-    }
-
-    private IEnumerator CrouchIn()
-    {
-        yield return new WaitForSeconds(1.0f);
-        m_Crouch.Crouching(false, m_Blackboard.m_CrouchInTime); //2
-        m_LineRenderer.enabled = false;
+        SetStateWait(m_Blackboard.m_AttackRecovery);
     }
 
     private IEnumerator GrenadeCooldown()
