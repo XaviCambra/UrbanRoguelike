@@ -8,7 +8,11 @@ public class SpawnerTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+
+        if(other.tag == "Player")
+        {
             controller.SpawnEnemies();
+            gameObject.SetActive(false);
+        }
     }
 }
