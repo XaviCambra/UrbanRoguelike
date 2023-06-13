@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class Module_Health : MonoBehaviour
 
     [Header("Object Model")]
     public GameObject ObjectMesh;
+
+    [SerializeField] private List<Material> m_Materials;
 
     private EnemyBase_BLACKBOARD m_EnemyBlackBoard;
 
@@ -63,7 +66,23 @@ public class Module_Health : MonoBehaviour
                 Debug.LogError("No GameController Found");
         }
 
-        ObjectMesh.SetActive(false);
+        StartCoroutine(DissapearToDie());
+    }
+
+    private IEnumerator DissapearToDie()
+    {
+        for(float i = -1; i < 1; i += Time.deltaTime)
+        {
+            foreach(Material l_Material in m_Materials)
+            {
+                try
+                {
+                    l_Material.SetFloat("_CharacterDissolve", i);
+                }
+                catch (Exception e) { };
+            }
+            yield return null;
+        }
     }
 
     public void ResetObject()
