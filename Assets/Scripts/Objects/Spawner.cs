@@ -21,15 +21,15 @@ public class Spawner : MonoBehaviour
         switch(m_EnemyType)
         {
             case SpawnEnemyType.Mele:
-                Instantiate(m_MeleEnemy, m_MeleEnemy.transform); break;
+                Instantiate(m_MeleEnemy, transform.position, transform.rotation); break;
             case SpawnEnemyType.Ranged:
-                Instantiate(m_RangedEnemy, m_RangedEnemy.transform);break;
+                Instantiate(m_RangedEnemy, transform.position, transform.rotation);break;
             case SpawnEnemyType.Random:
                 int rand = Random.Range(0, 10);
                 if (rand % 2 == 0)
-                    Instantiate(m_MeleEnemy, m_MeleEnemy.transform);
+                    Instantiate(m_MeleEnemy, transform.position, transform.rotation);
                 else
-                    Instantiate(m_RangedEnemy, m_RangedEnemy.transform);
+                    Instantiate(m_RangedEnemy, transform.position, transform.rotation);
                 break;
         }
     }
