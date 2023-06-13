@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{419dbe5e-e058-4a8c-ba0d-1ac5a7e6af4e}">
 		<property name="name">
-			<value>SALIR MENU DE PAUSA</value>
+			<value>PauseMenuExit</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{0542cff8-a68b-4d49-bb37-5070136dfb4a}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{082f227c-2f4a-4e06-8c24-08ffc8be29db}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{a8d405ca-e4d1-4530-98ef-01000ffc011e}">

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{e42e0dcf-369e-453f-a329-e82a1dbbaeea}">
 		<property name="name">
-			<value>NAVEGAR MENÚ PAUSA</value>
+			<value>OnMouseOver</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{f966e64c-5ff9-4a06-9481-11499720f7f1}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{082f227c-2f4a-4e06-8c24-08ffc8be29db}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{e36ba1bc-110c-4ad3-858a-682657298a21}">
@@ -87,8 +90,12 @@
 	<object class="MixerBusPanner" id="{6a9bb858-6c7c-43a6-8051-217bc987e5d6}" />
 	<object class="SingleSound" id="{476a9c1b-fec7-4f39-b4f4-1bf05678b8e8}">
 		<property name="length">
-			<value>0.30937500000000001</value>
+			<value>0.22937499999999994</value>
 		</property>
+		<property name="timelockedOffset">
+			<value>0.080000000000000002</value>
+		</property>
+		<property name="name" />
 		<relationship name="audioFile">
 			<destination>{c0891714-a541-4fe9-a906-cf5da6bc32b3}</destination>
 		</relationship>

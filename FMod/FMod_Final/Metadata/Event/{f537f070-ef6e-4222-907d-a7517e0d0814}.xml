@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{f537f070-ef6e-4222-907d-a7517e0d0814}">
 		<property name="name">
-			<value>Comprar</value>
+			<value>ActivateItemStore</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{e07bc9dd-7561-45d8-96a1-9f08da61480a}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{082f227c-2f4a-4e06-8c24-08ffc8be29db}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{76982a5b-2cf8-4a2c-9e94-f4836468a8dd}">
@@ -87,10 +90,10 @@
 	<object class="MixerBusPanner" id="{7ed4e773-2801-4abe-98b2-d83657594d2f}" />
 	<object class="SingleSound" id="{30ccb93d-415f-4216-bbf5-2e7081e05818}">
 		<property name="length">
-			<value>1.0906250000000002</value>
+			<value>0.97062500000000007</value>
 		</property>
 		<property name="timelockedOffset">
-			<value>1</value>
+			<value>1.1200000000000001</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{d6938b23-e168-4348-a013-a942cc0bc984}</destination>

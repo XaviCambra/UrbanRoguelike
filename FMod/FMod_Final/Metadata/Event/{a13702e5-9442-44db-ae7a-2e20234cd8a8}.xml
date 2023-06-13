@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{a13702e5-9442-44db-ae7a-2e20234cd8a8}">
 		<property name="name">
-			<value>ACTIVAR EN TIENDA</value>
+			<value>UpgradeMenu</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{630e9a20-3164-4530-a239-a02bc6d1d65b}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{082f227c-2f4a-4e06-8c24-08ffc8be29db}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{6105f49e-8e4f-4cb4-a84b-5ec3b420b70e}">

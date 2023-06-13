@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{87bc085e-74fe-4cfa-b1be-4a231abe7346}">
 		<property name="name">
-			<value>Disparo Sobrecalentamiento</value>
+			<value>BulletReload</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{f457778a-22bd-4075-8673-93e15da273d4}</destination>
+			<destination>{cbad82a0-1a0e-4099-a077-e55956ba36bd}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{35551e33-2a54-4c26-b994-81930816d84d}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{16bec5e0-8109-4b17-a0e8-6294ac4c2d57}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{082f227c-2f4a-4e06-8c24-08ffc8be29db}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{35551e33-2a54-4c26-b994-81930816d84d}">
@@ -69,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{b97bdbd4-b11b-4786-83fa-56c4ad61ab69}">
+		<property name="pitch">
+			<value>-3.4000001</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{ce00429f-da78-4322-bf09-c26e34a11938}</destination>
 		</relationship>
@@ -87,7 +93,10 @@
 	<object class="MixerBusPanner" id="{edf6b1cf-ec2c-4a7c-a3d4-ddb29fda5858}" />
 	<object class="SingleSound" id="{8073f0cb-c9d9-4e9f-9e3a-e1b53dc3a36c}">
 		<property name="length">
-			<value>0.88312500000000005</value>
+			<value>0.66312499999999985</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.22</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{29dc141d-aef0-43fb-aac2-ab4b083e1545}</destination>

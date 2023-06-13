@@ -20,6 +20,8 @@ public class HealItem : BaseItem
 
         else
         {
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_HealSound, transform.position);
+
             m_PlayerHealth.GetHeal(m_HealAmount);
         }
     }
