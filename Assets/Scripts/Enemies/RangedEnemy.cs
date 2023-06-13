@@ -31,8 +31,6 @@ public class RangedEnemy : FSM_EnemyBase
         m_LineRenderer = GetComponent<LineRenderer>();
 
         m_LineRenderer.enabled = false;
-
-        StartCoroutine(CrouchIn());
     }
 
     protected override void Update()
@@ -63,7 +61,6 @@ public class RangedEnemy : FSM_EnemyBase
         else
             m_AttackType = AttackType.Bullet;
 
-        StartCoroutine(CrouchOut());
         base.SetStateAttack();
     }
 
@@ -77,10 +74,14 @@ public class RangedEnemy : FSM_EnemyBase
         switch (m_AttackType)
         {
             case AttackType.Bullet:
+                AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_RangedShoot, transform.position);
+
                 m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_BulletDamage, "Enemy");
                 break;
             case AttackType.Grenade:
                 GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
+                AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_GrenadeThrow, transform.position);
+
                 Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
                 Vector3 l_GrenadeUpScale = Vector3.up * m_Blackboard.m_GrenadeAngle;
                 l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_Blackboard.m_GrenadeForce + l_GrenadeUpScale, ForceMode.VelocityChange);
@@ -93,28 +94,7 @@ public class RangedEnemy : FSM_EnemyBase
                 break;
         }
         m_Blackboard.m_CanAttack = false;
-        StartCoroutine(CrouchIn());
-        SetStateWait(m_Blackboard.m_BulletCooldown + 3);
-    }
-
-    private IEnumerator CrouchOut()
-    {
-        Debug.Log("Crouch Out");
-        yield return new WaitForSeconds(1.0f);
-        m_Crouch.Crouching(true, m_Blackboard.m_CrouchOutTime); //0
-        m_LineRenderer.enabled = true;
-        yield return new WaitForSeconds(1.0f);
-        Debug.Log("Crouch Out Done");
-        m_Blackboard.m_CanAttack = true;
-    }
-
-    private IEnumerator CrouchIn()
-    {
-        Debug.Log("Crouch In");
-        yield return new WaitForSeconds(1.0f);
-        m_Crouch.Crouching(false, m_Blackboard.m_CrouchInTime); //2
-        m_LineRenderer.enabled = false;
-        Debug.Log("Crouch In Done");
+        SetStateWait(m_Blackboard.m_AttackRecovery);
     }
 
     private IEnumerator GrenadeCooldown()

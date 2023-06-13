@@ -35,6 +35,8 @@ public class GrenadeItem : MonoBehaviour
 
         if (Input.GetKeyUp(m_InputController.m_UseItemKey) && m_PlayerBlackboard.m_HasGrenade)
         {
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_GrenadeThrow, transform.position);
+
             Rigidbody l_rb = gameObject.GetComponent<Rigidbody>();
             l_rb.useGravity = true;
             l_rb.AddForce(m_PlayerBulletOrigin.transform.forward * m_MoveSpeed, ForceMode.VelocityChange);
@@ -49,6 +51,9 @@ public class GrenadeItem : MonoBehaviour
     private void Explode()
     {
         Collider[] l_colliders = Physics.OverlapSphere(transform.position, m_ExplosionRadius);
+
+        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.M_GrenadeExplode, transform.position);
+
 
         if (l_colliders == null) return;
 

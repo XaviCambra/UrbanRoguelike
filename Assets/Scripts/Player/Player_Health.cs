@@ -14,12 +14,15 @@ public class Player_Health : Module_Health
     {
         if (!m_CanLooseHealth)
             return;
-
+        if (FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerHit, transform.position);
         base.TakeDamage(l_Damage);
     }
 
     public override void Death()
     {
+        if (FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerDie, transform.position);
         base.Death();
         m_PlayerIsDead?.Invoke();
         SceneManager.LoadSceneAsync("GameOver", LoadSceneMode.Additive);

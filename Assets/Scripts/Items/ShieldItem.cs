@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShieldItem : BaseItem
@@ -11,7 +9,7 @@ public class ShieldItem : BaseItem
 
         /*  Write your own code below */
         m_PlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        
+
         m_PlayerController.StartInmortality(m_PlayerController.m_Blackboard.m_InmortalityDuration);
     }
 }

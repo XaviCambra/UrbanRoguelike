@@ -56,7 +56,6 @@ public class MeleEnemy : FSM_EnemyBase
 
         if (l_Distance > m_Blackboard.m_DetectionRadius)
         {
-            Debug.Log("Setted Idle");
             SetStateIdle();
             return;
         }
@@ -82,6 +81,9 @@ public class MeleEnemy : FSM_EnemyBase
 
     private void Attack()
     {
+        if(FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_MeleeAttack1, transform.position);
+
         m_AttackMele.HitOnDirection(m_Blackboard.m_BulletDamage);
         SetStateWait(m_Blackboard.m_BulletCooldown);
     }
