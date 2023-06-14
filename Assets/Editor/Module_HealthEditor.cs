@@ -20,6 +20,10 @@ public class Module_HealthEditor : Editor
         {
             m_ModuleHealth.ResetObject();
         }
+        if (GUILayout.Button("Reset Materials"))
+        {
+            m_ModuleHealth.ResetMaterialDissolve();
+        }
     }
 
 }

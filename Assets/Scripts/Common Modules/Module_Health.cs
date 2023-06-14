@@ -113,4 +113,16 @@ public class Module_Health : MonoBehaviour
             catch (Exception e) { };
         }
     }
+
+    public void ResetMaterialDissolve()
+    {
+        foreach (Material l_Material in m_Materials)
+        {
+            try
+            {
+                l_Material.SetFloat("_CharacterDissolve", -1);
+            }
+            catch (Exception e) { };
+        }
+    }
 }
