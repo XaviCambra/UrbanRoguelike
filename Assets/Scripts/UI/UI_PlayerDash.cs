@@ -6,13 +6,18 @@ using UnityEngine.UI;
 public class UI_PlayerDash : MonoBehaviour
 {
     Player_BLACKBOARD m_PlayerBlackboard;
-    Slider m_Slider;
+
+    public List<Image> DashImageList;
 
     // Start is called before the first frame update
     void Start()
     {
         m_PlayerBlackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
-        m_Slider = GetComponent<Slider>();
+
+        for (int i = 0; i < DashImageList.Count; i++)
+        {
+            DashImageList[i].enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -20,9 +25,20 @@ public class UI_PlayerDash : MonoBehaviour
     {
         if (m_PlayerBlackboard == null)
             return;
-        if (m_Slider == null)
-            return;
-        m_Slider.maxValue = m_PlayerBlackboard.m_DashMaxCount;
-        m_Slider.value = m_PlayerBlackboard.m_DashMaxCount - m_PlayerBlackboard.m_DashCount;
+
+        updateDashImages();
+    }
+
+    void updateDashImages()
+    {
+        for (int i = 0; i < m_PlayerBlackboard.m_DashMaxCount; i++)
+        {
+            DashImageList[i].enabled = true;
+        }
+
+        for (int i = 0; i < m_PlayerBlackboard.m_DashCount; i++)
+        {
+            DashImageList[i].enabled = false;
+        }
     }
 }

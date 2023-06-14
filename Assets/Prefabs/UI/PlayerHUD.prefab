@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 6147580599149470094}
   - component: {fileID: 8442204311826711998}
   - component: {fileID: 1589064766421946850}
+  - component: {fileID: 8402355993156692997}
   m_Layer: 5
   m_Name: DashCounterObject
   m_TagString: Untagged
@@ -388,6 +389,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8402355993156692997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947173728240787138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd2827aab1d5cf4b847e93955bf2241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DashImageList:
+  - {fileID: 3698152685674576115}
+  - {fileID: 8209770579021321945}
 --- !u!1 &987326873879231202
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +501,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_StartCorner: 0
+  m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 50, y: 75}
   m_Spacing: {x: 0, y: 0}
@@ -968,7 +984,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_StartCorner: 0
+  m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 50, y: 75}
   m_Spacing: {x: 0, y: 0}
@@ -1773,6 +1789,7 @@ GameObject:
   - component: {fileID: 5978850318081566114}
   - component: {fileID: 1498383292595493}
   - component: {fileID: 821394061137747597}
+  - component: {fileID: 8210762169091785521}
   m_Layer: 5
   m_Name: BulletCounter
   m_TagString: Untagged
@@ -1862,9 +1879,28 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_StartCorner: 0
+  m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 50, y: 75}
   m_Spacing: {x: 10, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &8210762169091785521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557555938131979591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b79afd7d28d06f8458052634e7a519b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletImageList:
+  - {fileID: 1915836951991810106}
+  - {fileID: 8341165730162096112}
+  - {fileID: 6846689989425603261}
+  - {fileID: 7656943303178000057}
+  - {fileID: 2172505230656574153}
+  - {fileID: 6973798726547461889}
