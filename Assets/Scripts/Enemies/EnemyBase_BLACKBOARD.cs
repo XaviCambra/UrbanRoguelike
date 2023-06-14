@@ -17,6 +17,7 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
 
     [Header("Objects")]
     public Transform m_RotationAttackPoint;
+    public Transform m_TurretRotation;
     public Transform m_AttackPoint;
 
     [Header("Score Points")]
@@ -30,11 +31,6 @@ public class EnemyBase_BLACKBOARD : MonoBehaviour
     [Header("Distances")]
     public float m_FollowDistance;
     public float m_AttackDistance;
-
-    [Header("Crouching")]
-    public bool m_Crouching;
-    public float m_CrouchInTime;
-    public float m_CrouchOutTime;
 
     [Header("Bullet")]
     public bool m_BulletLoaded = true;
