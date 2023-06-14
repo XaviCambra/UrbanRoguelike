@@ -401,8 +401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd2827aab1d5cf4b847e93955bf2241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DashImage1: {fileID: 3698152685674576115}
-  DashImage2: {fileID: 8209770579021321945}
+  DashImageList:
+  - {fileID: 3698152685674576115}
+  - {fileID: 8209770579021321945}
 --- !u!1 &987326873879231202
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +501,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_StartCorner: 0
+  m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 50, y: 75}
   m_Spacing: {x: 0, y: 0}
@@ -983,7 +984,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_StartCorner: 0
+  m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 50, y: 75}
   m_Spacing: {x: 0, y: 0}
