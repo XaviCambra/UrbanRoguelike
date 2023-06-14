@@ -127,7 +127,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2601866544816858221}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1688452273536197438
 GameObject:
@@ -158,7 +158,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2601866544816858221}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1688452273801887263
 GameObject:
@@ -378,6 +378,8 @@ MonoBehaviour:
   m_MaxHealth: 30
   m_CurrentHealth: 0
   ObjectMesh: {fileID: 0}
+  m_Materials: []
+  m_DissolveSpeed: 0
   m_CanLooseHealth: 0
 --- !u!54 &8222047140473542486
 Rigidbody:
@@ -436,7 +438,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2601866544816858221}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7469336106605309083
 GameObject:
@@ -466,7 +468,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 224505192796815823}
   - {fileID: 1688452273536197433}
   - {fileID: 1688452273337494128}
   - {fileID: 1688452274923013380}
@@ -499,14 +500,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8485949565087774774}
-  m_LocalRotation: {x: -0.49999785, y: -0.49999917, z: -0.50000083, w: 0.50000226}
-  m_LocalPosition: {x: 0.294, y: 1.5649999, z: -0.35200006}
-  m_LocalScale: {x: 0.10000001, y: 0.10000001, z: 0.049999997}
+  m_LocalRotation: {x: -0.45203188, y: 0.46268687, z: 0.51242656, w: 0.5648071}
+  m_LocalPosition: {x: -0.125, y: -0.019, z: -0.023}
+  m_LocalScale: {x: 0.100000024, y: 0.09999993, z: 0.049999986}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2601866544816858221}
+  m_Father: {fileID: 6391818840553344675}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: -80, y: 20, z: 67.6}
 --- !u!33 &6792303204002588272
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -567,7 +568,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
         type: 3}
@@ -679,6 +680,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1629483522763223989, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b46de7ee8d1b1ed42adfa9d7880828dd, type: 2}
     - target: {fileID: 919132149155446097, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
         type: 3}
       propertyPath: m_Name
@@ -689,6 +695,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2769828731114996891, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d469df6e831a82e41a2f8b45d79541fb, type: 2}
+    - target: {fileID: 2937764181008185574, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d469df6e831a82e41a2f8b45d79541fb, type: 2}
     - target: {fileID: 5866666021909216657, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
         type: 3}
       propertyPath: m_Controller
@@ -697,19 +713,19 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
         type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'CATRigRArmCollarbone'\n\tTransform 'CATRigRLeg1'\n\tTransform
-        'CATRigHub002Bone001'\n\tTransform 'CATRigRArm1'\n\tTransform 'CATRigLArm1'\n\tTransform
-        'CATRigRLegAnkle'\n\tTransform 'CATRigRLeg2'\n\tTransform 'CATRigLLegAnkle'\n\tTransform
-        'CATRigHub001'\n\tTransform 'CATRigLArmCollarbone'\n\tand more ...\n\tFrom
-        animation clip 'Run'\n\tFrom animation clip 'ShootPose'"
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d, type: 3}
 --- !u!4 &3409433814432373015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2943670258483805948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6391818840553344675 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1121878038278311841, guid: 0db1bbd5e538cf74a80f068bfe0e8c1d,
     type: 3}
   m_PrefabInstance: {fileID: 2943670258483805948}
   m_PrefabAsset: {fileID: 0}
