@@ -64,7 +64,7 @@ public class RangedEnemy : FSM_EnemyBase
 
     protected override void SetStateAttack()
     {
-        m_LineRenderer.enabled = false;
+        m_LineRenderer.enabled = true;
         m_Timer = 0;
         //if (m_HasGrenade)
         //{
@@ -83,7 +83,7 @@ public class RangedEnemy : FSM_EnemyBase
     {
         base.StateAttack();
 
-        if (AttackLoaded())
+        if (!AttackLoaded())
             return;
 
         switch (m_AttackType)
@@ -107,16 +107,16 @@ public class RangedEnemy : FSM_EnemyBase
             //    m_Blackboard.m_GrenadeLoaded = false;
             //    StartCoroutine(GrenadeCooldown());
             //    break;
-            //default:
-            //    break;
+            default:
+                break;
         }
-        m_Blackboard.m_CanAttack = false;
         m_LineRenderer.enabled = false;
         SetStateWait(m_Blackboard.m_AttackRecovery);
     }
 
     private bool AttackLoaded()
     {
+        Debug.Log(m_Timer + " >= " + m_Blackboard.m_BulletAttackDuration + "? " + (m_Timer >= m_Blackboard.m_BulletAttackDuration));
         m_Timer += Time.deltaTime;
         return m_Timer >= m_Blackboard.m_BulletAttackDuration;
     }
