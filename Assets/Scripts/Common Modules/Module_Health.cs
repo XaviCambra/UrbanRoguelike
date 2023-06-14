@@ -81,19 +81,22 @@ public class Module_Health : MonoBehaviour
 
     private IEnumerator DissapearToDie()
     {
-        for(float i = -1; i < 1; i += Time.deltaTime * m_DissolveSpeed)
+        if(m_Materials.Count > 0)
         {
-            foreach(Material l_Material in m_Materials)
+            for (float i = -1; i < 1; i += Time.deltaTime * m_DissolveSpeed)
             {
-                try
+                foreach (Material l_Material in m_Materials)
                 {
-                    l_Material.SetFloat("_CharacterDissolve", i);
+                    try
+                    {
+                        l_Material.SetFloat("_CharacterDissolve", i);
+                    }
+                    catch (Exception e) { };
                 }
-                catch (Exception e) { };
+                yield return null;
             }
-            yield return null;
         }
-
+        
         ObjectMesh.SetActive(false);
     }
 

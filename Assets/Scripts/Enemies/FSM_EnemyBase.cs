@@ -5,13 +5,15 @@ using UnityEngine;
 public class FSM_EnemyBase : MonoBehaviour
 {
     protected EnemyBase_BLACKBOARD m_Blackboard;
+    [SerializeField] protected Module_Health m_Health;
 
     protected enum EnemyStates
     {
         Idle,
         Movement,
         Attack,
-        Wait
+        Wait,
+        Dead
     }
 
     [SerializeField] protected EnemyStates m_State = EnemyStates.Idle;
@@ -19,6 +21,7 @@ public class FSM_EnemyBase : MonoBehaviour
     protected virtual void Update()
     {
         if (m_Blackboard.m_IsActive == false) return;
+        if (m_Health.m_CurrentHealth <= 0) SetStateDead();
 
         switch (m_State)
         {
@@ -32,6 +35,9 @@ public class FSM_EnemyBase : MonoBehaviour
                 StateAttack();
                 break;
             case EnemyStates.Wait:
+                break;
+            case EnemyStates.Dead:
+                StateDead();
                 break;
             default:
                 SetStateIdle();
@@ -55,6 +61,8 @@ public class FSM_EnemyBase : MonoBehaviour
         yield return new WaitForSeconds(l_Duration);
         SetStateIdle();
     }
+    public virtual void SetStateDead() { m_State = EnemyStates.Dead; }
+    protected virtual void StateDead() { }
 
     private void SetInnactiveObject()
     {
