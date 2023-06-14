@@ -66,15 +66,10 @@ public class RangedEnemy : FSM_EnemyBase
     {
         m_LineRenderer.enabled = true;
         m_Timer = 0;
-        //if (m_HasGrenade)
-        //{
-        //    if (m_Blackboard.m_GrenadeLoaded)
-        //        m_AttackType = AttackType.Grenade;
-        //    else
-        //        m_AttackType = AttackType.Bullet;
-        //}
-        //else
-        m_AttackType = AttackType.Bullet;
+        if (m_HasGrenade && m_Blackboard.m_GrenadeLoaded)
+            m_AttackType = AttackType.Grenade;
+        else
+            m_AttackType = AttackType.Bullet;
 
         base.SetStateAttack();
     }
@@ -94,19 +89,19 @@ public class RangedEnemy : FSM_EnemyBase
 
                 m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_BulletDamage, "Enemy");
                 break;
-            //case AttackType.Grenade:
-            //    GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
-            //    if (FindObjectOfType<AudioManager>() != null)
-            //        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_GrenadeThrow, transform.position);
+            case AttackType.Grenade:
+                GameObject l_grenade = Instantiate(m_GrenadePrefab, m_Blackboard.m_AttackPoint.transform.position, m_Blackboard.m_AttackPoint.transform.rotation);
+                if (FindObjectOfType<AudioManager>() != null)
+                    AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_GrenadeThrow, transform.position);
 
-            //    Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
-            //    Vector3 l_GrenadeUpScale = Vector3.up * m_Blackboard.m_GrenadeAngle;
-            //    l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_Blackboard.m_GrenadeForce + l_GrenadeUpScale, ForceMode.VelocityChange);
-            //    l_rb.useGravity = true;
-            //    l_grenade.SetActive(true);
-            //    m_Blackboard.m_GrenadeLoaded = false;
-            //    StartCoroutine(GrenadeCooldown());
-            //    break;
+                Rigidbody l_rb = l_grenade.GetComponent<Rigidbody>();
+                Vector3 l_GrenadeUpScale = Vector3.up * m_Blackboard.m_GrenadeAngle;
+                l_rb.AddForce(m_Blackboard.m_AttackPoint.transform.forward * m_Blackboard.m_GrenadeForce + l_GrenadeUpScale, ForceMode.VelocityChange);
+                l_rb.useGravity = true;
+                l_grenade.SetActive(true);
+                m_Blackboard.m_GrenadeLoaded = false;
+                StartCoroutine(GrenadeCooldown());
+                break;
             default:
                 break;
         }
