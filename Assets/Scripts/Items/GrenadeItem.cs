@@ -52,8 +52,8 @@ public class GrenadeItem : MonoBehaviour
     {
         Collider[] l_colliders = Physics.OverlapSphere(transform.position, m_ExplosionRadius);
 
-        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.M_GrenadeExplode, transform.position);
-
+        if (FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.M_GrenadeExplode, transform.position);
 
         if (l_colliders == null) return;
 
