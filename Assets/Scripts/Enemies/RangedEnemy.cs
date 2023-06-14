@@ -111,7 +111,6 @@ public class RangedEnemy : FSM_EnemyBase
 
     private bool AttackLoaded()
     {
-        Debug.Log(m_Timer + " >= " + m_Blackboard.m_BulletAttackDuration + "? " + (m_Timer >= m_Blackboard.m_BulletAttackDuration));
         m_Timer += Time.deltaTime;
         return m_Timer >= m_Blackboard.m_BulletAttackDuration;
     }
