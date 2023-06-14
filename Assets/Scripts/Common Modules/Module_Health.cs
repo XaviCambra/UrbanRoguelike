@@ -13,6 +13,7 @@ public class Module_Health : MonoBehaviour
     public GameObject ObjectMesh;
 
     [SerializeField] private List<Material> m_Materials;
+    public float m_DissolveSpeed;
 
     private EnemyBase_BLACKBOARD m_EnemyBlackBoard;
 
@@ -23,6 +24,15 @@ public class Module_Health : MonoBehaviour
         if (gameObject.CompareTag("Enemy"))
         {
             m_EnemyBlackBoard = GetComponent<EnemyBase_BLACKBOARD>();
+        }
+
+        foreach (Material l_Material in m_Materials)
+        {
+            try
+            {
+                l_Material.SetFloat("_CharacterDissolve", -1);
+            }
+            catch (Exception e) { };
         }
     }
 
@@ -71,7 +81,7 @@ public class Module_Health : MonoBehaviour
 
     private IEnumerator DissapearToDie()
     {
-        for(float i = -1; i < 1; i += Time.deltaTime)
+        for(float i = -1; i < 1; i += Time.deltaTime * m_DissolveSpeed)
         {
             foreach(Material l_Material in m_Materials)
             {
@@ -83,11 +93,21 @@ public class Module_Health : MonoBehaviour
             }
             yield return null;
         }
+
+        ObjectMesh.SetActive(false);
     }
 
     public void ResetObject()
     {
         ObjectMesh.SetActive(true);
         m_CurrentHealth = m_MaxHealth;
+        foreach (Material l_Material in m_Materials)
+        {
+            try
+            {
+                l_Material.SetFloat("_CharacterDissolve", -1);
+            }
+            catch (Exception e) { };
+        }
     }
 }
