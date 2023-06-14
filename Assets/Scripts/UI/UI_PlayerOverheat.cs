@@ -6,13 +6,18 @@ using UnityEngine.UI;
 public class UI_PlayerOverheat : MonoBehaviour
 {
     Player_BLACKBOARD m_PlayerBlackboard;
-    Slider m_Slider;
+
+    public List<Image> BulletImageList;
 
     // Start is called before the first frame update
     void Start()
     {
         m_PlayerBlackboard = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_BLACKBOARD>();
-        m_Slider = GetComponent<Slider>();
+
+        for (int i = 0; i < BulletImageList.Count; i++)
+        {
+            BulletImageList[i].enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -20,9 +25,19 @@ public class UI_PlayerOverheat : MonoBehaviour
     {
         if (m_PlayerBlackboard == null)
             return;
-        if (m_Slider == null)
-            return;
-        m_Slider.maxValue = m_PlayerBlackboard.m_MaxOverHeat;
-        m_Slider.value = m_PlayerBlackboard.m_MaxOverHeat - m_PlayerBlackboard.m_CurrentShots;
+
+        updateBulletsImages();
+    }
+    void updateBulletsImages()
+    {
+        for (int i = 0; i < m_PlayerBlackboard.m_MaxOverHeat; i++)
+        {
+            BulletImageList[i].enabled = true;
+        }
+
+        for (int i = 0; i < m_PlayerBlackboard.m_CurrentShots; i++)
+        {
+            BulletImageList[i].enabled = false;
+        }
     }
 }
