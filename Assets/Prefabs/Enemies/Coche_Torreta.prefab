@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fe718f767bf0d458befaeaad47acc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxHealth: 10
-  m_CurrentHealth: 0
+  m_MaxHealth: 30
+  m_CurrentHealth: 30
   ObjectMesh: {fileID: 2654687421681286588}
   m_Materials:
   - {fileID: 760795348853402076}
@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 7641098225709211213}
   - {fileID: 5151808371320123610}
   m_DissolveSpeed: 0.8
+  m_Anim: {fileID: 0}
 --- !u!65 &5333516492281000446
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10986,7 +10987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WalkSpeed: 0
   m_RunSpeed: 0
-  m_DetectionRadius: 10
+  m_DetectionRadius: 25
   m_CanAttack: 0
   m_IsActive: 1
   m_RotationAttackPoint: {fileID: 6379140000256115574}
@@ -10997,12 +10998,12 @@ MonoBehaviour:
   m_DashSpeed: 0
   m_DashChargedDistance: 0
   m_FollowDistance: 0
-  m_AttackDistance: 10
+  m_AttackDistance: 20
   m_BulletLoaded: 1
   m_BulletDamage: 10
   m_AttackSpeed: 100
-  m_BulletCooldown: 0
-  m_BulletAttackDuration: 0
+  m_BulletCooldown: 3
+  m_BulletAttackDuration: 2
   m_BulletAngle: 0
   m_AttackRecovery: 5
   m_GrenadeLoaded: 1
