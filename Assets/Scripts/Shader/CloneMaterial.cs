@@ -28,7 +28,7 @@ public class CloneMaterial : MonoBehaviour
         
         if(m_MeshRenderer != null)
         {
-            for (int i = 0; i < m_SkinnedMeshRenderer.materials.Length; i++)
+            for (int i = 0; i < m_MeshRenderer.materials.Length; i++)
             {
                 m_MeshRenderer.materials[i] = m_LocalMaterial[i];
             }

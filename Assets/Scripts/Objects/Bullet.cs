@@ -10,10 +10,6 @@ public class Bullet : MonoBehaviour
 
     public Vector3 m_Direction;
 
-    public int m_BouncingNumber;
-
-    public ParticleSystem m_SmokeParticles;
-
     private void Start()
     {
         m_Direction = Vector3.forward;
@@ -29,41 +25,15 @@ public class Bullet : MonoBehaviour
         if (collision.collider.tag.Equals(m_TagToIgnore))
             return;
 
-        ParticleSystem m_CollisionParticles = collision.collider.GetComponent<ParticleSystem>();
+        ForwardParticle m_CollisionParticles = collision.collider.GetComponent<ForwardParticle>();
 
         if (m_CollisionParticles != null)
-        {
-            Vector3 direction = collision.transform.position - transform.position;
-            float angle = Mathf.Atan2(direction.z, direction.x);
-
-            Quaternion rotation = Quaternion.Euler(0, angle, 0);
-
-            m_CollisionParticles.transform.position = transform.position;
-            m_CollisionParticles.transform.rotation = rotation;
-            m_CollisionParticles.Play();
-
-        }
+            m_CollisionParticles.Play(transform.position, transform.forward);
 
         Module_Health m_Health = collision.collider.GetComponent<Module_Health>();
         if (m_Health != null)
-        {
             m_Health.TakeDamage(m_Damage);
-            Destroy(gameObject);
-            return;
-        }
 
-        if(m_BouncingNumber > 0)
-        {
-            ContactPoint contact = collision.contacts[0];
-            Vector3 position = contact.normal;
-            m_Direction = Vector3.Reflect(m_Direction, position);
-            m_BouncingNumber--;
-        }
-        else
-        {
-            m_SmokeParticles.transform.position = transform.position;
-            m_SmokeParticles.Play();
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
