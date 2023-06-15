@@ -17,6 +17,8 @@ public class Module_Health : MonoBehaviour
 
     private EnemyBase_BLACKBOARD m_EnemyBlackBoard;
 
+    [SerializeField] private Animator m_Anim;
+
     private void Start()
     {
         m_CurrentHealth = m_MaxHealth;
@@ -63,7 +65,12 @@ public class Module_Health : MonoBehaviour
         {
             if (GameObject.FindGameObjectWithTag("GameController") != null)
                 if(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>() != null)
+                {
                     GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().AddPoints(m_EnemyBlackBoard.m_Points);
+                    m_Anim.SetTrigger("Die");
+                    m_EnemyBlackBoard.m_IsActive = false;
+                    
+                }
             else
                 Debug.LogError("No GameController Found");
         }
