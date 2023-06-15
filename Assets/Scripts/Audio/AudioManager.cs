@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
-    private List<EventInstance> eventInstances;
+    private List<EventInstance> eventInstances = new List<EventInstance>();
 
     public static AudioManager m_Instance { get; private set; }
     public static EventInstance m_MusicEventInstance { get; private set; }
@@ -16,8 +16,8 @@ public class AudioManager : MonoBehaviour
     {
         if(m_Instance != null)
         {
-            Debug.LogError("More than one Audio Manager");
             Destroy(gameObject);
+            return;
         }
         m_Instance = this;
         DontDestroyOnLoad(gameObject);
@@ -37,6 +37,9 @@ public class AudioManager : MonoBehaviour
 
     private void CleanUp()
     {
+        if (eventInstances.Count <= 0)
+            return;
+
         foreach (EventInstance eventInstance in eventInstances)
         {
             eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);

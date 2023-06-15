@@ -14,12 +14,12 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         if (m_instance != null)
-            Destroy(gameObject);
-        else
         {
-            m_instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
+            return;
         }
+        m_instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public int GetCurrentPoints()

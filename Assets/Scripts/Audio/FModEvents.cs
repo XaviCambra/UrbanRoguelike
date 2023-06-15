@@ -61,8 +61,8 @@ public class FModEvents : MonoBehaviour
     {
         if (m_Instance != null)
         {
-            Debug.LogError("More than one FModEvents");
             Destroy(gameObject);
+            return;
         }
         m_Instance = this;
         DontDestroyOnLoad(gameObject);
