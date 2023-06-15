@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangedEnemy : FSM_EnemyBase
 {
+    Module_Animation m_Animation;
     Module_AttackRanged m_AttackRanged;
     GameObject m_PlayerHitpoint;
     GameObject m_Player;
@@ -87,6 +88,7 @@ public class RangedEnemy : FSM_EnemyBase
                 if (FindObjectOfType<AudioManager>() != null)
                     AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_RangedShoot, transform.position);
 
+                m_Animation.PlayAnimation("Attack");
                 m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_BulletDamage, "Enemy");
                 break;
             case AttackType.Grenade:
