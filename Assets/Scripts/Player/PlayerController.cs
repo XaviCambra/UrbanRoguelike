@@ -99,7 +99,6 @@ public class PlayerController : MonoBehaviour
 
         if (Dash())
         {
-            m_Anim.SetBool("Dashing", true);
             CancelMovementDash();
             return;
         }
@@ -168,6 +167,8 @@ public class PlayerController : MonoBehaviour
         m_Dash.DashDisplacement(m_PlayerRotationPoint.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
 
         m_Blackboard.m_DashCount++;
+
+        m_Anim.SetTrigger("Dash");
 
         StartCoroutine(DashReload());
 
