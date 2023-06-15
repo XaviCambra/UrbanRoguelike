@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     private int m_StepCounter = 50;
 
+    [SerializeField] private Animator m_Anim;
+
 
     private void Start()
     {
@@ -75,18 +77,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(m_InputController.m_ForwardKey))
         {
             l_Direction += Quaternion.Euler(0, 45, 0) * Vector3.forward;
+            m_Anim.SetBool("Moving", true);
         }
         if (Input.GetKey(m_InputController.m_BackKey))
         {
             l_Direction += Quaternion.Euler(0, 45, 0) * Vector3.back;
+            m_Anim.SetBool("Moving", true);
         }
         if (Input.GetKey(m_InputController.m_LeftKey))
         {
             l_Direction += Quaternion.Euler(0, 45, 0) * Vector3.left;
+            m_Anim.SetBool("Moving", true);
         }
         if (Input.GetKey(m_InputController.m_RightKey))
         {
             l_Direction += Quaternion.Euler(0, 45, 0) * Vector3.right;
+            m_Anim.SetBool("Moving", true);
         }
 
         l_Direction.Normalize();
@@ -99,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
         if (l_Direction == Vector3.zero)
         {
+            m_Anim.SetBool("Moving", false);
             return;
         }
 
@@ -142,10 +149,12 @@ public class PlayerController : MonoBehaviour
         if (m_Blackboard.m_Crouching)
         {
             m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
+            m_Anim.SetBool("Crouching", true);
         }
         else
         {
             m_MovementSpeed = m_Blackboard.m_MovementSpeed;
+            m_Anim.SetBool("Crouching", false);
         }
     }
 
@@ -158,6 +167,8 @@ public class PlayerController : MonoBehaviour
         m_Dash.DashDisplacement(m_PlayerRotationPoint.transform.forward, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
 
         m_Blackboard.m_DashCount++;
+
+        m_Anim.SetTrigger("Dash");
 
         StartCoroutine(DashReload());
 
@@ -182,6 +193,8 @@ public class PlayerController : MonoBehaviour
             m_RangedAttack.ShootOnDirection(m_Blackboard.m_ShootPoint.position, m_Blackboard.m_ShootPoint.transform.rotation, m_Blackboard.m_BulletSpeed, m_Blackboard.m_ShootingDamage, "Player");
             if (FindObjectOfType<AudioManager>() != null)
                 AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerShoot, transform.position);
+
+            m_Anim.SetTrigger("Shoot");
             m_Blackboard.OverHeat();
         }
 
