@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 6528876050359306497}
   - component: {fileID: 6528876050359306496}
   - component: {fileID: 6528876050359306511}
-  - component: {fileID: 6528876050359306510}
   - component: {fileID: 6528876050359306509}
   - component: {fileID: 2490364322719871442}
   - component: {fileID: 3852563807229165611}
@@ -99,7 +98,7 @@ MonoBehaviour:
   m_Points: 10
   m_DashDistance: 6
   m_DashSpeed: 20
-  m_DashChargedDistance: 15
+  m_DashChargedDistance: 12
   m_FollowDistance: 30
   m_AttackDistance: 1.2
   m_BulletLoaded: 1
@@ -108,7 +107,7 @@ MonoBehaviour:
   m_BulletCooldown: 0
   m_BulletAttackDuration: 0
   m_BulletAngle: 0
-  m_AttackRecovery: 0
+  m_AttackRecovery: 3
   m_GrenadeLoaded: 1
   m_GrenadeDistance: 0
   m_GrenadeCooldown: 0
@@ -205,27 +204,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!95 &6528876050359306510
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6528876050359306508}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 57e9df75467de7642b67885deaf9ec45, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6528876050359306509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58e2298f692e5e4e931bc9b37b45d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 6528876050359306510}
+  m_Animator: {fileID: 1280371694962506711}
 --- !u!114 &2490364322719871442
 MonoBehaviour:
   m_ObjectHideFlags: 0
