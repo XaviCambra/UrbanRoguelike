@@ -54,7 +54,6 @@ public class FSM_EnemyBase : MonoBehaviour
     protected virtual void SetStateWait(float l_Duration)
     {
         m_State = EnemyStates.Wait;
-        Debug.Log("Is waiting");
         StartCoroutine(StateWait(l_Duration));
     }
     public virtual IEnumerator StateWait(float l_Duration)

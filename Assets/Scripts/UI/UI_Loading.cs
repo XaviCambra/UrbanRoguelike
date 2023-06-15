@@ -6,7 +6,6 @@ public class UI_Loading : MonoBehaviour
 {
     public GameObject m_PlayerHud;
 
-    public TextMeshProUGUI m_LoadingText;
     public Slider m_LoadingSlider;
 
     float m_Time = 0;
@@ -15,7 +14,6 @@ public class UI_Loading : MonoBehaviour
     private void Start()
     {
         m_PlayerHud.SetActive(false);
-        m_LoadingText.text = "Loading...";
     }
 
     // Update is called once per frame
@@ -28,7 +26,6 @@ public class UI_Loading : MonoBehaviour
         if(m_Time > 3)
         {
             m_PlayerHud.SetActive(true);
-            m_LoadingText.gameObject.SetActive(false);
             m_LoadingSlider.gameObject.SetActive(false);
             GetComponent<Image>().color = new Color(0, 0, 0, m_AlphaPanel);
             m_AlphaPanel -= Time.deltaTime;
