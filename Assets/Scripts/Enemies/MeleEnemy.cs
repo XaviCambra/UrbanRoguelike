@@ -5,6 +5,7 @@ public class MeleEnemy : FSM_EnemyBase
 {
     Module_AttackMele m_AttackMele;
     Module_Dash m_Dash;
+    Module_Animation m_Animation;
     GameObject m_Player;
     NavMeshAgent m_NavMeshAgent;
     [SerializeField] private bool m_HasToDash;
@@ -13,6 +14,7 @@ public class MeleEnemy : FSM_EnemyBase
     {
         m_Blackboard = GetComponent<EnemyBase_BLACKBOARD>();
         m_AttackMele = GetComponent<Module_AttackMele>();
+        m_Animation = GetComponent<Module_Animation>();
         m_Dash = GetComponent<Module_Dash>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -30,14 +32,16 @@ public class MeleEnemy : FSM_EnemyBase
     public override void StateIdle()
     {
         base.StateIdle();
+        m_Animation.PlayAnimation("Moving", false);
         if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DetectionRadius)
             SetStateMovement();
     }
 
-    //protected override void SetStateMovement()
-    //{
-    //    base.SetStateMovement();
-    //}
+    protected override void SetStateMovement()
+    {
+        base.SetStateMovement();
+        m_Animation.PlayAnimation("Moving", true);
+    }
 
     public override void StateMovement()
     {
@@ -62,6 +66,7 @@ public class MeleEnemy : FSM_EnemyBase
         {
             if (FindObjectOfType<AudioManager>() != null)
                 AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_DashSound, transform.position);
+            m_Animation.PlayAnimation("Dash");
             m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
             m_HasToDash = false;
             Attack();
@@ -83,7 +88,7 @@ public class MeleEnemy : FSM_EnemyBase
     {
         if(FindObjectOfType<AudioManager>() != null)
             AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_MeleeAttack1, transform.position);
-
+        m_Animation.PlayAnimation("Attack");
         m_AttackMele.HitOnDirection(m_Blackboard.m_BulletDamage);
         SetStateWait(m_Blackboard.m_BulletCooldown);
     }
