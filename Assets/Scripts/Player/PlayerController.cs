@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(m_InputController.m_CrouchingKey))
         {
             m_Blackboard.m_Crouching = m_Crouch.Crouching(m_Blackboard.m_Crouching, 0.5f);
+            m_Blackboard.m_CanMove = !m_Blackboard.m_Crouching;
         }
     }
 

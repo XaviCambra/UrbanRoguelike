@@ -10,7 +10,9 @@ public class PowerUp_MaxHP : PowerUp_Base
     {
         base.ApplyPowerUp();
 
+        m_PlayerHP = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Health>();
         /*  Write your own code below */
         m_PlayerHP.m_MaxHealth += Mathf.Abs(m_HPIncrease);
+        m_PlayerHP.m_CurrentHealth += Mathf.Abs(m_HPIncrease);
     }
 }
