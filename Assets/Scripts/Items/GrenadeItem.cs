@@ -16,6 +16,8 @@ public class GrenadeItem : MonoBehaviour
     [SerializeField] private Player_BLACKBOARD m_PlayerBlackboard;
     [SerializeField] private GameObject m_PlayerBulletOrigin;
 
+    [SerializeField] private GameObject m_ExplosionParticles;
+
     private void Start()
     {
         m_InputController = GameObject.FindGameObjectWithTag("Player").GetComponent<InputController>();
@@ -66,11 +68,16 @@ public class GrenadeItem : MonoBehaviour
                 l_health.TakeDamage(m_Damage);
             }
         }
+
+        GameObject particles = GameObject.Instantiate(m_ExplosionParticles, null);
+        particles.transform.SetParent(null);
+        particles.GetComponent<ParticleSystem>().Play();
+
         Destroy(gameObject);
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(gameObject.transform.position, m_ExplosionRadius);
-    }
+    }*/
 }
