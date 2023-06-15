@@ -8,6 +8,7 @@ public class CloneMaterial : MonoBehaviour
     [SerializeField] private List<Material> m_Material;
     [SerializeField] List<Material> m_LocalMaterial;
 
+    SkinnedMeshRenderer m_SkinnedMeshRenderer;
     MeshRenderer m_MeshRenderer;
 
     float m_DissolveSpeed;
@@ -22,12 +23,24 @@ public class CloneMaterial : MonoBehaviour
             m_LocalMaterial.Add(new Material(l_Material));
         }
 
+        m_SkinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         m_MeshRenderer = GetComponent<MeshRenderer>();
         
-        for(int i = 0; i < m_MeshRenderer.materials.Length; i++)
+        if(m_MeshRenderer != null)
         {
-            m_MeshRenderer.materials[i] = m_LocalMaterial[i];
+            for (int i = 0; i < m_SkinnedMeshRenderer.materials.Length; i++)
+            {
+                m_MeshRenderer.materials[i] = m_LocalMaterial[i];
+            }
         }
+        else
+        {
+            for (int i = 0; i < m_SkinnedMeshRenderer.materials.Length; i++)
+            {
+                m_SkinnedMeshRenderer.materials[i] = m_LocalMaterial[i];
+            }
+        }
+        
         
         try
         {
@@ -52,14 +65,32 @@ public class CloneMaterial : MonoBehaviour
         if (m_Dissapear >= 1)
             return;
         m_Dissapear += Time.deltaTime * m_DissolveSpeed;
-        foreach (Material l_Material in m_MeshRenderer.materials)
+
+        if (m_MeshRenderer != null)
         {
-            try
+            foreach (Material l_Material in m_MeshRenderer.materials)
             {
-                l_Material.SetFloat("_CharacterDissolve", m_Dissapear);
-                Debug.Log(l_Material.GetFloat("_CharacterDissolve"));
+                try
+                {
+                    l_Material.SetFloat("_CharacterDissolve", m_Dissapear);
+                    Debug.Log(l_Material.GetFloat("_CharacterDissolve"));
+                }
+                catch (Exception e) { };
             }
-            catch (Exception e) { };
         }
+        else
+        {
+            foreach (Material l_Material in m_SkinnedMeshRenderer.materials)
+            {
+                try
+                {
+                    l_Material.SetFloat("_CharacterDissolve", m_Dissapear);
+                    Debug.Log(l_Material.GetFloat("_CharacterDissolve"));
+                }
+                catch (Exception e) { };
+            }
+        }
+
+        
     }
 }
