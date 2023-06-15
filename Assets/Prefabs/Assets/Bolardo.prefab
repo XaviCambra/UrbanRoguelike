@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1446464316921748490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1041279718226137287}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1041279718226137287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446464316921748490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7330724300400754474}
+  m_Father: {fileID: 7656651234181949739}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6992457547685360529
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +44,7 @@ GameObject:
   - component: {fileID: 6768409061554103950}
   - component: {fileID: 8794069266810229316}
   - component: {fileID: 426360003028012922}
+  - component: {fileID: 4132506646261080068}
   m_Layer: 0
   m_Name: Bolardo
   m_TagString: Untagged
@@ -31,7 +64,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7330724300400754474}
+  - {fileID: 1041279718226137287}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,12 +132,27 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.42}
+--- !u!114 &4132506646261080068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992457547685360529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b6315b8a3ea214aa7ab682ed59ecca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ParticleObject: {fileID: 1985102983108258045}
+  m_CustomPosition: 0
+  m_Inverted: 1
 --- !u!1001 &3379585451189373114
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7656651234181949739}
+    m_TransformParent: {fileID: 1041279718226137287}
     m_Modifications:
     - target: {fileID: 3848945639539138631, guid: eb8eca1f374f9a748b0af14f26909882,
         type: 3}
@@ -139,17 +187,17 @@ PrefabInstance:
     - target: {fileID: 5430573582735210384, guid: eb8eca1f374f9a748b0af14f26909882,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5430573582735210384, guid: eb8eca1f374f9a748b0af14f26909882,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5430573582735210384, guid: eb8eca1f374f9a748b0af14f26909882,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5430573582735210384, guid: eb8eca1f374f9a748b0af14f26909882,
         type: 3}
@@ -168,6 +216,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb8eca1f374f9a748b0af14f26909882, type: 3}
+--- !u!1 &1985102983108258045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3848945639539138631, guid: eb8eca1f374f9a748b0af14f26909882,
+    type: 3}
+  m_PrefabInstance: {fileID: 3379585451189373114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7330724300400754474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5430573582735210384, guid: eb8eca1f374f9a748b0af14f26909882,

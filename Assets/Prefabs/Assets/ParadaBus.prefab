@@ -441,6 +441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7568015374223778451}
+  - component: {fileID: 7058612847368291235}
   m_Layer: 0
   m_Name: ParadaBus
   m_TagString: Untagged
@@ -467,6 +468,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7058612847368291235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083367603464173609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b6315b8a3ea214aa7ab682ed59ecca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ParticleObject: {fileID: 3182770541531030993}
+  m_CustomPosition: 0
+  m_Inverted: 1
 --- !u!1001 &3756388822844795753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -611,6 +627,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cfc3e010e9ad0149bb50fa135dce13f, type: 3}
+--- !u!1 &3182770541531030993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1709097011622656022, guid: 0cfc3e010e9ad0149bb50fa135dce13f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4295473468666535367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5916620218599305734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7602244264235020225, guid: 0cfc3e010e9ad0149bb50fa135dce13f,

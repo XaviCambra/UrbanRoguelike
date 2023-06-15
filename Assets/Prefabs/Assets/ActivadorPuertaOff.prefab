@@ -471,6 +471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6256720590670075723}
+  - component: {fileID: 8748761192365978633}
   m_Layer: 0
   m_Name: ActivadorPuertaOff
   m_TagString: Untagged
@@ -498,6 +499,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &8748761192365978633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746258749175057905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b6315b8a3ea214aa7ab682ed59ecca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ParticleObject: {fileID: 7724501895331274654}
+  m_CustomPosition: 0
+  m_Inverted: 1
 --- !u!1001 &6798397108505919449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,6 +586,12 @@ PrefabInstance:
 --- !u!4 &1514766109373679689 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5430573582735210384, guid: eb8eca1f374f9a748b0af14f26909882,
+    type: 3}
+  m_PrefabInstance: {fileID: 6798397108505919449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7724501895331274654 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3848945639539138631, guid: eb8eca1f374f9a748b0af14f26909882,
     type: 3}
   m_PrefabInstance: {fileID: 6798397108505919449}
   m_PrefabAsset: {fileID: 0}
