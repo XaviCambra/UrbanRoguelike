@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5071370584973708089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8059354991284051343}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8059354991284051343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071370584973708089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4995689481075289376}
+  m_Father: {fileID: 8582071785669298025}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8958350689667964371
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +44,7 @@ GameObject:
   - component: {fileID: 4663054398446340300}
   - component: {fileID: 7445162723708992518}
   - component: {fileID: 7987857648940405797}
+  - component: {fileID: 1949671765657500914}
   m_Layer: 0
   m_Name: Barrera de calle_01
   m_TagString: Untagged
@@ -31,7 +64,7 @@ Transform:
   m_LocalScale: {x: 2.505916, y: 2.505916, z: 2.505916}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4995689481075289376}
+  - {fileID: 8059354991284051343}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -98,12 +131,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.29904827, y: 0.86279833, z: 0.3300857}
   m_Center: {x: -0.043717135, y: 0.01830462, z: 0.20224091}
+--- !u!114 &1949671765657500914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958350689667964371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b6315b8a3ea214aa7ab682ed59ecca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ParticleObject: {fileID: 4279324893418126071}
+  m_CustomPosition: 0
+  m_Inverted: 1
 --- !u!1001 &6057046848722756003
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8582071785669298025}
+    m_TransformParent: {fileID: 8059354991284051343}
     m_Modifications:
     - target: {fileID: 1250510966360181891, guid: 8eb9dcccd0b028243941cead63521e36,
         type: 3}
@@ -133,17 +181,17 @@ PrefabInstance:
     - target: {fileID: 1250510966360181891, guid: 8eb9dcccd0b028243941cead63521e36,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1250510966360181891, guid: 8eb9dcccd0b028243941cead63521e36,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1250510966360181891, guid: 8eb9dcccd0b028243941cead63521e36,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1250510966360181891, guid: 8eb9dcccd0b028243941cead63521e36,
         type: 3}
@@ -167,6 +215,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eb9dcccd0b028243941cead63521e36, type: 3}
+--- !u!1 &4279324893418126071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8029288481461672788, guid: 8eb9dcccd0b028243941cead63521e36,
+    type: 3}
+  m_PrefabInstance: {fileID: 6057046848722756003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4995689481075289376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1250510966360181891, guid: 8eb9dcccd0b028243941cead63521e36,

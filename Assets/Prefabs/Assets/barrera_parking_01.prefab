@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2403727336210162180}
+  - component: {fileID: 7910768689537374000}
   m_Layer: 0
   m_Name: barrera_parking_01
   m_TagString: Untagged
@@ -33,6 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7910768689537374000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030942247031126206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b6315b8a3ea214aa7ab682ed59ecca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ParticleObject: {fileID: 6118956519169827763}
+  m_CustomPosition: 0
+  m_Inverted: 1
 --- !u!1 &3687001717204603092
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +316,12 @@ PrefabInstance:
 --- !u!4 &3088784094426051684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1250510966360181891, guid: 8eb9dcccd0b028243941cead63521e36,
+    type: 3}
+  m_PrefabInstance: {fileID: 4289438804995291367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6118956519169827763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8029288481461672788, guid: 8eb9dcccd0b028243941cead63521e36,
     type: 3}
   m_PrefabInstance: {fileID: 4289438804995291367}
   m_PrefabAsset: {fileID: 0}
