@@ -24,7 +24,7 @@ public class RoomGenerator : MonoBehaviour
         if (m_CustomRoom)
             RandomIndexScene = m_RoomIndex;
         else
-            RandomIndexScene = Random.Range(1, 6);
+            RandomIndexScene = Random.Range(3, 6);
 
         StartCoroutine(LoadRoom("Nivel_"+RandomIndexScene));
 
