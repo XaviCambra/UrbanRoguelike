@@ -11,5 +11,6 @@ public class Module_TriggerDamage : MonoBehaviour
         Module_Health objectHealth = other.GetComponent<Module_Health>();
         if (objectHealth == null) return;
         objectHealth.TakeDamage(m_Damage);
+        gameObject.SetActive(false);
     }
 }
