@@ -13,4 +13,10 @@ public class SetMusic : MonoBehaviour
         if (FindObjectOfType<AudioManager>() != null)
             AudioManager.m_Instance.SetMusic(m_Music);
     }
+
+    public void SetActiveMusic()
+    {
+        if (FindObjectOfType<AudioManager>() != null)
+            AudioManager.m_Instance.SetMusic(m_Music);
+    }
 }
