@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager m_Instance { get; private set; }
     public static EventInstance m_MusicEventInstance { get; private set; }
 
+
     private void Awake()
     {
         if(m_Instance != null)
@@ -62,4 +63,23 @@ public class AudioManager : MonoBehaviour
     {
         m_MusicEventInstance.setParameterByName("music", (float) music);
     }
+
+    public void PlayMenuSound ()
+    {
+        //RuntimeManager.PlayOneShot(sound);
+        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_ClickMenuSound, transform.position);
+    }
+
+    public void PlayBackSound()
+    {
+        //RuntimeManager.PlayOneShot(sound);
+        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_CloseStore, transform.position);
+    }
+
+    public void PlayBuyItemSound()
+    {
+        //RuntimeManager.PlayOneShot(sound);
+        AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_BuyItemSound, transform.position);
+    }
+
 }
