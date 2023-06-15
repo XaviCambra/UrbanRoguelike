@@ -27,6 +27,7 @@ public class RangedEnemy : FSM_EnemyBase
     void Start()
     {
         m_Blackboard = GetComponent<EnemyBase_BLACKBOARD>();
+        m_Animation = GetComponent<Module_Animation>();
         m_AttackRanged = GetComponent<Module_AttackRanged>();
         m_PlayerHitpoint = GameObject.FindGameObjectWithTag("PlayerHitpoint");
         m_Player = GameObject.FindGameObjectWithTag("Player");

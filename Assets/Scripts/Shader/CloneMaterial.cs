@@ -73,7 +73,6 @@ public class CloneMaterial : MonoBehaviour
                 try
                 {
                     l_Material.SetFloat("_CharacterDissolve", m_Dissapear);
-                    Debug.Log(l_Material.GetFloat("_CharacterDissolve"));
                 }
                 catch (Exception e) { };
             }
