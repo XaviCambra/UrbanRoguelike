@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Module_Health : MonoBehaviour
 {
@@ -69,7 +70,9 @@ public class Module_Health : MonoBehaviour
                     GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().AddPoints(m_EnemyBlackBoard.m_Points);
                     m_Anim.SetTrigger("Die");
                     m_EnemyBlackBoard.m_IsActive = false;
-                    
+
+                    if (GetComponent<NavMeshAgent>() != null)
+                        GetComponent<NavMeshAgent>().SetDestination(transform.position);
                 }
             else
                 Debug.LogError("No GameController Found");
