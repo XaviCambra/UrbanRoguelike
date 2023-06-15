@@ -41,6 +41,7 @@ public class MeleEnemy : FSM_EnemyBase
     protected override void SetStateMovement()
     {
         base.SetStateMovement();
+        m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
         m_Animation.PlayAnimation("Moving", true);
         float l_Distance = Vector3.Distance(m_Player.transform.position, transform.position);
         if (l_Distance > m_Blackboard.m_DashChargedDistance)

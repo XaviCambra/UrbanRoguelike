@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-//using UnityEditor.AI;
-using UnityEngine.AI;
 
 public class SceneController : MonoBehaviour
 {
@@ -29,24 +27,29 @@ public class SceneController : MonoBehaviour
 
     public void UpdateNavigation()
     {
-        foreach(NavMeshSurface surface in m_Surface)
+        if(m_Surface.Length > 0)
         {
-            surface.BuildNavMesh();
+            foreach(NavMeshSurface surface in m_Surface)
+            {
+                surface.BuildNavMesh();
+            }
         }
 
-        StartCoroutine(ActivateEnemies(2.0f));
+        StartCoroutine(ActivateEnemies(2.5f));
     }
 
     private IEnumerator ActivateEnemies(float WaitingTime)
     {
         yield return new WaitForSeconds(WaitingTime);
-
         if (m_DoorToNextRoom.Enemies.Length > 0)
         {
             foreach (GameObject enemy in m_DoorToNextRoom.Enemies)
             {
+                
                 if (enemy != null)
+                {
                     enemy.SetActive(true);
+                }
             }
         }
 
