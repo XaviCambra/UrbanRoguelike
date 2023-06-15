@@ -37,7 +37,8 @@ public class GrenadeItem : MonoBehaviour
 
         if (Input.GetKeyUp(m_InputController.m_UseItemKey) && m_PlayerBlackboard.m_HasGrenade)
         {
-            AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_GrenadeThrow, transform.position);
+            if (FindObjectOfType<AudioManager>() != null)
+                AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_GrenadeThrow, transform.position);
 
             Rigidbody l_rb = gameObject.GetComponent<Rigidbody>();
             l_rb.useGravity = true;
@@ -70,6 +71,7 @@ public class GrenadeItem : MonoBehaviour
         }
 
         GameObject particles = GameObject.Instantiate(m_ExplosionParticles, null);
+        particles.transform.position = transform.position;
         particles.transform.SetParent(null);
         particles.GetComponent<ParticleSystem>().Play();
 
