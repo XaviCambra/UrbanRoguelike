@@ -194,24 +194,8 @@ public class PlayerController : MonoBehaviour
 
     void HipsFaceMouse()
     {
-        //Vector3 l_HipsDirection = m_InputController.m_MouseDirectionScreen();
-
-        //m_PlayerHipsRotationPoint.right = l_HipsDirection;
-        //m_PlayerHipsRotationPoint.localRotation = Quaternion.Euler(m_PlayerHipsRotationPoint.localRotation.x, m_PlayerHipsRotationPoint.localRotation.y, 0);
-        //m_PlayerHipsRotationPoint.up = new Vector3(m_PlayerHipsRotationPoint.up.x, 1, m_PlayerHipsRotationPoint.up.z);
-        //m_PlayerHipsRotationPoint.localRotation = 
-        //float l_AngleDiference = m_PlayerHipsRotationPoint.rotation.x - m_PlayerRotationPoint.rotation.y;
-        //Debug.Log("Total Rotation = " + m_PlayerHipsRotationPoint.rotation + " + " + m_PlayerRotationPoint.rotation + " + " + l_AngleDiference);
-        //m_PlayerRotationPoint.rotation = Quaternion.Lerp(m_PlayerRotationPoint.rotation, m_PlayerHipsRotationPoint.rotation, l_AngleDiference);
-
-        //RotatePart(m_PlayerHipsRotationPoint, 0, m_InputController.m_MouseDirectionScreen());
-        //RotatePart(m_PlayerRotationPoint, 2, m_InputController.m_MousePositionWorld(), true);
-
         float l_AngleMouse = Mathf.Atan2(m_InputController.m_MouseDirectionScreen().z, m_InputController.m_MouseDirectionScreen().x) * Mathf.Rad2Deg;
-        //Debug.Log(l_AngleMouse);
         m_PlayerRotationPoint.localRotation = Quaternion.Slerp(m_PlayerRotationPoint.rotation, Quaternion.Euler(0, -l_AngleMouse, 0), 4.5f * Time.deltaTime);
-        //m_PlayerRotationPoint.localRotation = l_BodyRotation;
-        //Debug.Log("Body Rotation = " + m_PlayerRotationPoint.localRotation.y * Mathf.Rad2Deg);
         foreach (Transform l_HipsTransform in m_PlayerHipsRotationPoint)
         {
             float l_AngleDifference = l_AngleMouse - m_PlayerRotationPoint.localRotation.y * Mathf.Rad2Deg;
@@ -219,29 +203,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Total Angle = " + l_AngleMouse + " - " + m_PlayerRotationPoint.rotation.y * Mathf.Rad2Deg + " - Difference = " + l_AngleDifference + " - Divided by " + m_PlayerHipsRotationPoint.Length + " = " + l_AngleDivision);
             l_HipsTransform.localRotation = Quaternion.Euler(l_AngleDivision, 0, 0);
         }
-
-        //m_PlayerRotationPoint.localRotation = Quaternion.Euler(0, -l_AngleMouse + 180, 0);
-        //m_PlayerHipsRotationPoint.localRotation = Quaternion.Euler(l_AngleMouse, 0, 0);
-        //m_PlayerHipsRotationPoint.localRotation = Quaternion.Euler(0, 0, 0);
-    }
-
-    void RotatePart(Transform l_BodyPart, float l_RotationSpeed, Vector3 l_AimPoint, bool l_Performance = false)
-    {
-        Vector3 l_Direction = l_AimPoint - l_BodyPart.position;
-        l_Direction.y = 0f;
-        Quaternion l_TargetRotation = Quaternion.LookRotation(l_Direction);
-
-        if (l_Performance)
-        {
-            float l_AngleDifference = Quaternion.Angle(l_BodyPart.rotation, l_TargetRotation);
-
-            if (l_AngleDifference > l_MaxPerformanceAngle)
-                l_BodyPart.rotation = Quaternion.Slerp(l_BodyPart.rotation, l_TargetRotation, l_RotationSpeed * l_MultiPerformanceToAngle * Time.deltaTime);
-            else
-                l_BodyPart.rotation = Quaternion.Slerp(l_BodyPart.rotation, l_TargetRotation, l_RotationSpeed * Time.deltaTime);
-        }
-        else
-            l_BodyPart.rotation = l_TargetRotation;
     }
 
     private void Shoot()
