@@ -89,7 +89,7 @@ public class RangedEnemy : FSM_EnemyBase
                 if (FindObjectOfType<AudioManager>() != null)
                     AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_RangedShoot, transform.position);
 
-                m_Animation.PlayAnimation("Attack");
+                m_Animation.Play("Attack");
                 m_AttackRanged.ShootOnDirection(m_Blackboard.m_AttackPoint.position, m_Blackboard.m_AttackPoint.transform.rotation, m_Blackboard.m_AttackSpeed, m_Blackboard.m_BulletDamage, "Enemy");
                 break;
             case AttackType.Grenade:

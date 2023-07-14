@@ -21,6 +21,8 @@ public class Player_BLACKBOARD : MonoBehaviour
     public bool m_Crouching = false;
     public float m_MovementSpeed;
     public float m_CrouchingSpeed;
+    public float m_Impulse;
+    public float m_ImpulseSpeed;
 
     [Header("Shoot")]
     public float m_ShootingDamage;

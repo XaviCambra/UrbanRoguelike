@@ -33,7 +33,7 @@ public class MeleEnemy : FSM_EnemyBase
     public override void StateIdle()
     {
         base.StateIdle();
-        m_Animation.PlayAnimation("Moving", false);
+        m_Animation.Play("Moving", false);
         if (Vector3.Distance(m_Player.transform.position, transform.position) < m_Blackboard.m_DetectionRadius)
             SetStateMovement();
     }
@@ -42,7 +42,7 @@ public class MeleEnemy : FSM_EnemyBase
     {
         base.SetStateMovement();
         m_NavMeshAgent.speed = m_Blackboard.m_RunSpeed;
-        m_Animation.PlayAnimation("Moving", true);
+        m_Animation.Play("Moving", true);
         float l_Distance = Vector3.Distance(m_Player.transform.position, transform.position);
         if (l_Distance > m_Blackboard.m_DashChargedDistance)
             m_HasToDash = true;
@@ -70,8 +70,8 @@ public class MeleEnemy : FSM_EnemyBase
         {
             if (FindObjectOfType<AudioManager>() != null)
                 AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_DashSound, transform.position);
-            m_Animation.PlayAnimation("Dash");
-            m_Animation.PlayAnimation("Moving", false);
+            m_Animation.Play("Dash");
+            m_Animation.Play("Moving", false);
             m_Dash.DashDisplacement((m_Player.transform.position - transform.position).normalized, m_Blackboard.m_DashDistance, m_Blackboard.m_DashSpeed);
             m_HasToDash = false;
             Attack();
@@ -93,9 +93,9 @@ public class MeleEnemy : FSM_EnemyBase
     {
         if(FindObjectOfType<AudioManager>() != null)
             AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_MeleeAttack1, transform.position);
-        m_Animation.PlayAnimation("Attack");
+        m_Animation.Play("Attack");
         m_AttackMele.HitOnDirection(m_Blackboard.m_BulletDamage);
-        m_Animation.PlayAnimation("Moving", false);
+        m_Animation.Play("Moving", false);
         SetStateWait(m_Blackboard.m_AttackRecovery);
     }
 }

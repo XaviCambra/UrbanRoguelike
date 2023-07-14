@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using FMODUnity;
+using System.Threading;
+using UnityEditor;
 
 [RequireComponent(typeof(InputController))]
 public class PlayerController : MonoBehaviour
@@ -20,12 +22,13 @@ public class PlayerController : MonoBehaviour
 
     private float m_MovementSpeed;
 
-    [SerializeField] private GameObject m_PlayerRotationPoint;
+    [SerializeField] private float l_MaxPerformanceAngle = 60.0f;
+    [SerializeField] private float l_MultiPerformanceToAngle = 20.0f;
+
+    [SerializeField] private Transform m_PlayerRotationPoint;
+    [SerializeField] private Transform[] m_PlayerHipsRotationPoint;
 
     private int m_StepCounter = 50;
-
-    [SerializeField] private Animator m_Anim;
-
 
     private void Start()
     {
@@ -57,6 +60,10 @@ public class PlayerController : MonoBehaviour
         if(!m_Blackboard.m_Crouching) Shoot();
         UseItem();
         SetSpeed();
+    }
+
+    private void LateUpdate()
+    {
         HipsFaceMouse();
     }
 
@@ -77,22 +84,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(m_InputController.m_ForwardKey))
         {
             l_Direction += Quaternion.Euler(0, 45, 0) * Vector3.forward;
-            m_Anim.SetBool("Moving", true);
         }
         if (Input.GetKey(m_InputController.m_BackKey))
         {
             l_Direction += Quaternion.Euler(0, 45, 0) * Vector3.back;
-            m_Anim.SetBool("Moving", true);
         }
         if (Input.GetKey(m_InputController.m_LeftKey))
         {
             l_Direction += Quaternion.Euler(0, 45, 0) * Vector3.left;
-            m_Anim.SetBool("Moving", true);
         }
         if (Input.GetKey(m_InputController.m_RightKey))
         {
             l_Direction += Quaternion.Euler(0, 45, 0) * Vector3.right;
-            m_Anim.SetBool("Moving", true);
         }
 
         l_Direction.Normalize();
@@ -103,17 +106,24 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        m_Animation.Play("MoveSpeed", m_Blackboard.m_Impulse);
+
+        if (m_Blackboard.m_Impulse > 0)
+            m_Animation.SetSpeed(m_Blackboard.m_Impulse);
+        else
+            m_Animation.SetSpeed(1);
+
         if (l_Direction == Vector3.zero)
         {
-            m_Anim.SetBool("Moving", false);
+            m_Blackboard.m_Impulse = Mathf.Clamp(m_Blackboard.m_Impulse - Time.deltaTime * m_Blackboard.m_ImpulseSpeed, 0, 1);
+            
             return;
         }
-
-        
+        m_Blackboard.m_Impulse = Mathf.Clamp(m_Blackboard.m_Impulse + Time.deltaTime * m_Blackboard.m_ImpulseSpeed, 0, 1);
 
         l_Direction = Module_LinearGravity.SetGravityToVector(l_Direction);
 
-        l_Direction = l_Direction * m_MovementSpeed * Time.deltaTime;
+        l_Direction = l_Direction * m_MovementSpeed * m_Blackboard.m_Impulse * Time.deltaTime;
 
         m_CharacterController.Move(l_Direction);
     }
@@ -150,12 +160,12 @@ public class PlayerController : MonoBehaviour
         if (m_Blackboard.m_Crouching)
         {
             m_MovementSpeed = m_Blackboard.m_CrouchingSpeed;
-            m_Anim.SetBool("Crouching", true);
+            m_Animation.Play("Crouching", true);
         }
         else
         {
             m_MovementSpeed = m_Blackboard.m_MovementSpeed;
-            m_Anim.SetBool("Crouching", false);
+            m_Animation.Play("Crouching", false);
         }
     }
 
@@ -169,7 +179,7 @@ public class PlayerController : MonoBehaviour
 
         m_Blackboard.m_DashCount++;
 
-        m_Anim.SetTrigger("Dash");
+        m_Animation.Play("Dash");
 
         StartCoroutine(DashReload());
 
@@ -184,7 +194,54 @@ public class PlayerController : MonoBehaviour
 
     void HipsFaceMouse()
     {
-        m_PlayerRotationPoint.transform.forward = m_InputController.m_MouseDirectionScreen();
+        //Vector3 l_HipsDirection = m_InputController.m_MouseDirectionScreen();
+
+        //m_PlayerHipsRotationPoint.right = l_HipsDirection;
+        //m_PlayerHipsRotationPoint.localRotation = Quaternion.Euler(m_PlayerHipsRotationPoint.localRotation.x, m_PlayerHipsRotationPoint.localRotation.y, 0);
+        //m_PlayerHipsRotationPoint.up = new Vector3(m_PlayerHipsRotationPoint.up.x, 1, m_PlayerHipsRotationPoint.up.z);
+        //m_PlayerHipsRotationPoint.localRotation = 
+        //float l_AngleDiference = m_PlayerHipsRotationPoint.rotation.x - m_PlayerRotationPoint.rotation.y;
+        //Debug.Log("Total Rotation = " + m_PlayerHipsRotationPoint.rotation + " + " + m_PlayerRotationPoint.rotation + " + " + l_AngleDiference);
+        //m_PlayerRotationPoint.rotation = Quaternion.Lerp(m_PlayerRotationPoint.rotation, m_PlayerHipsRotationPoint.rotation, l_AngleDiference);
+
+        //RotatePart(m_PlayerHipsRotationPoint, 0, m_InputController.m_MouseDirectionScreen());
+        //RotatePart(m_PlayerRotationPoint, 2, m_InputController.m_MousePositionWorld(), true);
+
+        float l_AngleMouse = Mathf.Atan2(m_InputController.m_MouseDirectionScreen().z, m_InputController.m_MouseDirectionScreen().x) * Mathf.Rad2Deg;
+        //Debug.Log(l_AngleMouse);
+        m_PlayerRotationPoint.localRotation = Quaternion.Slerp(m_PlayerRotationPoint.rotation, Quaternion.Euler(0, -l_AngleMouse, 0), 4.5f * Time.deltaTime);
+        //m_PlayerRotationPoint.localRotation = l_BodyRotation;
+        //Debug.Log("Body Rotation = " + m_PlayerRotationPoint.localRotation.y * Mathf.Rad2Deg);
+        foreach (Transform l_HipsTransform in m_PlayerHipsRotationPoint)
+        {
+            float l_AngleDifference = l_AngleMouse - m_PlayerRotationPoint.localRotation.y * Mathf.Rad2Deg;
+            float l_AngleDivision = l_AngleDifference / m_PlayerHipsRotationPoint.Length;
+            Debug.Log("Total Angle = " + l_AngleMouse + " - " + m_PlayerRotationPoint.rotation.y * Mathf.Rad2Deg + " - Difference = " + l_AngleDifference + " - Divided by " + m_PlayerHipsRotationPoint.Length + " = " + l_AngleDivision);
+            l_HipsTransform.localRotation = Quaternion.Euler(l_AngleDivision, 0, 0);
+        }
+
+        //m_PlayerRotationPoint.localRotation = Quaternion.Euler(0, -l_AngleMouse + 180, 0);
+        //m_PlayerHipsRotationPoint.localRotation = Quaternion.Euler(l_AngleMouse, 0, 0);
+        //m_PlayerHipsRotationPoint.localRotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    void RotatePart(Transform l_BodyPart, float l_RotationSpeed, Vector3 l_AimPoint, bool l_Performance = false)
+    {
+        Vector3 l_Direction = l_AimPoint - l_BodyPart.position;
+        l_Direction.y = 0f;
+        Quaternion l_TargetRotation = Quaternion.LookRotation(l_Direction);
+
+        if (l_Performance)
+        {
+            float l_AngleDifference = Quaternion.Angle(l_BodyPart.rotation, l_TargetRotation);
+
+            if (l_AngleDifference > l_MaxPerformanceAngle)
+                l_BodyPart.rotation = Quaternion.Slerp(l_BodyPart.rotation, l_TargetRotation, l_RotationSpeed * l_MultiPerformanceToAngle * Time.deltaTime);
+            else
+                l_BodyPart.rotation = Quaternion.Slerp(l_BodyPart.rotation, l_TargetRotation, l_RotationSpeed * Time.deltaTime);
+        }
+        else
+            l_BodyPart.rotation = l_TargetRotation;
     }
 
     private void Shoot()
@@ -195,7 +252,7 @@ public class PlayerController : MonoBehaviour
             if (FindObjectOfType<AudioManager>() != null)
                 AudioManager.m_Instance.PlayOneShot(FModEvents.m_Instance.m_PlayerShoot, transform.position);
 
-            m_Anim.SetTrigger("Shoot");
+            m_Animation.Play("Shoot");
             m_Blackboard.OverHeat();
         }
 
@@ -216,7 +273,6 @@ public class PlayerController : MonoBehaviour
     public IEnumerator CancelOverHeat()
     {
         m_Blackboard.m_CanOverheat = false;
-        Debug.Log("Overheat cancelled " + m_Blackboard.m_OverHeatCancelDuration + " seconds");
         yield return new WaitForSeconds(m_Blackboard.m_OverHeatCancelDuration);
         m_Blackboard.m_CanOverheat = true;
     }

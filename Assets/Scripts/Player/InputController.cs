@@ -36,6 +36,26 @@ public class InputController : MonoBehaviour
     [Header("Pause")]
     public KeyCode m_PauseButton = KeyCode.Escape;
 
+    public Vector3 m_MousePositionWorld()
+    {
+        Vector3 m_MouseWorldPosition = Vector3.zero;
+
+        RaycastHit hit;
+
+        Ray l_ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(l_ray, out hit, Mathf.Infinity, m_PointerLayer))
+        {
+            m_MouseWorldPosition = hit.point;
+            if (hit.collider.gameObject.tag == "Enemy")
+                m_MouseWorldPosition = hit.collider.transform.position;
+            Debug.DrawRay(m_Camera.transform.position, (m_MouseWorldPosition - m_Camera.transform.position).normalized * hit.distance, Color.yellow);
+        }
+
+        m_MouseWorldPosition.y = transform.position.y;
+        return m_MouseWorldPosition;
+    }
+
     public Vector3 m_MouseDirectionScreen()
     {
         Vector3 m_MouseWorldPosition = Vector3.zero;

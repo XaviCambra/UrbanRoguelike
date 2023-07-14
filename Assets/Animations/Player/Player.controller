@@ -37,8 +37,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2984115403777490206}
@@ -90,8 +90,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: ThrowGrenade
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1428512772654156921}
@@ -115,8 +115,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2984115403777490206}
@@ -143,8 +143,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: HoldingGrenade
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4244377579340759120}
@@ -200,8 +200,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: ThrowGrenade
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4651370287451413239}
@@ -258,37 +258,37 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 4087965430536039169}
-    m_Position: {x: 660, y: 720, z: 0}
+    m_Position: {x: 360, y: 650, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1595055839172773763}
     m_Position: {x: 1430, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4244377579340759120}
-    m_Position: {x: 660, y: 310, z: 0}
+    m_Position: {x: 660, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1428512772654156921}
-    m_Position: {x: 960, y: 320, z: 0}
+    m_Position: {x: 960, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1933360297092337287}
     m_Position: {x: 660, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7531358603997103914}
-    m_Position: {x: 660, y: 580, z: 0}
+    m_Position: {x: 660, y: 510, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2984115403777490206}
-    m_Position: {x: 1430, y: 590, z: 0}
+    m_Position: {x: 1430, y: 570, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5943435430000126420}
-    m_Position: {x: 660, y: 190, z: 0}
+    m_Position: {x: 660, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4651370287451413239}
-    m_Position: {x: 960, y: 190, z: 0}
+    m_Position: {x: 960, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1759555210905151239}
-    m_Position: {x: 660, y: 480, z: 0}
+    m_Position: {x: 660, y: 450, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4676166021474648348}
-    m_Position: {x: 660, y: 650, z: 0}
+    m_Position: {x: 660, y: 570, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3067189334365593842}
@@ -303,7 +303,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 380, y: 330, z: 0}
   m_EntryPosition: {x: 1450, y: 300, z: 0}
-  m_ExitPosition: {x: 960, y: 710, z: 0}
+  m_ExitPosition: {x: 720, y: 670, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1595055839172773763}
 --- !u!1101 &-3443759197540981989
@@ -314,8 +314,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1595055839172773763}
@@ -358,8 +358,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1595055839172773763}
@@ -441,8 +441,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2984115403777490206}
@@ -466,8 +466,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1595055839172773763}
@@ -494,8 +494,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Shoot
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1759555210905151239}
@@ -550,14 +550,14 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Moving
-    m_Type: 4
+  - m_Name: Dash
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Dash
-    m_Type: 9
+  - m_Name: MoveSpeed
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -566,7 +566,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Base Layer
     m_StateMachine: {fileID: -4223498864185521351}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: dc784e5512e81f646a151c302a942e4b, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -583,8 +583,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2984115403777490206}
@@ -690,8 +690,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2984115403777490206}
@@ -715,9 +715,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
-    m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
+    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1595055839172773763}
   m_Solo: 0
@@ -771,8 +771,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: ThrowGrenade
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1428512772654156921}
@@ -824,8 +824,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: HoldingGrenade
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5943435430000126420}
@@ -876,8 +876,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1595055839172773763}
@@ -933,8 +933,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Shoot
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1933360297092337287}
@@ -961,8 +961,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: HoldingGrenade
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5943435430000126420}
@@ -1042,8 +1042,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Crouching
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1595055839172773763}
@@ -1067,8 +1067,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2984115403777490206}
@@ -1095,8 +1095,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Crouching
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2984115403777490206}
@@ -1120,8 +1120,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 4
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1595055839172773763}
@@ -1148,8 +1148,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: ThrowGrenade
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Moving
+  - m_ConditionMode: 3
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4651370287451413239}
