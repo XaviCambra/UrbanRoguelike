@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float l_MultiPerformanceToAngle = 20.0f;
 
     [SerializeField] private Transform m_PlayerRotationPoint;
-    [SerializeField] private Transform[] m_PlayerHipsRotationPoint;
+    [SerializeField] private Transform m_PlayerHipsRotationPoint;
 
     private int m_StepCounter = 50;
 
@@ -116,7 +116,6 @@ public class PlayerController : MonoBehaviour
         if (l_Direction == Vector3.zero)
         {
             m_Blackboard.m_Impulse = Mathf.Clamp(m_Blackboard.m_Impulse - Time.deltaTime * m_Blackboard.m_ImpulseSpeed, 0, 1);
-            
             return;
         }
         m_Blackboard.m_Impulse = Mathf.Clamp(m_Blackboard.m_Impulse + Time.deltaTime * m_Blackboard.m_ImpulseSpeed, 0, 1);
@@ -192,17 +191,23 @@ public class PlayerController : MonoBehaviour
         m_Blackboard.m_DashCount--;
     }
 
+    // #1
+    float m_CurrentAngle, m_CurrentAngleSpeed;
+
     void HipsFaceMouse()
     {
-        float l_AngleMouse = Mathf.Atan2(m_InputController.m_MouseDirectionScreen().z, m_InputController.m_MouseDirectionScreen().x) * Mathf.Rad2Deg;
-        m_PlayerRotationPoint.localRotation = Quaternion.Slerp(m_PlayerRotationPoint.rotation, Quaternion.Euler(0, -l_AngleMouse, 0), 4.5f * Time.deltaTime);
-        foreach (Transform l_HipsTransform in m_PlayerHipsRotationPoint)
-        {
-            float l_AngleDifference = l_AngleMouse - m_PlayerRotationPoint.localRotation.y * Mathf.Rad2Deg;
-            float l_AngleDivision = l_AngleDifference / m_PlayerHipsRotationPoint.Length;
-            Debug.Log("Total Angle = " + l_AngleMouse + " - " + m_PlayerRotationPoint.rotation.y * Mathf.Rad2Deg + " - Difference = " + l_AngleDifference + " - Divided by " + m_PlayerHipsRotationPoint.Length + " = " + l_AngleDivision);
-            l_HipsTransform.localRotation = Quaternion.Euler(l_AngleDivision, 0, 0);
-        }
+        // #2
+        float l_TargetAngle = Vector3.SignedAngle(Vector3.forward, m_InputController.m_MouseDirectionScreen(), Vector3.up) - 90;
+
+        // #3
+        m_CurrentAngle = Mathf.SmoothDampAngle(m_CurrentAngle, l_TargetAngle, ref m_CurrentAngleSpeed, 0.1f);
+
+        // #4
+        m_PlayerRotationPoint.localRotation = Quaternion.Euler(0, m_CurrentAngle, 0);
+
+        // #5
+        float l_AngleDifference = m_CurrentAngle - l_TargetAngle;
+        m_PlayerHipsRotationPoint.localRotation = Quaternion.Euler(l_AngleDifference, 0, 0);
     }
 
     private void Shoot()
